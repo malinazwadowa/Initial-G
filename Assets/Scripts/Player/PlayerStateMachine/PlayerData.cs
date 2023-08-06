@@ -2,6 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 
+/// DATA IN SCRIPTABLE OBJECTS SHOULD NOT BE CHANGED BY ANY MEANS, IT SHOULD HOLD ONLY STATIC UNCHANGEABLE DATA.
+/// 
+/// 
+/// 
+/// </summary>
+
 [CreateAssetMenu(fileName = "newPlayerData", menuName = "Data/Player Data/Base Data")]
 public class PlayerData : ScriptableObject
 {

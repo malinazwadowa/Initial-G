@@ -2,6 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// TODO
+/// 
+/// THIS CLASS ALSO SHOULD NOT BE A SINGLETON BY ANY MEANS.
+/// 
+/// THIS CLASS SHOULD NOT BE NAMED PlayerDirectionController BUT RATHER A PlayerMovementController
+/// 
+/// PLAYER SHOULD NOT BE MOVED VIA NAV MESH AGENT BUT RATHER A SIMPLE TRANSFORMATION FUNCTION
+/// </summary>
 public class PlayerDirectionController : MonoBehaviour
 {
     public int lastDirection = 3; //For attack animation
@@ -35,7 +44,7 @@ public class PlayerDirectionController : MonoBehaviour
     public void MovePlayer(float speed)
     {
         Vector3 input = player.playerInputActions.Player.Movement.ReadValue<Vector2>();
-        player.animator.SetInteger(PlayerAnimatorParameters.DirectionID, FacingDirection(input));
+        player.animator.SetInteger(PlayerAnimatorParameters.DIRECTION_ID, FacingDirection(input));
         if(input.x == 0) {input.x = 0.01f;} //Workaround due to underlying unity issue and NavmeshPlus ~. 
         player.agent.Move(Time.deltaTime * speed * player.playerData.moveRatio * input);
     }

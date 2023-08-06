@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BombController : MonoBehaviour
@@ -25,6 +23,7 @@ public class BombController : MonoBehaviour
     public void ExplosionAnimationStart()
     {
         spriteRenderer.enabled = false;
+
     }
     public void ExplosionAnimationEnd()
     {

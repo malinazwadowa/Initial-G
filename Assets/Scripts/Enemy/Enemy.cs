@@ -1,8 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+/// <summary>
+/// TODO
+/// 
+/// SAME TIPS AS FOR PLAYER CLASS
+/// 
+/// </summary>
 public class Enemy : MonoBehaviour
 {
     #region Properties

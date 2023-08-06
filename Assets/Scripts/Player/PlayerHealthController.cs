@@ -1,7 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 
+/// Please introduce a generic Health component instead of concrete type health controller like PlayerHealthController or EnemyHealthController.
+/// It should be a generic thing.
+/// 
+/// </summary>
 public class PlayerHealthController : MonoBehaviour
 {
     public Player player;

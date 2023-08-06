@@ -5,6 +5,20 @@ using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
+/// <summary>
+/// TODO
+/// 
+/// THIS CLASS SHOULD NOT BE A SINGLETON BY ANY MEANS
+/// 
+/// PLAYER COMBAT CONTROLLER SHOULD NOT BE RESPONSIBLE FOR MOVING THE BOMB, THE BOMB ITSELF SHOULD TAKE CARE OF ITS MOVEMENT
+/// 
+/// I DONT SEE A POINT OF HAVING ThrowType ENUM IF WE CAN THROW THE BOMB IN THE DIRECTION OF PLAYER LAST MOVEMENT DIRECTION
+/// 
+/// FUNCTIONS LIKE AttackAnimationEnd() SHOULD BE NAMED OnAttackAnimationEnd()
+/// 
+/// 
+/// 
+/// </summary>
 public class PlayerCombatController : MonoBehaviour
 {
     private enum ThrowType
@@ -12,6 +26,7 @@ public class PlayerCombatController : MonoBehaviour
         Horizontal,
         Vertical
     }
+
     private Player player;
 
     [SerializeField] private float attackRange = 0.9f;
@@ -50,8 +65,9 @@ public class PlayerCombatController : MonoBehaviour
             timeSinceLastAttack = 0;
         }
     }
+
     //Performs attack. Deals damage to all enemies in area in front of player.
-    private void Attack()
+    public void Attack()
     {
         player.animator.SetBool(PlayerAnimatorParameters.IsAttacking, true);
         player.StateMachine.ChangeState(player.AttackingState);
@@ -166,7 +182,7 @@ public class PlayerCombatController : MonoBehaviour
         float entireDistance = Vector2.Distance(newBomb.transform.position, target);
         StartCoroutine(MoveBomb());
 
-        //Bomb movement during throw.
+        //COROUTINES SHOULD NOT BE NESTED!!!!!!!!!!!!!!!!!
         IEnumerator MoveBomb()
         {
             while (Vector2.Distance(newBomb.transform.position, target) > 0.01f)

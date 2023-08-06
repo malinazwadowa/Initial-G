@@ -2,9 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 
+/// CONST MEMBERS SHOULD BE NAMED ALL CAPS WITH _ PODLOGIS
+/// 
+/// 
+/// </summary>
 public class PlayerAnimatorParameters : MonoBehaviour
 {
-    public const string DirectionID = "DirectionID";
+    public const string DIRECTION_ID = "DirectionID"; //LIKE HERE
     public const string IsWalking = "isWalking";
     public const string IsRunning = "isRunning";
     public const string IsAttacking = "isAttacking";
