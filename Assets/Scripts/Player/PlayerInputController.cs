@@ -1,33 +1,39 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 public class PlayerInputController : MonoBehaviour
 {
     public UnityAction onAttackInputPressed;
 
-
     private PlayerInputActions playerInputActions;
     private PlayerMovementController playerMovementController;
     //private PlayerCombatController playerCombatController;
 
-    private bool inputEnabled = true;
+    private bool movementInputEnabled = true;
 
     public void Init(PlayerMovementController playerMovementController, PlayerInputActions playerInputActions)
     {
         //this.playerCombatController = playerCombatController;
         this.playerMovementController = playerMovementController;
         this.playerInputActions = playerInputActions;
+
+        this.playerInputActions.Enable();
     }
 
     private void Update()
     {
-        EnableMovementInput(true);
-        //HandleInput();
+        HandleRunning();
     }
-    
+
+    private void FixedUpdate()
+    {
+        HandleMovement();
+    }
+
     public void EnableMovementInput(bool active)
     {
-        inputEnabled = active;
+        movementInputEnabled = active;
 
         if (active)
         {
@@ -36,24 +42,24 @@ public class PlayerInputController : MonoBehaviour
         else
         {
             playerInputActions.PlayerMovement.Disable();
-        }
-        
-        
+        } 
     }
-    public void HandleInput()
+
+    public void HandleMovement()
     {
-        if (!inputEnabled) { return; }
+        if (!movementInputEnabled) { return; }
+
+        Debug.Log(playerInputActions.PlayerMovement.Movement.ReadValue<Vector2>());
+
+        playerMovementController.MovePlayer(playerInputActions.PlayerMovement.Movement.ReadValue<Vector2>());
+    }
+
+    public void HandleRunning()
+    {
+        if (!movementInputEnabled) { return; }
 
         playerMovementController.SetRun(playerInputActions.PlayerMovement.Run.IsPressed());
     }
-    public Vector2 GetMovementInput()
-    {
-        return playerInputActions.PlayerMovement.Movement.ReadValue<Vector2>();
-    }
-
-
-
-
 
     private void HandleAttackInput()
     {

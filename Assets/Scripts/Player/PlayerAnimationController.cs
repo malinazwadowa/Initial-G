@@ -22,7 +22,16 @@ public class PlayerAnimationController : MonoBehaviour
     {
         //Debug.Log(movementController.lastDirection);
         SetMovementAnimation(movementController.GetCurrentMovementSpeed());
+        SetVelocity(movementController.CurrentVelocity);
     }
+
+    public void SetVelocity(Vector2 velocity)
+    {
+        animator.SetFloat("HorizontalVelocity", velocity.x);
+        animator.SetFloat("VerticalVelocity", velocity.y);
+    }
+
+
     private void SetMovementAnimation(float currentSpeed)
     {
         animator.SetInteger(PlayerAnimatorParameters.DIRECTION_ID, movementController.lastDirection);

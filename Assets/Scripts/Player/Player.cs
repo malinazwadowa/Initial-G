@@ -34,8 +34,8 @@ public class Player : MonoBehaviour
     
     private void Awake()
     {
+        //wyjebac stad input actions i tworzyc je w inputControllerze
         inputActions = new PlayerInputActions();
-        //inputActions.PlayerMovement.Enable();
         animator = GetComponent<Animator>();
         spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
         rigidBody = GetComponent<Rigidbody2D>();
@@ -44,7 +44,7 @@ public class Player : MonoBehaviour
         animationController = GetComponent<PlayerAnimationController>();
         inputController = GetComponent<PlayerInputController>();
        
-        movementController.Init(inputActions, playerData, rigidBody, spriteRenderers );
+        movementController.Init(inputActions, playerData, rigidBody, spriteRenderers);
         animationController.Init(animator, movementController, playerData);
         inputController.Init(movementController, inputActions);
     }

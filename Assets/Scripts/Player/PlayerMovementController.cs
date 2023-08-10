@@ -1,8 +1,14 @@
 using UnityEngine;
 
-
+/// <summary>
+/// 
+/// lastDirection do wyjebania!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+///
+/// </summary>
 public class PlayerMovementController : MonoBehaviour
 {
+    public Vector2 CurrentVelocity { get; private set; }
+
     private PlayerInputActions inputActions;
     private PlayerData playerData;
     private Rigidbody2D rigidBody;
@@ -15,42 +21,29 @@ public class PlayerMovementController : MonoBehaviour
     private float bonusSlowRatio = 1;
     private float runRatio = 1;
     
-    public void Init(PlayerInputActions inputActions, PlayerData playerData, Rigidbody2D rigidBody, SpriteRenderer[] spriteRenderers)
+    public void Init(
+        PlayerInputActions inputActions,
+        PlayerData playerData,
+        Rigidbody2D rigidBody,
+        SpriteRenderer[] spriteRenderers)
     {
         this.inputActions = inputActions;
         this.playerData = playerData;
         this.rigidBody = rigidBody;
         this.spriteRenderers = spriteRenderers;
     }
-    private void Awake()
-    {
-        
-    }
-    private void Update()
-    {
-    }
-    public void FixedUpdate()
-    {
-        MovePlayer(inputActions.PlayerMovement.Movement.ReadValue<Vector2>());
-    }
+
     public float GetCurrentMovementSpeed()
     {
         return currentSpeed;
     }
-    public void MovePlayer(Vector2 input)
+
+    public void MovePlayer(Vector2 direction)
     {
-        GetFacingDirection(input);
-        if(!(input == Vector2.zero))
-        {
-            currentSpeed = playerData.baseSpeed * bonusSlowRatio * bonusSpeedRatio * runRatio;
-            rigidBody.MovePosition(currentSpeed * Time.deltaTime * input + rigidBody.position);
-        }
-        else
-        {
-            currentSpeed = 0;
-        }
-        
+        CurrentVelocity = direction * playerData.baseSpeed * runRatio * Time.deltaTime;
+        rigidBody.velocity = CurrentVelocity;
     }
+
     public void SetRun(bool runAction)
     {
         if (runAction)
@@ -62,9 +55,6 @@ public class PlayerMovementController : MonoBehaviour
             runRatio = 1;
         }
     }
-
-    
-
 
 
     //Moves player with desired speed according to provided input, updates direction player should be facing towards.
