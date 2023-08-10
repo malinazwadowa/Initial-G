@@ -13,11 +13,15 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "newPlayerData", menuName = "Data/Player Data/Base Data")]
 public class PlayerData : ScriptableObject
 {
-    
+    [Header("Movement")]
+    public float baseSpeed;
+    public float runRatio;
 
     [Header("Any State")]
     public float maxHealth = 100;
     public float currentHealth = 100;
+
+    
     public bool attackingAllowed = true;
     public float moveRatio = 1f;
 

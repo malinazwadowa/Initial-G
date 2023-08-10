@@ -57,7 +57,7 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
-        StateMachine.Initialize(WanderState);
+        StateMachine.Initialize(ChaseState);
     }
 
     private void Update()

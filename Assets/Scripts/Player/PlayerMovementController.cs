@@ -1,53 +1,81 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// TODO
-/// 
-/// THIS CLASS ALSO SHOULD NOT BE A SINGLETON BY ANY MEANS.
-/// 
-/// THIS CLASS SHOULD NOT BE NAMED PlayerDirectionController BUT RATHER A PlayerMovementController
-/// 
-/// PLAYER SHOULD NOT BE MOVED VIA NAV MESH AGENT BUT RATHER A SIMPLE TRANSFORMATION FUNCTION
-/// </summary>
-public class PlayerDirectionController : MonoBehaviour
+
+public class PlayerMovementController : MonoBehaviour
 {
-    public int lastDirection = 3; //For attack animation
-    private Player player;
+    private PlayerInputActions inputActions;
+    private PlayerData playerData;
+    private Rigidbody2D rigidBody;
     private SpriteRenderer[] spriteRenderers;
 
-    public static PlayerDirectionController Instance { get; private set; }
+    [HideInInspector] public int lastDirection = 3;
+
+    private float currentSpeed;
+    private float bonusSpeedRatio = 1;
+    private float bonusSlowRatio = 1;
+    private float runRatio = 1;
+    
+    public void Init(PlayerInputActions inputActions, PlayerData playerData, Rigidbody2D rigidBody, SpriteRenderer[] spriteRenderers)
+    {
+        this.inputActions = inputActions;
+        this.playerData = playerData;
+        this.rigidBody = rigidBody;
+        this.spriteRenderers = spriteRenderers;
+    }
     private void Awake()
     {
-        if (Instance != null && Instance != this)
+        
+    }
+    private void Update()
+    {
+    }
+    public void FixedUpdate()
+    {
+        MovePlayer(inputActions.PlayerMovement.Movement.ReadValue<Vector2>());
+    }
+    public float GetCurrentMovementSpeed()
+    {
+        return currentSpeed;
+    }
+    public void MovePlayer(Vector2 input)
+    {
+        GetFacingDirection(input);
+        if(!(input == Vector2.zero))
         {
-            Destroy(this);
+            currentSpeed = playerData.baseSpeed * bonusSlowRatio * bonusSpeedRatio * runRatio;
+            rigidBody.MovePosition(currentSpeed * Time.deltaTime * input + rigidBody.position);
         }
         else
         {
-            Instance = this;
+            currentSpeed = 0;
         }
-
-        player = GetComponent<Player>();
-        spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
+        
+    }
+    public void SetRun(bool runAction)
+    {
+        if (runAction)
+        {
+            runRatio = playerData.runRatio;
+        }
+        else
+        {
+            runRatio = 1;
+        }
     }
 
-    /* Used before NavMesh pathafinding
-     * public void MoveGamer(float speed)
-    {
-        Vector2 input = player.playerInputActions.Player.Movement.ReadValue<Vector2>();
-        player.animator.SetInteger(PlayerAnimatorParameters.DirectionID, FacingDirection(input));
-        playerRb.MovePosition(speed * player.moveRatio * Time.deltaTime * input + playerRb.position);
-    } */
+    
+
+
+
     //Moves player with desired speed according to provided input, updates direction player should be facing towards.
+    /*
     public void MovePlayer(float speed)
     {
-        Vector3 input = player.playerInputActions.Player.Movement.ReadValue<Vector2>();
-        player.animator.SetInteger(PlayerAnimatorParameters.DIRECTION_ID, FacingDirection(input));
-        if(input.x == 0) {input.x = 0.01f;} //Workaround due to underlying unity issue and NavmeshPlus ~. 
-        player.agent.Move(Time.deltaTime * speed * player.playerData.moveRatio * input);
-    }
+        Vector3 input = inputActions.Player.Movement.ReadValue<Vector2>();
+        animator.SetInteger(PlayerAnimatorParameters.DIRECTION_ID, GetFacingDirection(input));
+        if(input.x == 0) {input.x = 0.000001f;} //Workaround due to underlying unity issue and NavmeshPlus ~. 
+        agent.Move(Time.deltaTime * speed * playerData.moveRatio * input);
+    } */
     /*
      * Returns one of 4 values based on direction towards provided vector 
      * 1 - Up
@@ -56,7 +84,7 @@ public class PlayerDirectionController : MonoBehaviour
      * 4 - Left
      * Depending on the angle, returns the corresponding direction code and flips the 'spriteRenderer' if needed.
      */
-    public int FacingDirection(Vector2 direction)
+    public int GetFacingDirection(Vector2 direction)
     {
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         if(!(direction.x == 0 && direction.y == 0))

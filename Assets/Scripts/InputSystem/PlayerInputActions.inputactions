@@ -2,7 +2,7 @@
     "name": "PlayerInputActions",
     "maps": [
         {
-            "name": "Player",
+            "name": "PlayerMovement",
             "id": "fc3a4361-da10-4593-b289-9279c6aad862",
             "actions": [
                 {
@@ -234,6 +234,34 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "PickUp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "New action map",
+            "id": "ca34882f-7a5d-438d-9e9d-d81ca812345f",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "50e090eb-cd3a-4b4f-887b-ab9f90256b67",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "76e07757-f56f-41c9-a78e-9995f42c1bec",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

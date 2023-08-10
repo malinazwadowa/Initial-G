@@ -21,7 +21,7 @@ public class EnemyPlayerDetection : MonoBehaviour
     }
 
     void Update()
-    {
+    { /*
         if (enemy.GetDistanceToSpawn() < maxDistanceToSpawn || enemy.GetDistanceToPlayer() < 3)
         {
             if (enemy.StateMachine.CurrentState == enemy.WanderState)
@@ -47,7 +47,7 @@ public class EnemyPlayerDetection : MonoBehaviour
                     enemy.StateMachine.ChangeState(enemy.ChaseState);
                 }
             }
-        }
-    }
+        }*/
+    } 
 
 }

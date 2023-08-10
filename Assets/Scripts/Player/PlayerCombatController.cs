@@ -52,39 +52,29 @@ public class PlayerCombatController : MonoBehaviour
             Instance = this;
         }
 
-        player = GetComponent<Player>();
+        //player = GetComponent<Player>();
     }
   
     private void Update()
     {
-        timeSinceLastAttack += Time.deltaTime;
+        /*timeSinceLastAttack += Time.deltaTime;
         //Performs attack conditions are met.
-        if (player.playerInputActions.Player.Attack.WasPerformedThisFrame() && timeSinceLastAttack > attackDelay && player.playerData.attackingAllowed)
+        if (player.playerInputActions.Player.Attack.WasPerformedThisFrame() timeSinceLastAttack > attackDelay && player.playerData.attackingAllowed)
         {
             Attack();
             timeSinceLastAttack = 0;
-        }
+        } */
     }
 
     //Performs attack. Deals damage to all enemies in area in front of player.
     public void Attack()
     {
-        player.animator.SetBool(PlayerAnimatorParameters.IsAttacking, true);
-        player.StateMachine.ChangeState(player.AttackingState);
+        //player.animator.SetBool(PlayerAnimatorParameters.IsAttacking, true);
 
-        //Temporary randomizer for sounds.
-        int randomNumber = UnityEngine.Random.Range(1, 3);
-        if (randomNumber == 1)
-        {
-            AudioManager.Instance.PlaySound(AudioManagerClips.AttackScythe1, player.audioSource);
-        }
-        else
-        {
-            AudioManager.Instance.PlaySound(AudioManagerClips.AttackScythe2, player.audioSource);
-        }
-        
+       
+        int dupcia = 1;
         //Checks in which direction attack should be performed and offsets the area accordingly.
-        switch (PlayerDirectionController.Instance.lastDirection)
+        switch (dupcia)
         {
             case 1:
                 attackAreaOffset = new Vector3(0, 1.1f);
@@ -114,10 +104,10 @@ public class PlayerCombatController : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
         //Picks up bomb if conditions are met.
-        if (collision.CompareTag("BombGround") && player.StateMachine.CurrentState != player.CarryingStance && player.StateMachine.CurrentState != player.HitState && player.playerInputActions.Player.PickUp.IsPressed())
+        if (collision.CompareTag("BombGround")  /*player.inputActions.Player.PickUp.IsPressed()*/)
         {
             Destroy(collision.gameObject);
-            player.StateMachine.ChangeState(player.CarryingStance);
+            //player.StateMachine.ChangeState(player.CarryingStance);
         }
     }
     //Drops bomb if player is carrying it.
@@ -144,7 +134,7 @@ public class PlayerCombatController : MonoBehaviour
     public void ThrowBomb(float chargeTime)
     {
 
-        AudioManager.Instance.PlaySound(AudioManagerClips.ThrowFyk, player.audioSource);
+        //AudioManager.Instance.PlaySound(AudioManagerClips.ThrowFyk, player.audioSource);
         float maxChargeTime = 3.5f;
         float minChargeTime = 0.5f;
 
@@ -155,9 +145,9 @@ public class PlayerCombatController : MonoBehaviour
         Vector3 throwOffset = Vector3.zero;
         Vector3 startPos = player.transform.position;
         float throwPower = chargeTime * 3;
-        
+        int dupa = 1;
         //Checks if the bomb will be thrown horizontally or vertically.
-        switch (PlayerDirectionController.Instance.lastDirection)
+        switch (dupa)
         {
             case 1:
                 throwOffset = new Vector3(0, throwPower);
@@ -226,11 +216,10 @@ public class PlayerCombatController : MonoBehaviour
     {
         
         PlayerHealthController.Instance.SubstractHealth(dmgAmount);
-        player.animator.StopPlayback();
-        player.StateMachine.ChangeState(player.HitState);
+        //player.animator.StopPlayback();
     }
     //Methods with *Animation* in name are used by animation events.
-    public void AttackAnimationEnd()
+   /* public void AttackAnimationEnd()
     {
         player.animator.SetBool(PlayerAnimatorParameters.IsAttacking, false);
         player.StateMachine.ChangeState(player.IdleState);
@@ -238,11 +227,11 @@ public class PlayerCombatController : MonoBehaviour
     public void ThrowAnimationEnd()
     {
         player.animator.SetBool(PlayerAnimatorParameters.IsThrowing, false);
-        player.StateMachine.ChangeState(player.IdleState);
+        player.StateMachine.ChangeState(player.IdleState); 
     }
     //Checks players health after being hit, kills player if health reaches 0.
     public void HitAnimationEnd()
-    {
+    { /*
         player.animator.SetBool(PlayerAnimatorParameters.IsHit, false);
         if (PlayerHealthController.Instance.CurrentHealth()<= 0)
         {
@@ -251,7 +240,7 @@ public class PlayerCombatController : MonoBehaviour
         }
         else
         {
-            player.StateMachine.ChangeState(player.IdleState);
+            player.StateMachine.ChangeState(player.IdleState); 
         }
-    }
+    } */
 }
