@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 /// <summary>
@@ -7,7 +8,7 @@ using UnityEngine;
 /// 
 /// 
 /// </summary>
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IWeaponWielder
 {
     [SerializeField] public PlayerData playerData;
 
@@ -23,9 +24,7 @@ public class Player : MonoBehaviour
     private PlayerMovementController movementController;
     private PlayerAnimationController animationController;
     private PlayerInputController inputController;
-   
-
-    
+  
     
     private void Awake()
     {
@@ -45,8 +44,7 @@ public class Player : MonoBehaviour
         movementController.Init(playerData, rigidBody);
         animationController.Init(animator, movementController, playerData, spriteRenderers);
         inputController.Init(movementController, inputActions);
-
-        
+        weaponController.Init(this);
     }
 
     private void Start()
@@ -66,5 +64,15 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         
+    }
+
+    public Vector2 GetPosition()
+    {
+        return transform.position;
+    }
+
+    public Vector2 GetFacingDirection()
+    {
+        return movementController.LastNonZeroVelocity.normalized;
     }
 }

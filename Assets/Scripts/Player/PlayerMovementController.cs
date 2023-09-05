@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerMovementController : MonoBehaviour
 {
     public Vector2 CurrentVelocity { get; private set; }
+    public Vector2 LastNonZeroVelocity { get; private set; } = Vector2.up;
     
     private PlayerData playerData;
     private Rigidbody2D rigidBody;
@@ -18,6 +19,10 @@ public class PlayerMovementController : MonoBehaviour
     public void MovePlayer(Vector2 direction)
     {
         CurrentVelocity = playerData.baseSpeed * runRatio * speedModifiers * Time.deltaTime * direction;
+
+        if (CurrentVelocity.magnitude > 0f)
+            LastNonZeroVelocity = CurrentVelocity;
+
         rigidBody.velocity = CurrentVelocity;
     }
 

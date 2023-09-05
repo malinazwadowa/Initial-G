@@ -3,6 +3,7 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "newRockData", menuName = "Weapon Data/Rock Data/Base Data")]
 
+//WeaponData!!!
 public class RockData : ScriptableObject
 {
     private void OnValidate()

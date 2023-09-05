@@ -3,6 +3,7 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "newSpearData", menuName = "Weapon Data/Spear Data/Base Data")]
 
+//WeaponData
 public class SpearData : ScriptableObject
 {
     private void OnValidate()

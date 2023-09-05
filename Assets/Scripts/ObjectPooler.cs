@@ -45,7 +45,7 @@ public class ObjectPooler : SingletonMonoBehaviour<ObjectPooler>
         }
     }
 
-    public GameObject SpawnObject(PoolableObject objectType, Vector3 position, Quaternion rotation)
+    public GameObject SpawnObject(PoolableObject objectType, Vector3 position, Quaternion rotation = default)
     {
         if (!poolDictionary.ContainsKey(objectType))
         {

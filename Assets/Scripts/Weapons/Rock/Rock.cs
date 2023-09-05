@@ -14,9 +14,9 @@ public class Rock : Weapon
     {
         rockCurrentRankData = rockBaseData.rockRanks[currentRank];
     }
-    public override void WeaponTick(Vector3 position, Quaternion rotation)
+    public override void WeaponTick()
     {
-        base.WeaponTick(position, rotation);
+        base.WeaponTick();
 
         timer += Time.deltaTime;
         if (timer > rockCurrentRankData.cooldownTime)

@@ -7,7 +7,6 @@ public class PlayerAnimationController : MonoBehaviour
     private PlayerData playerData;
     private SpriteRenderer[] spriteRenderers;
 
-    public Vector2 lastVelocity = new Vector2(0, -1);
     public void Init(Animator animator, PlayerMovementController movementController, PlayerData playerData, SpriteRenderer[] spriteRenderers)
     {
         this.animator = animator;
@@ -20,15 +19,16 @@ public class PlayerAnimationController : MonoBehaviour
     {
         if(input.x == 0 && input.y == 0)
         {
-            FlipSpriteRenderers(lastVelocity);
+            FlipSpriteRenderers(movementController.LastNonZeroVelocity);
 
             animator.SetBool("isIdling", true);
             animator.SetBool("isWalking", false);
 
-            animator.SetFloat("HorizontalVelocity", lastVelocity.x);
-            animator.SetFloat("VerticalVelocity", lastVelocity.y);
+            animator.SetFloat("HorizontalVelocity", movementController.LastNonZeroVelocity.x);
+            animator.SetFloat("VerticalVelocity", movementController.LastNonZeroVelocity.y);
             return;
         }
+
         FlipSpriteRenderers(input);
 
         animator.SetBool("isWalking", true);
@@ -40,8 +40,6 @@ public class PlayerAnimationController : MonoBehaviour
         
         animator.SetFloat("HorizontalVelocity", velocityX);
         animator.SetFloat("VerticalVelocity", velocityY);
-
-        lastVelocity = new Vector2(velocityX, velocityY);
     }
 
     public void FlipSpriteRenderers(Vector2 input)
@@ -61,12 +59,5 @@ public class PlayerAnimationController : MonoBehaviour
             }
         }
 
-    }
-
-    public Quaternion GetRotationFromVelocity()
-    {
-        float angle = Mathf.Atan2(lastVelocity.y, lastVelocity.x);
-        //Debug.Log($"Angle to: {angle}");
-        return Quaternion.Euler(0, 0, angle * Mathf.Rad2Deg);
     }
 }

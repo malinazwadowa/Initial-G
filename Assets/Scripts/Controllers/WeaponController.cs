@@ -3,30 +3,19 @@ using UnityEngine;
 
 public class WeaponController : MonoBehaviour
 {
-    private PlayerData playerData;
-    private float damageModifier;
-    private float cooldownModifier;
-    private float speedModifier;
     public LayerMask enemyLayer;
-    public PlayerAnimationController animationController;
+    public List<GameObject> availableWeapons = new List<GameObject>();
+
+    private IWeaponWielder myWeaponWielder;
 
     private List<Weapon> equippedWeapons = new List<Weapon>();
 
-    public List<GameObject> availableWeapons = new List<GameObject>();
-
-    private Quaternion currentRotation;
-    //public GameObject spearPrefab;
-
-    public void Start()
+    public void Init(IWeaponWielder weaponWielder)
     {
-        animationController = GetComponentInParent<PlayerAnimationController>();
-
+        myWeaponWielder = weaponWielder;
 
         EquipWeapon<Spear>();
         EquipWeapon<Rock>();
-        //EquipWeapon<>();
-        //EquipWeapon<>();
-        
     }
 
     void Update()
@@ -40,9 +29,7 @@ public class WeaponController : MonoBehaviour
         }
         foreach (Weapon weapon in equippedWeapons)
         {
-            currentRotation = animationController.GetRotationFromVelocity();
-
-            weapon.WeaponTick(transform.position, currentRotation);
+            weapon.WeaponTick();
         }
     }
     private void AddWeapon(Weapon weapon)
@@ -55,6 +42,7 @@ public class WeaponController : MonoBehaviour
         GameObject weaponPrefab = GetWeaponPrefab<T>();
         GameObject weapon = Instantiate(weaponPrefab, transform);
         T weaponScript = weapon.GetComponent<T>();
+        weaponScript.Init(myWeaponWielder);
         AddWeapon(weaponScript);
     }
     private GameObject GetWeaponPrefab<T>() where T : Weapon

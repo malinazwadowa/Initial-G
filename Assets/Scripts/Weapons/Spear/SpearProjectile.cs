@@ -13,6 +13,8 @@ public class SpearProjectile : MonoBehaviour
         this.speed = speed;
         this.movementDirection = movementDirection;
         this.spearProjectile = spearProjectile;
+
+        transform.right = movementDirection;
     }
 
     void Update()
@@ -29,6 +31,7 @@ public class SpearProjectile : MonoBehaviour
     public void MoveProjectile()
     {
         Vector3 newPosition = transform.position + movementDirection * speed * Time.deltaTime;
+        transform.right = movementDirection;
         transform.position = newPosition;
     }
 }
