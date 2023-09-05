@@ -1,19 +1,7 @@
 using UnityEngine;
-using UnityEngine.AI;
 
 /// <summary>
 /// TODO
-/// 
-/// Player should be a main starting point of a player MODULE
-/// It should have references to all its components and controllers and initialize these by passing all necessary references to these components 
-/// We should avoid circular dependencies at all costs (Player should have reference to PlayerCombatController, but PlayerCombatController should not have reference to Player directly)
-/// PlayerCombatController should have Init() function which will have as arguments all other components that it needs in order to function
-/// And Player class here itself should be the "Master" that passes all references around 
-/// 
-/// Player should be a prefab, and it should be spawned by a something like PlayerSpawner
-/// 
-/// There should not be any variables in the inspector that are not meant to be changed in the inspector directly.
-/// 
 /// There should be PlayerInputController class that gathers player input and invokes methods in player controllers accordingly
 /// PlayerInputController should have reference to PlayerCombatController and it should invoke Attack() method when input conditions are met
 /// 
@@ -28,34 +16,50 @@ public class Player : MonoBehaviour
     private SpriteRenderer[] spriteRenderers;
     private Rigidbody2D rigidBody;
 
+    private HealthController healthController;
+
+    private WeaponController weaponController;
+
     private PlayerMovementController movementController;
     private PlayerAnimationController animationController;
     private PlayerInputController inputController;
+   
+
+    
     
     private void Awake()
     {
-        //wyjebac stad input actions i tworzyc je w inputControllerze
         inputActions = new PlayerInputActions();
         animator = GetComponent<Animator>();
         spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
         rigidBody = GetComponent<Rigidbody2D>();
 
+        healthController = GetComponent<HealthController>();
+        weaponController = GetComponentInChildren<WeaponController>();
+
         movementController = GetComponent<PlayerMovementController>();
         animationController = GetComponent<PlayerAnimationController>();
         inputController = GetComponent<PlayerInputController>();
-       
-        movementController.Init(inputActions, playerData, rigidBody, spriteRenderers);
-        animationController.Init(animator, movementController, playerData);
+
+        healthController.Init(playerData.maxHealth);
+        movementController.Init(playerData, rigidBody);
+        animationController.Init(animator, movementController, playerData, spriteRenderers);
         inputController.Init(movementController, inputActions);
+
+        
     }
 
     private void Start()
     {
-    
+        
     }
 
     private void Update()
     {
+        animationController.SetAnimationVelocity(inputActions.PlayerMovement.Movement.ReadValue<Vector2>());
+        if (Input.GetKeyDown(KeyCode.F)) { Debug.Log(MathUtility.GetClosestEnemy(transform.position).transform.position); }
+
+        //Debug.Log(EnemyManager.Instance.GetRandomSpawnPositionOutsideCameraView());
         
     }
 
@@ -63,6 +67,4 @@ public class Player : MonoBehaviour
     {
         
     }
-
-    
 }

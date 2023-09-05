@@ -48,7 +48,7 @@ public class BombController : MonoBehaviour
         foreach (Collider2D enemy in enemiesHit)
         {
             float distanceRatio = Mathf.Clamp(Vector3.Distance(explostionSource, enemy.transform.position) ,0 ,explosionRange - 0.01f) / explosionRange;
-            enemy.GetComponent<EnemyCombatController>().GetDamaged(explosionDamage * (1 - distanceRatio));
+            //enemy.GetComponent<EnemyCombatController>().GetDamaged(explosionDamage * (1 - distanceRatio));
         }
     }
     void OnDrawGizmosSelected()

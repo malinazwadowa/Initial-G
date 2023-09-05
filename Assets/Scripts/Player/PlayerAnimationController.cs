@@ -5,53 +5,68 @@ public class PlayerAnimationController : MonoBehaviour
     private Animator animator;
     private PlayerMovementController movementController;
     private PlayerData playerData;
-    public void Init(Animator animator, PlayerMovementController movementController, PlayerData playerData)
+    private SpriteRenderer[] spriteRenderers;
+
+    public Vector2 lastVelocity = new Vector2(0, -1);
+    public void Init(Animator animator, PlayerMovementController movementController, PlayerData playerData, SpriteRenderer[] spriteRenderers)
     {
         this.animator = animator;
         this.movementController = movementController;
         this.playerData = playerData;
+        this.spriteRenderers = spriteRenderers;
     }
-    // Start is called before the first frame update
-    void Start()
+
+    public void SetAnimationVelocity(Vector2 input)
     {
+        if(input.x == 0 && input.y == 0)
+        {
+            FlipSpriteRenderers(lastVelocity);
+
+            animator.SetBool("isIdling", true);
+            animator.SetBool("isWalking", false);
+
+            animator.SetFloat("HorizontalVelocity", lastVelocity.x);
+            animator.SetFloat("VerticalVelocity", lastVelocity.y);
+            return;
+        }
+        FlipSpriteRenderers(input);
+
+        animator.SetBool("isWalking", true);
+        animator.SetBool("isIdling", false);
+
+        float velocityValue = (movementController.runRatio * movementController.speedModifiers) / (playerData.baseRunRatio * 2);
+        float velocityX = Mathf.Lerp(0, 2, velocityValue * Mathf.Abs(input.x)) * Mathf.Sign(input.x);
+        float velocityY = Mathf.Lerp(0, 2, velocityValue * Mathf.Abs(input.y)) * Mathf.Sign(input.y);
         
+        animator.SetFloat("HorizontalVelocity", velocityX);
+        animator.SetFloat("VerticalVelocity", velocityY);
+
+        lastVelocity = new Vector2(velocityX, velocityY);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void FlipSpriteRenderers(Vector2 input)
     {
-        //Debug.Log(movementController.lastDirection);
-        SetMovementAnimation(movementController.GetCurrentMovementSpeed());
-        SetVelocity(movementController.CurrentVelocity);
+        if (input.x > 0)
+        {
+            foreach (SpriteRenderer spriteRenderer in spriteRenderers)
+            {
+                spriteRenderer.flipX = true;
+            }
+        }
+        else
+        {
+            foreach (SpriteRenderer spriteRenderer in spriteRenderers)
+            {
+                spriteRenderer.flipX = false;
+            }
+        }
+
     }
 
-    public void SetVelocity(Vector2 velocity)
+    public Quaternion GetRotationFromVelocity()
     {
-        animator.SetFloat("HorizontalVelocity", velocity.x);
-        animator.SetFloat("VerticalVelocity", velocity.y);
-    }
-
-
-    private void SetMovementAnimation(float currentSpeed)
-    {
-        animator.SetInteger(PlayerAnimatorParameters.DIRECTION_ID, movementController.lastDirection);
-        if (currentSpeed == 0)
-        {
-            animator.SetBool(PlayerAnimatorParameters.IsIdling, true);
-            animator.SetBool(PlayerAnimatorParameters.IsWalking, false);
-            animator.SetBool(PlayerAnimatorParameters.IsRunning, false);
-        }
-        if (currentSpeed >= playerData.baseSpeed && movementController.GetCurrentMovementSpeed() > 0)
-        {
-            animator.SetBool(PlayerAnimatorParameters.IsIdling, false);
-            animator.SetBool(PlayerAnimatorParameters.IsWalking, true);
-            animator.SetBool(PlayerAnimatorParameters.IsRunning, false);
-        }
-        if (currentSpeed >= playerData.baseSpeed * playerData.runRatio * 0.8f)
-        {
-            animator.SetBool(PlayerAnimatorParameters.IsIdling, false);
-            animator.SetBool(PlayerAnimatorParameters.IsWalking, false);
-            animator.SetBool(PlayerAnimatorParameters.IsRunning, true);
-        }
+        float angle = Mathf.Atan2(lastVelocity.y, lastVelocity.x);
+        //Debug.Log($"Angle to: {angle}");
+        return Quaternion.Euler(0, 0, angle * Mathf.Rad2Deg);
     }
 }

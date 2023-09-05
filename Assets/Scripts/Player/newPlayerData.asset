@@ -12,12 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ef90a1b074bdfb45b8c0f6560904b12, type: 3}
   m_Name: newPlayerData
   m_EditorClassIdentifier: 
-  baseSpeed: 3
-  runRatio: 1.5
   maxHealth: 100
-  currentHealth: 100
-  attackingAllowed: 1
-  moveRatio: 1
-  walkSpeed: 1.5
-  runSpeed: 4
-  stealthSpeed: 0.8
+  baseSpeed: 300
+  baseRunRatio: 1.5
+  baseDamageModifier: 0
+  baseCooldownModifier: 0
+  baseWeaponSpeed: 0

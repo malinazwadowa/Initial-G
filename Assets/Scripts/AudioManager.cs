@@ -18,7 +18,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip stealth;
     public AudioClip tuptup;
     public AudioClip tuptupFast;
-
+    public AudioClip importante;
     private AudioSource audioSource;
 
 
@@ -81,6 +81,8 @@ public class AudioManager : MonoBehaviour
                 return tuptup;
             case "tuptupFast":
                 return tuptupFast;
+            case "importante":
+                return importante;
             default:
                 return null;
         }

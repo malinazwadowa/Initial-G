@@ -1,26 +1,21 @@
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.InputSystem;
 
 public class PlayerInputController : MonoBehaviour
 {
     public UnityAction onAttackInputPressed;
 
-    private PlayerInputActions playerInputActions;
+    private PlayerInputActions inputActions;
     private PlayerMovementController playerMovementController;
-    //private PlayerCombatController playerCombatController;
 
     private bool movementInputEnabled = true;
 
     public void Init(PlayerMovementController playerMovementController, PlayerInputActions playerInputActions)
     {
-        //this.playerCombatController = playerCombatController;
         this.playerMovementController = playerMovementController;
-        this.playerInputActions = playerInputActions;
-
-        this.playerInputActions.Enable();
+        this.inputActions = playerInputActions;
+        this.inputActions.Enable();
     }
-
     private void Update()
     {
         HandleRunning();
@@ -37,11 +32,11 @@ public class PlayerInputController : MonoBehaviour
 
         if (active)
         {
-            playerInputActions.PlayerMovement.Enable();
+            inputActions.PlayerMovement.Enable();
         }
         else
         {
-            playerInputActions.PlayerMovement.Disable();
+            inputActions.PlayerMovement.Disable();
         } 
     }
 
@@ -49,23 +44,20 @@ public class PlayerInputController : MonoBehaviour
     {
         if (!movementInputEnabled) { return; }
 
-        Debug.Log(playerInputActions.PlayerMovement.Movement.ReadValue<Vector2>());
-
-        playerMovementController.MovePlayer(playerInputActions.PlayerMovement.Movement.ReadValue<Vector2>());
+        playerMovementController.MovePlayer(inputActions.PlayerMovement.Movement.ReadValue<Vector2>());
     }
 
     public void HandleRunning()
     {
         if (!movementInputEnabled) { return; }
 
-        playerMovementController.SetRun(playerInputActions.PlayerMovement.Run.IsPressed());
+        playerMovementController.SetRun(inputActions.PlayerMovement.Run.IsPressed());
     }
 
     private void HandleAttackInput()
     {
-        if (playerInputActions.PlayerMovement.Attack.WasPerformedThisFrame())
+        if (inputActions.PlayerMovement.Attack.WasPerformedThisFrame())
         {
-            //playerCombatController.Attack();
             onAttackInputPressed?.Invoke();
         }
     }

@@ -13,12 +13,13 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
     protected override void Awake()
     {
         base.Awake();
-        //DO SOMETHING
+        
+        SpawnPlayer();
     }
 
     private void Start()
     {
-        SpawnPlayer();
+        
     }
 
     private void SpawnPlayer()
@@ -29,5 +30,14 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
     public Player GetPlayer()
     {
         return player;
+    }
+    public Vector3 GetCurrentPlayersPosition()
+    {
+        return player.transform.position;
+    }
+    public Vector3 GetCurrentPlayerWeaponsPosition()
+    {
+        Transform weaponTransform = player.GetComponentInChildren<WeaponController>().transform;
+        return weaponTransform.position;
     }
 }

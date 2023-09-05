@@ -16,4 +16,5 @@ public class AudioManagerClips : MonoBehaviour
     public const string Stealth = "stealth";
     public const string Walk = "tuptup";
     public const string Run = "tuptupFast";
+    public const string Importante = "importante";
 }

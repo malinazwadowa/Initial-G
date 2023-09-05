@@ -31,7 +31,7 @@ public class PlayerCombatController : MonoBehaviour
 
     [SerializeField] private float attackRange = 0.9f;
     [SerializeField] private float attackDamage = 30;
-    [SerializeField] private float attackDelay = 2;
+    //[SerializeField] private float attackDelay = 2;
     private Vector3 attackAreaOffset;
     private float timeSinceLastAttack;
 
@@ -94,7 +94,7 @@ public class PlayerCombatController : MonoBehaviour
         //Deal damage to each enemy.
         foreach (Collider2D enemy in enemiesHit)
         {
-            enemy.GetComponent<EnemyCombatController>().GetDamaged(attackDamage);
+            //enemy.GetComponent<EnemyCombatController>().GetDamaged(attackDamage);
         }
     }
     void OnDrawGizmosSelected()
@@ -215,7 +215,7 @@ public class PlayerCombatController : MonoBehaviour
     public void GetDamaged(float dmgAmount)
     {
         
-        PlayerHealthController.Instance.SubstractHealth(dmgAmount);
+        //PlayerHealthController.Instance.SubstractHealth(dmgAmount);
         //player.animator.StopPlayback();
     }
     //Methods with *Animation* in name are used by animation events.
