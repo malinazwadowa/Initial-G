@@ -31332,43 +31332,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7021e690d47d1c44e861a675573e400d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pools:
-  - name: Spear pool
-    objectType: 0
-    prefab: {fileID: 8291530308845601912, guid: 15fbe4c8a851b404b8579560d12d659e,
-      type: 3}
-    size: 100
-    activeObjectsCount: 0
-  - name: HammerSpear pool
-    objectType: 2
-    prefab: {fileID: 5608594438459119563, guid: 1603c6d5a46efb34e8163f6d134c68ed,
-      type: 3}
-    size: 100
-    activeObjectsCount: 0
-  - name: Rock pool
-    objectType: 1
-    prefab: {fileID: 7588590208296266261, guid: 54dfc9c391994ed4190ceedfe90edf13,
-      type: 3}
-    size: 100
-    activeObjectsCount: 0
-  - name: SunflowerOfDoom pool
-    objectType: 3
-    prefab: {fileID: 6197773327841160796, guid: 06df89f0c420942498a4f28087e26edf,
-      type: 3}
-    size: 100
-    activeObjectsCount: 0
-  - name: MatkaDzieciatka pool
-    objectType: 4
-    prefab: {fileID: 8639678574241376919, guid: c87339ea377b93b47923dac35b0f720f,
-      type: 3}
-    size: 100
-    activeObjectsCount: 0
-  - name: Test pool
-    objectType: 5
-    prefab: {fileID: 2406617680250579915, guid: 742e6084c8122e24b8db5fc4bc9981bc,
-      type: 3}
-    size: 1
-    activeObjectsCount: 0
+  poolerSettings: {fileID: 11400000, guid: da1f6a6b8692ea340a31164031598ebf, type: 2}
 --- !u!4 &1849985586
 Transform:
   m_ObjectHideFlags: 0

@@ -16,12 +16,14 @@ MonoBehaviour:
   spawnOffsetRange: 0.65
   rockRanks:
   - name: Rank 1
-    projectilePrefab: 1
+    projectilePrefab: {fileID: 7588590208296266261, guid: 54dfc9c391994ed4190ceedfe90edf13,
+      type: 3}
     speed: 13
     cooldownTime: 2
     amount: 6
   - name: Rank 2
-    projectilePrefab: 1
+    projectilePrefab: {fileID: 7588590208296266261, guid: 54dfc9c391994ed4190ceedfe90edf13,
+      type: 3}
     speed: 0
     cooldownTime: 0
     amount: 0

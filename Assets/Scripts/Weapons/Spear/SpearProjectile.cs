@@ -7,8 +7,8 @@ public class SpearProjectile : MonoBehaviour
 {
     private float speed;
     private Vector3 movementDirection;
-    private PoolableObject spearProjectile;
-    public void Init(float speed, Vector3 movementDirection, PoolableObject spearProjectile)
+    private GameObject spearProjectile;
+    public void Init(float speed, Vector3 movementDirection, GameObject spearProjectile)
     {
         this.speed = speed;
         this.movementDirection = movementDirection;
@@ -24,6 +24,7 @@ public class SpearProjectile : MonoBehaviour
         if (Mathf.Abs(transform.position.x) > 100 || Mathf.Abs(transform.position.y) > 100)
         {
             //gameObject.SetActive(false);
+            //Debug.Log("despawnuje");
             ObjectPooler.Instance.DeSpawnObject(spearProjectile, gameObject);
         }
     }
@@ -31,7 +32,7 @@ public class SpearProjectile : MonoBehaviour
     public void MoveProjectile()
     {
         Vector3 newPosition = transform.position + movementDirection * speed * Time.deltaTime;
-        transform.right = movementDirection;
+        //transform.right = movementDirection;
         transform.position = newPosition;
     }
 }

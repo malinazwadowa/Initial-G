@@ -16,27 +16,20 @@ MonoBehaviour:
   projectileSpacing: 0.3
   spearRanks:
   - name: Rank 1
-    projectilePrefab: 0
-    speed: 10
-    cooldownTime: 3
-    amount: 1
-  - name: Rank 2
-    projectilePrefab: 2
-    speed: 10
-    cooldownTime: 2
+    projectilePrefab: {fileID: 8291530308845601912, guid: 15fbe4c8a851b404b8579560d12d659e,
+      type: 3}
+    speed: 20
+    cooldownTime: 1
     amount: 3
-  - name: Rank 3
-    projectilePrefab: 2
-    speed: 30
+  - name: Rank 2
+    projectilePrefab: {fileID: 5608594438459119563, guid: 1603c6d5a46efb34e8163f6d134c68ed,
+      type: 3}
+    speed: 20
     cooldownTime: 1
     amount: 15
-  - name: Rank 4
-    projectilePrefab: 2
-    speed: 15
-    cooldownTime: 0.5
-    amount: 5
-  - name: Rank 5
-    projectilePrefab: 2
+  - name: Rank 3
+    projectilePrefab: {fileID: 8291530308845601912, guid: 15fbe4c8a851b404b8579560d12d659e,
+      type: 3}
     speed: 20
-    cooldownTime: 0.5
-    amount: 5
+    cooldownTime: 1
+    amount: 15

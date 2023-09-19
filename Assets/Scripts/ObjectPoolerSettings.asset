@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad78b2293d20ccc4eb56f80355feddb3, type: 3}
+  m_Name: ObjectPoolerSettings
+  m_EditorClassIdentifier: 
+  pools:
+  - name: P_Spear_Projectile (UnityEngine.GameObject) pool
+    objectType: {fileID: 8291530308845601912, guid: 15fbe4c8a851b404b8579560d12d659e,
+      type: 3}
+    size: 100
+    activeObjectsCount: 15
+  - name: P_Spear_Projectile_Hammer (UnityEngine.GameObject) pool
+    objectType: {fileID: 5608594438459119563, guid: 1603c6d5a46efb34e8163f6d134c68ed,
+      type: 3}
+    size: 112
+    activeObjectsCount: 90
+  - name: P_Sunflower_of_Doom (UnityEngine.GameObject) pool
+    objectType: {fileID: 6197773327841160796, guid: 06df89f0c420942498a4f28087e26edf,
+      type: 3}
+    size: 50
+    activeObjectsCount: 30
+  - name: P_Matka_Dzieciatka_Jezus (UnityEngine.GameObject) pool
+    objectType: {fileID: 8639678574241376919, guid: c87339ea377b93b47923dac35b0f720f,
+      type: 3}
+    size: 50
+    activeObjectsCount: 30

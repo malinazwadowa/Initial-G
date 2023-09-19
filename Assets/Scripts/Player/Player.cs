@@ -55,10 +55,6 @@ public class Player : MonoBehaviour, IWeaponWielder
     private void Update()
     {
         animationController.SetAnimationVelocity(inputActions.PlayerMovement.Movement.ReadValue<Vector2>());
-        if (Input.GetKeyDown(KeyCode.F)) { Debug.Log(MathUtility.GetClosestEnemy(transform.position).transform.position); }
-
-        //Debug.Log(EnemyManager.Instance.GetRandomSpawnPositionOutsideCameraView());
-        
     }
 
     private void FixedUpdate()

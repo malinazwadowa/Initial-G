@@ -29,6 +29,6 @@ public class EnemyNumbers
 {
 
     [HideInInspector] public string name;
-    public PoolableObject enemyPrefab;
+    public GameObject enemyPrefab;
     public int amount;
 }

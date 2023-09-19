@@ -26,7 +26,7 @@ public class SpearRank
 {
     [HideInInspector] public string name;
 
-    public PoolableObject projectilePrefab;
+    public GameObject projectilePrefab;
     public float speed;
     public float cooldownTime;
     public int amount;

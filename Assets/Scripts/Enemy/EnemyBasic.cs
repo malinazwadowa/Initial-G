@@ -15,7 +15,7 @@ public class EnemyBasic : Enemy
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(dupa1);
+        
     }
     public override void Init()
     {

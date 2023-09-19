@@ -6,99 +6,107 @@ using UnityEngine.Pool;
 
 public class ObjectPooler : SingletonMonoBehaviour<ObjectPooler>
 {
-    private void OnValidate()
+    public class PoolLists
     {
-        for (int i = 0; i < pools.Count; ++i)
-        {
-            pools[i].name = pools[i].objectType.ToString() +" pool";
-        }
+        public List<GameObject> activeObjects = new List<GameObject>();
+        public List<GameObject> inactiveObjects = new List<GameObject>();
     }
 
-    [Serializable]
-    public class Pool
-    {
-        [HideInInspector] public string name;
-        //[HideInInspector] public List<GameObject> activeObjects = new List<GameObject>();
-        public PoolableObject objectType;
-        public GameObject prefab;
-        public int size;
-        public int activeObjectsCount;
-    }
-    public List<Pool> pools;
-    public Dictionary<PoolableObject, List<GameObject>> poolDictionary;
+    public ObjectPoolerSettings poolerSettings;
+    private ObjectPoolerSettings poolerSettingsCopy;
     
+    private List<Pool> pools;
+
+    public Dictionary<GameObject, PoolLists> poolDictionary;
+
+
+
     void Start()
     {
-        poolDictionary = new Dictionary<PoolableObject, List<GameObject>>();
+        poolDictionary = new Dictionary<GameObject, PoolLists>();
+        poolerSettingsCopy = Instantiate(poolerSettings);
+        pools = poolerSettingsCopy.pools;
+        //pools = poolerSettings.pools; 
+        
 
         foreach (Pool pool in pools)
         {
-            List<GameObject> objectPool = new List<GameObject>();
+            PoolLists poolLists = new PoolLists();
 
             for (int i = 0; i < pool.size; i++)
             {
-                GameObject obj = Instantiate(pool.prefab);
+                GameObject obj = Instantiate(pool.objectType);
                 obj.SetActive(false);
-                objectPool.Add(obj);
+                poolLists.inactiveObjects.Add(obj);
             }
-            poolDictionary.Add(pool.objectType, objectPool);
+            poolDictionary.Add(pool.objectType, poolLists);
         }
     }
 
-    public GameObject SpawnObject(PoolableObject objectType, Vector3 position, Quaternion rotation = default)
+    public GameObject SpawnObject(GameObject objectType, Vector3 position, Quaternion rotation = default)
     {
         if (!poolDictionary.ContainsKey(objectType))
         {
             Debug.LogWarning($"Pool for {objectType} does't exist.");
             return null;
         }
-        GameObject objectSpawned = null;
-        foreach (var obj in poolDictionary[objectType])
+
+        GameObject objToSpawn = null;
+
+        if(poolDictionary[objectType].inactiveObjects.Count == 0)
         {
-            if (!obj.activeSelf)
-            {
-                objectSpawned = obj;
-                break;
-            }
-        }
-        if (objectSpawned == null)
-        {
-            objectSpawned = Instantiate(poolDictionary[objectType][0]);
-            poolDictionary[objectType].Add(objectSpawned);
+            objToSpawn = Instantiate(poolDictionary[objectType].activeObjects[0]);
+            poolDictionary[objectType].activeObjects.Add(objToSpawn);
+            
             pools.Find(p => p.objectType == objectType).size++;
             Debug.Log($"Added additional object to the pool: {objectType}. Consider increasing predefined pool size.");
         }
 
-        objectSpawned.SetActive(true);
-        objectSpawned.transform.SetPositionAndRotation(position, rotation);
+        if(poolDictionary[objectType].inactiveObjects.Count > 0)
+        {
+            objToSpawn = poolDictionary[objectType].inactiveObjects[0];
+            poolDictionary[objectType].inactiveObjects.Remove(objToSpawn);
+            objToSpawn.SetActive(true);
+            poolDictionary[objectType].activeObjects.Add(objToSpawn);
+        }
 
-        pools.Find(p => p.objectType == objectType).activeObjectsCount++;
+        pools.Find(p => p.objectType == objectType).activeObjectsCount = poolDictionary[objectType].activeObjects.Count;
+        objToSpawn.transform.SetPositionAndRotation(position, rotation);
 
-        return objectSpawned;
+        return objToSpawn;
     }
 
-    public void DeSpawnObject(PoolableObject objectType, GameObject objectToDeSpawn)
-    {
-        objectToDeSpawn.SetActive(false);
-        pools.Find(p => p.objectType == objectType).activeObjectsCount--;
-    }
-    
-    public int CountOfActiveObjectsOfType(PoolableObject objectType)
-    {
-        return pools.Find(p => p.objectType == objectType).activeObjectsCount;
-    }
-    //Not Used, but might be used / ehhh probl not. 
-    public GameObject GetObjectPrefab(PoolableObject objectType)
+    public void DeSpawnObject(GameObject objectType, GameObject objectToDeSpawn)
     {
         if (!poolDictionary.ContainsKey(objectType))
         {
-            Debug.LogWarning($"Pool for {objectType} doesn't exist.");
+            Debug.Log($"Pool for {objectType} does't exist.");
+        }
+
+        poolDictionary[objectType].activeObjects.Remove(objectToDeSpawn);
+        objectToDeSpawn.SetActive(false);
+        poolDictionary[objectType].inactiveObjects.Add(objectToDeSpawn);
+        pools.Find(p => p.objectType == objectType).activeObjectsCount = poolDictionary[objectType].activeObjects.Count;
+    }
+    
+    public int CountOfActiveObjectsOfType(GameObject objectType)
+    {
+        return pools.Find(p => p.objectType == objectType).activeObjectsCount = poolDictionary[objectType].activeObjects.Count;
+    }
+
+    //Not Used, but might be used / ehhh probl not. 
+    public GameObject GetObjectPrefab(GameObject objectType)
+    {
+        if (!poolDictionary.ContainsKey(objectType))
+        {
+            Debug.LogWarning($"Pool for {objectType.name} doesn't exist.");
             return null;
         }
 
         return gameObject;
     }
-    public T GetObjectComponent<T>(PoolableObject objectType) where T : Component
+
+    public T GetObjectComponent<T>(GameObject objectType) where T : Component
     {
         GameObject prefab = GetObjectPrefab(objectType);
         if (prefab == null)

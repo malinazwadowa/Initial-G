@@ -9,16 +9,16 @@ public class RockProjectile : MonoBehaviour
     private Vector3 throwOrigin;
     private Rigidbody2D myRigidbody;
     private Vector3 direction;
-    private PoolableObject prefabType;
-    public void Init(float speed, Vector3 throwOrigin, Transform target, PoolableObject prefabType)
+    private GameObject prefab;
+
+    public void Init(float speed, Vector3 throwOrigin, Transform target, GameObject prefab)
     {
         this.speed = speed;
         this.throwOrigin = throwOrigin;
         this.target = target;
-        this.prefabType = prefabType;
+        this.prefab = prefab;
 
         direction = this.target.position - this.throwOrigin;
-        //ThrowRockProjectile();
     }
     private void Awake()
     {
@@ -28,7 +28,7 @@ public class RockProjectile : MonoBehaviour
     void Update()
     {
         MoveRockProjectile();
-        if (Mathf.Abs(transform.position.x) > 100 || Mathf.Abs(transform.position.y) > 100) { ObjectPooler.Instance.DeSpawnObject(prefabType, gameObject); }
+        if (Mathf.Abs(transform.position.x) > 100 || Mathf.Abs(transform.position.y) > 100) { ObjectPooler.Instance.DeSpawnObject(prefab, gameObject); }
     }
     public void ThrowRockProjectile()
     {

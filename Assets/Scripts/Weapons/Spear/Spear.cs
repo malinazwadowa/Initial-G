@@ -26,7 +26,7 @@ public class Spear : Weapon
         }
     }
 
-    private void ThrowSpears(Vector3 position, Vector3 direction, PoolableObject spearProjectilePrefab)
+    private void ThrowSpears(Vector3 position, Vector3 direction, GameObject spearProjectilePrefab)
     {
         //Spawning main spear.
         GameObject newSpear = ObjectPooler.Instance.SpawnObject(spearProjectilePrefab, position);
@@ -47,7 +47,7 @@ public class Spear : Weapon
             // Delay the spawn of each spear based on the offset value
             float spawnDelay = Mathf.Abs(offset) * spearBaseData.spawnDelayMultiplier;
 
-            StartCoroutine(ThrowSpearWithDelay(position + finalOffset, direction, spearCurrentRankData.speed, spawnDelay));
+            StartCoroutine(ThrowSpearWithDelay(position + finalOffset, direction, spearCurrentRankData.speed, spawnDelay, spearProjectilePrefab));
         }
     }
 
@@ -57,12 +57,12 @@ public class Spear : Weapon
         float offset = (i % 2 == 0) ? (spearBaseData.projectileSpacing * value) : (-spearBaseData.projectileSpacing * value);
         return offset;
     }
-    private IEnumerator ThrowSpearWithDelay(Vector3 position, Vector3 direction, float speed, float delay)
+    private IEnumerator ThrowSpearWithDelay(Vector3 position, Vector3 direction, float speed, float delay, GameObject spearProjectilePrefab)
     {
         yield return new WaitForSeconds(delay);
 
         GameObject nextSpear = ObjectPooler.Instance.SpawnObject(spearCurrentRankData.projectilePrefab, position);
-        nextSpear.GetComponent<SpearProjectile>().Init(speed, direction, spearCurrentRankData.projectilePrefab);
+        nextSpear.GetComponent<SpearProjectile>().Init(speed, direction, spearProjectilePrefab);
     }
     public override void RankUp()
     {

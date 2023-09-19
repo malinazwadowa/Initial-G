@@ -20,8 +20,7 @@ public class Rock : Weapon
 
         timer += Time.deltaTime;
         if (timer > rockCurrentRankData.cooldownTime)
-        {
-            //ThrowRock(rockCurrentRankData.projectilePrefab, position);
+        {   
             StartCoroutine(ThrowRocks(rockBaseData.spawnDelay, rockCurrentRankData.amount));
             timer = 0;
         }
@@ -29,7 +28,7 @@ public class Rock : Weapon
 
     private void ThrowRock()
     {
-        PoolableObject prefab = rockCurrentRankData.projectilePrefab;
+        GameObject prefab = rockCurrentRankData.projectilePrefab;
         Vector3 spawnPosition = PlayerManager.Instance.GetCurrentPlayerWeaponsPosition() + GetRandomSpawnOffset(rockBaseData.spawnOffsetRange);
 
         if (MathUtility.GetClosestEnemy(spawnPosition) != null)

@@ -41,7 +41,7 @@ public class EnemyManager : SingletonMonoBehaviour<EnemyManager>
     {
         for (int i = 0; i < currentWaveData.enemyNumbers.Length; i++)
         {
-            PoolableObject enemyType = currentWaveData.enemyNumbers[i].enemyPrefab;
+            GameObject enemyType = currentWaveData.enemyNumbers[i].enemyPrefab;
             int amountToKeepActive = currentWaveData.enemyNumbers[i].amount;
 
             if (ObjectPooler.Instance.CountOfActiveObjectsOfType(enemyType) < amountToKeepActive)
@@ -93,7 +93,7 @@ public class EnemyManager : SingletonMonoBehaviour<EnemyManager>
         }
         return spawnPosition;
     }
-    public void SpawnOnCall(PoolableObject enemyType, Vector2 position)
+    public void SpawnOnCall(GameObject enemyType, Vector2 position)
     {
         GameObject newEnemy = ObjectPooler.Instance.SpawnObject(enemyType, position, transform.rotation);
         newEnemy.GetComponent<Enemy>().Init();
