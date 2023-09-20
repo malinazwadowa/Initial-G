@@ -13,7 +13,7 @@ public class EnemyManagerData : ScriptableObject
     }
 
     [Header("Base Settings")]
-    public float floaterreke;
+    public float levelDurationInMinutes;
 
     [Header("Wave Settings")]
     public EnemyWave[] enemyWaves;
@@ -27,7 +27,6 @@ public class EnemyWave
 [System.Serializable]
 public class EnemyNumbers
 {
-
     [HideInInspector] public string name;
     public GameObject enemyPrefab;
     public int amount;

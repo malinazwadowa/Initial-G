@@ -1,41 +1,47 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyManager : SingletonMonoBehaviour<EnemyManager>
 {
-    public EnemyManagerData managerData;
+    public EnemyManagerData enemyManagerData;
     private EnemyWave currentWaveData;
 
     private int currentWave = 0;
-
+    
     private float timer;
-    public float spawnDelay = 0.5f;
 
-    //public PoolableObject temp;
-    // Start is called before the first frame update
+    private float waveDuration;
+
+    
     void Start()
     {
-        currentWaveData = managerData.enemyWaves[currentWave];
+        waveDuration = (enemyManagerData.levelDurationInMinutes / enemyManagerData.enemyWaves.Length) * 60;
+        currentWaveData = enemyManagerData.enemyWaves[currentWave];
+
+        foreach (KeyValuePair<GameObject, int> entry in GetAmountOfEachEnemyType())
+        {
+            ObjectPooler.Instance.CreatePool(entry.Key, entry.Value);
+        }
+
+        //Debug.Log("Waveduration is: " + waveDuration +" seconds");
         //SpawnOnCall(PoolableObject.Test, Vector2.zero);
     }
 
-    // Update is called once per frame
     void Update()
     {
         timer += Time.deltaTime;
+        
         if(currentWaveData != null)
         {
             ManageWave();
         }
         
-        
-        /*
-        if (timer > spawnDelay)
+        if(timer >= waveDuration && currentWave < enemyManagerData.enemyWaves.Length)
         {
-            //currentWave++;
-            GameObject newEnemy = ObjectPooler.Instance.SpawnObject(PoolableObject.SunflowerOfDoom, GetRandomSpawnPositionOutsideOfCameraView(), transform.rotation);
-            newEnemy.GetComponent<Enemy>().Init();
+            currentWave++;
+            currentWaveData = enemyManagerData.enemyWaves[currentWave];
             timer = 0;
-        } */
+        }
     }
     public void ManageWave()
     {
@@ -51,10 +57,35 @@ public class EnemyManager : SingletonMonoBehaviour<EnemyManager>
             }
         }
     }
+    public Dictionary<GameObject,int> GetAmountOfEachEnemyType()
+    {
+        Dictionary<GameObject, int> enemiesToSpawn = new Dictionary<GameObject, int>();
 
+        for (int i = 0; i < enemyManagerData.enemyWaves.Length; i++)
+        {
+            for (int j = 0; j < enemyManagerData.enemyWaves[i].enemyNumbers.Length; j++)
+            {
+                GameObject enemyType = enemyManagerData.enemyWaves[i].enemyNumbers[j].enemyPrefab;
+                int amountToSpawn = enemyManagerData.enemyWaves[i].enemyNumbers[j].amount;
+
+                if (!enemiesToSpawn.ContainsKey(enemyType))
+                {
+                    enemiesToSpawn.Add(enemyType, amountToSpawn);
+                }
+                else
+                {
+                    if (enemiesToSpawn[enemyType] < amountToSpawn)
+                    {
+                        enemiesToSpawn[enemyType] = amountToSpawn;
+                    }
+                }
+            }
+
+        }
+        return enemiesToSpawn;
+    }
     public Vector2 GetRandomSpawnPositionOutsideOfCameraView()
     {
-        //This should probably be cached somewhere... TBD
         float cameraHeight = Camera.main.orthographicSize;
         float cameraWidth = Camera.main.orthographicSize * Camera.main.aspect;
         float spawnOffset = 2;
@@ -66,7 +97,7 @@ public class EnemyManager : SingletonMonoBehaviour<EnemyManager>
         switch (randomInt)
         {
             case 1:
-                spawnPosition =  new Vector2(cameraWidth + spawnOffset, 0);
+                spawnPosition = new Vector2(cameraWidth + spawnOffset, 0);
                 break;
             case 2:
                 spawnPosition = new Vector2(-cameraWidth - spawnOffset, 0);
@@ -99,22 +130,3 @@ public class EnemyManager : SingletonMonoBehaviour<EnemyManager>
         newEnemy.GetComponent<Enemy>().Init();
     }
 }
-/*
- * MonoBehaviour[] scripts = newEnemy.GetComponents<MonoBehaviour>();
-
-            // Iterate through the scripts and find the one that inherits from "Enemy"
-            foreach (MonoBehaviour script in scripts)
-            {
-                if (script != null && typeof(Enemy).IsAssignableFrom(script.GetType()))
-                {
-                    // Use reflection to find and invoke the "Init2" method if it exists
-                    MethodInfo method = script.GetType().GetMethod("Init2");
-
-                    if (method != null)
-                    {
-                        method.Invoke(script, null);
-                        break; // Exit the loop once you've found and called the method.
-                    }
-                }
-            }
- */

@@ -20,7 +20,6 @@ public class EnemyBasic : Enemy
     public override void Init()
     {
         base.Init();
-        Debug.Log("Dupala");
 
         agent = GetComponent<NavMeshAgent>();
         //Needed due to how NavMeshPlus works.

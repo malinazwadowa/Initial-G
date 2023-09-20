@@ -17,7 +17,6 @@ public class Enemy : MonoBehaviour
 
     public virtual void Init()
     {
-        Debug.Log("Initalizingenemi");
         player = PlayerManager.Instance.GetPlayer();
         healthController = GetComponent<HealthController>();
         healthController.Init(enemyData.maxHealth);

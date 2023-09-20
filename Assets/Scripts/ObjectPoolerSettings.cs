@@ -16,12 +16,3 @@ public class ObjectPoolerSettings : ScriptableObject
   
     public List<Pool> pools;
 }
-
-[Serializable]
-public class Pool
-{
-    [HideInInspector] public string name;
-    public GameObject objectType;
-    public int size;
-    public int activeObjectsCount;
-}

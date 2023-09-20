@@ -6,60 +6,47 @@ using UnityEngine.Pool;
 
 public class ObjectPooler : SingletonMonoBehaviour<ObjectPooler>
 {
-    public class PoolLists
-    {
-        public List<GameObject> activeObjects = new List<GameObject>();
-        public List<GameObject> inactiveObjects = new List<GameObject>();
-    }
-
     public ObjectPoolerSettings poolerSettings;
     private ObjectPoolerSettings poolerSettingsCopy;
     
     private List<Pool> pools;
 
-    public Dictionary<GameObject, PoolLists> poolDictionary;
-
-
+    public Dictionary<GameObject, ObjectLists> poolDictionary;
 
     void Start()
     {
-        poolDictionary = new Dictionary<GameObject, PoolLists>();
+        poolDictionary = new Dictionary<GameObject, ObjectLists>();
+
         poolerSettingsCopy = Instantiate(poolerSettings);
         pools = poolerSettingsCopy.pools;
         //pools = poolerSettings.pools; 
-        
 
         foreach (Pool pool in pools)
         {
-            PoolLists poolLists = new PoolLists();
-
-            for (int i = 0; i < pool.size; i++)
-            {
-                GameObject obj = Instantiate(pool.objectType);
-                obj.SetActive(false);
-                poolLists.inactiveObjects.Add(obj);
-            }
-            poolDictionary.Add(pool.objectType, poolLists);
+            FillOutPool(pool);
+            poolDictionary.Add(pool.objectType, pool.objectLists);
         }
-    }
 
+    }
+    
     public GameObject SpawnObject(GameObject objectType, Vector3 position, Quaternion rotation = default)
     {
         if (!poolDictionary.ContainsKey(objectType))
         {
-            Debug.LogWarning($"Pool for {objectType} does't exist.");
-            return null;
+            CreatePool(objectType);
+            Debug.Log($"Pool for {objectType} created");
         }
 
         GameObject objToSpawn = null;
 
         if(poolDictionary[objectType].inactiveObjects.Count == 0)
         {
-            objToSpawn = Instantiate(poolDictionary[objectType].activeObjects[0]);
+            objToSpawn = Instantiate(objectType);
+            objToSpawn.SetActive(true);
             poolDictionary[objectType].activeObjects.Add(objToSpawn);
             
             pools.Find(p => p.objectType == objectType).size++;
-            Debug.Log($"Added additional object to the pool: {objectType}. Consider increasing predefined pool size.");
+            //Debug.Log($"Added additional object to the pool: {objectType}. Consider increasing predefined pool size.");
         }
 
         if(poolDictionary[objectType].inactiveObjects.Count > 0)
@@ -80,7 +67,7 @@ public class ObjectPooler : SingletonMonoBehaviour<ObjectPooler>
     {
         if (!poolDictionary.ContainsKey(objectType))
         {
-            Debug.Log($"Pool for {objectType} does't exist.");
+            Debug.Log($"Pool for {objectType} does't exist, cannot despawn the object.");
         }
 
         poolDictionary[objectType].activeObjects.Remove(objectToDeSpawn);
@@ -88,10 +75,42 @@ public class ObjectPooler : SingletonMonoBehaviour<ObjectPooler>
         poolDictionary[objectType].inactiveObjects.Add(objectToDeSpawn);
         pools.Find(p => p.objectType == objectType).activeObjectsCount = poolDictionary[objectType].activeObjects.Count;
     }
-    
+
+    public void CreatePool(GameObject objectType, int size = 0)
+    {
+        Pool pool = new Pool();
+
+        pool.objectType = objectType;
+        pool.size = size;
+
+        pools.Add(pool);
+        poolDictionary.Add(pool.objectType, pool.objectLists);
+
+        if (size > 0)
+        {
+            FillOutPool(pool);
+        }
+    }
+    public void FillOutPool(Pool pool)
+    {
+        for (int i = 0; i < pool.size; i++)
+        {
+            GameObject obj = Instantiate(pool.objectType);
+            obj.SetActive(false);
+            pool.objectLists.inactiveObjects.Add(obj);
+        }
+    }
+
     public int CountOfActiveObjectsOfType(GameObject objectType)
     {
-        return pools.Find(p => p.objectType == objectType).activeObjectsCount = poolDictionary[objectType].activeObjects.Count;
+        if(pools.Find(p => p.objectType == objectType) != null)
+        {
+            return pools.Find(p => p.objectType == objectType).activeObjectsCount;
+        }
+        else
+        {
+            return 0;
+        }
     }
 
     //Not Used, but might be used / ehhh probl not. 
