@@ -9,8 +9,16 @@ public class Spear : Weapon
     
     private float timer = 2;
 
+
+
+
+    private float damage;
+    private ThrowInfo throwInfo;
+
     public void Start()
     {
+        throwInfo = new ThrowInfo();
+
         spearCurrentRankData = spearBaseData.spearRanks[currentRank];
     }
     public override void WeaponTick()
@@ -25,6 +33,17 @@ public class Spear : Weapon
             timer = 0;
         }
     }
+
+
+
+
+    private void UpdateDamage()
+    {
+        damage = spearCurrentRankData.damage * baseDamageMultiplier;
+        throwInfo.damage = damage;
+    }
+
+
 
     private void ThrowSpears(Vector3 position, Vector3 direction, GameObject spearProjectilePrefab)
     {
@@ -77,4 +96,9 @@ public class Spear : Weapon
             Debug.Log("Maximum spear rank reached.");
         }
     }
+}
+public class ThrowInfo
+{
+    public float damage;
+
 }

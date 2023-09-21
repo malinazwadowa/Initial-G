@@ -10,9 +10,20 @@ public class WeaponController : MonoBehaviour
 
     private List<Weapon> equippedWeapons = new List<Weapon>();
 
-    public void Init(IWeaponWielder weaponWielder)
+
+
+
+    //private CombatStats myCombatStats;
+    private Weapon weapon;
+
+
+
+    public void Init(IWeaponWielder weaponWielder, CombatStats combatStats)
     {
         myWeaponWielder = weaponWielder;
+        //myCombatStats = combatStats;
+        weapon.SetModifiers(combatStats);
+
 
         EquipWeapon<Spear>();
         EquipWeapon<Rock>();
@@ -59,6 +70,16 @@ public class WeaponController : MonoBehaviour
             return null;
         }
     }
+
+
+
+
+
+
+
+
+
+
     public Transform GetClosestEnemy(Transform transform)
     {
         List<Collider2D> enemiesFound = new List<Collider2D>();

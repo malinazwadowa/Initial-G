@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 1380912778314320860}
   - component: {fileID: 1380912778314320855}
   - component: {fileID: 1380912778314320856}
-  - component: {fileID: 1380912778314320852}
   - component: {fileID: 409131294}
   - component: {fileID: 509307841282388345}
   - component: {fileID: 383067496925055401}
@@ -26,7 +25,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1380912778314320862
 Transform:
   m_ObjectHideFlags: 0
@@ -265,27 +264,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: 81f336aef82e81e45bb5bc507ace5a85, type: 2}
---- !u!114 &1380912778314320852
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1380912778314320832}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a7f97c2ccd12b64e87c6b14d1da2dbc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackRange: 0.9
-  attackDamage: 30
-  enemyLayers:
-    serializedVersion: 2
-    m_Bits: 64
-  AttackArea: {fileID: 1380912780380840164}
-  thrownBomb: {fileID: 3687372344579250036, guid: 2f67282cea0ac8e4d9030704c843a34d,
-    type: 3}
-  bomb: {fileID: 5715278351444553191, guid: 6794047cf2fc17e40a0922d84a176cc9, type: 3}
 --- !u!114 &409131294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -312,7 +290,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d03890a634d5294db98c5602cbbda03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lastVelocity: {x: 0, y: -1}
 --- !u!114 &383067496925055401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -521,7 +498,6 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 64
-  animationController: {fileID: 0}
   availableWeapons:
   - {fileID: 8923503329484286133, guid: 039119011dc11b7499859cf33785b51d, type: 3}
   - {fileID: 6554547693428024977, guid: 34efbbefda69e6f4abd2a06183a2c3f6, type: 3}

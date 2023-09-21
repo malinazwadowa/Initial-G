@@ -8,9 +8,9 @@ public class Weapon : MonoBehaviour
 
     protected IWeaponWielder myWeaponWielder;
 
-    public float baseCooldownMultiplier = 1f;
-    public float baseDamageMultiplier = 1f;
-    public float baseSpeedMultiplier = 1f;
+    public static float baseCooldownMultiplier = 1f;
+    public static float baseDamageMultiplier = 1f;
+    public static float baseSpeedMultiplier = 1f;
 
     [HideInInspector] public int currentRank = 0;
 
@@ -27,5 +27,16 @@ public class Weapon : MonoBehaviour
     { 
         currentRank++;
     }
+
+
+    public void SetModifiers(CombatStats mods)
+    {
+        baseCooldownMultiplier = mods.cooldownModifier;
+        baseDamageMultiplier = mods.damageModifier;
+        baseSpeedMultiplier = mods.speedModifier;
+    }
+
+
+    //public virtual void 
     public virtual void Initialize() { }
 }

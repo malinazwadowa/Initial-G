@@ -1,13 +1,6 @@
 using System;
 using UnityEngine;
 
-/// <summary>
-/// TODO
-/// There should be PlayerInputController class that gathers player input and invokes methods in player controllers accordingly
-/// PlayerInputController should have reference to PlayerCombatController and it should invoke Attack() method when input conditions are met
-/// 
-/// 
-/// </summary>
 public class Player : MonoBehaviour, IWeaponWielder
 {
     [SerializeField] public PlayerData playerData;
@@ -25,9 +18,19 @@ public class Player : MonoBehaviour, IWeaponWielder
     private PlayerAnimationController animationController;
     private PlayerInputController inputController;
   
+
+
+
+    private CombatStats combatStats;
     
+
+
     private void Awake()
     {
+
+        combatStats = new CombatStats(playerData.baseDamageModifier, playerData.baseWeaponSpeed, playerData.baseCooldownModifier);
+
+
         inputActions = new PlayerInputActions();
         animator = GetComponent<Animator>();
         spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
@@ -44,7 +47,11 @@ public class Player : MonoBehaviour, IWeaponWielder
         movementController.Init(playerData, rigidBody);
         animationController.Init(animator, movementController, playerData, spriteRenderers);
         inputController.Init(movementController, inputActions);
-        weaponController.Init(this);
+        
+        
+        weaponController.Init(this, combatStats);
+
+        
     }
 
     private void Start()
@@ -70,5 +77,10 @@ public class Player : MonoBehaviour, IWeaponWielder
     public Vector2 GetFacingDirection()
     {
         return movementController.LastNonZeroVelocity.normalized;
+    }
+
+    public PlayerData GetData()
+    {
+        return playerData;
     }
 }

@@ -17,15 +17,23 @@ public class ObjectPooler : SingletonMonoBehaviour<ObjectPooler>
     {
         poolDictionary = new Dictionary<GameObject, ObjectLists>();
 
-        poolerSettingsCopy = Instantiate(poolerSettings);
-        pools = poolerSettingsCopy.pools;
-        //pools = poolerSettings.pools; 
-
-        foreach (Pool pool in pools)
+        if(poolerSettings != null)
         {
-            FillOutPool(pool);
-            poolDictionary.Add(pool.objectType, pool.objectLists);
+            poolerSettingsCopy = Instantiate(poolerSettings);
+            pools = poolerSettingsCopy.pools;
+            //pools = poolerSettings.pools; 
+
+            foreach (Pool pool in pools)
+            {
+                FillOutPool(pool);
+                poolDictionary.Add(pool.objectType, pool.objectLists);
+            }
         }
+        else
+        {
+            pools = new List<Pool>();
+        }
+        
 
     }
     
