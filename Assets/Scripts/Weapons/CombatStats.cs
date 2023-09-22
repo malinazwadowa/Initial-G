@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class CombatStats
 {
-    public float damageModifier;
-    public float speedModifier;
-    public float cooldownModifier;
+    public float damageModifier = 1.0f;
+    public float speedModifier = 1.0f;
+    public float cooldownModifier = 1.0f;
 
     public CombatStats(float damageModifier, float speedModifier, float cooldownModifier)
     {

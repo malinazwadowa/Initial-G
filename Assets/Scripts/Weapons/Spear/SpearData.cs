@@ -28,7 +28,7 @@ public class SpearRank
 
     public GameObject projectilePrefab;
     public float speed;
-    public float cooldownTime;
+    public float cooldown;
     public int amount;
     public int damage;
     public float knockbackStrenght;

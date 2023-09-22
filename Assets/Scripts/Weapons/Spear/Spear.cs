@@ -1,55 +1,65 @@
 using System.Collections;
 using UnityEngine;
 
+public class SpearProperties
+{
+    public float damage;
+    public float speed;
+    public float cooldown;
+    public int amount;
+    public float strength;
+    public GameObject prefab;
+
+}
 
 public class Spear : Weapon
 {
+    
     public SpearData spearBaseData;
     private SpearRank spearCurrentRankData;
     
     private float timer = 2;
-
-
-
-
-    private float damage;
-    private ThrowInfo throwInfo;
+    private SpearProperties currentSpearProperties;
 
     public void Start()
     {
-        throwInfo = new ThrowInfo();
-
         spearCurrentRankData = spearBaseData.spearRanks[currentRank];
+        currentSpearProperties = new SpearProperties();
+
+        
     }
+
+    public void SetCurrentProperties()
+    {
+        SpearProperties spearProperties = new SpearProperties();
+        spearProperties.damage = spearCurrentRankData.damage * baseDamageMultiplier;
+        spearProperties.cooldown = spearCurrentRankData.cooldown * baseCooldownMultiplier;
+        spearProperties.speed = spearCurrentRankData.speed * baseSpeedMultiplier;
+        spearProperties.amount = spearCurrentRankData.amount;
+        spearProperties.prefab = spearCurrentRankData.projectilePrefab;
+        currentSpearProperties = spearProperties;
+    }
+
+
+
     public override void WeaponTick()
     {
         base.WeaponTick();
 
         timer += Time.deltaTime;
 
-        if (timer > spearCurrentRankData.cooldownTime)
+        if (timer > spearCurrentRankData.cooldown)
         {
             ThrowSpears(myWeaponWielder.GetPosition(), myWeaponWielder.GetFacingDirection(), spearCurrentRankData.projectilePrefab);
             timer = 0;
         }
     }
 
-
-
-
-    private void UpdateDamage()
-    {
-        damage = spearCurrentRankData.damage * baseDamageMultiplier;
-        throwInfo.damage = damage;
-    }
-
-
-
     private void ThrowSpears(Vector3 position, Vector3 direction, GameObject spearProjectilePrefab)
     {
         //Spawning main spear.
         GameObject newSpear = ObjectPooler.Instance.SpawnObject(spearProjectilePrefab, position);
-        newSpear.GetComponent<SpearProjectile>().Init(spearCurrentRankData.speed, direction, spearProjectilePrefab);
+        newSpear.GetComponent<SpearProjectile>().Init(spearCurrentRankData.speed, direction, spearProjectilePrefab, currentSpearProperties);
 
         //Spawning additional spears.
         for (int i = 2; i <= spearCurrentRankData.amount; ++i)
@@ -66,7 +76,7 @@ public class Spear : Weapon
             // Delay the spawn of each spear based on the offset value
             float spawnDelay = Mathf.Abs(offset) * spearBaseData.spawnDelayMultiplier;
 
-            StartCoroutine(ThrowSpearWithDelay(position + finalOffset, direction, spearCurrentRankData.speed, spawnDelay, spearProjectilePrefab));
+            StartCoroutine(ThrowSpearWithDelay(position + finalOffset, direction, currentSpearProperties.speed, spawnDelay, spearProjectilePrefab));
         }
     }
 
@@ -81,7 +91,7 @@ public class Spear : Weapon
         yield return new WaitForSeconds(delay);
 
         GameObject nextSpear = ObjectPooler.Instance.SpawnObject(spearCurrentRankData.projectilePrefab, position);
-        nextSpear.GetComponent<SpearProjectile>().Init(speed, direction, spearProjectilePrefab);
+        nextSpear.GetComponent<SpearProjectile>().Init(speed, direction, spearProjectilePrefab, currentSpearProperties);
     }
     public override void RankUp()
     {
@@ -90,6 +100,7 @@ public class Spear : Weapon
             base.RankUp();
             Debug.Log("Ranking up.");
             spearCurrentRankData = spearBaseData.spearRanks[currentRank];
+            SetCurrentProperties();
         }
         else
         {
@@ -97,8 +108,4 @@ public class Spear : Weapon
         }
     }
 }
-public class ThrowInfo
-{
-    public float damage;
 
-}

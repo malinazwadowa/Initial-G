@@ -1,5 +1,5 @@
 using UnityEngine;
-
+//NOTE: TO BE UPDATED FOR ENEMY AS WELL NO NEED TO KEEP IT ONLY FOR PLAYER. UNLESS ENEMIES WILL BE ANIMIATED DIFFERENTLY. 
 public class PlayerAnimationController : MonoBehaviour
 {
     private Animator animator;

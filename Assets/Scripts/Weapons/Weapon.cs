@@ -8,11 +8,11 @@ public class Weapon : MonoBehaviour
 
     protected IWeaponWielder myWeaponWielder;
 
-    public static float baseCooldownMultiplier = 1f;
-    public static float baseDamageMultiplier = 1f;
-    public static float baseSpeedMultiplier = 1f;
+    protected static float baseCooldownMultiplier = 1f;
+    protected static float baseDamageMultiplier = 1f;
+    protected static float baseSpeedMultiplier = 1f;
 
-    [HideInInspector] public int currentRank = 0;
+    [HideInInspector] protected int currentRank = 0;
 
     public void Init(IWeaponWielder myWeaponWielder)
     {

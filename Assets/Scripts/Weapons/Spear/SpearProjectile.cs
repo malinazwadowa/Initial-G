@@ -8,11 +8,16 @@ public class SpearProjectile : MonoBehaviour
     private float speed;
     private Vector3 movementDirection;
     private GameObject spearProjectile;
-    public void Init(float speed, Vector3 movementDirection, GameObject spearProjectile)
+    private SpearProperties spearProperties; 
+    public void Init(float speed, Vector3 movementDirection, GameObject spearProjectile, SpearProperties spearProperties)
     {
         this.speed = speed;
         this.movementDirection = movementDirection;
         this.spearProjectile = spearProjectile;
+
+
+        this.spearProperties = spearProperties;
+
 
         transform.right = movementDirection;
     }
