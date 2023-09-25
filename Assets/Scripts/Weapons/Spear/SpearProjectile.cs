@@ -40,5 +40,16 @@ public class SpearProjectile : MonoBehaviour
         //transform.right = movementDirection;
         transform.position = newPosition;
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //Debug.Log("Collided with something");
+        //Debug.Log(collision.gameObject.name);
+        if (collision.gameObject.GetComponent<IDamagable>() != null)
+        {
+            //Debug.Log("Target is damagable");
+            collision.gameObject.GetComponent<IDamagable>().GetDamaged(spearProperties.damage);
+        }
+    }
 }
     

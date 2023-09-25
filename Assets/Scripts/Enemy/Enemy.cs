@@ -1,13 +1,12 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IDamagable
 {
-    //Needed for sure
     [SerializeField] public EnemyData enemyData;
 
     protected Player player;
-    private HealthController healthController;
+    protected HealthController healthController;
     //-----------------
     
     void Start()
@@ -24,6 +23,17 @@ public class Enemy : MonoBehaviour
 
     public void GetDamaged(float amount)
     {
+        Debug.Log($"GEtting Damaged for: {amount}");
         healthController.SubstractCurrentHealth(amount);
+        if(healthController.CurrentHealth() <= 0)
+        {
+            Kill();
+        }
+    }
+    public void Kill()
+    {
+        //some other steps
+        //Prefab field from enemy data is... not that nice, might need figuring out.
+        ObjectPooler.Instance.DeSpawnObject(enemyData.enemyPrefab, gameObject);
     }
 }

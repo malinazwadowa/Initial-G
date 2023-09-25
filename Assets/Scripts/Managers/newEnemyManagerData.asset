@@ -19,36 +19,4 @@ MonoBehaviour:
     - name: 
       enemyPrefab: {fileID: 6197773327841160796, guid: 06df89f0c420942498a4f28087e26edf,
         type: 3}
-      amount: 15
-  - name: Wave 2
-    enemyNumbers:
-    - name: 
-      enemyPrefab: {fileID: 8639678574241376919, guid: c87339ea377b93b47923dac35b0f720f,
-        type: 3}
       amount: 10
-    - name: 
-      enemyPrefab: {fileID: 6197773327841160796, guid: 06df89f0c420942498a4f28087e26edf,
-        type: 3}
-      amount: 20
-  - name: Wave 3
-    enemyNumbers:
-    - name: 
-      enemyPrefab: {fileID: 8639678574241376919, guid: c87339ea377b93b47923dac35b0f720f,
-        type: 3}
-      amount: 5
-  - name: Wave 4
-    enemyNumbers:
-    - name: 
-      enemyPrefab: {fileID: 8639678574241376919, guid: c87339ea377b93b47923dac35b0f720f,
-        type: 3}
-      amount: 10
-  - name: Wave 5
-    enemyNumbers:
-    - name: 
-      enemyPrefab: {fileID: 6197773327841160796, guid: 06df89f0c420942498a4f28087e26edf,
-        type: 3}
-      amount: 60
-    - name: 
-      enemyPrefab: {fileID: 8639678574241376919, guid: c87339ea377b93b47923dac35b0f720f,
-        type: 3}
-      amount: 20

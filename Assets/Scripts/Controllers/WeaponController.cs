@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class WeaponController : MonoBehaviour
 {
-    public LayerMask enemyLayer;
     public List<GameObject> availableWeapons = new List<GameObject>();
 
     private IWeaponWielder myWeaponWielder;
@@ -11,7 +11,7 @@ public class WeaponController : MonoBehaviour
     private List<Weapon> equippedWeapons = new List<Weapon>();
 
 
-
+    //private CombatStats
 
     //private CombatStats myCombatStats;
     private Weapon weapon;
@@ -20,10 +20,11 @@ public class WeaponController : MonoBehaviour
 
     public void Init(IWeaponWielder weaponWielder, CombatStats combatStats)
     {
-        myWeaponWielder = weaponWielder;
-        //myCombatStats = combatStats;
+        weapon = new Weapon();
         weapon.SetModifiers(combatStats);
 
+        myWeaponWielder = weaponWielder;
+        
 
         EquipWeapon<Spear>();
         EquipWeapon<Rock>();
@@ -51,14 +52,45 @@ public class WeaponController : MonoBehaviour
     public void EquipWeapon<T>() where T : Weapon
     {
         GameObject weaponPrefab = GetWeaponPrefab<T>();
-        GameObject weapon = Instantiate(weaponPrefab, transform);
-        T weaponScript = weapon.GetComponent<T>();
-        weaponScript.Init(myWeaponWielder);
-        AddWeapon(weaponScript);
+        if(weaponPrefab != null)
+        {
+            GameObject weapon = Instantiate(weaponPrefab, transform);
+            T weaponScript = weapon.GetComponent<T>();
+            weaponScript.Init(myWeaponWielder);
+            AddWeapon(weaponScript);
+        }
+        
     }
     private GameObject GetWeaponPrefab<T>() where T : Weapon
     {
-        GameObject prefab = availableWeapons.Find(weaponPrefab => weaponPrefab.GetComponent<T>() != null);
+        if (availableWeapons != null)
+        {
+            GameObject prefab = availableWeapons.Find(weaponPrefab => weaponPrefab.GetComponent<T>() != null);
+            if (prefab != null)
+            {
+                return prefab;
+            }
+            else
+            {
+                Debug.LogError($"Weapon prefab for type {typeof(T)} not found in the available list!");
+                return null;
+            }
+        }
+        else
+        {
+            Debug.Log("No avilable weapons.");
+            return null;
+        }
+    }
+
+
+    /*
+     * 
+     *  if(availableWeapons != null)
+        {
+            GameObject prefab = availableWeapons.Find(weaponPrefab => weaponPrefab.GetComponent<T>() != null);
+        }
+        
 
         if (prefab != null)
         {
@@ -69,10 +101,7 @@ public class WeaponController : MonoBehaviour
             Debug.LogError($"Weapon prefab for type {typeof(T)} not found in the available list!");
             return null;
         }
-    }
-
-
-
+     */
 
 
 

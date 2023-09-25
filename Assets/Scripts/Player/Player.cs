@@ -5,6 +5,8 @@ public class Player : MonoBehaviour, IWeaponWielder
 {
     [SerializeField] public PlayerData playerData;
 
+    private Transform weapon;
+    
     private PlayerInputActions inputActions;
     private Animator animator;
     private SpriteRenderer[] spriteRenderers;
@@ -29,7 +31,7 @@ public class Player : MonoBehaviour, IWeaponWielder
     {
 
         combatStats = new CombatStats(playerData.baseDamageModifier, playerData.baseWeaponSpeed, playerData.baseCooldownModifier);
-
+        Debug.Log(combatStats.speedModifier);
 
         inputActions = new PlayerInputActions();
         animator = GetComponent<Animator>();
@@ -56,7 +58,7 @@ public class Player : MonoBehaviour, IWeaponWielder
 
     private void Start()
     {
-        
+        weapon = GetComponentInChildren<WeaponController>().transform;
     }
 
     private void Update()
@@ -69,9 +71,9 @@ public class Player : MonoBehaviour, IWeaponWielder
         
     }
 
-    public Vector2 GetPosition()
+    public Vector2 GetWeaponsPosition()
     {
-        return transform.position;
+        return weapon.transform.position;
     }
 
     public Vector2 GetFacingDirection()
@@ -79,8 +81,4 @@ public class Player : MonoBehaviour, IWeaponWielder
         return movementController.LastNonZeroVelocity.normalized;
     }
 
-    public PlayerData GetData()
-    {
-        return playerData;
-    }
 }

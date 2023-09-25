@@ -21,7 +21,7 @@ MonoBehaviour:
     speed: 15
     cooldown: 2
     amount: 1
-    damage: 10
+    damage: 20
     knockbackStrenght: 1
   - name: Rank 2
     projectilePrefab: {fileID: 8291530308845601912, guid: 15fbe4c8a851b404b8579560d12d659e,

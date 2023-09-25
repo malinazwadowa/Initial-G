@@ -15,6 +15,6 @@ MonoBehaviour:
   maxHealth: 100
   baseSpeed: 300
   baseRunRatio: 1.5
-  baseDamageModifier: 0
-  baseCooldownModifier: 0
-  baseWeaponSpeed: 0
+  baseDamageModifier: 1
+  baseCooldownModifier: 1
+  baseWeaponSpeed: 1

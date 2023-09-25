@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyBasic : Enemy
-{
+{ 
     private NavMeshAgent agent;
     private EnemyMovementController movementController;
 
@@ -29,4 +29,5 @@ public class EnemyBasic : Enemy
         movementController = GetComponent<EnemyMovementController>();
         movementController.Init(agent, player);
     }
+    
 }

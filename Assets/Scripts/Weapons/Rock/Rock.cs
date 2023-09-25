@@ -29,7 +29,7 @@ public class Rock : Weapon
     private void ThrowRock()
     {
         GameObject prefab = rockCurrentRankData.projectilePrefab;
-        Vector3 spawnPosition = PlayerManager.Instance.GetCurrentPlayerWeaponsPosition() + GetRandomSpawnOffset(rockBaseData.spawnOffsetRange);
+        Vector3 spawnPosition = myWeaponWielder.GetWeaponsPosition() + GetRandomSpawnOffset(rockBaseData.spawnOffsetRange);
 
         if (MathUtility.GetClosestEnemy(spawnPosition) != null)
         {
@@ -53,9 +53,9 @@ public class Rock : Weapon
         }
     }
 
-    private Vector3 GetRandomSpawnOffset(float offsetValue)
+    private Vector2 GetRandomSpawnOffset(float offsetValue)
     {
-        Vector3 spawnOffset = Vector3.zero;
+        Vector2 spawnOffset = Vector3.zero;
         spawnOffset.x = Random.Range(-offsetValue, offsetValue);
         spawnOffset.y = Random.Range(-offsetValue, offsetValue);
         return spawnOffset;

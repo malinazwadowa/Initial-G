@@ -12,7 +12,7 @@ public class SpearProperties
 
 }
 
-public class Spear : Weapon
+public class Spear :  Weapon
 {
     
     public SpearData spearBaseData;
@@ -25,8 +25,10 @@ public class Spear : Weapon
     {
         spearCurrentRankData = spearBaseData.spearRanks[currentRank];
         currentSpearProperties = new SpearProperties();
+        SetCurrentProperties();
 
-        
+
+
     }
 
     public void SetCurrentProperties()
@@ -50,7 +52,7 @@ public class Spear : Weapon
 
         if (timer > spearCurrentRankData.cooldown)
         {
-            ThrowSpears(myWeaponWielder.GetPosition(), myWeaponWielder.GetFacingDirection(), spearCurrentRankData.projectilePrefab);
+            ThrowSpears(myWeaponWielder.GetWeaponsPosition(), myWeaponWielder.GetFacingDirection(), spearCurrentRankData.projectilePrefab);
             timer = 0;
         }
     }
