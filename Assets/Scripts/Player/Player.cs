@@ -6,7 +6,7 @@ public class Player : MonoBehaviour, IWeaponWielder
     [SerializeField] public PlayerData playerData;
 
     private Transform weapon;
-    
+
     private PlayerInputActions inputActions;
     private Animator animator;
     private SpriteRenderer[] spriteRenderers;
@@ -19,19 +19,19 @@ public class Player : MonoBehaviour, IWeaponWielder
     private PlayerMovementController movementController;
     private PlayerAnimationController animationController;
     private PlayerInputController inputController;
-  
+
 
 
 
     private CombatStats combatStats;
-    
+
 
 
     private void Awake()
     {
 
         combatStats = new CombatStats(playerData.baseDamageModifier, playerData.baseWeaponSpeed, playerData.baseCooldownModifier);
-        Debug.Log(combatStats.speedModifier);
+        
 
         inputActions = new PlayerInputActions();
         animator = GetComponent<Animator>();
@@ -49,11 +49,11 @@ public class Player : MonoBehaviour, IWeaponWielder
         movementController.Init(playerData, rigidBody);
         animationController.Init(animator, movementController, playerData, spriteRenderers);
         inputController.Init(movementController, inputActions);
-        
-        
+
+
         weaponController.Init(this, combatStats);
 
-        
+
     }
 
     private void Start()
@@ -64,11 +64,18 @@ public class Player : MonoBehaviour, IWeaponWielder
     private void Update()
     {
         animationController.SetAnimationVelocity(inputActions.PlayerMovement.Movement.ReadValue<Vector2>());
+        Debug.Log("Players instance of combat stats: " + combatStats.damageModifier);
+        
+        //Testing purposes
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            TestCombatStats();
+        }
     }
 
     private void FixedUpdate()
     {
-        
+
     }
 
     public Vector2 GetWeaponsPosition()
@@ -81,4 +88,13 @@ public class Player : MonoBehaviour, IWeaponWielder
         return movementController.LastNonZeroVelocity.normalized;
     }
 
+
+    public void TestCombatStats()
+    {
+        Debug.Log("Upping the base damage");
+
+
+        combatStats.UpdateCombatStat(StatType.DamageModifier, 1);
+
+    }
 }

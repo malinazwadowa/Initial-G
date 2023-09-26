@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour, IDamagable
 {
@@ -23,6 +22,7 @@ public class Enemy : MonoBehaviour, IDamagable
 
     public void GetDamaged(float amount)
     {
+        //Possibly armor logic. 
         Debug.Log($"GEtting Damaged for: {amount}");
         healthController.SubstractCurrentHealth(amount);
         if(healthController.CurrentHealth() <= 0)

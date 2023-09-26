@@ -1,27 +1,31 @@
 using UnityEngine;
-
-//TODO: BASE MODIFIERS CANNOT BE STATIC IN CASE I HAVE MULTIPLE WIELDERS DUH....
-//PROB GONNA NEED TO POINT TO PLAYER AS SOURCE FOR THEM ? ?
-//ADD EQUP BASE WEAPON WHILE YOUR AT IT I SUPPOSE
-//MAYBE JUST CREATE INSTANCE OF COMBAT STATS AND POINT TO IT, EACH WIELDER WILL GET NEW INSTANCE OF STATS EASY.
+using System;
+public class WeaponProperties
+{
+    public float damage;
+    public float speed;
+    public float cooldown;
+    public int amount;
+    public float strength;
+    public GameObject prefab;
+}
 public class Weapon : MonoBehaviour
 {
-    //public BaseWeaponData weaponData;
-
     protected IWeaponWielder myWeaponWielder;
 
-    protected static float baseCooldownMultiplier = 1f;
-    protected static float baseDamageMultiplier = 1f;
-    protected static float baseSpeedMultiplier = 1f;
+    protected CombatStats combatStats;
+    //protected WeaponController weaponController;
+
 
     [HideInInspector] protected int currentRank = 0;
 
-    public void Init(IWeaponWielder myWeaponWielder)
+    public void Init(IWeaponWielder myWeaponWielder, CombatStats combatStats = null)
     {
+        this.combatStats = combatStats ?? new CombatStats();
         this.myWeaponWielder = myWeaponWielder;
-        //baseCooldownMultiplier = combatModifiers.cooldownModifier;
-        //baseDamageMultiplier = combatModifiers.damageModifier;
-        //baseSpeedMultiplier = combatModifiers.speedModifier;
+        //this.weaponController = weaponController;
+
+        combatStats.OnCombatStatsChanged += SetCurrentProperties;
     }
 
     public virtual void WeaponTick() 
@@ -32,16 +36,8 @@ public class Weapon : MonoBehaviour
     { 
         currentRank++;
     }
-
-
-    public void SetModifiers(CombatStats mods)
+    public virtual void SetCurrentProperties()
     {
-        baseCooldownMultiplier = mods.cooldownModifier;
-        baseDamageMultiplier = mods.damageModifier;
-        baseSpeedMultiplier = mods.speedModifier;
+
     }
-
-
-    //public virtual void 
-    public virtual void Initialize() { }
 }

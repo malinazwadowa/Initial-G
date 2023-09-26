@@ -1,21 +1,23 @@
 using UnityEngine;
-
+using System;
 
 [CreateAssetMenu(fileName = "newSpearData", menuName = "Weapon Data/Spear Data/Base Data")]
 
-//WeaponData
+//Possibly should be changed to generic WeaponData with optional fields. Or should it ? O.o 
 public class SpearData : ScriptableObject
 {
+    public event Action OnWeaponDataChanged;
     private void OnValidate()
     {
         for (int i = 0; i < spearRanks.Length; ++i)
         {
             spearRanks[i].name = "Rank " + (i + 1);
         }
+        OnWeaponDataChanged?.Invoke();
     }
 
     [Header("Rank independend settings")]
-    public float spawnDelayMultiplier;
+    public float spawnDelayForAdditionalProjectiles;
     public float projectileSpacing;
     
     [Header("Settings for each rank")]
@@ -30,7 +32,7 @@ public class SpearRank
     public float speed;
     public float cooldown;
     public int amount;
-    public int damage;
-    public float knockbackStrenght;
+    public float damage;
+    //public float knockbackStrenght;
 }
 

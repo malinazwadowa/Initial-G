@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 
 public class WeaponController : MonoBehaviour
@@ -11,17 +12,12 @@ public class WeaponController : MonoBehaviour
     private List<Weapon> equippedWeapons = new List<Weapon>();
 
 
-    //private CombatStats
+    private CombatStats combatStats;
+    //public event Action OnCombatStatsChanged;
 
-    //private CombatStats myCombatStats;
-    private Weapon weapon;
-
-
-
-    public void Init(IWeaponWielder weaponWielder, CombatStats combatStats)
+    public void Init(IWeaponWielder weaponWielder, CombatStats combatStats = null)
     {
-        weapon = new Weapon();
-        weapon.SetModifiers(combatStats);
+        this.combatStats = combatStats ?? new CombatStats();
 
         myWeaponWielder = weaponWielder;
         
@@ -32,6 +28,7 @@ public class WeaponController : MonoBehaviour
 
     void Update()
     {
+        Debug.Log("WEaponControllers combaststs: " + + combatStats.damageModifier);
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             foreach (Weapon weapon in equippedWeapons)
@@ -56,7 +53,7 @@ public class WeaponController : MonoBehaviour
         {
             GameObject weapon = Instantiate(weaponPrefab, transform);
             T weaponScript = weapon.GetComponent<T>();
-            weaponScript.Init(myWeaponWielder);
+            weaponScript.Init(myWeaponWielder, combatStats);
             AddWeapon(weaponScript);
         }
         
@@ -82,61 +79,26 @@ public class WeaponController : MonoBehaviour
             return null;
         }
     }
-
-
     /*
-     * 
-     *  if(availableWeapons != null)
-        {
-            GameObject prefab = availableWeapons.Find(weaponPrefab => weaponPrefab.GetComponent<T>() != null);
-        }
-        
-
-        if (prefab != null)
-        {
-            return prefab;
-        }
-        else
-        {
-            Debug.LogError($"Weapon prefab for type {typeof(T)} not found in the available list!");
-            return null;
-        }
-     */
-
-
-
-
-
-
-
-    public Transform GetClosestEnemy(Transform transform)
+    public void UpdateCombatStat(StatType type, float additionalValue)
     {
-        List<Collider2D> enemiesFound = new List<Collider2D>();
-        float scanRadius = 1;
-
-        while (enemiesFound.Count == 0)
+        switch (type)
         {
-            enemiesFound.AddRange(Physics2D.OverlapCircleAll(transform.position, scanRadius, 1 << 6));
-            scanRadius *= 2;
-            Debug.Log("ScanRadius: " + scanRadius + " Center position: " + transform.position);
-            if (scanRadius > 20)
-            {
-                Debug.LogWarning("No enemies avilable");
-                return null;
-            }
+            case StatType.DamageModifier:
+                combatStats.damageModifier += additionalValue;
+                break;
+            case StatType.SpeedModifier:
+                combatStats.speedModifier += additionalValue;
+                break;
+            case StatType.CooldownModifier:
+                combatStats.cooldownModifier += additionalValue;
+                break;
+            default:
+                Debug.LogError("Invalid stat type: " + type);
+                break;
         }
-
-        List<float> distancesToEnemies = new List<float>();
-
-        foreach (Collider2D enemy in enemiesFound)
-        {
-            float distance = Vector2.Distance(enemy.transform.position, transform.position);
-            distancesToEnemies.Add(distance);
-        }
-
-        int indexOfClosestEnemy = MathUtility.GetIndexOfMin(distancesToEnemies);
-        return enemiesFound[indexOfClosestEnemy].transform;
-    }
+        OnCombatStatsChanged?.Invoke();
+    } */
 }
 
 

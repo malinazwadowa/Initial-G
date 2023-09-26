@@ -5,19 +5,14 @@ using UnityEngine;
 
 public class SpearProjectile : MonoBehaviour
 {
-    private float speed;
+    
     private Vector3 movementDirection;
-    private GameObject spearProjectile;
-    private SpearProperties spearProperties; 
-    public void Init(float speed, Vector3 movementDirection, GameObject spearProjectile, SpearProperties spearProperties)
+    
+    private WeaponProperties spearProperties; 
+    public void Init(Vector3 movementDirection, WeaponProperties spearProperties)
     {
-        this.speed = speed;
         this.movementDirection = movementDirection;
-        this.spearProjectile = spearProjectile;
-
-
         this.spearProperties = spearProperties;
-
 
         transform.right = movementDirection;
     }
@@ -30,13 +25,13 @@ public class SpearProjectile : MonoBehaviour
         {
             //gameObject.SetActive(false);
             //Debug.Log("despawnuje");
-            ObjectPooler.Instance.DeSpawnObject(spearProjectile, gameObject);
+            ObjectPooler.Instance.DeSpawnObject(spearProperties.prefab, gameObject);
         }
     }
 
     public void MoveProjectile()
     {
-        Vector3 newPosition = transform.position + movementDirection * speed * Time.deltaTime;
+        Vector3 newPosition = transform.position + movementDirection * spearProperties.speed * Time.deltaTime;
         //transform.right = movementDirection;
         transform.position = newPosition;
     }

@@ -36,7 +36,7 @@ public class EnemyManager : SingletonMonoBehaviour<EnemyManager>
             ManageWave();
         }
         
-        if(timer >= waveDuration && currentWave < enemyManagerData.enemyWaves.Length)
+        if(timer >= waveDuration && currentWave < enemyManagerData.enemyWaves.Length - 1)
         {
             currentWave++;
             currentWaveData = enemyManagerData.enemyWaves[currentWave];

@@ -1,7 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Threading;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Rock : Weapon
@@ -10,31 +7,37 @@ public class Rock : Weapon
     private RockRank rockCurrentRankData;
 
     private float timer = 2;
+
+    private WeaponProperties currentRockProperties;
     void Start()
     {
         rockCurrentRankData = rockBaseData.rockRanks[currentRank];
+        currentRockProperties = new WeaponProperties();
+        SetCurrentProperties();
+
+        rockBaseData.OnWeaponDataChanged += SetCurrentProperties;
     }
     public override void WeaponTick()
     {
         base.WeaponTick();
 
         timer += Time.deltaTime;
-        if (timer > rockCurrentRankData.cooldownTime)
+        if (timer > currentRockProperties.cooldown)
         {   
-            StartCoroutine(ThrowRocks(rockBaseData.spawnDelay, rockCurrentRankData.amount));
+            StartCoroutine(ThrowRocks(rockBaseData.spawnDelayForAdditionalRocks, currentRockProperties.amount));
             timer = 0;
         }
     }
 
     private void ThrowRock()
     {
-        GameObject prefab = rockCurrentRankData.projectilePrefab;
-        Vector3 spawnPosition = myWeaponWielder.GetWeaponsPosition() + GetRandomSpawnOffset(rockBaseData.spawnOffsetRange);
+        //GameObject prefab = currentRockProperties.prefab;
+        Vector3 spawnPosition = myWeaponWielder.GetWeaponsPosition() + GetRandomSpawnOffset(rockBaseData.spawnOffsetRangeForAdditionalRocks);
 
         if (MathUtility.GetClosestEnemy(spawnPosition) != null)
         {
-            GameObject newRock = ObjectPooler.Instance.SpawnObject(prefab, spawnPosition, transform.rotation);
-            newRock.GetComponent<RockProjectile>().Init(rockCurrentRankData.speed, spawnPosition, MathUtility.GetClosestEnemy(spawnPosition), prefab);
+            GameObject newRock = ObjectPooler.Instance.SpawnObject(currentRockProperties.prefab, spawnPosition);
+            newRock.GetComponent<RockProjectile>().Init(spawnPosition, MathUtility.GetClosestEnemy(spawnPosition), currentRockProperties);
         }
         else
         {
@@ -61,28 +64,28 @@ public class Rock : Weapon
         return spawnOffset;
         
     }
-}
-/*
- * private void ThrowRock(PoolableObject rockProjectilePrefab, Vector3 position)
+    public override void SetCurrentProperties()
     {
-        GameObject newRock = ObjectPooler.Instance.SpawnObject(rockProjectilePrefab, position, transform.rotation);
-        newRock.GetComponent<RockProjectile>().Init(rockCurrentRankData.speed, position, MathUtility.GetClosestEnemy(position));
-
-        //StartCoroutine(ThrowRockWithDelay(rockBajectilePrefab));
+        WeaponProperties rockProperties = new WeaponProperties();
+        rockProperties.damage = rockCurrentRankData.damage * combatStats.damageModifier;
+        rockProperties.cooldown = rockCurrentRankData.cooldown * combatStats.cooldownModifier;
+        rockProperties.speed = rockCurrentRankData.speed * combatStats.speedModifier;
+        rockProperties.amount = rockCurrentRankData.amount;
+        rockProperties.prefab = rockCurrentRankData.projectilePrefab;
+        currentRockProperties = rockProperties;
     }
-    private IEnumerator ThrowRockWithDelay(float delay, int amount, PoolableObject rockProjectilePrefab)
+    public override void RankUp()
     {
-        for (int i = 1; i < amount; i++)
+        if (currentRank < rockBaseData.rockRanks.Length - 1)
         {
-            yield return new WaitForSeconds(delay);
-
-            Vector3 spawnPosition = PlayerManager.Instance.GetCurrentPlayerWeaponsPosition() + GetRandomSpawnOffset(rockBaseData.spawnOffsetRange);
-            GameObject newRock = ObjectPooler.Instance.SpawnObject(rockProjectilePrefab, spawnPosition, transform.rotation);
-            newRock.GetComponent<RockProjectile>().Init(rockCurrentRankData.speed, spawnPosition, MathUtility.GetClosestEnemy(spawnPosition));
+            base.RankUp();
+            Debug.Log("Ranking up Rock.");
+            rockCurrentRankData = rockBaseData.rockRanks[currentRank];
+            SetCurrentProperties();
+        }
+        else
+        {
+            Debug.Log("Maximum Rock rank reached.");
         }
     }
-
-    /// <summary>
-    /// ////////////////////////////////////////////
-    /// </summary>
- */
+}
