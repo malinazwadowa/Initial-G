@@ -17,8 +17,7 @@ public class HedgehogData : ScriptableObject
     }
 
     [Header("Rank independend settings")]
-    public float spawnDelayForAdditionalProjectiles;
-    public float projectileSpacing;
+    
 
     [Header("Settings for each rank")]
     public HedgehogRank[] hedgehogRanks;
@@ -32,6 +31,7 @@ public class HedgehogRank
     public float speed;
     public float cooldown;
     public float radius;
+    public float duration;
     public int amount;
     public float damage;
     //public float knockbackStrenght;

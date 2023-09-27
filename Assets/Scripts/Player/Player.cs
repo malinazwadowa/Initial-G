@@ -78,9 +78,13 @@ public class Player : MonoBehaviour, IWeaponWielder
 
     }
 
-    public Vector2 GetWeaponsPosition()
+    public Vector3 GetWeaponsPosition()
     {
         return weapon.transform.position;
+    }
+    public Transform GetWeaponsTransform()
+    {
+        return weapon.transform;
     }
 
     public Vector2 GetFacingDirection()

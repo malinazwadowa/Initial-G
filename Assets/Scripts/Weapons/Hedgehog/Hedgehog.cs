@@ -6,8 +6,11 @@ public class Hedgehog : Weapon
 {
     public HedgehogData hedgehogBaseData;
     private HedgehogRank hedgehogCurrentRankData;
-    private float timer = 2;
     private WeaponProperties currentHedgehogProperties;
+
+    private bool hasFinishedSpinning = true;
+    private float cooldownTimer;
+    private float durationTimer;
     void Start()
     {
         hedgehogCurrentRankData = hedgehogBaseData.hedgehogRanks[currentRank];
@@ -15,18 +18,50 @@ public class Hedgehog : Weapon
         SetCurrentProperties();
 
         hedgehogBaseData.OnWeaponDataChanged += SetCurrentProperties;
+        cooldownTimer = float.PositiveInfinity;
     }
 
     public override void WeaponTick()
     {
         base.WeaponTick();
-        
-        timer += Time.deltaTime;
-        if(timer > currentHedgehogProperties.cooldown) 
-        { 
-            //do tick        
+
+        cooldownTimer += Time.deltaTime;
+
+        if (hasFinishedSpinning == true && cooldownTimer > currentHedgehogProperties.cooldown) 
+        {
+            SpawnHedgehogs();
+            hasFinishedSpinning=false;
+            durationTimer = 0;
         }
 
+        if(hasFinishedSpinning == false)
+        {
+            durationTimer += Time.deltaTime;
+            if(durationTimer > currentHedgehogProperties.duration)
+            {
+                cooldownTimer = 0;
+                hasFinishedSpinning = true;
+            }
+        }
+
+    }
+    public void SpawnHedgehogs()
+    {
+        //GameObject hog = ObjectPooler.Instance.SpawnObject(currentHedgehogProperties.prefab, myWeaponWielder.GetWeaponsPosition());
+
+        //hog.GetComponent<HedgehogProjectile>().Init(currentHedgehogProperties, myWeaponWielder.GetWeaponsTransform());
+
+        int numberOfProjectiles = currentHedgehogProperties.amount;
+
+        for (int i = 0; i < numberOfProjectiles; i++)
+        {
+            float angle = i * (360f / numberOfProjectiles);
+            Quaternion rotation = Quaternion.Euler(0, 0, angle);
+
+            GameObject hog = ObjectPooler.Instance.SpawnObject(currentHedgehogProperties.prefab, myWeaponWielder.GetWeaponsPosition(), rotation);
+
+            hog.GetComponent<HedgehogProjectile>().Init(currentHedgehogProperties, myWeaponWielder.GetWeaponsTransform());
+        }
     }
 
     public override void RankUp()
@@ -49,6 +84,8 @@ public class Hedgehog : Weapon
         WeaponProperties hedgehogProperties = new WeaponProperties();
         hedgehogProperties.damage = hedgehogCurrentRankData.damage * combatStats.damageModifier;
         hedgehogProperties.cooldown = hedgehogCurrentRankData.cooldown * combatStats.cooldownModifier;
+        hedgehogProperties.radius = hedgehogCurrentRankData.radius;
+        hedgehogProperties.duration = hedgehogCurrentRankData.duration;
         hedgehogProperties.speed = hedgehogCurrentRankData.speed * combatStats.speedModifier;
         hedgehogProperties.amount = hedgehogCurrentRankData.amount;
         hedgehogProperties.prefab = hedgehogCurrentRankData.projectilePrefab;

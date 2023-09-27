@@ -81,7 +81,8 @@ public class ObjectPooler : SingletonMonoBehaviour<ObjectPooler>
         poolDictionary[objectType].activeObjects.Remove(objectToDeSpawn);
         objectToDeSpawn.SetActive(false);
         poolDictionary[objectType].inactiveObjects.Add(objectToDeSpawn);
-        pools.Find(p => p.objectType == objectType).activeObjectsCount = poolDictionary[objectType].activeObjects.Count;
+        //pools.Find(p => p.objectType == objectType).activeObjectsCount = poolDictionary[objectType].activeObjects.Count;
+        //pools.Find(p => p.objectType == objectType).activeObjectsCount = poolDictionary[objectType].activeObjects.Count;
     }
 
     public void CreatePool(GameObject objectType, int size = 0)
@@ -113,12 +114,16 @@ public class ObjectPooler : SingletonMonoBehaviour<ObjectPooler>
     {
         if(pools.Find(p => p.objectType == objectType) != null)
         {
-            return pools.Find(p => p.objectType == objectType).activeObjectsCount;
+            return pools.Find(p => p.objectType == objectType).objectLists.activeObjects.Count;
         }
         else
         {
             return 0;
         }
+    }
+    public List<GameObject> GetAllActiveObjectsOfType(GameObject objectType)
+    {
+        return pools.Find(p => p.objectType == objectType).objectLists.activeObjects;
     }
 
     //Not Used, but might be used / ehhh probl not. 

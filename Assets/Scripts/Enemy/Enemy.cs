@@ -8,10 +8,7 @@ public class Enemy : MonoBehaviour, IDamagable
     protected HealthController healthController;
     //-----------------
     
-    void Start()
-    {
-        Init();
-    }
+    
 
     public virtual void Init()
     {

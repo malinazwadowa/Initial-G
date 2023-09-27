@@ -56,9 +56,9 @@ public class Rock : Weapon
         }
     }
 
-    private Vector2 GetRandomSpawnOffset(float offsetValue)
+    private Vector3 GetRandomSpawnOffset(float offsetValue)
     {
-        Vector2 spawnOffset = Vector3.zero;
+        Vector3 spawnOffset = Vector3.zero;
         spawnOffset.x = Random.Range(-offsetValue, offsetValue);
         spawnOffset.y = Random.Range(-offsetValue, offsetValue);
         return spawnOffset;

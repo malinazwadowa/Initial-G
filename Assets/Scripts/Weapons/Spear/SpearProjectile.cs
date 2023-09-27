@@ -29,7 +29,7 @@ public class SpearProjectile : MonoBehaviour
         }
     }
 
-    public void MoveProjectile()
+    private void MoveProjectile()
     {
         Vector3 newPosition = transform.position + movementDirection * spearProperties.speed * Time.deltaTime;
         //transform.right = movementDirection;
@@ -47,4 +47,15 @@ public class SpearProjectile : MonoBehaviour
         }
     }
 }
-    
+/*
+ *     void Update()
+{
+    // Rotate the pivot point (empty GameObject) to make the orbiting object follow
+    transform.Rotate(Vector3.forward, orbitSpeed * Time.deltaTime);
+    foreach (Transform child in transform)
+    {
+        child.Rotate(Vector3.back, orbitSpeed * Time.deltaTime);
+    }
+}
+ * 
+ */

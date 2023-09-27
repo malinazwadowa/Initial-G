@@ -20,8 +20,8 @@ public class WeaponController : MonoBehaviour
         this.combatStats = combatStats ?? new CombatStats();
 
         myWeaponWielder = weaponWielder;
-        
 
+        EquipWeapon<Hedgehog>();
         EquipWeapon<Spear>();
         EquipWeapon<Rock>();
     }

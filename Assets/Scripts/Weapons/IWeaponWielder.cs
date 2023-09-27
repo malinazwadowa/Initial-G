@@ -2,7 +2,8 @@ using UnityEngine;
 
 public interface IWeaponWielder
 {
-    public Vector2 GetWeaponsPosition();
+    public Vector3 GetWeaponsPosition();
+    public Transform GetWeaponsTransform();
     public Vector2 GetFacingDirection();
     
 }

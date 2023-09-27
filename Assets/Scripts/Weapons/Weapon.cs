@@ -5,6 +5,8 @@ public class WeaponProperties
     public float damage;
     public float speed;
     public float cooldown;
+    public float radius;
+    public float duration;
     public int amount;
     public float strength;
     public GameObject prefab;

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyManager : SingletonMonoBehaviour<EnemyManager>
@@ -12,7 +13,16 @@ public class EnemyManager : SingletonMonoBehaviour<EnemyManager>
 
     private float waveDuration;
 
-    
+
+
+
+    //testing knockbacl=k
+    public float power;
+    float knockbackTimer;
+    bool shouldKnockback;
+    public float timeToKnockBack;
+    public GameObject flower;
+
     void Start()
     {
         waveDuration = (enemyManagerData.levelDurationInMinutes / enemyManagerData.enemyWaves.Length) * 60;
@@ -22,7 +32,6 @@ public class EnemyManager : SingletonMonoBehaviour<EnemyManager>
         {
             ObjectPooler.Instance.CreatePool(entry.Key, entry.Value);
         }
-
         //Debug.Log("Waveduration is: " + waveDuration +" seconds");
         //SpawnOnCall(PoolableObject.Test, Vector2.zero);
     }
@@ -30,19 +39,57 @@ public class EnemyManager : SingletonMonoBehaviour<EnemyManager>
     void Update()
     {
         timer += Time.deltaTime;
-        
-        if(currentWaveData != null)
+
+        if (currentWaveData != null)
         {
             ManageWave();
         }
-        
-        if(timer >= waveDuration && currentWave < enemyManagerData.enemyWaves.Length - 1)
+
+        if (timer >= waveDuration && currentWave < enemyManagerData.enemyWaves.Length - 1)
         {
             currentWave++;
             currentWaveData = enemyManagerData.enemyWaves[currentWave];
             timer = 0;
         }
+
+        //testing knockback
+
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            shouldKnockback = true;
+        }
+
+      
+        if (shouldKnockback)
+        {
+            knockbackTimer += Time.deltaTime;
+            TestKnockBack(flower);
+            if(knockbackTimer > timeToKnockBack)
+            {
+                shouldKnockback = false;
+                knockbackTimer = 0;
+            }
+        }
+
+
     }
+    public void TestKnockBack(GameObject objectType)
+    {
+        Vector3 playersPosition = PlayerManager.Instance.GetPlayer().transform.position;
+
+        foreach (GameObject enemy in ObjectPooler.Instance.GetAllActiveObjectsOfType(objectType))
+        {
+            Vector3 knockBackDirection = (enemy.transform.position - playersPosition).normalized;
+            enemy.transform.position += knockBackDirection * power * Time.deltaTime;
+        }
+        
+    }
+
+
+
+
+
+
     public void ManageWave()
     {
         for (int i = 0; i < currentWaveData.enemyNumbers.Length; i++)
@@ -84,29 +131,29 @@ public class EnemyManager : SingletonMonoBehaviour<EnemyManager>
         }
         return enemiesToSpawn;
     }
-    public Vector2 GetRandomSpawnPositionOutsideOfCameraView()
+    public Vector3 GetRandomSpawnPositionOutsideOfCameraView()
     {
         float cameraHeight = Camera.main.orthographicSize;
         float cameraWidth = Camera.main.orthographicSize * Camera.main.aspect;
         float spawnOffset = 2;
 
-        Vector2 spawnPosition = Vector2.zero;
+        Vector3 spawnPosition = Vector3.zero;
         
         //Sets random side.
         int randomInt = Random.Range(1, 5);
         switch (randomInt)
         {
             case 1:
-                spawnPosition = new Vector2(cameraWidth + spawnOffset, 0);
+                spawnPosition = new Vector3(cameraWidth + spawnOffset, 0);
                 break;
             case 2:
-                spawnPosition = new Vector2(-cameraWidth - spawnOffset, 0);
+                spawnPosition = new Vector3(-cameraWidth - spawnOffset, 0);
                 break;
             case 3:
-                spawnPosition = new Vector2(0, cameraHeight + spawnOffset);
+                spawnPosition = new Vector3(0, cameraHeight + spawnOffset);
                 break;
             case 4:
-                spawnPosition = new Vector2(0, -cameraHeight - spawnOffset);
+                spawnPosition = new Vector3(0, -cameraHeight - spawnOffset);
                 break;
             default:
                 Debug.Log("Failed to choose side to spawn");
@@ -122,7 +169,9 @@ public class EnemyManager : SingletonMonoBehaviour<EnemyManager>
         {
             spawnPosition.y = Random.Range((-cameraHeight - spawnOffset), (cameraHeight + spawnOffset));
         }
-        return spawnPosition;
+        Vector3 test = spawnPosition + Camera.main.transform.position;
+
+        return spawnPosition + Camera.main.transform.position;
     }
     public void SpawnOnCall(GameObject enemyType, Vector2 position)
     {
