@@ -64,7 +64,6 @@ public class Player : MonoBehaviour, IWeaponWielder
     private void Update()
     {
         animationController.SetAnimationVelocity(inputActions.PlayerMovement.Movement.ReadValue<Vector2>());
-        Debug.Log("Players instance of combat stats: " + combatStats.damageModifier);
         
         //Testing purposes
         if (Input.GetKeyDown(KeyCode.Space))

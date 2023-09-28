@@ -1,5 +1,5 @@
 using UnityEngine;
-using System;
+
 public class WeaponProperties
 {
     public float damage;
@@ -8,7 +8,7 @@ public class WeaponProperties
     public float radius;
     public float duration;
     public int amount;
-    public float strength;
+    public float knockbackPower;
     public GameObject prefab;
 }
 public class Weapon : MonoBehaviour
@@ -16,7 +16,6 @@ public class Weapon : MonoBehaviour
     protected IWeaponWielder myWeaponWielder;
 
     protected CombatStats combatStats;
-    //protected WeaponController weaponController;
 
 
     [HideInInspector] protected int currentRank = 0;

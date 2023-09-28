@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Hedgehog : Weapon
@@ -11,6 +9,7 @@ public class Hedgehog : Weapon
     private bool hasFinishedSpinning = true;
     private float cooldownTimer;
     private float durationTimer;
+
     void Start()
     {
         hedgehogCurrentRankData = hedgehogBaseData.hedgehogRanks[currentRank];
@@ -18,7 +17,22 @@ public class Hedgehog : Weapon
         SetCurrentProperties();
 
         hedgehogBaseData.OnWeaponDataChanged += SetCurrentProperties;
+        
         cooldownTimer = float.PositiveInfinity;
+    }
+
+    public override void SetCurrentProperties()
+    {
+        WeaponProperties hedgehogProperties = new WeaponProperties();
+        hedgehogProperties.damage = hedgehogCurrentRankData.damage * combatStats.damageModifier;
+        hedgehogProperties.cooldown = hedgehogCurrentRankData.cooldown * combatStats.cooldownModifier;
+        hedgehogProperties.radius = hedgehogCurrentRankData.radius;
+        hedgehogProperties.duration = hedgehogCurrentRankData.duration;
+        hedgehogProperties.speed = hedgehogCurrentRankData.speed * combatStats.speedModifier;
+        hedgehogProperties.amount = hedgehogCurrentRankData.amount;
+        hedgehogProperties.prefab = hedgehogCurrentRankData.projectilePrefab;
+        hedgehogProperties.knockbackPower = hedgehogCurrentRankData.knockbackPower;
+        currentHedgehogProperties = hedgehogProperties;
     }
 
     public override void WeaponTick()
@@ -47,10 +61,6 @@ public class Hedgehog : Weapon
     }
     public void SpawnHedgehogs()
     {
-        //GameObject hog = ObjectPooler.Instance.SpawnObject(currentHedgehogProperties.prefab, myWeaponWielder.GetWeaponsPosition());
-
-        //hog.GetComponent<HedgehogProjectile>().Init(currentHedgehogProperties, myWeaponWielder.GetWeaponsTransform());
-
         int numberOfProjectiles = currentHedgehogProperties.amount;
 
         for (int i = 0; i < numberOfProjectiles; i++)
@@ -78,20 +88,5 @@ public class Hedgehog : Weapon
             Debug.Log("Maximum Hedgehog rank reached.");
         }
     }
-
-    public override void SetCurrentProperties()
-    {
-        WeaponProperties hedgehogProperties = new WeaponProperties();
-        hedgehogProperties.damage = hedgehogCurrentRankData.damage * combatStats.damageModifier;
-        hedgehogProperties.cooldown = hedgehogCurrentRankData.cooldown * combatStats.cooldownModifier;
-        hedgehogProperties.radius = hedgehogCurrentRankData.radius;
-        hedgehogProperties.duration = hedgehogCurrentRankData.duration;
-        hedgehogProperties.speed = hedgehogCurrentRankData.speed * combatStats.speedModifier;
-        hedgehogProperties.amount = hedgehogCurrentRankData.amount;
-        hedgehogProperties.prefab = hedgehogCurrentRankData.projectilePrefab;
-        currentHedgehogProperties = hedgehogProperties;
-    }
-
-
 
 }

@@ -33,6 +33,6 @@ public class SpearRank
     public float cooldown;
     public int amount;
     public float damage;
-    //public float knockbackStrenght;
+    public float knockbackPower;
 }
 

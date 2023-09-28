@@ -1,18 +1,14 @@
 using System.Collections;
 using UnityEngine;
 
-
 public class Spear :  Weapon
 {
-    
-    public SpearData spearBaseData;
+    [SerializeField] private SpearData spearBaseData;
     private SpearRank spearCurrentRankData;
+    private WeaponProperties currentSpearProperties;
     
     private float timer = 2;
-
-    private WeaponProperties currentSpearProperties;
-
-   
+    
     public void Start()
     {
         spearCurrentRankData = spearBaseData.spearRanks[currentRank];
@@ -29,6 +25,7 @@ public class Spear :  Weapon
         spearProperties.cooldown = spearCurrentRankData.cooldown * combatStats.cooldownModifier;
         spearProperties.speed = spearCurrentRankData.speed * combatStats.speedModifier;
         spearProperties.amount = spearCurrentRankData.amount;
+        spearProperties.knockbackPower = spearCurrentRankData.knockbackPower;
         spearProperties.prefab = spearCurrentRankData.projectilePrefab;
         currentSpearProperties = spearProperties;
     }
@@ -41,17 +38,20 @@ public class Spear :  Weapon
 
         if (timer > currentSpearProperties.cooldown)
         {
-            ThrowSpears(myWeaponWielder.GetWeaponsPosition(), myWeaponWielder.GetFacingDirection(), currentSpearProperties);
+            SpawnSpears(myWeaponWielder.GetWeaponsPosition(), myWeaponWielder.GetFacingDirection(), currentSpearProperties);
             timer = 0;
         }
     }
 
-    private void ThrowSpears(Vector3 position, Vector3 direction, WeaponProperties spearProperties)
+    private void SpawnSpears(Vector3 position, Vector3 direction, WeaponProperties spearProperties)
     {
         //Spawning main spear.
-        GameObject newSpear = ObjectPooler.Instance.SpawnObject(spearProperties.prefab, position);
-        newSpear.GetComponent<SpearProjectile>().Init(direction, spearProperties);
-
+        if(currentSpearProperties.amount > 0)
+        {
+            GameObject newSpear = ObjectPooler.Instance.SpawnObject(spearProperties.prefab, position);
+            newSpear.GetComponent<SpearProjectile>().Init(direction, spearProperties);
+        }
+        
         //Spawning additional spears.
         for (int i = 2; i <= spearCurrentRankData.amount; ++i)
         {

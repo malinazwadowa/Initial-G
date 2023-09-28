@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SpearProjectile : MonoBehaviour
@@ -20,42 +17,31 @@ public class SpearProjectile : MonoBehaviour
     void Update()
     {
         MoveProjectile();
+
         //Temp out of bounds check, aiming to replace with OutofboundsCOntroller disabling all objects that get off the camera view
         if (Mathf.Abs(transform.position.x) > 100 || Mathf.Abs(transform.position.y) > 100)
         {
-            //gameObject.SetActive(false);
-            //Debug.Log("despawnuje");
             ObjectPooler.Instance.DeSpawnObject(spearProperties.prefab, gameObject);
+            StopAllCoroutines();
         }
     }
 
     private void MoveProjectile()
     {
         Vector3 newPosition = transform.position + movementDirection * spearProperties.speed * Time.deltaTime;
-        //transform.right = movementDirection;
         transform.position = newPosition;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //Debug.Log("Collided with something");
-        //Debug.Log(collision.gameObject.name);
-        if (collision.gameObject.GetComponent<IDamagable>() != null)
+        IDamagable target = collision.gameObject.GetComponent<IDamagable>();
+        if (target != null)
         {
-            //Debug.Log("Target is damagable");
-            collision.gameObject.GetComponent<IDamagable>().GetDamaged(spearProperties.damage);
+            Vector3 direction = collision.transform.position - transform.position;
+
+            target.GetDamaged(spearProperties.damage);
+            
+            target.GetKnockbacked(spearProperties.knockbackPower, direction);
         }
     }
 }
-/*
- *     void Update()
-{
-    // Rotate the pivot point (empty GameObject) to make the orbiting object follow
-    transform.Rotate(Vector3.forward, orbitSpeed * Time.deltaTime);
-    foreach (Transform child in transform)
-    {
-        child.Rotate(Vector3.back, orbitSpeed * Time.deltaTime);
-    }
-}
- * 
- */

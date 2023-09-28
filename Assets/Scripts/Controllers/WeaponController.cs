@@ -11,9 +11,7 @@ public class WeaponController : MonoBehaviour
 
     private List<Weapon> equippedWeapons = new List<Weapon>();
 
-
     private CombatStats combatStats;
-    //public event Action OnCombatStatsChanged;
 
     public void Init(IWeaponWielder weaponWielder, CombatStats combatStats = null)
     {
@@ -28,7 +26,7 @@ public class WeaponController : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("WEaponControllers combaststs: " + + combatStats.damageModifier);
+        //TEMP Ranking up for weapons
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             foreach (Weapon weapon in equippedWeapons)
@@ -36,6 +34,7 @@ public class WeaponController : MonoBehaviour
                 weapon.RankUp();
             }
         }
+
         foreach (Weapon weapon in equippedWeapons)
         {
             weapon.WeaponTick();
@@ -58,6 +57,7 @@ public class WeaponController : MonoBehaviour
         }
         
     }
+
     private GameObject GetWeaponPrefab<T>() where T : Weapon
     {
         if (availableWeapons != null)
@@ -79,26 +79,6 @@ public class WeaponController : MonoBehaviour
             return null;
         }
     }
-    /*
-    public void UpdateCombatStat(StatType type, float additionalValue)
-    {
-        switch (type)
-        {
-            case StatType.DamageModifier:
-                combatStats.damageModifier += additionalValue;
-                break;
-            case StatType.SpeedModifier:
-                combatStats.speedModifier += additionalValue;
-                break;
-            case StatType.CooldownModifier:
-                combatStats.cooldownModifier += additionalValue;
-                break;
-            default:
-                Debug.LogError("Invalid stat type: " + type);
-                break;
-        }
-        OnCombatStatsChanged?.Invoke();
-    } */
 }
 
 

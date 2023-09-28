@@ -20,7 +20,7 @@ MonoBehaviour:
       type: 3}
     speed: 10
     cooldown: 2
-    amount: 3
+    amount: 1
     damage: 24.82
   - name: Rank 2
     projectilePrefab: {fileID: 5608594438459119563, guid: 1603c6d5a46efb34e8163f6d134c68ed,

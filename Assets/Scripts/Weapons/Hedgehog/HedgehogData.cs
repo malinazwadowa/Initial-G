@@ -34,6 +34,6 @@ public class HedgehogRank
     public float duration;
     public int amount;
     public float damage;
-    //public float knockbackStrenght;
+    public float knockbackPower;
 }
 

@@ -51,44 +51,7 @@ public class EnemyManager : SingletonMonoBehaviour<EnemyManager>
             currentWaveData = enemyManagerData.enemyWaves[currentWave];
             timer = 0;
         }
-
-        //testing knockback
-
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            shouldKnockback = true;
-        }
-
-      
-        if (shouldKnockback)
-        {
-            knockbackTimer += Time.deltaTime;
-            TestKnockBack(flower);
-            if(knockbackTimer > timeToKnockBack)
-            {
-                shouldKnockback = false;
-                knockbackTimer = 0;
-            }
-        }
-
-
     }
-    public void TestKnockBack(GameObject objectType)
-    {
-        Vector3 playersPosition = PlayerManager.Instance.GetPlayer().transform.position;
-
-        foreach (GameObject enemy in ObjectPooler.Instance.GetAllActiveObjectsOfType(objectType))
-        {
-            Vector3 knockBackDirection = (enemy.transform.position - playersPosition).normalized;
-            enemy.transform.position += knockBackDirection * power * Time.deltaTime;
-        }
-        
-    }
-
-
-
-
-
 
     public void ManageWave()
     {
