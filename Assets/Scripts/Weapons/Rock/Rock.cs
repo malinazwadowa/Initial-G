@@ -15,7 +15,7 @@ public class Rock : Weapon
         currentRockProperties = new WeaponProperties();
         SetCurrentProperties();
 
-        rockBaseData.OnWeaponDataChanged += SetCurrentProperties;
+        rockBaseData.onWeaponDataChanged += SetCurrentProperties;
     }
     public override void SetCurrentProperties()
     {

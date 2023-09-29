@@ -17,7 +17,6 @@ public class Weapon : MonoBehaviour
 
     protected CombatStats combatStats;
 
-
     [HideInInspector] protected int currentRank = 0;
 
     public void Init(IWeaponWielder myWeaponWielder, CombatStats combatStats = null)

@@ -1,0 +1,17 @@
+using UnityEngine;
+
+public class CameraController : MonoBehaviour
+{
+    private Transform playersTransfrom;
+    void Start()
+    {
+        playersTransfrom =  PlayerManager.Instance.GetPlayersTransform();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        Debug.Log(playersTransfrom);
+        transform.position = new Vector3(playersTransfrom.position.x, playersTransfrom.position.y, -10);
+    }
+}

@@ -18,7 +18,40 @@ MonoBehaviour:
   - name: Rank 1
     projectilePrefab: {fileID: 7588590208296266261, guid: 54dfc9c391994ed4190ceedfe90edf13,
       type: 3}
-    speed: 13
-    cooldown: 100
+    speed: 10
+    cooldown: 2
     amount: 1
-    damage: 100
+    damage: 15
+    knockbackPower: 5
+  - name: Rank 2
+    projectilePrefab: {fileID: 7588590208296266261, guid: 54dfc9c391994ed4190ceedfe90edf13,
+      type: 3}
+    speed: 13
+    cooldown: 1.5
+    amount: 1
+    damage: 15
+    knockbackPower: 5
+  - name: Rank 3
+    projectilePrefab: {fileID: 7588590208296266261, guid: 54dfc9c391994ed4190ceedfe90edf13,
+      type: 3}
+    speed: 16
+    cooldown: 1.5
+    amount: 1
+    damage: 15
+    knockbackPower: 7
+  - name: Rank 4
+    projectilePrefab: {fileID: 7588590208296266261, guid: 54dfc9c391994ed4190ceedfe90edf13,
+      type: 3}
+    speed: 20
+    cooldown: 1
+    amount: 1
+    damage: 20
+    knockbackPower: 7
+  - name: Rank 5
+    projectilePrefab: {fileID: 1826926709015500744, guid: a932e2f40cd1ee94f981021155e14985,
+      type: 3}
+    speed: 5
+    cooldown: 3
+    amount: 1
+    damage: 49
+    knockbackPower: 15

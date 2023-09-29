@@ -7,14 +7,14 @@ using System;
 //Possibly should be changed to generic WeaponData with optional fields. Or should it ? O.o 
 public class RockData : ScriptableObject
 {
-    public event Action OnWeaponDataChanged;
+    public event Action onWeaponDataChanged;
     private void OnValidate()
     {
         for (int i = 0; i < rockRanks.Length; ++i)
         {
             rockRanks[i].name = "Rank " + (i + 1);
         }
-        OnWeaponDataChanged?.Invoke();
+        onWeaponDataChanged?.Invoke();
     }
 
     [Header("Rank independend settings")]
@@ -36,4 +36,3 @@ public class RockRank
     public float damage;
     public float knockbackPower;
 }
-

@@ -31,6 +31,10 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
     {
         return player;
     }
+    public Transform GetPlayersTransform()
+    {
+        return player.transform;
+    }
     public Vector3 GetCurrentPlayersPosition()
     {
         return player.transform.position;

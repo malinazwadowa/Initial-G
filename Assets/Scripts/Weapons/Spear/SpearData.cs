@@ -6,14 +6,14 @@ using System;
 //Possibly should be changed to generic WeaponData with optional fields. Or should it ? O.o 
 public class SpearData : ScriptableObject
 {
-    public event Action OnWeaponDataChanged;
+    public event Action onWeaponDataChanged;
     private void OnValidate()
     {
         for (int i = 0; i < spearRanks.Length; ++i)
         {
             spearRanks[i].name = "Rank " + (i + 1);
         }
-        OnWeaponDataChanged?.Invoke();
+        onWeaponDataChanged?.Invoke();
     }
 
     [Header("Rank independend settings")]
@@ -35,4 +35,3 @@ public class SpearRank
     public float damage;
     public float knockbackPower;
 }
-

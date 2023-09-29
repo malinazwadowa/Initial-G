@@ -14,8 +14,7 @@ public class Spear :  Weapon
         spearCurrentRankData = spearBaseData.spearRanks[currentRank];
         currentSpearProperties = new WeaponProperties();
         SetCurrentProperties();
-
-        spearBaseData.OnWeaponDataChanged += SetCurrentProperties;
+        spearBaseData.onWeaponDataChanged += SetCurrentProperties;
     }
 
     public override void SetCurrentProperties()

@@ -6,6 +6,7 @@ public class Player : MonoBehaviour, IWeaponWielder
     [SerializeField] public PlayerData playerData;
 
     private Transform weapon;
+    private CombatStats combatStats;
 
     private PlayerInputActions inputActions;
     private Animator animator;
@@ -13,26 +14,16 @@ public class Player : MonoBehaviour, IWeaponWielder
     private Rigidbody2D rigidBody;
 
     private HealthController healthController;
-
     private WeaponController weaponController;
 
     private PlayerMovementController movementController;
     private PlayerAnimationController animationController;
     private PlayerInputController inputController;
 
-
-
-
-    private CombatStats combatStats;
-
-
-
     private void Awake()
     {
-
         combatStats = new CombatStats(playerData.baseDamageModifier, playerData.baseWeaponSpeed, playerData.baseCooldownModifier);
         
-
         inputActions = new PlayerInputActions();
         animator = GetComponent<Animator>();
         spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
@@ -49,11 +40,7 @@ public class Player : MonoBehaviour, IWeaponWielder
         movementController.Init(playerData, rigidBody);
         animationController.Init(animator, movementController, playerData, spriteRenderers);
         inputController.Init(movementController, inputActions);
-
-
         weaponController.Init(this, combatStats);
-
-
     }
 
     private void Start()

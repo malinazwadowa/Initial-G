@@ -39,8 +39,8 @@ public class HedgehogProjectile : MonoBehaviour
 
     private void Spin()
     {
-        transform.Rotate(Vector3.forward, hedgehogProperties.speed * Time.deltaTime);
-        hedgehogsTransform.Rotate(Vector3.back, hedgehogProperties.speed * 3 * Time.deltaTime);
+        transform.Rotate(Vector3.forward, -hedgehogProperties.speed * Time.deltaTime);
+        hedgehogsTransform.Rotate(Vector3.back, -hedgehogProperties.speed * 3 * Time.deltaTime);
     }
 
     private void UpdatePosition()
