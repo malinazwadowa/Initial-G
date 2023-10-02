@@ -13,10 +13,4 @@ MonoBehaviour:
   m_Name: newEnemyManagerData
   m_EditorClassIdentifier: 
   levelDurationInMinutes: 3
-  enemyWaves:
-  - name: Wave 1
-    enemyNumbers:
-    - name: 
-      enemyPrefab: {fileID: 6197773327841160796, guid: 06df89f0c420942498a4f28087e26edf,
-        type: 3}
-      amount: 30
+  enemyWaves: []

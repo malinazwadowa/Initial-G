@@ -24,7 +24,7 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
 
     private void SpawnPlayer()
     {
-        player = Instantiate(playerPrefab, playerSpawnPosition);
+        player = Instantiate(playerPrefab, playerSpawnPosition.position, default);
     }
 
     public Player GetPlayer()
