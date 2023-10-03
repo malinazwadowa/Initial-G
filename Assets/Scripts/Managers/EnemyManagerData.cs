@@ -13,6 +13,7 @@ public class EnemyManagerData : ScriptableObject
     }
 
     [Header("Base Settings")]
+    public float spawnDistanceOffset;
     public float levelDurationInMinutes;
 
     [Header("Wave Settings")]

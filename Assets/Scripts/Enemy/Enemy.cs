@@ -9,14 +9,27 @@ public class Enemy : MonoBehaviour, IDamagable
     protected HealthController healthController;
     private bool isKnockedback;
 
+
+
+    private float pushForce = 5f;
+    public float raycastDistance = 1f;
+    public LayerMask enemilayer;
     public virtual void Init()
     {
         player = PlayerManager.Instance.GetPlayer();
+         
         healthController = GetComponent<HealthController>();
         healthController.Init(enemyData.maxHealth);
         isKnockedback = false;
     }
-
+    public virtual void Update()
+    {
+        if (!Utilities.IsObjectInView(1.2f, transform.position))
+        {
+            ObjectPooler.Instance.DeSpawnObject(enemyData.enemyPrefab, gameObject);
+        }
+    }
+  
     public void GetDamaged(float amount)
     {
         //Possibly armor logic. 
@@ -29,7 +42,6 @@ public class Enemy : MonoBehaviour, IDamagable
 
     public void GetKilled()
     {
-        //Prefab field from enemy data is... not that nice, might need figuring out.
         ObjectPooler.Instance.DeSpawnObject(enemyData.enemyPrefab, gameObject);
         StopAllCoroutines();
     }
@@ -38,8 +50,9 @@ public class Enemy : MonoBehaviour, IDamagable
     {
         if (!isKnockedback && gameObject.activeSelf)
         {
+            float powerSpeedCompensation = (enemyData.speed / 50) + 1;
             knockbackDirection.Normalize();
-            StartCoroutine(ApplyKnockback(power, knockbackDirection));
+            StartCoroutine(ApplyKnockback(power * powerSpeedCompensation, knockbackDirection));
             isKnockedback = true;
         }
     }
@@ -48,10 +61,11 @@ public class Enemy : MonoBehaviour, IDamagable
     {
         float timer = 0;
         float knockbackDuration = knockbackPower/16.7f;
-
+        
         while (timer < knockbackDuration)
         {
             float knockbackToApply = knockbackPower * Time.deltaTime;
+
             transform.position += knockbackDirection * knockbackToApply;
             timer += Time.deltaTime;
             yield return null;

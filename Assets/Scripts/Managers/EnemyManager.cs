@@ -13,16 +13,6 @@ public class EnemyManager : SingletonMonoBehaviour<EnemyManager>
 
     private float waveDuration;
 
-
-
-
-    //testing knockbacl=k
-    public float power;
-    float knockbackTimer;
-    bool shouldKnockback;
-    public float timeToKnockBack;
-    public GameObject flower;
-
     void Start()
     {
         waveDuration = (enemyManagerData.levelDurationInMinutes / enemyManagerData.enemyWaves.Length) * 60;
@@ -44,7 +34,7 @@ public class EnemyManager : SingletonMonoBehaviour<EnemyManager>
         {
             ManageWave();
         }
-
+        
         if (timer >= waveDuration && currentWave < enemyManagerData.enemyWaves.Length - 1)
         {
             currentWave++;
@@ -62,7 +52,7 @@ public class EnemyManager : SingletonMonoBehaviour<EnemyManager>
 
             if (ObjectPooler.Instance.CountOfActiveObjectsOfType(enemyType) < amountToKeepActive)
             {
-                GameObject newEnemy = ObjectPooler.Instance.SpawnObject(enemyType, GetRandomSpawnPositionOutsideOfCameraView(), transform.rotation);
+                GameObject newEnemy = ObjectPooler.Instance.SpawnObject(enemyType, Utilities.GetRandomSpawnPositionOutsideOfCameraView(enemyManagerData.spawnDistanceOffset), transform.rotation);
                 newEnemy.GetComponent<Enemy>().Init();
             }
         }
@@ -94,48 +84,7 @@ public class EnemyManager : SingletonMonoBehaviour<EnemyManager>
         }
         return enemiesToSpawn;
     }
-    public Vector3 GetRandomSpawnPositionOutsideOfCameraView()
-    {
-        float cameraHeight = Camera.main.orthographicSize;
-        float cameraWidth = Camera.main.orthographicSize * Camera.main.aspect;
-        float spawnOffset = 2;
-
-        Vector3 spawnPosition = Vector3.zero;
-        
-        //Sets random side.
-        int randomInt = Random.Range(1, 5);
-        switch (randomInt)
-        {
-            case 1:
-                spawnPosition = new Vector3(cameraWidth + spawnOffset, 0);
-                break;
-            case 2:
-                spawnPosition = new Vector3(-cameraWidth - spawnOffset, 0);
-                break;
-            case 3:
-                spawnPosition = new Vector3(0, cameraHeight + spawnOffset);
-                break;
-            case 4:
-                spawnPosition = new Vector3(0, -cameraHeight - spawnOffset);
-                break;
-            default:
-                Debug.Log("Failed to choose side to spawn");
-                break;
-        }
-
-        //Sets random position on chosen side.
-        if (spawnPosition.x == 0)
-        {
-            spawnPosition.x = Random.Range((-cameraWidth - spawnOffset), (cameraWidth + spawnOffset));
-        }
-        else
-        {
-            spawnPosition.y = Random.Range((-cameraHeight - spawnOffset), (cameraHeight + spawnOffset));
-        }
-        Vector3 test = spawnPosition + Camera.main.transform.position;
-
-        return spawnPosition + Camera.main.transform.position;
-    }
+    
     public void SpawnOnCall(GameObject enemyType, Vector2 position)
     {
         GameObject newEnemy = ObjectPooler.Instance.SpawnObject(enemyType, position, transform.rotation);

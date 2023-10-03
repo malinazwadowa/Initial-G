@@ -23,7 +23,7 @@ public class EnemyBoss : Enemy
     }
 
     // Update is called once per frame
-    void Update()
+    public override void Update()
     {
         timer += Time.deltaTime;
         if(timer > 5)
@@ -59,7 +59,7 @@ public class EnemyBoss : Enemy
         animator.SetBool("isWalking", true);
 
         
-        movementController.Init(agent, player);
+        //movementController.Init(agent, player);
     }
     IEnumerator DisableText()
     {
