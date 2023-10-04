@@ -16,10 +16,10 @@ MonoBehaviour:
   - name: Rank 1
     projectilePrefab: {fileID: 2540002873092309467, guid: 8696e6bee6de5dc4392d29679ff4d199,
       type: 3}
-    speed: 250
+    speed: 400
     cooldown: 0
     radius: 3
     duration: 2
-    amount: 6
+    amount: 7
     damage: 10
-    knockbackPower: 5
+    knockbackPower: 15

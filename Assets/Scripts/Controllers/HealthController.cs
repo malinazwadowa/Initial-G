@@ -16,7 +16,10 @@ public class HealthController : MonoBehaviour
     }
     public void AddCurrentHealth(float amount)
     {
-        currentHealth += amount;
+        if(currentHealth < maxHealth)
+        {
+            currentHealth += amount;
+        }
     }
     public void AddMaxHealth(float amount)
     {

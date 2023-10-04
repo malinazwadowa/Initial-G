@@ -1,23 +1,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-
 public class ObjectPooler : SingletonMonoBehaviour<ObjectPooler>
 {
     public ObjectPoolerSettings poolerSettings;
     private ObjectPoolerSettings poolerSettingsCopy;
-    
+
     private List<Pool> pools;
 
-    public Dictionary<GameObject, ObjectLists> poolDictionary;
+    public Dictionary<string, ObjectLists> poolDictionary;
 
 
     void Start()
     {
-        poolDictionary = new Dictionary<GameObject, ObjectLists>();
+        poolDictionary = new Dictionary<string, ObjectLists>();
 
-        if(poolerSettings != null)
+        if (poolerSettings != null)
         {
             poolerSettingsCopy = Instantiate(poolerSettings);
             pools = poolerSettingsCopy.pools;
@@ -26,7 +24,8 @@ public class ObjectPooler : SingletonMonoBehaviour<ObjectPooler>
             foreach (Pool pool in pools)
             {
                 FillOutPool(pool);
-                poolDictionary.Add(pool.objectType, pool.objectLists);
+                string key = pool.objectType.name.EndsWith("(Clone)") ? pool.objectType.name : pool.objectType.name + "(Clone)";
+                poolDictionary.Add(key, pool.objectLists);
             }
         }
         else
@@ -34,10 +33,12 @@ public class ObjectPooler : SingletonMonoBehaviour<ObjectPooler>
             pools = new List<Pool>();
         }
     }
-    
+
     public GameObject SpawnObject(GameObject objectType, Vector3 position, Quaternion rotation = default)
     {
-        if (!poolDictionary.ContainsKey(objectType))
+        string key = objectType.name.EndsWith("(Clone)") ? objectType.name : objectType.name + "(Clone)";
+
+        if (!poolDictionary.ContainsKey(key))
         {
             CreatePool(objectType);
             Debug.Log($"Pool for {objectType} created");
@@ -45,25 +46,25 @@ public class ObjectPooler : SingletonMonoBehaviour<ObjectPooler>
 
         GameObject objToSpawn = null;
 
-        if(poolDictionary[objectType].inactiveObjects.Count == 0)
+        if (poolDictionary[key].inactiveObjects.Count == 0)
         {
             objToSpawn = Instantiate(objectType);
             objToSpawn.SetActive(true);
-            poolDictionary[objectType].activeObjects.Add(objToSpawn);
-            
+            poolDictionary[key].activeObjects.Add(objToSpawn);
+
             pools.Find(p => p.objectType == objectType).size++;
             //Debug.Log($"Added additional object to the pool: {objectType}. Consider increasing predefined pool size.");
         }
 
-        if(poolDictionary[objectType].inactiveObjects.Count > 0)
+        if (poolDictionary[key].inactiveObjects.Count > 0)
         {
-            objToSpawn = poolDictionary[objectType].inactiveObjects[0];
-            poolDictionary[objectType].inactiveObjects.Remove(objToSpawn);
+            objToSpawn = poolDictionary[key].inactiveObjects[0];
+            poolDictionary[key].inactiveObjects.Remove(objToSpawn);
             objToSpawn.SetActive(true);
-            poolDictionary[objectType].activeObjects.Add(objToSpawn);
+            poolDictionary[key].activeObjects.Add(objToSpawn);
         }
 
-        pools.Find(p => p.objectType == objectType).activeObjectsCount = poolDictionary[objectType].activeObjects.Count;
+        pools.Find(p => p.objectType == objectType).activeObjectsCount = poolDictionary[key].activeObjects.Count;
         objToSpawn.transform.SetPositionAndRotation(position, rotation);
 
         return objToSpawn;
@@ -71,16 +72,17 @@ public class ObjectPooler : SingletonMonoBehaviour<ObjectPooler>
 
     public void DeSpawnObject(GameObject objectType, GameObject objectToDeSpawn)
     {
-        if (!poolDictionary.ContainsKey(objectType))
+        string key = objectType.name.EndsWith("(Clone)") ? objectType.name : objectType.name + "(Clone)";
+        if (!poolDictionary.ContainsKey(key))
         {
             Debug.Log($"Pool for {objectType} does't exist, cannot despawn the object.");
         }
 
-        if (poolDictionary[objectType].activeObjects.Contains(objectToDeSpawn))
+        if (poolDictionary[key].activeObjects.Contains(objectToDeSpawn))
         {
-            poolDictionary[objectType].activeObjects.Remove(objectToDeSpawn);
+            poolDictionary[key].activeObjects.Remove(objectToDeSpawn);
             objectToDeSpawn.SetActive(false);
-            poolDictionary[objectType].inactiveObjects.Add(objectToDeSpawn);
+            poolDictionary[key].inactiveObjects.Add(objectToDeSpawn);
         }
     }
 
@@ -88,11 +90,13 @@ public class ObjectPooler : SingletonMonoBehaviour<ObjectPooler>
     {
         Pool pool = new Pool();
 
+        string key = objectType.name.EndsWith("(Clone)") ? objectType.name : objectType.name + "(Clone)";
+
         pool.objectType = objectType;
         pool.size = size;
 
         pools.Add(pool);
-        poolDictionary.Add(pool.objectType, pool.objectLists);
+        poolDictionary.Add(key, pool.objectLists);
 
         if (size > 0)
         {
@@ -111,9 +115,11 @@ public class ObjectPooler : SingletonMonoBehaviour<ObjectPooler>
 
     public int CountOfActiveObjectsOfType(GameObject objectType)
     {
-        if(pools.Find(p => p.objectType == objectType) != null)
+        string key = objectType.name.EndsWith("(Clone)") ? objectType.name : objectType.name + "(Clone)";
+
+        if (pools.Find(p => p.objectType == objectType) != null)
         {
-            return poolDictionary[objectType].activeObjects.Count;
+            return poolDictionary[key].activeObjects.Count;
         }
         else
         {
@@ -122,29 +128,7 @@ public class ObjectPooler : SingletonMonoBehaviour<ObjectPooler>
     }
     public List<GameObject> GetAllActiveObjectsOfType(GameObject objectType)
     {
-        return poolDictionary[objectType].activeObjects;
-    }
-
-    //Not Used, but might be used / ehhh probl not. 
-    public GameObject GetObjectPrefab(GameObject objectType)
-    {
-        if (!poolDictionary.ContainsKey(objectType))
-        {
-            Debug.LogWarning($"Pool for {objectType.name} doesn't exist.");
-            return null;
-        }
-
-        return gameObject;
-    }
-
-    public T GetObjectComponent<T>(GameObject objectType) where T : Component
-    {
-        GameObject prefab = GetObjectPrefab(objectType);
-        if (prefab == null)
-        {
-            return null;
-        }
-
-        return prefab.GetComponent<T>();
+        string key = objectType.name.EndsWith("(Clone)") ? objectType.name : objectType.name + "(Clone)";
+        return poolDictionary[key].activeObjects;
     }
 }

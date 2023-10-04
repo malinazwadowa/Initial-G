@@ -135,8 +135,8 @@ MonoBehaviour:
   isInitialized: 0
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 0
-  detectionRadius: 0
+    m_Bits: 64
+  detectionRadius: 0.5
 --- !u!114 &6197773327841160789
 MonoBehaviour:
   m_ObjectHideFlags: 0

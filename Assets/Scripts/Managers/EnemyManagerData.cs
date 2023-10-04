@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "newEnemyManagerData", menuName = "Data/Enemy Manager/Base Data")]
