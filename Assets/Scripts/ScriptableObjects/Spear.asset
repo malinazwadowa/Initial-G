@@ -46,4 +46,4 @@ MonoBehaviour:
     cooldown: 2
     amount: 3
     damage: 1
-    knockbackPower: 5
+    knockbackPower: 8

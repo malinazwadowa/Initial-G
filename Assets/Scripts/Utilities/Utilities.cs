@@ -114,4 +114,26 @@ public static class Utilities
         return objectPosition.x > -offset && objectPosition.x < 1 + offset
             && objectPosition.y > -offset && objectPosition.y < 1 + offset;
     }
+
+    public static RandomItem GetRandomOutOfCollection(List<RandomItem> weightedCollection)
+    {
+        int totalWeight = 0;
+        foreach (var item in weightedCollection)
+        {
+            totalWeight += item.weight;
+        }
+
+        int randomValue = Random.Range(0, totalWeight);
+
+        foreach (var item in weightedCollection)
+        {
+            if (randomValue < item.weight)
+            {
+                return item;
+            }
+
+            randomValue -= item.weight;
+        }
+        return null;
+    }
 }

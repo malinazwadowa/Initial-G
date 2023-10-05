@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TreasureSpawner : MonoBehaviour
@@ -28,7 +25,7 @@ public class TreasureSpawner : MonoBehaviour
 
     private void SetRandomTimeOffset()
     {
-        randomTimeOffset = UnityEngine.Random.Range(-treasureSpawnerData.spawnTimeWindowSize / 2, treasureSpawnerData.spawnTimeWindowSize / 2);
+        randomTimeOffset = Random.Range(-treasureSpawnerData.spawnTimeWindowSize / 2, treasureSpawnerData.spawnTimeWindowSize / 2);
     }
 
     /*private IEnumerator SpawnTreasures()
@@ -37,7 +34,9 @@ public class TreasureSpawner : MonoBehaviour
 } */
     private void SpawnTreasure()
     {
-        Vector3 spawnPosition = Utilities.GetRandomSpawnPositionOutsideOfCameraView(2);
-        ObjectPooler.Instance.SpawnObject(treasureSpawnerData.treasures[0], spawnPosition);
+        Vector3 spawnPosition = Utilities.GetRandomSpawnPositionOutsideOfCameraView(-3);
+        //ObjectPooler.Instance.SpawnObject(treasureSpawnerData.treasures[0], spawnPosition);
+        GameObject treasureContainerToSpawn = Utilities.GetRandomOutOfCollection(treasureSpawnerData.treasureContainers).prefab;
+        ObjectPooler.Instance.SpawnObject(treasureContainerToSpawn, spawnPosition);
     }
 }

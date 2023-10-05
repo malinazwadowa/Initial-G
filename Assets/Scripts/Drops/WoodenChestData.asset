@@ -9,15 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c570f6cee6f0e145bbbdc1b8abf8053, type: 3}
-  m_Name: newTreasureSpawnerData
+  m_Script: {fileID: 11500000, guid: 41c872be82b2828499f3c0d6b01a657b, type: 3}
+  m_Name: WoodenChestData
   m_EditorClassIdentifier: 
-  spawnTimeInterval: 4
-  spawnTimeWindowSize: 1
-  treasureContainers:
-  - prefab: {fileID: 6741716628814361734, guid: e478b509018ec1b4abbe28280f2e278d,
+  health: 50
+  lootableItems:
+  - prefab: {fileID: 7003750512685819325, guid: 32929456915d33b4c88d65fca6ffda8c,
       type: 3}
     weight: 10
-  - prefab: {fileID: 8046103816036705780, guid: 455f3c53d9d46ee41a1b9f46a91e4703,
+  - prefab: {fileID: 6897662032327567190, guid: 19bb370e907ac1d49a3936570837baae,
       type: 3}
     weight: 3
