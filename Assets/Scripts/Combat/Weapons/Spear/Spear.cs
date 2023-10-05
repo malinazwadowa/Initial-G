@@ -48,7 +48,7 @@ public class Spear :  Weapon
         if(currentSpearProperties.amount > 0)
         {
             GameObject newSpear = ObjectPooler.Instance.SpawnObject(spearProperties.prefab, position);
-            newSpear.GetComponent<SpearProjectile>().Init(direction, spearProperties);
+            newSpear.GetComponent<SpearProjectile>().Init(direction, currentSpearProperties.damage, currentSpearProperties.speed, currentSpearProperties.knockbackPower);
         }
         
         //Spawning additional spears.
@@ -82,7 +82,7 @@ public class Spear :  Weapon
         yield return new WaitForSeconds(delay);
 
         GameObject nextSpear = ObjectPooler.Instance.SpawnObject(spearProperties.prefab, position);
-        nextSpear.GetComponent<SpearProjectile>().Init(direction, spearProperties);
+        nextSpear.GetComponent<SpearProjectile>().Init(direction, currentSpearProperties.damage, currentSpearProperties.speed, currentSpearProperties.knockbackPower);
     }
 
     public override void RankUp()

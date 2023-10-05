@@ -3,14 +3,15 @@ using UnityEngine;
 public class WeaponProperties
 {
     public float damage;
+    public float knockbackPower;
     public float speed;
     public float cooldown;
     public float radius;
     public float duration;
     public int amount;
-    public float knockbackPower;
     public GameObject prefab;
 }
+
 public class Weapon : MonoBehaviour
 {
     protected IWeaponWielder myWeaponWielder;

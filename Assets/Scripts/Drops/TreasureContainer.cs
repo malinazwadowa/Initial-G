@@ -23,7 +23,7 @@ public class TreasureContainer : MonoBehaviour, IDamagable
     public void GetKilled()
     {
         DropLoot();
-        ObjectPooler.Instance.DeSpawnObject(gameObject, gameObject);
+        ObjectPooler.Instance.DeSpawnObject(gameObject);
     }
 
     public void GetKnockbacked(float power, Vector3 knockbackDirection)

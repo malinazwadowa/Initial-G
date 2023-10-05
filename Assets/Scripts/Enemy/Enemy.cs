@@ -26,7 +26,7 @@ public class Enemy : MonoBehaviour, IDamagable
     {
         if (!Utilities.IsObjectInView(1.2f, transform.position))
         {
-            ObjectPooler.Instance.DeSpawnObject(enemyData.enemyPrefab, gameObject);
+            ObjectPooler.Instance.DeSpawnObject(gameObject);
         }
     }
   
@@ -42,7 +42,7 @@ public class Enemy : MonoBehaviour, IDamagable
 
     public void GetKilled()
     {
-        ObjectPooler.Instance.DeSpawnObject(enemyData.enemyPrefab, gameObject);
+        ObjectPooler.Instance.DeSpawnObject(gameObject);
         StopAllCoroutines();
     }
 

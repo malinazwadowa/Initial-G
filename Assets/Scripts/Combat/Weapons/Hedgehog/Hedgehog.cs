@@ -59,6 +59,7 @@ public class Hedgehog : Weapon
         }
 
     }
+
     public void SpawnHedgehogs()
     {
         int numberOfProjectiles = currentHedgehogProperties.amount;
@@ -68,10 +69,23 @@ public class Hedgehog : Weapon
             float angle = i * (360f / numberOfProjectiles);
             Quaternion rotation = Quaternion.Euler(0, 0, angle);
 
-            GameObject hog = ObjectPooler.Instance.SpawnObject(currentHedgehogProperties.prefab, myWeaponWielder.GetWeaponsPosition(), rotation);
-
-            hog.GetComponent<HedgehogProjectile>().Init(currentHedgehogProperties, myWeaponWielder.GetWeaponsTransform());
+            GameObject hedgehog = ObjectPooler.Instance.SpawnObject(currentHedgehogProperties.prefab, myWeaponWielder.GetWeaponsPosition(), rotation);
+            InitializeHedgehog(hedgehog);
         }
+    }
+
+    private void InitializeHedgehog(GameObject hedgehog)
+    {
+        //xd
+        var hedgehogProjectile = hedgehog.GetComponent<HedgehogProjectile>();
+        var weaponTransform = myWeaponWielder.GetWeaponsTransform();
+        var damage = currentHedgehogProperties.damage;
+        var speed = currentHedgehogProperties.speed;
+        var knockbackPower = currentHedgehogProperties.knockbackPower;
+        var radius = currentHedgehogProperties.radius;
+        var duration = currentHedgehogProperties.duration;
+
+        hedgehogProjectile.Init(weaponTransform, damage, speed, knockbackPower, radius, duration);
     }
 
     public override void RankUp()

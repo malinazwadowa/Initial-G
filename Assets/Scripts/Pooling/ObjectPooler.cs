@@ -70,12 +70,12 @@ public class ObjectPooler : SingletonMonoBehaviour<ObjectPooler>
         return objToSpawn;
     }
 
-    public void DeSpawnObject(GameObject objectType, GameObject objectToDeSpawn)
+    public void DeSpawnObject(GameObject objectToDeSpawn)
     {
-        string key = objectType.name.EndsWith("(Clone)") ? objectType.name : objectType.name + "(Clone)";
+        string key = objectToDeSpawn.name.EndsWith("(Clone)") ? objectToDeSpawn.name : objectToDeSpawn.name + "(Clone)";
         if (!poolDictionary.ContainsKey(key))
         {
-            Debug.Log($"Pool for {objectType} does't exist, cannot despawn the object.");
+            Debug.Log($"Pool for {objectToDeSpawn} does't exist, cannot despawn the object.");
         }
 
         if (poolDictionary[key].activeObjects.Contains(objectToDeSpawn))

@@ -5,19 +5,27 @@ public class HedgehogProjectile : MonoBehaviour
     [SerializeField] private Transform hedgehogsTransform;
     [SerializeField] private Collider2D hedgehogsCollider;
     
-    private WeaponProperties hedgehogProperties;
     private Transform weaponsTransform;
     private float timer;
 
-    public void Init(WeaponProperties hedgehogProperties, Transform weaponsTransform)
+    private float damage;
+    private float speed;
+    private float knockbackPower;
+    private float duration;
+
+    public void Init(Transform weaponsTransform, float damage, float speed, float knockbackPower, float radius, float duration)
     {
-        this.hedgehogProperties = hedgehogProperties;
+        this.damage = damage;
+        this.speed = speed;
+        this.knockbackPower = knockbackPower;
+        this.duration = duration;
+
         this.weaponsTransform = weaponsTransform;
 
         timer = 0;
         
-        hedgehogsTransform.localPosition = new Vector3(0, hedgehogProperties.radius, 0);
-        hedgehogsCollider.offset = new Vector2(0, hedgehogProperties.radius);
+        hedgehogsTransform.localPosition = new Vector3(0, radius, 0);
+        hedgehogsCollider.offset = new Vector2(0, radius);
     }
     
 
@@ -26,7 +34,7 @@ public class HedgehogProjectile : MonoBehaviour
         timer += Time.deltaTime;
         Spin();
         UpdatePosition();
-        if(timer > hedgehogProperties.duration)
+        if(timer > duration)
         {
             FinishSpinning();
         }
@@ -34,13 +42,13 @@ public class HedgehogProjectile : MonoBehaviour
 
     private void FinishSpinning()
     {
-        ObjectPooler.Instance.DeSpawnObject(hedgehogProperties.prefab, gameObject);
+        ObjectPooler.Instance.DeSpawnObject(gameObject);
     }
 
     private void Spin()
     {
-        transform.Rotate(Vector3.forward, -hedgehogProperties.speed * Time.deltaTime);
-        hedgehogsTransform.Rotate(Vector3.back, -hedgehogProperties.speed * 3 * Time.deltaTime);
+        transform.Rotate(Vector3.forward, -speed * Time.deltaTime);
+        hedgehogsTransform.Rotate(Vector3.back, -speed * 3 * Time.deltaTime);
     }
 
     private void UpdatePosition()
@@ -55,8 +63,8 @@ public class HedgehogProjectile : MonoBehaviour
         {
             Vector3 direction = collision.transform.position - weaponsTransform.position;
 
-            target.GetKnockbacked(hedgehogProperties.knockbackPower, direction);
-            target.GetDamaged(hedgehogProperties.damage);
+            target.GetKnockbacked(knockbackPower, direction);
+            target.GetDamaged(damage);
         }
     }
 }

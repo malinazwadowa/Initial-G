@@ -4,12 +4,16 @@ public class SpearProjectile : MonoBehaviour
 {
     
     private Vector3 movementDirection;
-    
-    private WeaponProperties spearProperties; 
-    public void Init(Vector3 movementDirection, WeaponProperties spearProperties)
+    private float damage;
+    private float speed;
+    private float knockbackPower;
+
+    public void Init(Vector3 movementDirection, float damage, float speed, float knockbackPower)
     {
         this.movementDirection = movementDirection;
-        this.spearProperties = spearProperties;
+        this.damage = damage;
+        this.speed = speed;
+        this.knockbackPower = knockbackPower;
 
         transform.right = movementDirection;
     }
@@ -20,13 +24,13 @@ public class SpearProjectile : MonoBehaviour
 
         if (!Utilities.IsObjectInView(0.2f, transform.position))
         {
-            ObjectPooler.Instance.DeSpawnObject(gameObject, gameObject);
+            ObjectPooler.Instance.DeSpawnObject(gameObject);
         }
     }
 
     private void MoveProjectile()
     {
-        Vector3 newPosition = transform.position + movementDirection * spearProperties.speed * Time.deltaTime;
+        Vector3 newPosition = transform.position + movementDirection * speed * Time.deltaTime;
         transform.position = newPosition;
     }
 
@@ -37,9 +41,9 @@ public class SpearProjectile : MonoBehaviour
         {
             Vector3 direction = collision.transform.position - transform.position;
 
-            target.GetDamaged(spearProperties.damage);
+            target.GetDamaged(damage);
             
-            target.GetKnockbacked(spearProperties.knockbackPower, direction.normalized);
+            target.GetKnockbacked(knockbackPower, direction.normalized);
         }
     }
 }

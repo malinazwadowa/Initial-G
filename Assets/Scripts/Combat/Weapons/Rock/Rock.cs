@@ -47,7 +47,7 @@ public class Rock : Weapon
         if (Utilities.GetClosestEnemy(spawnPosition) != null)
         {
             GameObject newRock = ObjectPooler.Instance.SpawnObject(currentRockProperties.prefab, spawnPosition);
-            newRock.GetComponent<RockProjectile>().Init(spawnPosition, Utilities.GetClosestEnemy(spawnPosition), currentRockProperties);
+            newRock.GetComponent<RockProjectile>().Init(spawnPosition, Utilities.GetClosestEnemy(spawnPosition), currentRockProperties.damage, currentRockProperties.speed, currentRockProperties.knockbackPower);
         }
         else
         {
