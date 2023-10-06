@@ -36,7 +36,7 @@ public class MapManager : SingletonMonoBehaviour<MapManager>
         InitalizeAdjacentChunks(startChunk);
 
 
-        playersTransform = PlayerManager.Instance.GetPlayersTransform();
+        playersTransform = PlayerManager.Instance.GetPlayersFeetTransform();
         cameraHeight = Camera.main.orthographicSize;
         cameraWidth = Camera.main.orthographicSize * Camera.main.aspect;
     }

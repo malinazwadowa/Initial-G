@@ -31,14 +31,32 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
     {
         return player;
     }
-    public Transform GetPlayersTransform()
+
+    public Transform GetPlayersFeetTransform()
     {
         return player.transform;
     }
+
+    public Transform GetPlayersCenterTransform()
+    {
+        Transform weaponTransform = player.transform.Find("Weapon");
+
+        if (weaponTransform != null)
+        {
+            return weaponTransform;
+        }
+        else
+        {
+            Debug.LogError("Player has no child object called Weapon");
+            return null;
+        }
+    }
+
     public Vector3 GetCurrentPlayersPosition()
     {
         return player.transform.position;
     }
+
     public Vector3 GetCurrentPlayerWeaponsPosition()
     {
         Transform weaponTransform = player.GetComponentInChildren<WeaponController>().transform;

@@ -4,7 +4,8 @@ public class Player : MonoBehaviour, IWeaponWielder
 {
     [SerializeField] public PlayerData playerData;
 
-    private Transform weapon;
+    //private Transform weapon;
+    private Transform center;
     private CombatStats combatStats;
 
     private PlayerInputActions inputActions;
@@ -29,7 +30,7 @@ public class Player : MonoBehaviour, IWeaponWielder
         rigidBody = GetComponent<Rigidbody2D>();
 
         healthController = GetComponent<HealthController>();
-        weaponController = GetComponentInChildren<WeaponController>();
+        weaponController = GetComponent<WeaponController>();
 
         movementController = GetComponent<PlayerMovementController>();
         animationController = GetComponent<PlayerAnimationController>();
@@ -44,7 +45,7 @@ public class Player : MonoBehaviour, IWeaponWielder
 
     private void Start()
     {
-        weapon = GetComponentInChildren<WeaponController>().transform;
+        center = transform.Find("Center");
     }
 
     private void Update()
@@ -63,13 +64,13 @@ public class Player : MonoBehaviour, IWeaponWielder
 
     }
 
-    public Vector3 GetWeaponsPosition()
+    public Vector3 GetCenterPosition()
     {
-        return weapon.transform.position;
+        return center.position;
     }
-    public Transform GetWeaponsTransform()
+    public Transform GetCenterTransform()
     {
-        return weapon.transform;
+        return center;
     }
 
     public Vector2 GetFacingDirection()
@@ -77,6 +78,16 @@ public class Player : MonoBehaviour, IWeaponWielder
         return movementController.LastNonZeroVelocity.normalized;
     }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {/*
+        Debug.Log("Kope wroga");
+        if (collision.TryGetComponent<Enemy>(out Enemy enemy))
+        {
+            Debug.Log("Kope wroga");
+            Vector3 direction = enemy.transform.position - weapon.transform.position;
+            enemy.GetKnockbacked(3, direction);
+        }*/
+    }
 
     public void TestCombatStats()
     {

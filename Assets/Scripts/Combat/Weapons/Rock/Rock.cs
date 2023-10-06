@@ -42,7 +42,7 @@ public class Rock : Weapon
 
     private void SpawnRocks()
     {
-        Vector3 spawnPosition = myWeaponWielder.GetWeaponsPosition() + GetRandomSpawnOffset(rockBaseData.spawnOffsetRangeForAdditionalRocks);
+        Vector3 spawnPosition = myWeaponWielder.GetCenterPosition() + GetRandomSpawnOffset(rockBaseData.spawnOffsetRangeForAdditionalRocks);
 
         if (Utilities.GetClosestEnemy(spawnPosition) != null)
         {

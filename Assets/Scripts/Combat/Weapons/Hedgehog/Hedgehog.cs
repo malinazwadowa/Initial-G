@@ -69,7 +69,7 @@ public class Hedgehog : Weapon
             float angle = i * (360f / numberOfProjectiles);
             Quaternion rotation = Quaternion.Euler(0, 0, angle);
 
-            GameObject hedgehog = ObjectPooler.Instance.SpawnObject(currentHedgehogProperties.prefab, myWeaponWielder.GetWeaponsPosition(), rotation);
+            GameObject hedgehog = ObjectPooler.Instance.SpawnObject(currentHedgehogProperties.prefab, myWeaponWielder.GetCenterPosition(), rotation);
             InitializeHedgehog(hedgehog);
         }
     }
@@ -78,7 +78,7 @@ public class Hedgehog : Weapon
     {
         //xd
         var hedgehogProjectile = hedgehog.GetComponent<HedgehogProjectile>();
-        var weaponTransform = myWeaponWielder.GetWeaponsTransform();
+        var weaponTransform = myWeaponWielder.GetCenterTransform();
         var damage = currentHedgehogProperties.damage;
         var speed = currentHedgehogProperties.speed;
         var knockbackPower = currentHedgehogProperties.knockbackPower;

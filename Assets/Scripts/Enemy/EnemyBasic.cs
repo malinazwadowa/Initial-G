@@ -30,7 +30,7 @@ public class EnemyBasic : Enemy
         agent.updateUpAxis = false; */
 
         movementController = GetComponent<EnemyMovementController>();
-        movementController.Init(player, enemyData.speed);
+        movementController.Init(enemyData.speed);
     }
     
 }

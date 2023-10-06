@@ -37,7 +37,7 @@ public class Spear :  Weapon
 
         if (timer > currentSpearProperties.cooldown)
         {
-            SpawnSpears(myWeaponWielder.GetWeaponsPosition(), myWeaponWielder.GetFacingDirection(), currentSpearProperties);
+            SpawnSpears(myWeaponWielder.GetCenterPosition(), myWeaponWielder.GetFacingDirection(), currentSpearProperties);
             timer = 0;
         }
     }

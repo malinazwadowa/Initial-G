@@ -7,21 +7,27 @@ public class EnemyMovementController : MonoBehaviour
     private Player player;
     private float speed;
 
+    private Transform playersTransform;
+
     public LayerMask enemyLayer;
+
     public float detectionRadius;
+    public float offsetDistanceFromPlayersPosition;
+
     private Vector3 avoidanceOffset;
 
-    public void Init(Player player, float speed)
+    public void Init(float speed)
     {
-        this.player = player;
         this.speed = speed;
         //isInitialized = true;
+        playersTransform = PlayerManager.Instance.GetPlayersCenterTransform();
     }
     private void Update()
     {
         AvoidOtherEnemies();
-        
-        transform.position += Time.deltaTime * speed * ((player.transform.position - transform.position).normalized + avoidanceOffset);
+        Vector3 directionTowardsPlayer = (playersTransform.position - transform.position).normalized;
+        Vector3 targetPosition = playersTransform.position - (directionTowardsPlayer * offsetDistanceFromPlayersPosition);
+        transform.position += Time.deltaTime * speed * ((targetPosition - transform.position).normalized + avoidanceOffset);
     }
     private void AvoidOtherEnemies()
     {
@@ -37,9 +43,7 @@ public class EnemyMovementController : MonoBehaviour
                 {
                     Vector3 direction = (transform.position - enemy.transform.position).normalized;
                     directions.Add(direction);
-
                 }
-
             }
 
             Vector3 sumOfDirections = Vector3.zero;
@@ -55,5 +59,5 @@ public class EnemyMovementController : MonoBehaviour
         {
             avoidanceOffset = Vector3.zero;
         }
-    } 
+    }
 }
