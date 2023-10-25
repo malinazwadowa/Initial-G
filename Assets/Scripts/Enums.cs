@@ -4,7 +4,7 @@ public enum StatType
     SpeedModifier,
     CooldownModifier
 }
-public enum PositionOnChunk
+public enum SectorOfChunk
 {
     LeftBottomCorner,
     LeftMiddle,

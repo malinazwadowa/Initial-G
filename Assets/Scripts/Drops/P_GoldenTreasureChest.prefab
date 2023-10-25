@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8046103816036705782}
   - component: {fileID: 8046103816036705783}
   - component: {fileID: 8046103816036705779}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: P_GoldenTreasureChest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8046103816423858745}
   - component: {fileID: 8046103816423858744}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

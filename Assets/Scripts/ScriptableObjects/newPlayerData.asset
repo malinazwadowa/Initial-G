@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: newPlayerData
   m_EditorClassIdentifier: 
   maxHealth: 100
-  baseSpeed: 300
+  baseSpeed: 500
   baseRunRatio: 1.5
   baseDamageModifier: 1
   baseCooldownModifier: 1

@@ -6,54 +6,65 @@ public class MapManager : SingletonMonoBehaviour<MapManager>
     public Transform grid;
     public GameObject mapPrefab;
     public Vector2 chunkSize;
-    public Queue<GameObject> availableMaps = new Queue<GameObject>();
+    [HideInInspector] public Queue<GameObject> availableMaps = new Queue<GameObject>();
 
-    private Vector2 startPosition = new Vector2(0,0);
-    
-    private Transform playersTransform;
-    private Vector3 playersRelativePosition;
+    private Vector2 positionOnMatrixOfInitialChunk = new Vector2(0, 0);
+    private Chunk currentChunk;
+    private Dictionary<Vector2, Chunk> chunks = new Dictionary<Vector2, Chunk>();
 
     private float cameraHeight;
     private float cameraWidth;
 
-    private PositionOnChunk lastPosition = PositionOnChunk.LeftBottomCorner;
-    private PositionOnChunk cachedLastPosition;
-    
-    private Chunk currentChunk;
-    private Dictionary<Vector2, Chunk> chunks = new Dictionary<Vector2, Chunk>();
+    private SectorOfChunk lastSector = SectorOfChunk.LeftBottomCorner;
+    private List<Vector2> offsetsOfNeededChunks;
+
+    private readonly List<Vector2> offsetsOfNeighboringChunks = new List<Vector2>
+    {
+        new Vector2(-1, -1),
+        new Vector2(-1, 0),
+        new Vector2(-1, 1),
+        new Vector2(0, -1),
+        new Vector2(0, 1),
+        new Vector2(1, -1),
+        new Vector2(1, 0),
+        new Vector2(1, 1)
+    };
 
 
     void Start()
     {
-        cachedLastPosition = lastPosition;
+        offsetsOfNeededChunks = new List<Vector2>();
+        cameraHeight = Camera.main.orthographicSize;
+        cameraWidth = Camera.main.orthographicSize * Camera.main.aspect;
+
         InstantiateMapPrefabs();
 
         Chunk startChunk = new Chunk();
-        startChunk.Initialize(startPosition, chunkSize);
+
+        startChunk.Initialize(positionOnMatrixOfInitialChunk, chunkSize);
+
         currentChunk = startChunk;
-        startChunk.Activate();
         chunks.Add(startChunk.positionOnMatrix, startChunk);
+        
         InitalizeAdjacentChunks(startChunk);
-
-
-        playersTransform = PlayerManager.Instance.GetPlayersFeetTransform();
-        cameraHeight = Camera.main.orthographicSize;
-        cameraWidth = Camera.main.orthographicSize * Camera.main.aspect;
+        
+        startChunk.Activate();
     }
 
     private void Update()
     {
-        playersRelativePosition = playersTransform.position - new Vector3(currentChunk.positionOnMatrix.x * chunkSize.x, currentChunk.positionOnMatrix.y * chunkSize.y, 0);
+        UpdateCurrentChunk();
 
-        GetPositionOnChunk();
-        CheckForChunkChange(playersRelativePosition);
+        SectorOfChunk currentSector = GetCurrentSectorOnChunk();
 
-        if (cachedLastPosition != lastPosition)
+        if (lastSector != currentSector)
         {
-            cachedLastPosition = lastPosition;
-            ActivateRelevantChunks();
+            lastSector = currentSector;
+            offsetsOfNeededChunks = GetOffsetsOfNeededChunks(currentSector);
+            UpdateActiveChunks(currentChunk, offsetsOfNeededChunks);
         }
     }
+
     private void InstantiateMapPrefabs()
     {
         for (int i = 0; i < 4; i++)
@@ -63,39 +74,43 @@ public class MapManager : SingletonMonoBehaviour<MapManager>
             availableMaps.Enqueue(map);
         }
     }
-    private void CheckForChunkChange(Vector3 playersRelativePosition)
+
+    private void UpdateCurrentChunk()
     {
+        Vector3 cameraRelativePosition = Camera.main.transform.position - new Vector3(chunkSize.x * currentChunk.positionOnMatrix.x, chunkSize.y * currentChunk.positionOnMatrix.y, 0);
         bool chunkChanged = false;
-        if (chunkChanged == false)
+        Vector2 offsetOfEnteredChunk = Vector2.zero;
+
+        if(chunkChanged == false)
         {
-            if (playersRelativePosition.x < 0)
+            if (cameraRelativePosition.x < 0)
             {
-                Vector2 positionOfNewChunk = currentChunk.positionOnMatrix + new Vector2(-1, 0);
-                currentChunk = chunks[positionOfNewChunk];
+                offsetOfEnteredChunk = new Vector2(-1, 0);
                 chunkChanged = true;
             }
-            if (playersRelativePosition.x > 150)
+            if (cameraRelativePosition.x > 150)
             {
-                Vector2 positionOfNewChunk = currentChunk.positionOnMatrix + new Vector2(1, 0);
-                currentChunk = chunks[positionOfNewChunk];
+                offsetOfEnteredChunk = new Vector2(1, 0);
                 chunkChanged = true;
             }
-            if (playersRelativePosition.y < 0)
+            if (cameraRelativePosition.y < 0)
             {
-                Vector2 positionOfNewChunk = currentChunk.positionOnMatrix + new Vector2(0, -1);
-                currentChunk = chunks[positionOfNewChunk];
+                offsetOfEnteredChunk = new Vector2(0, -1);
                 chunkChanged = true;
             }
-            if (playersRelativePosition.y > 100)
+            if (cameraRelativePosition.y > 100)
             {
-                Vector2 positionOfNewChunk = currentChunk.positionOnMatrix + new Vector2(0, 1);
-                currentChunk = chunks[positionOfNewChunk];
+                offsetOfEnteredChunk = new Vector2(0, 1);
                 chunkChanged = true;
             }
         }
 
         if (chunkChanged)
         {
+            chunkChanged = false;
+            Vector2 positionOnMatrixOfNewChunk = currentChunk.positionOnMatrix + offsetOfEnteredChunk;
+            currentChunk = chunks[positionOnMatrixOfNewChunk];
+            currentChunk.Activate();
             InitalizeAdjacentChunks(currentChunk);
         }
     }
@@ -117,51 +132,68 @@ public class MapManager : SingletonMonoBehaviour<MapManager>
             }
         }
     }
-    public void ActivateRelevantChunks()
+
+    public void UpdateActiveChunks(Chunk originChunk, List<Vector2> offsetsOfChunksToActivate)
     {
-        DeactivateAdjacentChunks(currentChunk);
-        PositionOnChunk positionOnChunk = GetPositionOnChunk();
+        foreach (Vector2 offset in offsetsOfNeighboringChunks)
+        {
+            if (!offsetsOfChunksToActivate.Contains(offset))
+            {
+                Vector2 position = originChunk.positionOnMatrix + offset;
+                chunks[position].Deactivate();
+            }
+        }
+
+        foreach (Vector2 offset in offsetsOfChunksToActivate)
+        {
+            Vector2 position = originChunk.positionOnMatrix + offset;
+            chunks[position].Activate();
+        }
+    }
+
+    private List<Vector2> GetOffsetsOfNeededChunks(SectorOfChunk positionOnChunk)
+    {
         List<Vector2> offsets = new List<Vector2>();
 
         switch (positionOnChunk)
         {
-            case PositionOnChunk.LeftBottomCorner:
+            case SectorOfChunk.LeftBottomCorner:
                 offsets.Add(new Vector2(-1, 0));
                 offsets.Add(new Vector2(-1, -1));
                 offsets.Add(new Vector2(0, -1));
                 break;
 
-            case PositionOnChunk.LeftMiddle:
+            case SectorOfChunk.LeftMiddle:
                 offsets.Add(new Vector2(-1, 0));
                 break;
 
-            case PositionOnChunk.LeftTopCorner:
+            case SectorOfChunk.LeftTopCorner:
                 offsets.Add(new Vector2(-1, 0));
                 offsets.Add(new Vector2(-1, 1));
                 offsets.Add(new Vector2(0, 1));
                 break;
 
-            case PositionOnChunk.RightBottomCorner:
+            case SectorOfChunk.RightBottomCorner:
                 offsets.Add(new Vector2(1, 0));
                 offsets.Add(new Vector2(1, -1));
                 offsets.Add(new Vector2(0, -1));
                 break;
 
-            case PositionOnChunk.RightMiddle:
+            case SectorOfChunk.RightMiddle:
                 offsets.Add(new Vector2(1, 0));
                 break;
 
-            case PositionOnChunk.RightTopCorner:
+            case SectorOfChunk.RightTopCorner:
                 offsets.Add(new Vector2(0, 1));
                 offsets.Add(new Vector2(1, 1));
                 offsets.Add(new Vector2(1, 0));
                 break;
 
-            case PositionOnChunk.MiddleTop:
+            case SectorOfChunk.MiddleTop:
                 offsets.Add(new Vector2(0, 1));
                 break;
 
-            case PositionOnChunk.MiddleBottom:
+            case SectorOfChunk.MiddleBottom:
                 offsets.Add(new Vector2(0, -1));
                 break;
 
@@ -169,12 +201,9 @@ public class MapManager : SingletonMonoBehaviour<MapManager>
                 break;
         }
 
-        foreach (Vector2 offset in offsets)
-        {
-            Vector2 positionOfRelevantChunk = currentChunk.positionOnMatrix + offset;
-            chunks[positionOfRelevantChunk].Activate();
-        }
+        return offsets;
     }
+    
     public void DeactivateAdjacentChunks(Chunk originChunk)
     {
         for (int i = -1; i < 2; i++)
@@ -192,60 +221,54 @@ public class MapManager : SingletonMonoBehaviour<MapManager>
         }
     }
 
-    private PositionOnChunk GetPositionOnChunk()
+    private SectorOfChunk GetCurrentSectorOnChunk()
     {
+        Vector3 cameraRelativePosition = Camera.main.transform.position - new Vector3(currentChunk.positionOnMatrix.x * chunkSize.x, currentChunk.positionOnMatrix.y * chunkSize.y, 0);
+
         //Left side
-        if (playersRelativePosition.x < cameraWidth * 1.5f)
+        if (cameraRelativePosition.x < cameraWidth * 1.5f)
         {
-            if (playersRelativePosition.y < cameraHeight * 1.5f)
+            if (cameraRelativePosition.y < cameraHeight * 1.5f)
             {
-                lastPosition = PositionOnChunk.LeftBottomCorner;
-                return PositionOnChunk.LeftBottomCorner;
+                return SectorOfChunk.LeftBottomCorner;
             }
-            if (playersRelativePosition.y > chunkSize.y - cameraHeight * 1.5f)
+            if (cameraRelativePosition.y > chunkSize.y - cameraHeight * 1.5f)
             {
-                lastPosition = PositionOnChunk.LeftTopCorner;
-                return PositionOnChunk.LeftTopCorner;
+                return SectorOfChunk.LeftTopCorner;
             }
-            if (playersRelativePosition.y >= cameraHeight * 1.5f && playersRelativePosition.y <= chunkSize.y - cameraHeight * 1.5f)
+            if (cameraRelativePosition.y >= cameraHeight * 1.5f && cameraRelativePosition.y <= chunkSize.y - cameraHeight * 1.5f)
             {
-                lastPosition = PositionOnChunk.LeftMiddle;
-                return PositionOnChunk.LeftMiddle;
+                return SectorOfChunk.LeftMiddle;
             }
         }
         //Right side
-        if (playersRelativePosition.x > chunkSize.x - cameraWidth * 1.5f)
+        if (cameraRelativePosition.x > chunkSize.x - cameraWidth * 1.5f)
         {
-            if (playersRelativePosition.y < cameraHeight * 1.5f)
+            if (cameraRelativePosition.y < cameraHeight * 1.5f)
             {
-                lastPosition = PositionOnChunk.RightBottomCorner;
-                return PositionOnChunk.RightBottomCorner;
+                return SectorOfChunk.RightBottomCorner;
             }
-            if (playersRelativePosition.y > chunkSize.y - cameraHeight * 1.5f)
+            if (cameraRelativePosition.y > chunkSize.y - cameraHeight * 1.5f)
             {
-                lastPosition = PositionOnChunk.RightTopCorner;
-                return PositionOnChunk.RightTopCorner;
+                return SectorOfChunk.RightTopCorner;
             }
-            if (playersRelativePosition.y >= cameraHeight * 1.5f && playersRelativePosition.y <= chunkSize.y - cameraHeight * 1.5f)
+            if (cameraRelativePosition.y >= cameraHeight * 1.5f && cameraRelativePosition.y <= chunkSize.y - cameraHeight * 1.5f)
             {
-                lastPosition = PositionOnChunk.RightMiddle;
-                return PositionOnChunk.RightMiddle;
+                return SectorOfChunk.RightMiddle;
             }
         }
         //Middle
-        if (playersRelativePosition.x >= cameraWidth * 1.5f && playersRelativePosition.x <= chunkSize.x - cameraWidth * 1.5f)
+        if (cameraRelativePosition.x >= cameraWidth * 1.5f && cameraRelativePosition.x <= chunkSize.x - cameraWidth * 1.5f)
         {
-            if (playersRelativePosition.y < cameraHeight * 1.5f)
+            if (cameraRelativePosition.y < cameraHeight * 1.5f)
             {
-                lastPosition = PositionOnChunk.MiddleBottom;
-                return PositionOnChunk.MiddleBottom;
+                return SectorOfChunk.MiddleBottom;
             }
-            if (playersRelativePosition.y > chunkSize.y - cameraHeight * 1.5f)
+            if (cameraRelativePosition.y > chunkSize.y - cameraHeight * 1.5f)
             {
-                lastPosition = PositionOnChunk.MiddleTop;
-                return PositionOnChunk.MiddleTop;
+                return SectorOfChunk.MiddleTop;
             }
         }
-        return lastPosition;
+        return lastSector;
     }
 }

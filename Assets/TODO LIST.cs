@@ -4,7 +4,8 @@
  *       - the naming Properties sucks, think of better one. its related to projectile/collision/impact 
    >>>> kinda fixed.. but still dont like it that much. projectiles only get what they need but WeaponProperties is still in use name makes sense
 
- * - 
  * - check if preloading enemydata for pooler works
- * - 
+ * - update weapon collisions
+ * 
+ * - !! fix chunking logic, keep relevant chunks active. 
  */

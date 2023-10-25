@@ -20,6 +20,6 @@ MonoBehaviour:
     cooldown: 0
     radius: 3
     duration: 2
-    amount: 0
+    amount: 3
     damage: 10
     knockbackPower: 5

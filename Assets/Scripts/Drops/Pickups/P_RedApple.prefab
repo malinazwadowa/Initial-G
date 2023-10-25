@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5630398171682772320}
   - component: {fileID: 2659142445677598235}
   - component: {fileID: 7365698954235061150}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: P_RedApple
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4913249354179062793}
   - component: {fileID: 8114491642777151819}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

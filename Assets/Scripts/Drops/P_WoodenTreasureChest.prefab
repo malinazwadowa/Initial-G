@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6741716628814361732}
   - component: {fileID: 6741716628814361733}
   - component: {fileID: 6741716628814361729}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: P_WoodenTreasureChest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6741716629199090507}
   - component: {fileID: 6741716629199090506}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

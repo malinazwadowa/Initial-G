@@ -10,7 +10,7 @@ public class PickUpItem : MonoBehaviour
         if(player != null)
         {
             pickUpType.PickUp(collision.gameObject);
-            Destroy(gameObject);
+            ObjectPooler.Instance.DeSpawnObject(gameObject);
         }
         
     }
