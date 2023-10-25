@@ -6,9 +6,9 @@ using UnityEngine;
 public class Pool
 {
     [HideInInspector] public string name;
-    public GameObject objectType;
+    public GameObject objectPrefab;
     public int size;
-    public int activeObjectsCount;
+    [HideInInspector] public int activeObjectCount;
     [HideInInspector] public ObjectLists objectLists = new ObjectLists();
 }
 public class ObjectLists

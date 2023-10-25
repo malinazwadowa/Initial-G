@@ -10,7 +10,7 @@ public class ObjectPoolerSettings : ScriptableObject
     {
         for (int i = 0; i < pools.Count; ++i)
         {
-            pools[i].name = pools[i].objectType.ToString() + " pool";
+            pools[i].name = pools[i].objectPrefab.ToString() + " pool";
         }
     }
   
