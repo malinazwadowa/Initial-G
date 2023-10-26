@@ -8,6 +8,6 @@ public class TreasureSpawnerData : ScriptableObject
     public float spawnTimeInterval;
     public float spawnTimeWindowSize;
 
-    public List<RandomItem> treasureContainers;
+    public List<ObjectWithWeight> treasureContainers;
 }
 

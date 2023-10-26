@@ -2,5 +2,5 @@ using UnityEngine;
 
 public abstract class PickUpableItem : ScriptableObject
 {
-    public abstract void PickUp(GameObject collector);
+    public abstract void OnPickUp(GameObject collector);
 }

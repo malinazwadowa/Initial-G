@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class TreasureContainer : MonoBehaviour, IDamagable
 {
@@ -22,7 +24,7 @@ public class TreasureContainer : MonoBehaviour, IDamagable
 
     public void GetKilled()
     {
-        DropLoot();
+        DropLoot(containerData.lootTable);
         ObjectPooler.Instance.DeSpawnObject(gameObject);
     }
 
@@ -31,25 +33,8 @@ public class TreasureContainer : MonoBehaviour, IDamagable
         
     }
 
-    public void DropLoot()
+    public void DropLoot(List<ObjectWithWeight> lootTable)
     {
-        int totalWeight = 0;
-        foreach (var item in containerData.lootableItems)
-        {
-            totalWeight += item.weight;
-        }
-
-        int randomValue = Random.Range(0, totalWeight);
-
-        foreach (var item in containerData.lootableItems)
-        {
-            if (randomValue < item.weight)
-            {
-                ObjectPooler.Instance.SpawnObject(item.prefab, transform.position);
-                return;
-            }
-
-            randomValue -= item.weight;
-        }
+        ObjectPooler.Instance.SpawnObject(Utilities.GetRandomOutOfCollection(lootTable).prefab, transform.position);
     }
 }

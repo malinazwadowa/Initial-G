@@ -9,6 +9,6 @@ public class TreasureContainerData : ScriptableObject
     public float health;
 
     [Header("Loot Settings")]
-    public List<RandomItem> lootableItems;
+    public List<ObjectWithWeight> lootTable;
 }
 

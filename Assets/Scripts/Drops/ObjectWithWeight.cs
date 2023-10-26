@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 [Serializable]
-public class RandomItem
+public class ObjectWithWeight
 {
     public GameObject prefab;
     public int weight;

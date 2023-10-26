@@ -30,11 +30,7 @@ public static class Utilities
         }
         return indexOfMin;
     }
-    // Im thinking of making a list of all active enemies since I will have spawn manager anyway,
-    // then it might be better to just go through the list of all active enemies and pick the closes one instead of checking are around player.
-    //I guess, to be determined. Probly not since the list would be long with logic to particion it and here we can scan small area around player which should not be that heavy.
-    // to be moved to reasonable spot, most likely enemy manager
-
+    
     public static UnityEngine.Transform GetClosestEnemy(Vector3 position)
     {
         List<Collider2D> enemiesFound = new List<Collider2D>();
@@ -115,7 +111,7 @@ public static class Utilities
             && objectPosition.y > -offset && objectPosition.y < 1 + offset;
     }
 
-    public static RandomItem GetRandomOutOfCollection(List<RandomItem> weightedCollection)
+    public static ObjectWithWeight GetRandomOutOfCollection(List<ObjectWithWeight> weightedCollection)
     {
         int totalWeight = 0;
         foreach (var item in weightedCollection)

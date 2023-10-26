@@ -9,7 +9,7 @@ public class PickUpItem : MonoBehaviour
         //Debug.Log("picknalem object, teraz efekt oraz pooling go ");
         if(player != null)
         {
-            pickUpType.PickUp(collision.gameObject);
+            pickUpType.OnPickUp(collision.gameObject);
             ObjectPooler.Instance.DeSpawnObject(gameObject);
         }
         
