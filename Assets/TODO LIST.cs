@@ -7,5 +7,11 @@
  * - check if preloading enemydata for pooler works
  * - update weapon collisions
  * 
- * - !! fix chunking logic, keep relevant chunks active. 
+ * 
+ * 
+ * NOTES:
+ * - //GetClosestEnemy(Vector3 position) Could be replaced with holding list of active enemies to avoid scanning around player
+ * 
+ * 
+ * 
  */

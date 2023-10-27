@@ -4,7 +4,6 @@ public class Player : MonoBehaviour, IWeaponWielder
 {
     [SerializeField] public PlayerData playerData;
 
-    //private Transform weapon;
     private Transform center;
     private CombatStats combatStats;
 
@@ -15,6 +14,7 @@ public class Player : MonoBehaviour, IWeaponWielder
 
     private HealthController healthController;
     private WeaponController weaponController;
+    private ExperienceController experienceController;
 
     private PlayerMovementController movementController;
     private PlayerAnimationController animationController;
@@ -35,7 +35,9 @@ public class Player : MonoBehaviour, IWeaponWielder
         movementController = GetComponent<PlayerMovementController>();
         animationController = GetComponent<PlayerAnimationController>();
         inputController = GetComponent<PlayerInputController>();
+        experienceController = GetComponent<ExperienceController>();
 
+        experienceController.Init();
         healthController.Init(playerData.maxHealth);
         movementController.Init(playerData, rigidBody);
         animationController.Init(animator, movementController, playerData, spriteRenderers);
