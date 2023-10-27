@@ -1,12 +1,12 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "newPickUpItemData", menuName = "PickUp Items/Exp Orb/Base Data")] 
+[CreateAssetMenu(fileName = "newPickUpItemData", menuName = "PickUp Items/Exp Pickup/Base Data")] 
 public class ExperiencePickUp : PickUpableItem
 {
-    public float expAmount;
+    public int expAmount;
     public override void OnPickUp(GameObject collector)
     {
-       //give exp logic 
+        collector.GetComponent<ExperienceController>().AddExperience(expAmount);
     }
 
 }

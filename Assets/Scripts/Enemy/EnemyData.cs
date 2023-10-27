@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "newEnemyData", menuName = "Data/Enemy Data/Base Data")]
 public class EnemyData : ScriptableObject
 {
+    public int tier;
     public float speed;
 
     [Header("Health")]

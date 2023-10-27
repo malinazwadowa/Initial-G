@@ -44,6 +44,7 @@ public class Enemy : MonoBehaviour, IDamagable
     {
         ObjectPooler.Instance.DeSpawnObject(gameObject);
         StopAllCoroutines();
+        LootManager.Instance.DropLoot(enemyData.tier, transform.position);
     }
 
     public void GetKnockbacked(float power, Vector3 knockbackDirection)

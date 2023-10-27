@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 02c4376a433e91b44b753e4c47f35551, type: 3}
-  m_Name: DefaultExpOrb
+  m_Name: LargeExpPickup
   m_EditorClassIdentifier: 
-  expAmount: 10
+  expAmount: 100

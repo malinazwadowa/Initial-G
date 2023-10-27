@@ -9,10 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d892964bef6d0cf4eb62f8e1394afc26, type: 3}
-  m_Name: BaseEnemyData
+  m_Script: {fileID: 11500000, guid: 02c4376a433e91b44b753e4c47f35551, type: 3}
+  m_Name: MediumExpPickup
   m_EditorClassIdentifier: 
-  tier: 1
-  speed: 4
-  maxHealth: 50
-  armor: 4
+  expAmount: 50
