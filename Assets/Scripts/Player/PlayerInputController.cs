@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,6 +11,8 @@ public class PlayerInputController : MonoBehaviour
 
     private bool movementInputEnabled = true;
 
+    public static event Action OnPausePressed;
+
     public void Init(PlayerMovementController playerMovementController, PlayerInputActions playerInputActions)
     {
         this.playerMovementController = playerMovementController;
@@ -19,6 +22,7 @@ public class PlayerInputController : MonoBehaviour
     private void Update()
     {
         HandleRunning();
+        HandlePause();
     }
 
     private void FixedUpdate()
@@ -52,6 +56,14 @@ public class PlayerInputController : MonoBehaviour
         if (!movementInputEnabled) { return; }
 
         playerMovementController.SetRun(inputActions.PlayerMovement.Run.IsPressed());
+    }
+
+    public void HandlePause()
+    {
+        if (inputActions.PlayerMovement.Pause.WasPerformedThisFrame())
+        {
+            OnPausePressed?.Invoke();
+        }
     }
 
     private void HandleAttackInput()
