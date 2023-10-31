@@ -4,15 +4,19 @@ public class HealthController : MonoBehaviour
 {
     private float currentHealth;
     private float maxHealth;
-    
-    public void Init(float maxHealth)
+
+    private HealthBarUI healthBar;
+
+    public void Init(float maxHealth, HealthBarUI healthBar = null)
     {
         this.maxHealth = maxHealth;
         currentHealth = maxHealth;
+        this.healthBar = healthBar;
     }
     public void SubstractCurrentHealth(float amount)
     {
         currentHealth -= amount;
+        UpdateHealthBar();
     }
     public void AddCurrentHealth(float amount)
     {
@@ -20,10 +24,12 @@ public class HealthController : MonoBehaviour
         {
             currentHealth += amount;
         }
+        UpdateHealthBar();
     }
     public void AddMaxHealth(float amount)
     {
         maxHealth += amount;
+        UpdateHealthBar();
     }
     public float CurrentHealth()
     {
@@ -34,4 +40,11 @@ public class HealthController : MonoBehaviour
         return maxHealth;
     }
 
+    private void UpdateHealthBar()
+    {
+        if (healthBar != null)
+        {
+            healthBar.UpdateHealthBar(currentHealth, maxHealth);
+        }
+    }
 }

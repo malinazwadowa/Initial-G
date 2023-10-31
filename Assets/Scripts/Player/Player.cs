@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Player : MonoBehaviour, IWeaponWielder
+public class Player : MonoBehaviour, IWeaponWielder, IDamagable
 {
     [SerializeField] public PlayerData playerData;
 
@@ -13,7 +13,7 @@ public class Player : MonoBehaviour, IWeaponWielder
     private Rigidbody2D rigidBody;
 
     private HealthController healthController;
-    private WeaponController weaponController;
+    [HideInInspector] public WeaponController weaponController;
     private ExperienceController experienceController;
 
     private PlayerMovementController movementController;
@@ -29,6 +29,7 @@ public class Player : MonoBehaviour, IWeaponWielder
         spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
         rigidBody = GetComponent<Rigidbody2D>();
 
+        
         healthController = GetComponent<HealthController>();
         weaponController = GetComponent<WeaponController>();
 
@@ -37,8 +38,12 @@ public class Player : MonoBehaviour, IWeaponWielder
         inputController = GetComponent<PlayerInputController>();
         experienceController = GetComponent<ExperienceController>();
 
-        experienceController.Init();
-        healthController.Init(playerData.maxHealth);
+
+
+        experienceController.Init(FindAnyObjectByType<ExpBarUI>());
+        healthController.Init(playerData.maxHealth, FindAnyObjectByType<HealthBarUI>());
+
+
         movementController.Init(playerData, rigidBody);
         animationController.Init(animator, movementController, playerData, spriteRenderers);
         inputController.Init(movementController, inputActions);
@@ -48,6 +53,7 @@ public class Player : MonoBehaviour, IWeaponWielder
     private void Start()
     {
         center = transform.Find("Center");
+        
     }
 
     private void Update()
@@ -98,5 +104,24 @@ public class Player : MonoBehaviour, IWeaponWielder
 
         combatStats.UpdateCombatStat(StatType.DamageModifier, 1);
 
+    }
+
+    public void GetDamaged(float amount)
+    {
+        healthController.SubstractCurrentHealth(amount);
+        if(healthController.CurrentHealth() <= 0)
+        {
+            GetKilled();
+        }
+    }
+
+    public void GetKilled()
+    {
+        
+    }
+
+    public void GetKnockbacked(float power, Vector3 knockbackDirection)
+    {
+        throw new System.NotImplementedException();
     }
 }
