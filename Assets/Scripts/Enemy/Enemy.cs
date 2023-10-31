@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -14,6 +15,9 @@ public class Enemy : MonoBehaviour, IDamagable
     private float pushForce = 5f;
     public float raycastDistance = 1f;
     public LayerMask enemilayer;
+
+    public static event Action OnEnemyKilled;
+
     public virtual void Init()
     {
         player = PlayerManager.Instance.GetPlayer();
@@ -45,6 +49,7 @@ public class Enemy : MonoBehaviour, IDamagable
         ObjectPooler.Instance.DeSpawnObject(gameObject);
         StopAllCoroutines();
         LootManager.Instance.DropLoot(enemyData.tier, transform.position);
+        OnEnemyKilled?.Invoke();
     }
 
     public void GetKnockbacked(float power, Vector3 knockbackDirection)

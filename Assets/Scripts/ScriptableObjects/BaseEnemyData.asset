@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: BaseEnemyData
   m_EditorClassIdentifier: 
   tier: 1
-  speed: 4
+  speed: 3
   maxHealth: 50
   armor: 4
