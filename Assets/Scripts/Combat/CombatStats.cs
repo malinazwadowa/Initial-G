@@ -17,6 +17,7 @@ public class CombatStats
     public CombatStats() : this(1.0f, 1.0f, 1.0f)
     {
     }
+
     public void UpdateCombatStat(StatType type, float additionalValue)
     {
         switch (type)

@@ -9,7 +9,7 @@ public class WeaponController : MonoBehaviour
 
     private IWeaponWielder myWeaponWielder;
 
-    private List<Weapon> equippedWeapons = new List<Weapon>();
+    [HideInInspector] public List<Weapon> equippedWeapons = new List<Weapon>();
 
     private CombatStats combatStats;
 

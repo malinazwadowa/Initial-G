@@ -28,6 +28,10 @@ public class Weapon : MonoBehaviour
 
         combatStats.OnCombatStatsChanged += SetCurrentProperties;
     }
+    private void OnDisable()
+    {
+        combatStats.OnCombatStatsChanged -= SetCurrentProperties;
+    }
 
     public virtual void WeaponTick() 
     {

@@ -8,7 +8,7 @@ public class Spear :  Weapon
     private WeaponProperties currentSpearProperties;
     
     private float timer = 2;
-    
+
     public void Start()
     {
         spearCurrentRankData = spearBaseData.spearRanks[currentRank];
