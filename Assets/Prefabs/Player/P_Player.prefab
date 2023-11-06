@@ -267,6 +267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: 81f336aef82e81e45bb5bc507ace5a85, type: 2}
+  weaponController: {fileID: 0}
 --- !u!114 &409131294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -333,6 +334,7 @@ MonoBehaviour:
   - {fileID: 8923503329484286133, guid: 039119011dc11b7499859cf33785b51d, type: 3}
   - {fileID: 6554547693428024977, guid: 34efbbefda69e6f4abd2a06183a2c3f6, type: 3}
   - {fileID: 3887739600524060785, guid: 2bab34fbbb0295742b2aa20ec8323523, type: 3}
+  equippedWeapons: []
 --- !u!114 &-7073341481528486003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -345,6 +347,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0483ff5a4b8bede468a288b7538bfa22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponUpgradeWindow: {fileID: 172063369885548754, guid: 462ccbbc35042a04d987c1ccd91ecf69,
+    type: 3}
+  OnLevelUp:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 172063369885548754, guid: 462ccbbc35042a04d987c1ccd91ecf69,
+          type: 3}
+        m_TargetAssemblyTypeName: MenuUI, Assembly-CSharp
+        m_MethodName: Open
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1380912780134836596
 GameObject:
   m_ObjectHideFlags: 0
@@ -530,6 +550,7 @@ MonoBehaviour:
   - {fileID: 8923503329484286133, guid: 039119011dc11b7499859cf33785b51d, type: 3}
   - {fileID: 6554547693428024977, guid: 34efbbefda69e6f4abd2a06183a2c3f6, type: 3}
   - {fileID: 3887739600524060785, guid: 2bab34fbbb0295742b2aa20ec8323523, type: 3}
+  equippedWeapons: []
 --- !u!1 &1380912780380840165
 GameObject:
   m_ObjectHideFlags: 0

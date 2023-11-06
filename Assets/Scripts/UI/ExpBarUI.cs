@@ -3,9 +3,9 @@ using UnityEngine.UI;
 
 public class ExpBarUI : MonoBehaviour
 {
-    public Slider slider;
+    public Image fillImage;
     public void UpdateExpBar(float currentExp, float maxExp)
     {
-        slider.value = currentExp / maxExp;
+        fillImage.fillAmount = currentExp / maxExp;
     }
 }

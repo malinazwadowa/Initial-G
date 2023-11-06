@@ -41,7 +41,7 @@ public class Player : MonoBehaviour, IWeaponWielder, IDamagable
 
 
         experienceController.Init(FindAnyObjectByType<ExpBarUI>());
-        healthController.Init(playerData.maxHealth, FindAnyObjectByType<HealthBarUI>());
+        healthController.Init(playerData.maxHealth);
 
 
         movementController.Init(playerData, rigidBody);
@@ -109,7 +109,7 @@ public class Player : MonoBehaviour, IWeaponWielder, IDamagable
     public void GetDamaged(float amount)
     {
         healthController.SubstractCurrentHealth(amount);
-        if(healthController.CurrentHealth() <= 0)
+        if(healthController.GetCurrentHealth() <= 0)
         {
             GetKilled();
         }

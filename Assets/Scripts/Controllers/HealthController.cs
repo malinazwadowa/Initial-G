@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class HealthController : MonoBehaviour
@@ -5,46 +6,47 @@ public class HealthController : MonoBehaviour
     private float currentHealth;
     private float maxHealth;
 
-    private HealthBarUI healthBar;
+    public Action OnHealthChanged;
 
-    public void Init(float maxHealth, HealthBarUI healthBar = null)
+    public void Init(float maxHealth)
     {
         this.maxHealth = maxHealth;
         currentHealth = maxHealth;
-        this.healthBar = healthBar;
     }
+
     public void SubstractCurrentHealth(float amount)
     {
         currentHealth -= amount;
-        UpdateHealthBar();
+        OnHealthChanged?.Invoke();
     }
+
     public void AddCurrentHealth(float amount)
     {
         if(currentHealth < maxHealth)
         {
             currentHealth += amount;
         }
-        UpdateHealthBar();
+        OnHealthChanged?.Invoke();
     }
+
     public void AddMaxHealth(float amount)
     {
         maxHealth += amount;
-        UpdateHealthBar();
+        OnHealthChanged?.Invoke();
     }
-    public float CurrentHealth()
+
+    public float GetCurrentHealth()
     {
         return currentHealth;
     }
-    public float CurrentMaxHealth()
+
+    public float GetCurrentMaxHealth()
     {
         return maxHealth;
     }
 
-    private void UpdateHealthBar()
+    public float GetCurrentHealthNormalized()
     {
-        if (healthBar != null)
-        {
-            healthBar.UpdateHealthBar(currentHealth, maxHealth);
-        }
+        return currentHealth / maxHealth;
     }
 }

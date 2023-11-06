@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ExperienceController : MonoBehaviour
 {
@@ -8,7 +9,11 @@ public class ExperienceController : MonoBehaviour
     private float maxExpForCurrentLevel;
     private ExpBarUI expBar;
 
-    public static event Action OnPlayerLevelUp;
+    public event Action OnPlayerLevelUp;
+
+    //public MenuUI weaponUpgradeWindow;
+    //private UiManager uiManager;
+    //[SerializeField] private event Action OnLevelUp;
 
     public void Init(ExpBarUI expBar)
     {
@@ -35,6 +40,8 @@ public class ExperienceController : MonoBehaviour
         currentLevel++;
         maxExpForCurrentLevel *= 1.5f;
         UpdateExpBar();
+        //OnLevelUp?.Invoke();
+        //PlayerManager.Instance.PlayerHasLeveledUp();
         OnPlayerLevelUp?.Invoke(); //Will require ID of sort as argument later.
         //Debug.Log($"Leveled up! Current level is:{currentLevel}. Exp needed for next level:{maxExpForCurrentLevel}");
 
