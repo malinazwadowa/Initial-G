@@ -1,76 +1,31 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public class PauseMenuUI : MonoBehaviour
 {
-    private bool isPaused;
-    private CanvasGroup pauseMenu;
-    
-    public CanvasGroup mainMenu;
-    public CanvasGroup settingsMenu;
+    [SerializeField] private MenuUI myMenu;
+    PlayerInputController inputController;
 
-    public TextMeshProUGUI menuTitle;
-
-    private void OnEnable()
+    private void Start()
     {
-
-        PlayerInputController.OnPausePressed += SwitchActivity;
+        GameManager.Instance.OnGamePaused += PauseGame;
     }
+
     private void OnDisable()
     {
-        PlayerInputController.OnPausePressed -= SwitchActivity;
-    }
-    
-
-    void Start()
-    {
-        pauseMenu = GetComponent<CanvasGroup>();
+        GameManager.Instance.OnGamePaused -= PauseGame;
     }
 
-    public void SwitchActivity()
+    public void PauseGame()
     {
-        if (isPaused)
-        {
-            Deactivate(pauseMenu);
-            isPaused = false;
-            Time.timeScale = 1f;
-        }
-        else
-        {
-            Activate(pauseMenu);
-            GoToMainMenu();
-            isPaused = true;
-            Time.timeScale = 0f;
-        }
+        myMenu.Open();
+        //Will need update for multiplayer, prob will swap mappings for all players with method from PlayerManager.
+        inputController = PlayerManager.Instance.GetPlayerInputController();
+        inputController.SwitchActionMap(inputController.inputActions.MenuActions);
     }
 
-    private void Activate(CanvasGroup canvasGroup)
+    public void UnPauseGame()
     {
-        canvasGroup.alpha = 1.0f;
-        canvasGroup.blocksRaycasts = true;
-        canvasGroup.interactable = true;
-    }
-
-    private void Deactivate(CanvasGroup canvasGroup)
-    {
-        canvasGroup.interactable = false;
-        canvasGroup.blocksRaycasts = false;
-        canvasGroup.alpha = 0;
-    }
-
-    public void GoToSettingsMenu()
-    {
-        Deactivate(mainMenu);
-        Activate(settingsMenu);
-        menuTitle.text = "Settings";
-    }
-    public void GoToMainMenu()
-    {
-        Deactivate(settingsMenu);
-        Activate(mainMenu);
-        menuTitle.text = "Pause";
+        GameManager.Instance.ResumeGame();
+        inputController.SwitchActionMap(inputController.inputActions.GameplayActions);
     }
 }

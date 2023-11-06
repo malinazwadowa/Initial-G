@@ -24,7 +24,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     ""name"": ""PlayerInputActions"",
     ""maps"": [
         {
-            ""name"": ""PlayerMovement"",
+            ""name"": ""GameplayActions"",
             ""id"": ""fc3a4361-da10-4593-b289-9279c6aad862"",
             ""actions"": [
                 {
@@ -33,7 +33,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""id"": ""95f30fe4-8f69-45f7-9b01-60be94056994"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
-                    ""interactions"": ""Hold"",
+                    ""interactions"": """",
                     ""initialStateCheck"": true
                 },
                 {
@@ -82,9 +82,18 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Pause"",
+                    ""name"": ""CancelAction"",
                     ""type"": ""Button"",
                     ""id"": ""b040f5e8-f1ee-47a4-96d2-e26c32805654"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""AcceptAction"",
+                    ""type"": ""Button"",
+                    ""id"": ""ebb3d932-ba19-4732-b81a-801759d36abd"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -275,20 +284,55 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
-                    ""action"": ""Pause"",
+                    ""action"": ""CancelAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""31879184-0fad-4235-b557-da132e2eaa3e"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""AcceptAction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
             ]
         },
         {
-            ""name"": ""New action map"",
+            ""name"": ""PopUpActions"",
             ""id"": ""ca34882f-7a5d-438d-9e9d-d81ca812345f"",
+            ""actions"": [],
+            ""bindings"": []
+        },
+        {
+            ""name"": ""MenuActions"",
+            ""id"": ""501f474f-bf92-41ed-ba4e-10a0c31b5ae0"",
             ""actions"": [
                 {
-                    ""name"": ""New action"",
+                    ""name"": ""AcceptAction"",
                     ""type"": ""Button"",
-                    ""id"": ""50e090eb-cd3a-4b4f-887b-ab9f90256b67"",
+                    ""id"": ""f995f3aa-9481-4486-9baf-d8cc6e32c076"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CancelAction"",
+                    ""type"": ""Button"",
+                    ""id"": ""a3c16359-3ea2-4cb9-a79e-350d9bc38552"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Dupa"",
+                    ""type"": ""Button"",
+                    ""id"": ""b893688d-71b0-4881-a3ea-449164d5c5f7"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -298,12 +342,34 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""76e07757-f56f-41c9-a78e-9995f42c1bec"",
-                    ""path"": """",
+                    ""id"": ""38be5d15-86a4-417a-bd50-e680be20ce78"",
+                    ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""New action"",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""CancelAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""882125d8-0bd8-45b1-a324-03169d74d49f"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""AcceptAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4f70eb7d-c797-4a4b-81bb-7bdaeb7ca713"",
+                    ""path"": ""<Keyboard>/k"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Dupa"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -323,18 +389,23 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         }
     ]
 }");
-        // PlayerMovement
-        m_PlayerMovement = asset.FindActionMap("PlayerMovement", throwIfNotFound: true);
-        m_PlayerMovement_Movement = m_PlayerMovement.FindAction("Movement", throwIfNotFound: true);
-        m_PlayerMovement_Run = m_PlayerMovement.FindAction("Run", throwIfNotFound: true);
-        m_PlayerMovement_Attack = m_PlayerMovement.FindAction("Attack", throwIfNotFound: true);
-        m_PlayerMovement_Stealth = m_PlayerMovement.FindAction("Stealth", throwIfNotFound: true);
-        m_PlayerMovement_Throw = m_PlayerMovement.FindAction("Throw", throwIfNotFound: true);
-        m_PlayerMovement_PickUp = m_PlayerMovement.FindAction("PickUp", throwIfNotFound: true);
-        m_PlayerMovement_Pause = m_PlayerMovement.FindAction("Pause", throwIfNotFound: true);
-        // New action map
-        m_Newactionmap = asset.FindActionMap("New action map", throwIfNotFound: true);
-        m_Newactionmap_Newaction = m_Newactionmap.FindAction("New action", throwIfNotFound: true);
+        // GameplayActions
+        m_GameplayActions = asset.FindActionMap("GameplayActions", throwIfNotFound: true);
+        m_GameplayActions_Movement = m_GameplayActions.FindAction("Movement", throwIfNotFound: true);
+        m_GameplayActions_Run = m_GameplayActions.FindAction("Run", throwIfNotFound: true);
+        m_GameplayActions_Attack = m_GameplayActions.FindAction("Attack", throwIfNotFound: true);
+        m_GameplayActions_Stealth = m_GameplayActions.FindAction("Stealth", throwIfNotFound: true);
+        m_GameplayActions_Throw = m_GameplayActions.FindAction("Throw", throwIfNotFound: true);
+        m_GameplayActions_PickUp = m_GameplayActions.FindAction("PickUp", throwIfNotFound: true);
+        m_GameplayActions_CancelAction = m_GameplayActions.FindAction("CancelAction", throwIfNotFound: true);
+        m_GameplayActions_AcceptAction = m_GameplayActions.FindAction("AcceptAction", throwIfNotFound: true);
+        // PopUpActions
+        m_PopUpActions = asset.FindActionMap("PopUpActions", throwIfNotFound: true);
+        // MenuActions
+        m_MenuActions = asset.FindActionMap("MenuActions", throwIfNotFound: true);
+        m_MenuActions_AcceptAction = m_MenuActions.FindAction("AcceptAction", throwIfNotFound: true);
+        m_MenuActions_CancelAction = m_MenuActions.FindAction("CancelAction", throwIfNotFound: true);
+        m_MenuActions_Dupa = m_MenuActions.FindAction("Dupa", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -393,36 +464,38 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // PlayerMovement
-    private readonly InputActionMap m_PlayerMovement;
-    private List<IPlayerMovementActions> m_PlayerMovementActionsCallbackInterfaces = new List<IPlayerMovementActions>();
-    private readonly InputAction m_PlayerMovement_Movement;
-    private readonly InputAction m_PlayerMovement_Run;
-    private readonly InputAction m_PlayerMovement_Attack;
-    private readonly InputAction m_PlayerMovement_Stealth;
-    private readonly InputAction m_PlayerMovement_Throw;
-    private readonly InputAction m_PlayerMovement_PickUp;
-    private readonly InputAction m_PlayerMovement_Pause;
-    public struct PlayerMovementActions
+    // GameplayActions
+    private readonly InputActionMap m_GameplayActions;
+    private List<IGameplayActionsActions> m_GameplayActionsActionsCallbackInterfaces = new List<IGameplayActionsActions>();
+    private readonly InputAction m_GameplayActions_Movement;
+    private readonly InputAction m_GameplayActions_Run;
+    private readonly InputAction m_GameplayActions_Attack;
+    private readonly InputAction m_GameplayActions_Stealth;
+    private readonly InputAction m_GameplayActions_Throw;
+    private readonly InputAction m_GameplayActions_PickUp;
+    private readonly InputAction m_GameplayActions_CancelAction;
+    private readonly InputAction m_GameplayActions_AcceptAction;
+    public struct GameplayActionsActions
     {
         private @PlayerInputActions m_Wrapper;
-        public PlayerMovementActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Movement => m_Wrapper.m_PlayerMovement_Movement;
-        public InputAction @Run => m_Wrapper.m_PlayerMovement_Run;
-        public InputAction @Attack => m_Wrapper.m_PlayerMovement_Attack;
-        public InputAction @Stealth => m_Wrapper.m_PlayerMovement_Stealth;
-        public InputAction @Throw => m_Wrapper.m_PlayerMovement_Throw;
-        public InputAction @PickUp => m_Wrapper.m_PlayerMovement_PickUp;
-        public InputAction @Pause => m_Wrapper.m_PlayerMovement_Pause;
-        public InputActionMap Get() { return m_Wrapper.m_PlayerMovement; }
+        public GameplayActionsActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Movement => m_Wrapper.m_GameplayActions_Movement;
+        public InputAction @Run => m_Wrapper.m_GameplayActions_Run;
+        public InputAction @Attack => m_Wrapper.m_GameplayActions_Attack;
+        public InputAction @Stealth => m_Wrapper.m_GameplayActions_Stealth;
+        public InputAction @Throw => m_Wrapper.m_GameplayActions_Throw;
+        public InputAction @PickUp => m_Wrapper.m_GameplayActions_PickUp;
+        public InputAction @CancelAction => m_Wrapper.m_GameplayActions_CancelAction;
+        public InputAction @AcceptAction => m_Wrapper.m_GameplayActions_AcceptAction;
+        public InputActionMap Get() { return m_Wrapper.m_GameplayActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(PlayerMovementActions set) { return set.Get(); }
-        public void AddCallbacks(IPlayerMovementActions instance)
+        public static implicit operator InputActionMap(GameplayActionsActions set) { return set.Get(); }
+        public void AddCallbacks(IGameplayActionsActions instance)
         {
-            if (instance == null || m_Wrapper.m_PlayerMovementActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_PlayerMovementActionsCallbackInterfaces.Add(instance);
+            if (instance == null || m_Wrapper.m_GameplayActionsActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_GameplayActionsActionsCallbackInterfaces.Add(instance);
             @Movement.started += instance.OnMovement;
             @Movement.performed += instance.OnMovement;
             @Movement.canceled += instance.OnMovement;
@@ -441,12 +514,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @PickUp.started += instance.OnPickUp;
             @PickUp.performed += instance.OnPickUp;
             @PickUp.canceled += instance.OnPickUp;
-            @Pause.started += instance.OnPause;
-            @Pause.performed += instance.OnPause;
-            @Pause.canceled += instance.OnPause;
+            @CancelAction.started += instance.OnCancelAction;
+            @CancelAction.performed += instance.OnCancelAction;
+            @CancelAction.canceled += instance.OnCancelAction;
+            @AcceptAction.started += instance.OnAcceptAction;
+            @AcceptAction.performed += instance.OnAcceptAction;
+            @AcceptAction.canceled += instance.OnAcceptAction;
         }
 
-        private void UnregisterCallbacks(IPlayerMovementActions instance)
+        private void UnregisterCallbacks(IGameplayActionsActions instance)
         {
             @Movement.started -= instance.OnMovement;
             @Movement.performed -= instance.OnMovement;
@@ -466,72 +542,129 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @PickUp.started -= instance.OnPickUp;
             @PickUp.performed -= instance.OnPickUp;
             @PickUp.canceled -= instance.OnPickUp;
-            @Pause.started -= instance.OnPause;
-            @Pause.performed -= instance.OnPause;
-            @Pause.canceled -= instance.OnPause;
+            @CancelAction.started -= instance.OnCancelAction;
+            @CancelAction.performed -= instance.OnCancelAction;
+            @CancelAction.canceled -= instance.OnCancelAction;
+            @AcceptAction.started -= instance.OnAcceptAction;
+            @AcceptAction.performed -= instance.OnAcceptAction;
+            @AcceptAction.canceled -= instance.OnAcceptAction;
         }
 
-        public void RemoveCallbacks(IPlayerMovementActions instance)
+        public void RemoveCallbacks(IGameplayActionsActions instance)
         {
-            if (m_Wrapper.m_PlayerMovementActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_GameplayActionsActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
-        public void SetCallbacks(IPlayerMovementActions instance)
+        public void SetCallbacks(IGameplayActionsActions instance)
         {
-            foreach (var item in m_Wrapper.m_PlayerMovementActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_GameplayActionsActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_PlayerMovementActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_GameplayActionsActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
-    public PlayerMovementActions @PlayerMovement => new PlayerMovementActions(this);
+    public GameplayActionsActions @GameplayActions => new GameplayActionsActions(this);
 
-    // New action map
-    private readonly InputActionMap m_Newactionmap;
-    private List<INewactionmapActions> m_NewactionmapActionsCallbackInterfaces = new List<INewactionmapActions>();
-    private readonly InputAction m_Newactionmap_Newaction;
-    public struct NewactionmapActions
+    // PopUpActions
+    private readonly InputActionMap m_PopUpActions;
+    private List<IPopUpActionsActions> m_PopUpActionsActionsCallbackInterfaces = new List<IPopUpActionsActions>();
+    public struct PopUpActionsActions
     {
         private @PlayerInputActions m_Wrapper;
-        public NewactionmapActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Newaction => m_Wrapper.m_Newactionmap_Newaction;
-        public InputActionMap Get() { return m_Wrapper.m_Newactionmap; }
+        public PopUpActionsActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
+        public InputActionMap Get() { return m_Wrapper.m_PopUpActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(NewactionmapActions set) { return set.Get(); }
-        public void AddCallbacks(INewactionmapActions instance)
+        public static implicit operator InputActionMap(PopUpActionsActions set) { return set.Get(); }
+        public void AddCallbacks(IPopUpActionsActions instance)
         {
-            if (instance == null || m_Wrapper.m_NewactionmapActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_NewactionmapActionsCallbackInterfaces.Add(instance);
-            @Newaction.started += instance.OnNewaction;
-            @Newaction.performed += instance.OnNewaction;
-            @Newaction.canceled += instance.OnNewaction;
+            if (instance == null || m_Wrapper.m_PopUpActionsActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_PopUpActionsActionsCallbackInterfaces.Add(instance);
         }
 
-        private void UnregisterCallbacks(INewactionmapActions instance)
+        private void UnregisterCallbacks(IPopUpActionsActions instance)
         {
-            @Newaction.started -= instance.OnNewaction;
-            @Newaction.performed -= instance.OnNewaction;
-            @Newaction.canceled -= instance.OnNewaction;
         }
 
-        public void RemoveCallbacks(INewactionmapActions instance)
+        public void RemoveCallbacks(IPopUpActionsActions instance)
         {
-            if (m_Wrapper.m_NewactionmapActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_PopUpActionsActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
-        public void SetCallbacks(INewactionmapActions instance)
+        public void SetCallbacks(IPopUpActionsActions instance)
         {
-            foreach (var item in m_Wrapper.m_NewactionmapActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_PopUpActionsActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_NewactionmapActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_PopUpActionsActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
-    public NewactionmapActions @Newactionmap => new NewactionmapActions(this);
+    public PopUpActionsActions @PopUpActions => new PopUpActionsActions(this);
+
+    // MenuActions
+    private readonly InputActionMap m_MenuActions;
+    private List<IMenuActionsActions> m_MenuActionsActionsCallbackInterfaces = new List<IMenuActionsActions>();
+    private readonly InputAction m_MenuActions_AcceptAction;
+    private readonly InputAction m_MenuActions_CancelAction;
+    private readonly InputAction m_MenuActions_Dupa;
+    public struct MenuActionsActions
+    {
+        private @PlayerInputActions m_Wrapper;
+        public MenuActionsActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @AcceptAction => m_Wrapper.m_MenuActions_AcceptAction;
+        public InputAction @CancelAction => m_Wrapper.m_MenuActions_CancelAction;
+        public InputAction @Dupa => m_Wrapper.m_MenuActions_Dupa;
+        public InputActionMap Get() { return m_Wrapper.m_MenuActions; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(MenuActionsActions set) { return set.Get(); }
+        public void AddCallbacks(IMenuActionsActions instance)
+        {
+            if (instance == null || m_Wrapper.m_MenuActionsActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_MenuActionsActionsCallbackInterfaces.Add(instance);
+            @AcceptAction.started += instance.OnAcceptAction;
+            @AcceptAction.performed += instance.OnAcceptAction;
+            @AcceptAction.canceled += instance.OnAcceptAction;
+            @CancelAction.started += instance.OnCancelAction;
+            @CancelAction.performed += instance.OnCancelAction;
+            @CancelAction.canceled += instance.OnCancelAction;
+            @Dupa.started += instance.OnDupa;
+            @Dupa.performed += instance.OnDupa;
+            @Dupa.canceled += instance.OnDupa;
+        }
+
+        private void UnregisterCallbacks(IMenuActionsActions instance)
+        {
+            @AcceptAction.started -= instance.OnAcceptAction;
+            @AcceptAction.performed -= instance.OnAcceptAction;
+            @AcceptAction.canceled -= instance.OnAcceptAction;
+            @CancelAction.started -= instance.OnCancelAction;
+            @CancelAction.performed -= instance.OnCancelAction;
+            @CancelAction.canceled -= instance.OnCancelAction;
+            @Dupa.started -= instance.OnDupa;
+            @Dupa.performed -= instance.OnDupa;
+            @Dupa.canceled -= instance.OnDupa;
+        }
+
+        public void RemoveCallbacks(IMenuActionsActions instance)
+        {
+            if (m_Wrapper.m_MenuActionsActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IMenuActionsActions instance)
+        {
+            foreach (var item in m_Wrapper.m_MenuActionsActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_MenuActionsActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public MenuActionsActions @MenuActions => new MenuActionsActions(this);
     private int m_KeyboardSchemeIndex = -1;
     public InputControlScheme KeyboardScheme
     {
@@ -550,7 +683,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             return asset.controlSchemes[m_GamepadSchemeIndex];
         }
     }
-    public interface IPlayerMovementActions
+    public interface IGameplayActionsActions
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnRun(InputAction.CallbackContext context);
@@ -558,10 +691,16 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnStealth(InputAction.CallbackContext context);
         void OnThrow(InputAction.CallbackContext context);
         void OnPickUp(InputAction.CallbackContext context);
-        void OnPause(InputAction.CallbackContext context);
+        void OnCancelAction(InputAction.CallbackContext context);
+        void OnAcceptAction(InputAction.CallbackContext context);
     }
-    public interface INewactionmapActions
+    public interface IPopUpActionsActions
     {
-        void OnNewaction(InputAction.CallbackContext context);
+    }
+    public interface IMenuActionsActions
+    {
+        void OnAcceptAction(InputAction.CallbackContext context);
+        void OnCancelAction(InputAction.CallbackContext context);
+        void OnDupa(InputAction.CallbackContext context);
     }
 }

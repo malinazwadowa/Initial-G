@@ -9,12 +9,6 @@ public class ExperienceController : MonoBehaviour
     private float maxExpForCurrentLevel;
     private ExpBarUI expBar;
 
-    public event Action OnPlayerLevelUp;
-
-    //public MenuUI weaponUpgradeWindow;
-    //private UiManager uiManager;
-    //[SerializeField] private event Action OnLevelUp;
-
     public void Init(ExpBarUI expBar)
     {
         this.expBar = expBar;
@@ -40,12 +34,10 @@ public class ExperienceController : MonoBehaviour
         currentLevel++;
         maxExpForCurrentLevel *= 1.5f;
         UpdateExpBar();
-        //OnLevelUp?.Invoke();
-        //PlayerManager.Instance.PlayerHasLeveledUp();
-        OnPlayerLevelUp?.Invoke(); //Will require ID of sort as argument later.
-        //Debug.Log($"Leveled up! Current level is:{currentLevel}. Exp needed for next level:{maxExpForCurrentLevel}");
 
+        EventManager.Instance.PlayerLevelUpEvent(); //Will require ID of sort as argument later for multiple players.
     }
+
     private void UpdateExpBar()
     {
         if (expBar != null)

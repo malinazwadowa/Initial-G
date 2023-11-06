@@ -7,54 +7,40 @@ using UnityEngine.UI;
 
 public class WeaponUpgradeUI : MonoBehaviour
 {
-    private CanvasGroup canvasGroup;
+    public TextMeshProUGUI leftText;
+    public TextMeshProUGUI rightText;
 
-    private TextMeshProUGUI leftText;
-    private TextMeshProUGUI rightText;
-
-    List<Weapon> weapons;
+    private List<Weapon> weapons;
 
     private int leftWeaponId;
     private int rightWeaponId;
 
+    [SerializeField] private MenuUI myMenu;
+    private Player player;
+    PlayerInputController inputController;
+
     private void OnEnable()
     {
-        ExperienceController.OnPlayerLevelUp += OfferWeaponUpgrade;
+        EventManager.Instance.OnPlayerLevelUp += Open;
     }
 
     private void OnDisable()
     {
-        ExperienceController.OnPlayerLevelUp -= OfferWeaponUpgrade;
+        EventManager.Instance.OnPlayerLevelUp -= Open;
     }
 
-    void Start()
+    private void Open()
     {
-        canvasGroup = GetComponent<CanvasGroup>();
+        inputController = PlayerManager.Instance.GetPlayerInputController();
+        inputController.SwitchActionMap(inputController.inputActions.PopUpActions);
+        player = PlayerManager.Instance.GetPlayer(); //To be replaced by argument either WeaponContoller or EntirePlayer or at least players ID to provide for GetPlayer()
+        myMenu.Open();
+    }
+
+
+    public void OfferWeaponUpgrade()
+    {
         
-        leftText = GetComponentsInChildren<TextMeshProUGUI>().FirstOrDefault(text => text.name == "LeftText");
-        rightText = GetComponentsInChildren<TextMeshProUGUI>().FirstOrDefault(text => text.name == "RightText");
-        Deactivate();
-    }
-
-    void Update()
-    {
-
-    }
-    private void Activate()
-    {
-        canvasGroup.alpha = 1.0f;
-        canvasGroup.interactable = true;
-        Time.timeScale = 0;
-    }
-    private void Deactivate()
-    {
-        canvasGroup.alpha = 0;
-        canvasGroup.interactable = false;
-        Time.timeScale = 1;
-    }
-    private void OfferWeaponUpgrade()
-    {
-        Player player = PlayerManager.Instance.GetPlayer(); //To be replaced by argument either WeaponContoller or EntirePlayer or at least players ID to provide for GetPlayer()
         weapons = player.weaponController.equippedWeapons;
 
         leftWeaponId = Random.Range(0, weapons.Count);
@@ -67,23 +53,29 @@ public class WeaponUpgradeUI : MonoBehaviour
 
         leftText.text = weapons[leftWeaponId].GetType().Name;
         rightText.text = weapons[rightWeaponId].GetType().Name;
-
-        Activate();
     }
 
     public void UpgradeLeftWeapon()
     {
         Player player = PlayerManager.Instance.GetPlayer();
         player.weaponController.equippedWeapons[leftWeaponId].RankUp();
-
-        Deactivate();
+        inputController.SwitchActionMap(inputController.inputActions.GameplayActions);
     }
 
     public void UpgradeRightWeapon()
     {
         Player player = PlayerManager.Instance.GetPlayer();
         player.weaponController.equippedWeapons[rightWeaponId].RankUp();
+        inputController.SwitchActionMap(inputController.inputActions.GameplayActions);
+    }
 
-        Deactivate();
+    public void PauseGame()
+    {
+        TimeManager.Instance.PauseTime();
+    }
+
+    public void ResumeGame()
+    {
+        TimeManager.Instance.ResumeTime();
     }
 }

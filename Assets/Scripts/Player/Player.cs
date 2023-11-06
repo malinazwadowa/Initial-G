@@ -7,7 +7,7 @@ public class Player : MonoBehaviour, IWeaponWielder, IDamagable
     private Transform center;
     private CombatStats combatStats;
 
-    private PlayerInputActions inputActions;
+    [HideInInspector] public PlayerInputActions InputActions { get; private set; }
     private Animator animator;
     private SpriteRenderer[] spriteRenderers;
     private Rigidbody2D rigidBody;
@@ -18,13 +18,13 @@ public class Player : MonoBehaviour, IWeaponWielder, IDamagable
 
     private PlayerMovementController movementController;
     private PlayerAnimationController animationController;
-    private PlayerInputController inputController;
+    [HideInInspector] public PlayerInputController inputController { get; private set; }
 
     private void Awake()
     {
         combatStats = new CombatStats(playerData.baseDamageModifier, playerData.baseWeaponSpeed, playerData.baseCooldownModifier);
         
-        inputActions = new PlayerInputActions();
+        InputActions = new PlayerInputActions();
         animator = GetComponent<Animator>();
         spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
         rigidBody = GetComponent<Rigidbody2D>();
@@ -46,19 +46,18 @@ public class Player : MonoBehaviour, IWeaponWielder, IDamagable
 
         movementController.Init(playerData, rigidBody);
         animationController.Init(animator, movementController, playerData, spriteRenderers);
-        inputController.Init(movementController, inputActions);
+        inputController.Init(movementController, InputActions);
         weaponController.Init(this, combatStats);
     }
 
     private void Start()
     {
         center = transform.Find("Center");
-        
     }
 
     private void Update()
     {
-        animationController.SetAnimationVelocity(inputActions.PlayerMovement.Movement.ReadValue<Vector2>());
+        animationController.SetAnimationVelocity(InputActions.GameplayActions.Movement.ReadValue<Vector2>());
         
         //Testing purposes
         if (Input.GetKeyDown(KeyCode.Space))

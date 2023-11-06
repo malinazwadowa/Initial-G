@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
 {
@@ -30,6 +31,16 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
     public Player GetPlayer()
     {
         return player;
+    }
+
+    public PlayerInputActions GetPlayerInputActions()
+    {
+        return player.InputActions;
+    }
+
+    public PlayerInputController GetPlayerInputController()
+    {
+        return player.inputController;
     }
 
     public Transform GetPlayersFeetTransform()

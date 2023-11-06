@@ -1,33 +1,56 @@
 using System;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 public class PlayerInputController : MonoBehaviour
 {
     public UnityAction onAttackInputPressed;
 
-    private PlayerInputActions inputActions;
+    [HideInInspector] public PlayerInputActions inputActions { get; private set; }
     private PlayerMovementController playerMovementController;
 
     private bool movementInputEnabled = true;
 
-    public static event Action OnPausePressed;
+    //public static event Action OnPausePressed;
 
     public void Init(PlayerMovementController playerMovementController, PlayerInputActions playerInputActions)
     {
         this.playerMovementController = playerMovementController;
         this.inputActions = playerInputActions;
-        this.inputActions.Enable();
+        this.inputActions.GameplayActions.Enable();
     }
     private void Update()
     {
         HandleRunning();
         HandlePause();
+        if (inputActions.MenuActions.Dupa.WasPerformedThisFrame())
+        {
+            Debug.Log("Dupa");
+        }
     }
 
     private void FixedUpdate()
     {
         HandleMovement();
+    }
+
+    public void AllowInput(bool active)
+    {
+        if(active)
+        {
+            inputActions.Enable();
+        }
+        else
+        {
+            inputActions.Disable();
+        }
+    }
+
+    public void SwitchActionMap(InputActionMap mapToActivate)
+    {
+        inputActions.Disable();
+        mapToActivate.Enable();
     }
 
     public void EnableMovementInput(bool active)
@@ -36,11 +59,11 @@ public class PlayerInputController : MonoBehaviour
 
         if (active)
         {
-            inputActions.PlayerMovement.Enable();
+            inputActions.GameplayActions.Enable();
         }
         else
         {
-            inputActions.PlayerMovement.Disable();
+            inputActions.GameplayActions.Disable();
         } 
     }
 
@@ -48,27 +71,27 @@ public class PlayerInputController : MonoBehaviour
     {
         if (!movementInputEnabled) { return; }
 
-        playerMovementController.MovePlayer(inputActions.PlayerMovement.Movement.ReadValue<Vector2>());
+        playerMovementController.MovePlayer(inputActions.GameplayActions.Movement.ReadValue<Vector2>());
     }
 
     public void HandleRunning()
     {
         if (!movementInputEnabled) { return; }
 
-        playerMovementController.SetRun(inputActions.PlayerMovement.Run.IsPressed());
+        playerMovementController.SetRun(inputActions.GameplayActions.Run.IsPressed());
     }
 
     public void HandlePause()
     {
-        if (inputActions.PlayerMovement.Pause.WasPerformedThisFrame())
+        if (inputActions.GameplayActions.CancelAction.WasPerformedThisFrame())
         {
-            OnPausePressed?.Invoke();
+            GameManager.Instance.PauseGame();
         }
     }
 
     private void HandleAttackInput()
     {
-        if (inputActions.PlayerMovement.Attack.WasPerformedThisFrame())
+        if (inputActions.GameplayActions.Attack.WasPerformedThisFrame())
         {
             onAttackInputPressed?.Invoke();
         }

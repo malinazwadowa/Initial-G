@@ -55,7 +55,6 @@ public class WeaponController : MonoBehaviour
             weaponScript.Init(myWeaponWielder, combatStats);
             AddWeapon(weaponScript);
         }
-        
     }
 
     private GameObject GetWeaponPrefab<T>() where T : Weapon
