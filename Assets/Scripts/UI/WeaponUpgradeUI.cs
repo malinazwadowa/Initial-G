@@ -28,7 +28,7 @@ public class WeaponUpgradeUI : MonoBehaviour
 
     private void Open()
     {
-        TimeManager.Instance.PauseTime();
+        TimeManager.PauseTime();
         inputController = PlayerManager.Instance.GetPlayerInputController();
         inputController.SwitchActionMap(inputController.inputActions.PopUpActions);
         player = PlayerManager.Instance.GetPlayer(); //To be replaced by argument either WeaponContoller or EntirePlayer or at least players ID to provide for GetPlayer()
@@ -37,7 +37,7 @@ public class WeaponUpgradeUI : MonoBehaviour
 
     private void Close()
     {
-        TimeManager.Instance.ResumeTime();
+        TimeManager.ResumeTime();
         myMenu.Close();
     }
 

@@ -8,18 +8,18 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public void PauseGame()
     {
         OnGamePaused?.Invoke();
-        TimeManager.Instance.PauseTime();
+        TimeManager.PauseTime();
     }
 
     public void StopGame()
     {
         //Logic to freeze enemies
-        TimeManager.Instance.PauseTime();
+        TimeManager.PauseTime();
     }
 
     public void ResumeGame()
     {
-        TimeManager.Instance.ResumeTime();
+        TimeManager.ResumeTime();
     }
 
 }
