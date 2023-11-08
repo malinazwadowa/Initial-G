@@ -28,7 +28,15 @@ public class MenuUI : MonoBehaviour
 
     void Start()
     {
-        inputActions = PlayerManager.Instance.GetPlayerInputActions();
+        if(PlayerManager.Instance != null)
+        {
+            inputActions = PlayerManager.Instance.GetPlayerInputActions();
+        }
+        else
+        {
+            inputActions = new PlayerInputActions();
+            inputActions.MenuActions.Enable();
+        }
     }
 
     void Update()

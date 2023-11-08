@@ -7,6 +7,10 @@ public class TimeManager : SingletonMonoBehaviour<TimeManager>
     private float lastTimeScale;
     private bool isPaused = false;
 
+    private void Start()
+    {
+        Time.timeScale = 1.0f;
+    }
     public void PauseTime()
     {
         if(isPaused) { return; }

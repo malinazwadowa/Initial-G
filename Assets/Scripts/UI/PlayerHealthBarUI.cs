@@ -6,4 +6,11 @@ public class PlayerHealthBarUI : HealthBarUI
         healthController.OnHealthChanged += UpdateHealthBar;
         UpdateHealthBar();
     }
+    private void OnDisable()
+    {
+        if (healthController != null)
+        {
+            healthController.OnHealthChanged -= UpdateHealthBar;
+        }
+    }
 }

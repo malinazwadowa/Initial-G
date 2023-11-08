@@ -99,8 +99,8 @@ public class Player : MonoBehaviour, IWeaponWielder, IDamagable
     public void TestCombatStats()
     {
         Debug.Log("Upping the base damage");
-
-
+        float current = Time.timeScale;
+        Debug.Log(current);
         combatStats.UpdateCombatStat(StatType.DamageModifier, 1);
 
     }

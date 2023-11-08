@@ -1,9 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class WeaponUpgradeUI : MonoBehaviour
 {
@@ -21,22 +18,28 @@ public class WeaponUpgradeUI : MonoBehaviour
 
     private void OnEnable()
     {
-        EventManager.Instance.OnPlayerLevelUp += Open;
+        EventManager.OnPlayerLevelUp += Open;
     }
 
     private void OnDisable()
     {
-        EventManager.Instance.OnPlayerLevelUp -= Open;
+        EventManager.OnPlayerLevelUp -= Open;
     }
 
     private void Open()
     {
+        TimeManager.Instance.PauseTime();
         inputController = PlayerManager.Instance.GetPlayerInputController();
         inputController.SwitchActionMap(inputController.inputActions.PopUpActions);
         player = PlayerManager.Instance.GetPlayer(); //To be replaced by argument either WeaponContoller or EntirePlayer or at least players ID to provide for GetPlayer()
         myMenu.Open();
     }
 
+    private void Close()
+    {
+        TimeManager.Instance.ResumeTime();
+        myMenu.Close();
+    }
 
     public void OfferWeaponUpgrade()
     {
@@ -57,25 +60,17 @@ public class WeaponUpgradeUI : MonoBehaviour
 
     public void UpgradeLeftWeapon()
     {
-        Player player = PlayerManager.Instance.GetPlayer();
+        //Player player = PlayerManager.Instance.GetPlayer();
         player.weaponController.equippedWeapons[leftWeaponId].RankUp();
         inputController.SwitchActionMap(inputController.inputActions.GameplayActions);
+        Close();
     }
 
     public void UpgradeRightWeapon()
     {
-        Player player = PlayerManager.Instance.GetPlayer();
+        //Player player = PlayerManager.Instance.GetPlayer();
         player.weaponController.equippedWeapons[rightWeaponId].RankUp();
         inputController.SwitchActionMap(inputController.inputActions.GameplayActions);
-    }
-
-    public void PauseGame()
-    {
-        TimeManager.Instance.PauseTime();
-    }
-
-    public void ResumeGame()
-    {
-        TimeManager.Instance.ResumeTime();
+        Close();
     }
 }

@@ -15,3 +15,9 @@ public enum SectorOfChunk
     MiddleTop,
     MiddleBottom
 }
+public enum SceneName
+{
+    Development,
+    Loading,
+    MainMenu
+}

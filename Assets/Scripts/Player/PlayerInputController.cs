@@ -12,14 +12,13 @@ public class PlayerInputController : MonoBehaviour
 
     private bool movementInputEnabled = true;
 
-    //public static event Action OnPausePressed;
-
     public void Init(PlayerMovementController playerMovementController, PlayerInputActions playerInputActions)
     {
         this.playerMovementController = playerMovementController;
         this.inputActions = playerInputActions;
         this.inputActions.GameplayActions.Enable();
     }
+
     private void Update()
     {
         HandleRunning();
@@ -85,7 +84,7 @@ public class PlayerInputController : MonoBehaviour
     {
         if (inputActions.GameplayActions.CancelAction.WasPerformedThisFrame())
         {
-            GameManager.Instance.PauseGame();
+            EventManager.OnPauseRequest?.Invoke();
         }
     }
 

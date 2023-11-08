@@ -11,6 +11,12 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         TimeManager.Instance.PauseTime();
     }
 
+    public void StopGame()
+    {
+        //Logic to freeze enemies
+        TimeManager.Instance.PauseTime();
+    }
+
     public void ResumeGame()
     {
         TimeManager.Instance.ResumeTime();

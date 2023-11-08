@@ -7,25 +7,35 @@ public class PauseMenuUI : MonoBehaviour
 
     private void Start()
     {
-        GameManager.Instance.OnGamePaused += PauseGame;
+        EventManager.OnPauseRequest += OpenMenu;
     }
 
     private void OnDisable()
     {
-        GameManager.Instance.OnGamePaused -= PauseGame;
+        EventManager.OnPauseRequest -= OpenMenu;
+    }
+
+    public void OpenMenu()
+    {
+        myMenu.Open();
     }
 
     public void PauseGame()
     {
-        myMenu.Open();
+        TimeManager.Instance.PauseTime();
         //Will need update for multiplayer, prob will swap mappings for all players with method from PlayerManager.
         inputController = PlayerManager.Instance.GetPlayerInputController();
         inputController.SwitchActionMap(inputController.inputActions.MenuActions);
     }
-
+    
     public void UnPauseGame()
     {
-        GameManager.Instance.ResumeGame();
+        TimeManager.Instance.ResumeTime();
         inputController.SwitchActionMap(inputController.inputActions.GameplayActions);
+    }
+
+    public void ExitToMainMenu()
+    {
+        SceneLoadingManager.Instance.Load(SceneName.MainMenu);
     }
 }
