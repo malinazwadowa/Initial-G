@@ -28,7 +28,7 @@ public class PauseMenuUI : MonoBehaviour
         inputController.SwitchActionMap(inputController.inputActions.MenuActions);
     }
     
-    public void UnPauseGame()
+    public void ResumeGame()
     {
         TimeManager.ResumeTime();
         inputController.SwitchActionMap(inputController.inputActions.GameplayActions);
@@ -36,6 +36,13 @@ public class PauseMenuUI : MonoBehaviour
 
     public void ExitToMainMenu()
     {
+        TimeManager.ResumeTime();
         SceneLoadingManager.Instance.Load(SceneName.MainMenu);
+    }
+
+    public void RestartLevel()
+    {
+        TimeManager.ResumeTime();
+        SceneLoadingManager.Instance.ReLoadScene();
     }
 }

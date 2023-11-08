@@ -5,10 +5,6 @@ public static class TimeManager
     private static float lastTimeScale;
     private static bool isPaused = false;
 
-    private static void Start()
-    {
-        Time.timeScale = 1.0f;
-    }
     public static void PauseTime()
     {
         if(isPaused) { return; }

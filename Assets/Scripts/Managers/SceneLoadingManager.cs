@@ -8,6 +8,7 @@ public class SceneLoadingManager : SingletonMonoBehaviour<SceneLoadingManager>
     [SerializeField] private MenuUI loadingCanvas;
     [SerializeField] private Image progressBar;
     private bool isLoading;
+    private SceneName currentSceneName;
 
     protected override void Awake()
     {
@@ -23,6 +24,7 @@ public class SceneLoadingManager : SingletonMonoBehaviour<SceneLoadingManager>
             return;
         }
         StartCoroutine(LoadCoroutine(sceneName));
+        currentSceneName = sceneName;
     }
 
     private IEnumerator LoadCoroutine(SceneName sceneName)
@@ -46,5 +48,10 @@ public class SceneLoadingManager : SingletonMonoBehaviour<SceneLoadingManager>
 
         loadingCanvas.Close();
         isLoading = false;
+    }
+
+    public void ReLoadScene()
+    {
+        Load(currentSceneName);
     }
 }
