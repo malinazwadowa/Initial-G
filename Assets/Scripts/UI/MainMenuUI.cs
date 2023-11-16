@@ -14,7 +14,7 @@ public class MainMenuUI : MonoBehaviour
 
     public void StartGame()
     {
-        SceneLoadingManager.Instance.Load(SceneName.Development);
+        SceneLoadingManager.Instance.Load(SceneName.Forest);
     }
 
     public void LoadLevel(string nameOfSceneToLoad)

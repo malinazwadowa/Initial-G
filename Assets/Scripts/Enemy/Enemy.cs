@@ -8,8 +8,8 @@ public class Enemy : MonoBehaviour, IDamagable
 
     protected Player player;
     protected HealthController healthController;
-    private bool isKnockedback;
-
+    public bool isKnockedback;
+    private EnemyMovementController enemyMovementController;
 
 
     private float pushForce = 5f;
@@ -24,6 +24,8 @@ public class Enemy : MonoBehaviour, IDamagable
          
         healthController = GetComponent<HealthController>();
         healthController.Init(enemyData.maxHealth);
+
+        enemyMovementController = GetComponent<EnemyMovementController>();
         isKnockedback = false;
     }
     public virtual void Update()
@@ -58,13 +60,14 @@ public class Enemy : MonoBehaviour, IDamagable
         {
             float powerSpeedCompensation = (enemyData.speed / 50) + 1;
             knockbackDirection.Normalize();
-            StartCoroutine(ApplyKnockback(power * powerSpeedCompensation, knockbackDirection));
-            isKnockedback = true;
+            StartCoroutine(enemyMovementController.ApplyKnockback(power * powerSpeedCompensation, knockbackDirection));
+            //isKnockedback = true;
         }
     }
 
     private IEnumerator ApplyKnockback(float knockbackPower, Vector3 knockbackDirection)
     {
+
         float timer = 0;
         float knockbackDuration = knockbackPower/16.7f;
         

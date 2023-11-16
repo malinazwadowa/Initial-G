@@ -17,7 +17,15 @@ public enum SectorOfChunk
 }
 public enum SceneName
 {
-    Development,
+    Forest,
+    Cementary,
     Loading,
     MainMenu
+}
+public enum OccupiedSide
+{
+    Top,
+    Bottom,
+    Left,
+    Right,
 }

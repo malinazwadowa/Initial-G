@@ -135,6 +135,9 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 64
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 1024
   detectionRadius: 0.5
   offsetDistanceFromPlayersPosition: 0.5
 --- !u!114 &6197773327841160789
@@ -178,6 +181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: 4ab7785d63328b14985051872caa96c2, type: 2}
+  isKnockedback: 0
   raycastDistance: 1
   enemilayer:
     serializedVersion: 2
