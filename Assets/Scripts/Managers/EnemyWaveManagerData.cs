@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "newEnemyManagerData", menuName = "Data/Enemy Manager/Base Data")]
-public class EnemyManagerData : ScriptableObject
+[CreateAssetMenu(fileName = "newEnemyWaveManagerData", menuName = "Data/Enemy Wave Manager/Base Data")]
+public class EnemyWaveManagerData : ScriptableObject
 {
     private void OnValidate()
     {
@@ -29,5 +29,6 @@ public class EnemyNumbers
 {
     [HideInInspector] public string name;
     public GameObject enemyPrefab;
-    public int amount;
+    public int startAmount;
+    public int targetAmount;
 }

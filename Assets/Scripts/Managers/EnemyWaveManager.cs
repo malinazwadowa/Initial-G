@@ -2,17 +2,17 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class EnemyManager : SingletonMonoBehaviour<EnemyManager>
+public class EnemyWaveManager : SingletonMonoBehaviour<EnemyWaveManager>
 {
-    public EnemyManagerData enemyManagerData;
+    public EnemyWaveManagerData enemyManagerData;
     private EnemyWave currentWaveData;
 
     private int currentWave = 0;
     
     private float timer;
-
+    private float lerpFactor;
     private float waveDuration;
-
+    private float ratio = 0.6f; //0-1 ratio for lerp, % of wave time at which peak count of enemies is kept active.
     void Start()
     {
         waveDuration = (enemyManagerData.levelDurationInMinutes / enemyManagerData.enemyWaves.Length) * 60;
@@ -41,18 +41,19 @@ public class EnemyManager : SingletonMonoBehaviour<EnemyManager>
             currentWaveData = enemyManagerData.enemyWaves[currentWave];
             timer = 0;
         }
+
+        lerpFactor = timer / (waveDuration * ratio);
     }
 
     public void ManageWave()
     {
         for (int i = 0; i < currentWaveData.enemyNumbers.Length; i++)
         {
-            GameObject enemyType = currentWaveData.enemyNumbers[i].enemyPrefab;
-            int amountToKeepActive = currentWaveData.enemyNumbers[i].amount;
+            int amountToKeepActive = (int)Mathf.Lerp(currentWaveData.enemyNumbers[i].startAmount, currentWaveData.enemyNumbers[i].targetAmount, lerpFactor);
 
-            if (ObjectPooler.Instance.CountOfActiveObjectsOfType(enemyType) < amountToKeepActive)
+            if (ObjectPooler.Instance.CountOfActiveObjectsOfType(currentWaveData.enemyNumbers[i].enemyPrefab) < amountToKeepActive)
             {
-                GameObject newEnemy = ObjectPooler.Instance.SpawnObject(enemyType, Utilities.GetRandomPositionOutsideOfCameraView(enemyManagerData.spawnDistanceOffset), transform.rotation);
+                GameObject newEnemy = ObjectPooler.Instance.SpawnObject(currentWaveData.enemyNumbers[i].enemyPrefab, Utilities.GetRandomPositionOutsideOfCameraView(enemyManagerData.spawnDistanceOffset), transform.rotation);
                 newEnemy.GetComponent<Enemy>().Init();
             }
         }
@@ -67,7 +68,7 @@ public class EnemyManager : SingletonMonoBehaviour<EnemyManager>
             for (int j = 0; j < enemyManagerData.enemyWaves[i].enemyNumbers.Length; j++)
             {
                 GameObject enemyType = enemyManagerData.enemyWaves[i].enemyNumbers[j].enemyPrefab;
-                int amountToSpawn = enemyManagerData.enemyWaves[i].enemyNumbers[j].amount;
+                int amountToSpawn = enemyManagerData.enemyWaves[i].enemyNumbers[j].targetAmount;
 
                 if (!enemiesToSpawn.ContainsKey(enemyType))
                 {

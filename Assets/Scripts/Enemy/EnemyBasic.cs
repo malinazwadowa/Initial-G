@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.AI;
 
 public class EnemyBasic : Enemy
 {
@@ -20,9 +19,6 @@ public class EnemyBasic : Enemy
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<IDamagable>() != null)
-        {
-            collision.gameObject.GetComponent<IDamagable>().GetDamaged(10);
-        }
+        collision.gameObject.GetComponent<IDamagable>()?.GetDamaged(10);
     }
 }

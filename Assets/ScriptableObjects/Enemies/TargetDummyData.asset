@@ -9,12 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ef90a1b074bdfb45b8c0f6560904b12, type: 3}
-  m_Name: newPlayerData
+  m_Script: {fileID: 11500000, guid: d892964bef6d0cf4eb62f8e1394afc26, type: 3}
+  m_Name: TargetDummyData
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  baseSpeed: 500
-  baseRunRatio: 1.5
-  baseDamageModifier: 1
-  baseCooldownModifier: 1
-  baseWeaponSpeed: 1
+  tier: 1
+  speed: 4
+  maxHealth: 30
+  armor: 0

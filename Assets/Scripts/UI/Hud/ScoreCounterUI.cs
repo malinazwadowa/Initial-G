@@ -9,12 +9,12 @@ public class ScoreCounterUI : MonoBehaviour
 
     private void OnEnable()
     {
-        Enemy.OnEnemyKilled += UpdateScore;
+        EventManager.OnEnemyKilled += UpdateScore;
     }
 
     private void OnDisable()
     {
-        Enemy.OnEnemyKilled -= UpdateScore;
+        EventManager.OnEnemyKilled -= UpdateScore;
     }
 
     void Start()

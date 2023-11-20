@@ -34,9 +34,7 @@ public class ExperienceController : MonoBehaviour
         currentLevel++;
         maxExpForCurrentLevel *= 1.5f;
         UpdateExpBar();
-        Debug.Log("DING");
         EventManager.OnPlayerLevelUp?.Invoke();//Will require ID of sort as argument later for multiple players.
-        //EventManager.PlayerLevelUpEvent(); 
     }
 
     private void UpdateExpBar()
