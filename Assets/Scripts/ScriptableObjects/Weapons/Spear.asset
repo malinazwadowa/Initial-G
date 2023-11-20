@@ -29,7 +29,7 @@ MonoBehaviour:
     speed: 15
     cooldown: 1.5
     amount: 1
-    damage: 16
+    damage: 50
     knockbackPower: 10
   - name: Rank 3
     projectilePrefab: {fileID: 8291530308845601912, guid: 15fbe4c8a851b404b8579560d12d659e,
@@ -44,6 +44,6 @@ MonoBehaviour:
       type: 3}
     speed: 20
     cooldown: 1
-    amount: 20
-    damage: 1
-    knockbackPower: 8
+    amount: 10
+    damage: 50
+    knockbackPower: 15

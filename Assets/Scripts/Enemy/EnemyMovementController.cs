@@ -56,6 +56,7 @@ public class EnemyMovementController : MonoBehaviour
         
         ApplyMovement();
         HandleAvoidance(combinedMask);
+        
     }
 
     public IEnumerator ApplyKnockback(float knockbackPower, Vector3 knockbackDirection)
@@ -82,6 +83,7 @@ public class EnemyMovementController : MonoBehaviour
     public void ApplyMovement()
     {
         Vector3 targetPosition = playerTransform.position - (directionTowardsPlayer * offsetDistanceFromPlayersPosition);
+        
         Vector3 movementDirectionRaw;
 
         if (isGuided)
