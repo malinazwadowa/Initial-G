@@ -63,9 +63,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickUpType: {fileID: 11400000, guid: 743e3e76f166d5945b7028f423bd4f8b, type: 2}
-  travelSpeed: 0
-  arcingDuration: 0
-  finishedAnimation: 0
+  travelSpeed: 7
+  arcingDuration: 0.8
   hasCollided: 0
 --- !u!1 &7205908724294218587
 GameObject:

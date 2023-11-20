@@ -24,7 +24,7 @@ public class TreasureSpawner : MonoBehaviour
 
     private void SpawnTreasure()
     {
-        Vector3 spawnPosition = Utilities.GetRandomSpawnPositionOutsideOfCameraView(-3);
+        Vector3 spawnPosition = Utilities.GetRandomPositionOutsideOfCameraView(-3);
         GameObject treasureContainerToSpawn = Utilities.GetRandomOutOfCollection(treasureSpawnerData.treasureContainers).prefab;
         ObjectPooler.Instance.SpawnObject(treasureContainerToSpawn, spawnPosition);
     }

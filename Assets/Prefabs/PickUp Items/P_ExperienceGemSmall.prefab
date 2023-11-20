@@ -149,5 +149,4 @@ MonoBehaviour:
   pickUpType: {fileID: 11400000, guid: f339de4bd526c804da4b176f07fbd9e7, type: 2}
   travelSpeed: 7
   arcingDuration: 0.8
-  finishedAnimation: 0
   hasCollided: 0

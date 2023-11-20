@@ -147,7 +147,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickUpType: {fileID: 11400000, guid: 75edb44847cf07c498713cb26b36f4f5, type: 2}
-  travelSpeed: 0
-  arcingDuration: 0
-  finishedAnimation: 0
+  travelSpeed: 7
+  arcingDuration: 0.8
   hasCollided: 0

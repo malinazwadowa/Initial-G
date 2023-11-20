@@ -59,29 +59,33 @@ public static class Utilities
         int indexOfClosestEnemy = Utilities.GetIndexOfMin(distancesToEnemies);
         return enemiesFound[indexOfClosestEnemy].transform;
     }
-    public static Vector3 GetRandomSpawnPositionOutsideOfCameraView(float distanceOffset)
+    public static Vector3 GetRandomPositionOutsideOfCameraView(float distanceOffset)
     {
         float cameraHeight = Camera.main.orthographicSize;
         float cameraWidth = Camera.main.orthographicSize * Camera.main.aspect;
         float spawnOffset = distanceOffset;
 
-        Vector3 spawnPosition = Vector3.zero;
+        Vector3 cameraWorldPosition = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, 0);
+        Vector3 localSpawnPosition = Vector3.zero;
+        Vector3 foundPosition;
+
+        bool isViable = false;
 
         //Sets random side.
         int randomInt = Random.Range(1, 5);
         switch (randomInt)
         {
             case 1:
-                spawnPosition = new Vector3(cameraWidth + spawnOffset, 0);
+                localSpawnPosition = new Vector3(cameraWidth + spawnOffset, 0);
                 break;
             case 2:
-                spawnPosition = new Vector3(-cameraWidth - spawnOffset, 0);
+                localSpawnPosition = new Vector3(-cameraWidth - spawnOffset, 0);
                 break;
             case 3:
-                spawnPosition = new Vector3(0, cameraHeight + spawnOffset);
+                localSpawnPosition = new Vector3(0, cameraHeight + spawnOffset);
                 break;
             case 4:
-                spawnPosition = new Vector3(0, -cameraHeight - spawnOffset);
+                localSpawnPosition = new Vector3(0, -cameraHeight - spawnOffset);
                 break;
             default:
                 Debug.Log("Failed to choose side to spawn");
@@ -89,17 +93,32 @@ public static class Utilities
         }
 
         //Sets random position on chosen side.
-        if (spawnPosition.x == 0)
+        if (localSpawnPosition.x == 0)
         {
-            spawnPosition.x = Random.Range((-cameraWidth - spawnOffset), (cameraWidth + spawnOffset));
+            localSpawnPosition.x = Random.Range((-cameraWidth - spawnOffset), (cameraWidth + spawnOffset));
         }
         else
         {
-            spawnPosition.y = Random.Range((-cameraHeight - spawnOffset), (cameraHeight + spawnOffset));
+            localSpawnPosition.y = Random.Range((-cameraHeight - spawnOffset), (cameraHeight + spawnOffset));
         }
 
-        Vector3 offset = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, 0);
-        return spawnPosition + offset;
+        foundPosition = localSpawnPosition + cameraWorldPosition;
+
+        int layerMask = 1 << LayerMask.NameToLayer("EnviromentObjects");
+
+        while(isViable == false)
+        {
+            Collider2D collider = Physics2D.OverlapPoint(foundPosition, layerMask);
+            if(collider == null)
+            {
+                isViable = true;
+                break;
+            }
+
+            foundPosition += new Vector3(1, 0, 0);
+        }
+
+        return foundPosition;
     }
 
     public static bool IsObjectInView(float distanceOffset, Vector3 position)

@@ -52,11 +52,12 @@ public class EnemyManager : SingletonMonoBehaviour<EnemyManager>
 
             if (ObjectPooler.Instance.CountOfActiveObjectsOfType(enemyType) < amountToKeepActive)
             {
-                GameObject newEnemy = ObjectPooler.Instance.SpawnObject(enemyType, Utilities.GetRandomSpawnPositionOutsideOfCameraView(enemyManagerData.spawnDistanceOffset), transform.rotation);
+                GameObject newEnemy = ObjectPooler.Instance.SpawnObject(enemyType, Utilities.GetRandomPositionOutsideOfCameraView(enemyManagerData.spawnDistanceOffset), transform.rotation);
                 newEnemy.GetComponent<Enemy>().Init();
             }
         }
     }
+
     public Dictionary<GameObject,int> GetAmountOfEachEnemyType()
     {
         Dictionary<GameObject, int> enemiesToSpawn = new Dictionary<GameObject, int>();

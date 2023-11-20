@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Player : MonoBehaviour, IWeaponWielder, IDamagable
@@ -116,11 +117,11 @@ public class Player : MonoBehaviour, IWeaponWielder, IDamagable
 
     public void GetKilled()
     {
-        
+        EventManager.OnPlayerDeath?.Invoke();
     }
 
     public void GetKnockbacked(float power, Vector3 knockbackDirection)
     {
-        throw new System.NotImplementedException();
+        //throw new System.NotImplementedException();
     }
 }
