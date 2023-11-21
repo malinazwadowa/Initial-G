@@ -10,7 +10,7 @@ public class PickUpItem : MonoBehaviour
     private Transform playerTransform;
     private Player player;
     
-    public bool hasCollided = false;
+    private bool hasCollided = false;
 
     private float elapsedTime;
     private float lerpFactor;

@@ -36,6 +36,7 @@ public class Enemy : MonoBehaviour, IDamagable
     {
         //Possibly armor logic. 
         healthController.SubstractCurrentHealth(amount);
+        EventManager.OnEnemyDamaged?.Invoke((int)amount, transform.position);
         if(healthController.GetCurrentHealth() <= 0)
         {
             GetKilled();

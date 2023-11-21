@@ -20,7 +20,7 @@ MonoBehaviour:
       type: 3}
     speed: 15
     cooldown: 2
-    amount: 0
+    amount: 1
     damage: 25
     knockbackPower: 8
   - name: Rank 2
