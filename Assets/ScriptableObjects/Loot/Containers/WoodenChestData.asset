@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41c872be82b2828499f3c0d6b01a657b, type: 3}
   m_Name: WoodenChestData
   m_EditorClassIdentifier: 
-  health: 50
+  health: 5
   lootTable:
   - prefab: {fileID: 7003750512685819325, guid: 32929456915d33b4c88d65fca6ffda8c,
       type: 3}

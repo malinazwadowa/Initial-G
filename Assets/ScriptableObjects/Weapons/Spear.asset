@@ -12,38 +12,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e56dfe8412be92408dbf01da2c4f1e6, type: 3}
   m_Name: Spear
   m_EditorClassIdentifier: 
-  spawnDelayForAdditionalProjectiles: 0.025
-  projectileSpacing: 0.5
+  spawnDelayForAdditionalProjectiles: 0.04
+  projectileSpacing: 0.8
   spearRanks:
   - name: Rank 1
     projectilePrefab: {fileID: 8291530308845601912, guid: 15fbe4c8a851b404b8579560d12d659e,
       type: 3}
-    speed: 15
-    cooldown: 2
-    amount: 1
-    damage: 25
+    speed: 20
+    cooldown: 0.7
+    amount: 0
+    damage: 20
     knockbackPower: 8
   - name: Rank 2
-    projectilePrefab: {fileID: 5608594438459119563, guid: 1603c6d5a46efb34e8163f6d134c68ed,
+    projectilePrefab: {fileID: 8291530308845601912, guid: 15fbe4c8a851b404b8579560d12d659e,
       type: 3}
     speed: 15
-    cooldown: 1.5
+    cooldown: 1
     amount: 1
-    damage: 50
-    knockbackPower: 10
+    damage: 10
+    knockbackPower: 8
   - name: Rank 3
     projectilePrefab: {fileID: 8291530308845601912, guid: 15fbe4c8a851b404b8579560d12d659e,
       type: 3}
-    speed: 20
+    speed: 15
     cooldown: 1
-    amount: 3
-    damage: 20
-    knockbackPower: 5
+    amount: 2
+    damage: 10
+    knockbackPower: 8
   - name: Rank 4
     projectilePrefab: {fileID: 8291530308845601912, guid: 15fbe4c8a851b404b8579560d12d659e,
       type: 3}
     speed: 20
     cooldown: 1
-    amount: 10
-    damage: 50
-    knockbackPower: 15
+    amount: 3
+    damage: 15
+    knockbackPower: 8
+  - name: Rank 5
+    projectilePrefab: {fileID: 8291530308845601912, guid: 15fbe4c8a851b404b8579560d12d659e,
+      type: 3}
+    speed: 20
+    cooldown: 0.7
+    amount: 4
+    damage: 15
+    knockbackPower: 8
+  - name: Rank 6
+    projectilePrefab: {fileID: 8291530308845601912, guid: 15fbe4c8a851b404b8579560d12d659e,
+      type: 3}
+    speed: 20
+    cooldown: 0.7
+    amount: 5
+    damage: 20
+    knockbackPower: 8

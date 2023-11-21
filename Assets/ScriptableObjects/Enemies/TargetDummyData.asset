@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: TargetDummyData
   m_EditorClassIdentifier: 
   tier: 1
-  speed: 4
+  speed: 2.3
   maxHealth: 30
   armor: 0

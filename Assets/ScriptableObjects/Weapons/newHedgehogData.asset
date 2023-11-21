@@ -16,10 +16,60 @@ MonoBehaviour:
   - name: Rank 1
     projectilePrefab: {fileID: 2540002873092309467, guid: 8696e6bee6de5dc4392d29679ff4d199,
       type: 3}
-    speed: 450
-    cooldown: 0
-    radius: 3
-    duration: 2
+    speed: 300
+    cooldown: 3
+    radius: 4
+    duration: 5
     amount: 0
+    damage: 15
+    knockbackPower: 6
+  - name: Rank 2
+    projectilePrefab: {fileID: 2540002873092309467, guid: 8696e6bee6de5dc4392d29679ff4d199,
+      type: 3}
+    speed: 200
+    cooldown: 3
+    radius: 2
+    duration: 3
+    amount: 1
     damage: 10
+    knockbackPower: 6
+  - name: Rank 3
+    projectilePrefab: {fileID: 2540002873092309467, guid: 8696e6bee6de5dc4392d29679ff4d199,
+      type: 3}
+    speed: 250
+    cooldown: 3
+    radius: 2
+    duration: 3
+    amount: 2
+    damage: 10
+    knockbackPower: 6
+  - name: Rank 4
+    projectilePrefab: {fileID: 2540002873092309467, guid: 8696e6bee6de5dc4392d29679ff4d199,
+      type: 3}
+    speed: 300
+    cooldown: 3
+    radius: 3
+    duration: 3
+    amount: 3
+    damage: 13
+    knockbackPower: 6
+  - name: Rank 5
+    projectilePrefab: {fileID: 2540002873092309467, guid: 8696e6bee6de5dc4392d29679ff4d199,
+      type: 3}
+    speed: 300
+    cooldown: 3
+    radius: 3
+    duration: 3
+    amount: 4
+    damage: 15
+    knockbackPower: 6
+  - name: Rank 6
+    projectilePrefab: {fileID: 2540002873092309467, guid: 8696e6bee6de5dc4392d29679ff4d199,
+      type: 3}
+    speed: 300
+    cooldown: 3
+    radius: 4
+    duration: 5
+    amount: 5
+    damage: 15
     knockbackPower: 6

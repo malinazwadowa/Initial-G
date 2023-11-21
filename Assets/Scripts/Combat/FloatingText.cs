@@ -19,7 +19,6 @@ public class FloatingText : MonoBehaviour
         baseColor = myText.color;
         baseFontSize = myText.fontSize;
         elapsedTime = 0;
-        Debug.Log($"my starting font size is: {myText.fontSize}");
     }
 
     void Update()

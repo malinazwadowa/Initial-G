@@ -41,7 +41,7 @@ public class PickUpItem : MonoBehaviour
             this.player = player;
         }
 
-        playerTransform = player.transform;
+        playerTransform = PlayerManager.Instance.GetPlayersCenterTransform();
 
         hasCollided = true;
     }
