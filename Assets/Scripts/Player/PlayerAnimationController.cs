@@ -7,6 +7,9 @@ public class PlayerAnimationController : MonoBehaviour
     private PlayerData playerData;
     private SpriteRenderer[] spriteRenderers;
 
+    private Color defaultColor = new Color(1f, 1f, 1f);
+    [SerializeField] private Color beingHitColor;
+
     public void Init(Animator animator, PlayerMovementController movementController, PlayerData playerData, SpriteRenderer[] spriteRenderers)
     {
         this.animator = animator;
@@ -58,6 +61,22 @@ public class PlayerAnimationController : MonoBehaviour
                 spriteRenderer.flipX = false;
             }
         }
+    }
 
+    public void ChangeColorOnDamage()
+    {
+        foreach(SpriteRenderer spriteRenderer in spriteRenderers)
+        {
+            spriteRenderer.color = beingHitColor;
+            Invoke(nameof(ResetColor), 0.2f);
+        }
+    }
+
+    private void ResetColor()
+    {
+        foreach (SpriteRenderer spriteRenderer in spriteRenderers)
+        {
+            spriteRenderer.color = defaultColor;
+        }
     }
 }

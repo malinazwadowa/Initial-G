@@ -12,5 +12,7 @@ public class EnemyData : ScriptableObject
     public float maxHealth;
 
     [Header("Combat Stats")]
+    public float damage;
+    public float attackCooldown;
     public float armor;
 }

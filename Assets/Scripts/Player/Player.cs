@@ -109,6 +109,8 @@ public class Player : MonoBehaviour, IWeaponWielder, IDamagable
     public void GetDamaged(float amount)
     {
         healthController.SubstractCurrentHealth(amount);
+        animationController.ChangeColorOnDamage();
+
         if(healthController.GetCurrentHealth() <= 0)
         {
             GetKilled();
