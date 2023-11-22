@@ -32,18 +32,20 @@ public class PickUpItem : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(!collision.gameObject.TryGetComponent<Player>(out Player player))
+        this.player = collision.gameObject.GetComponentInParent<Player>();
+
+        if (player == null)
         {
             return;
         }
         else
         {
-            this.player = player;
+            playerTransform = PlayerManager.Instance.GetPlayersCenterTransform();
+
+            hasCollided = true;
         }
 
-        playerTransform = PlayerManager.Instance.GetPlayersCenterTransform();
-
-        hasCollided = true;
+        
     }
 
     private void Collect()

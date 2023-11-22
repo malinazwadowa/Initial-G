@@ -40,7 +40,7 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
 
     public PlayerInputController GetPlayerInputController()
     {
-        return player.inputController;
+        return player.InputController;
     }
 
     public Transform GetPlayersFeetTransform()
@@ -50,7 +50,7 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
 
     public Transform GetPlayersCenterTransform()
     {
-        Transform weaponTransform = player.transform.Find("Weapon");
+        Transform weaponTransform = player.transform.Find("Center");
 
         if (weaponTransform != null)
         {
@@ -58,7 +58,7 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
         }
         else
         {
-            Debug.LogError("Player has no child object called Weapon");
+            Debug.LogError("Player has no child object called Center");
             return null;
         }
     }

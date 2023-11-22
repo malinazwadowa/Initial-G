@@ -14,4 +14,7 @@ public class PlayerData : ScriptableObject
     public float baseDamageModifier;
     public float baseCooldownModifier;
     public float baseWeaponSpeed;
+
+    [Header("Loot")]
+    public float lootingRadius;
 }

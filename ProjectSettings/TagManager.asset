@@ -17,10 +17,10 @@ TagManager:
   - Enemy
   - Player
   - Weapons
-  - Grounded Objects
+  - Lootable Objects
   - EnviromentObjects
-  - 
-  - 
+  - LootCollider
+  - LootContainers
   - 
   - 
   - 

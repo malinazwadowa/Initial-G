@@ -15,4 +15,6 @@ MonoBehaviour:
   tier: 1
   speed: 2.3
   maxHealth: 30
+  damage: 8
+  attackCooldown: 1
   armor: 0

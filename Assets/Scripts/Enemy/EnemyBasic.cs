@@ -40,11 +40,6 @@ public class EnemyBasic : Enemy
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-       // collision.gameObject.GetComponent<IDamagable>()?.GetDamaged(enemyData.damage);
-    }
-
     private void Attack(IDamagable target)
     {
         if (!canAttack) { return; }

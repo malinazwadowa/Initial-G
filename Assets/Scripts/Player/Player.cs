@@ -14,12 +14,13 @@ public class Player : MonoBehaviour, IWeaponWielder, IDamagable
     private Rigidbody2D rigidBody;
 
     private HealthController healthController;
-    [HideInInspector] public WeaponController weaponController;
     private ExperienceController experienceController;
-
     private PlayerMovementController movementController;
     private PlayerAnimationController animationController;
-    [HideInInspector] public PlayerInputController inputController { get; private set; }
+    private LootCollisionHandler lootCollisionHandler;
+
+    [HideInInspector] public WeaponController weaponController;
+    [HideInInspector] public PlayerInputController InputController { get; private set; }
 
     private void Awake()
     {
@@ -34,9 +35,10 @@ public class Player : MonoBehaviour, IWeaponWielder, IDamagable
         healthController = GetComponent<HealthController>();
         weaponController = GetComponent<WeaponController>();
 
+        lootCollisionHandler = GetComponentInChildren<LootCollisionHandler>();
         movementController = GetComponent<PlayerMovementController>();
         animationController = GetComponent<PlayerAnimationController>();
-        inputController = GetComponent<PlayerInputController>();
+        InputController = GetComponent<PlayerInputController>();
         experienceController = GetComponent<ExperienceController>();
 
 
@@ -44,10 +46,10 @@ public class Player : MonoBehaviour, IWeaponWielder, IDamagable
         experienceController.Init(FindAnyObjectByType<ExpBarUI>());
         healthController.Init(playerData.maxHealth);
 
-
+        lootCollisionHandler.Init(playerData.lootingRadius);
         movementController.Init(playerData, rigidBody);
         animationController.Init(animator, movementController, playerData, spriteRenderers);
-        inputController.Init(movementController, InputActions);
+        InputController.Init(movementController, InputActions);
         weaponController.Init(this, combatStats);
     }
 
