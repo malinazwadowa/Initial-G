@@ -15,6 +15,7 @@ public class LootManager : SingletonMonoBehaviour<LootManager>
             ObjectPooler.Instance.SpawnObject(GetLoot(tier), position);
         }
     }
+
     private bool DetermineIfDropsLoot(int tier)
     {
         int chance = Random.Range(1, 11);

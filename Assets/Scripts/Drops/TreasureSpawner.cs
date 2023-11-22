@@ -1,5 +1,5 @@
 using UnityEngine;
-//maybe singleton too ? 
+
 public class TreasureSpawner : MonoBehaviour
 {
     public TreasureSpawnerData treasureSpawnerData;

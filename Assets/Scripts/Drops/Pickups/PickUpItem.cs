@@ -64,12 +64,9 @@ public class PickUpItem : MonoBehaviour
 
         transform.position += direction * Time.deltaTime * travelSpeed;
 
-        if(elapsedTime > 1)
+        if (Vector3.Distance(transform.position, playerTransform.position) < 0.2f)
         {
-            if(Vector3.Distance(transform.position, playerTransform.position) < 0.2f)
-            {
-                Collect();
-            }
+            Collect();
         }
     }
 }

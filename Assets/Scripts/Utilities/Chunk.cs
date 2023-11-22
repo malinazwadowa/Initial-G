@@ -12,7 +12,8 @@ public class Chunk
 
     private Dictionary<GameObject, List <Vector3>> objectsOnGround = new Dictionary<GameObject, List<Vector3>>();
 
-    private int targetLayer = 9;
+    private int lootableItemsID = 9;
+    private int containersLayerID = 12;
     private LayerMask groundedObjectsLayer;
 
     public void Initialize(Vector2 positionOnMatrix, Vector2 size)
@@ -22,7 +23,7 @@ public class Chunk
         this.positionInWorld = new Vector3(positionOnMatrix.x * size.x, positionOnMatrix.y * size.y, 0);
         isActive = false;
 
-        groundedObjectsLayer = 1 << targetLayer;
+        groundedObjectsLayer = 1 << lootableItemsID | 1 << containersLayerID;
     }
 
     public void Activate()

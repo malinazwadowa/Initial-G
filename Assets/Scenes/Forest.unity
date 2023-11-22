@@ -629,7 +629,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smallExpPickup: {fileID: 8645089115338648424, guid: 1950b3158f1f483479b6f9f40e4b52b2,
     type: 3}
-  mediumExpPickup: {fileID: 0}
+  mediumExpPickup: {fileID: 8645089115338648424, guid: 7a1c8d008947e7a488159c8d3039c984,
+    type: 3}
   largeExpPickup: {fileID: 0}
 --- !u!4 &1468881855
 Transform:

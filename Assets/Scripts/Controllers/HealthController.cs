@@ -25,6 +25,10 @@ public class HealthController : MonoBehaviour
         if(currentHealth < maxHealth)
         {
             currentHealth += amount;
+            if(currentHealth > maxHealth)
+            {
+                currentHealth = maxHealth;
+            }
         }
         OnHealthChanged?.Invoke();
     }
