@@ -16,11 +16,11 @@ public class Chunk
     private int containersLayerID = 12;
     private LayerMask groundedObjectsLayer;
 
-    public void Initialize(Vector2 positionOnMatrix, Vector2 size)
+    public void Initialize(Vector2 positionOnMatrix, Vector2 chunkSize)
     {
         this.positionOnMatrix = positionOnMatrix;
-        this.chunkSize = size;
-        this.positionInWorld = new Vector3(positionOnMatrix.x * size.x, positionOnMatrix.y * size.y, 0);
+        this.chunkSize = chunkSize;
+        positionInWorld = new Vector3(positionOnMatrix.x * chunkSize.x, positionOnMatrix.y * chunkSize.y, 0);
         isActive = false;
 
         groundedObjectsLayer = 1 << lootableItemsID | 1 << containersLayerID;
@@ -76,7 +76,7 @@ public class Chunk
                 positions.Add(collider.transform.position);
                 objectsOnGround.Add(collider.gameObject, positions);
             }
-            ObjectPooler.Instance.DeSpawnObject(collider.gameObject);
+            ObjectPooler.Instance.DespawnObject(collider.gameObject);
         }
 
         MapManager.Instance.availableMaps.Enqueue(mapPrefab);

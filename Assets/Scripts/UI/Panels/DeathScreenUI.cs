@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem.XInput;
 
 public class DeathScreenUI : MonoBehaviour
 {
@@ -21,6 +18,8 @@ public class DeathScreenUI : MonoBehaviour
     private void OpenMenu()
     {
         myMenu.Open();
+        AudioManager.Instance.StopAllClips();
+        AudioManager.Instance.PlaySound(AudioClipID.GameOver);
     }
 
     public void RestartLevel()

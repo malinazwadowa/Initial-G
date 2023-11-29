@@ -51,7 +51,7 @@ public class PickUpItem : MonoBehaviour
     private void Collect()
     {
         pickUpType.OnPickUp(player.gameObject);
-        ObjectPooler.Instance.DeSpawnObject(gameObject);
+        ObjectPooler.Instance.DespawnObject(gameObject);
     }
 
     private void MoveObject()

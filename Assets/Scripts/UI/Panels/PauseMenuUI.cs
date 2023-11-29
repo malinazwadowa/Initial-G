@@ -22,6 +22,7 @@ public class PauseMenuUI : MonoBehaviour
 
     public void PauseGame()
     {
+        AudioManager.Instance.PauseAllSounds();
         TimeManager.PauseTime();
         //Will need update for multiplayer, prob will swap mappings for all players with method from PlayerManager.
         inputController = PlayerManager.Instance.GetPlayerInputController();
@@ -30,6 +31,7 @@ public class PauseMenuUI : MonoBehaviour
     
     public void ResumeGame()
     {
+        AudioManager.Instance.ResumeAllSounds();
         TimeManager.ResumeTime();
         inputController.SwitchActionMap(inputController.inputActions.GameplayActions);
     }

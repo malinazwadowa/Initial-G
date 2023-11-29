@@ -29,3 +29,21 @@ public enum OccupiedSide
     Left,
     Right,
 }
+public enum AudioClipID
+{
+    Music,
+    EnemyHit,
+    PlayerHit,
+    ExpPickUp,
+    HealthPickup,
+    LevelUp,
+    PlayerDeath,
+    GameOver
+
+}
+public enum MixerGroup
+{
+    Master,
+    Sounds,
+    Music
+}

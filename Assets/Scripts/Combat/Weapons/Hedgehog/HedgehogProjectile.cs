@@ -43,7 +43,7 @@ public class HedgehogProjectile : MonoBehaviour
 
     private void FinishSpinning()
     {
-        ObjectPooler.Instance.DeSpawnObject(gameObject);
+        ObjectPooler.Instance.DespawnObject(gameObject);
     }
 
     private void Spin()

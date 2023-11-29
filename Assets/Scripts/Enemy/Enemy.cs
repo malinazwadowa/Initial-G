@@ -28,12 +28,13 @@ public class Enemy : MonoBehaviour, IDamagable
     {
         if (!Utilities.IsObjectInView(1.2f, transform.position))
         {
-            ObjectPooler.Instance.DeSpawnObject(gameObject);
+            ObjectPooler.Instance.DespawnObject(gameObject);
         }
     }
   
     public void GetDamaged(float amount)
     {
+        AudioManager.Instance.PlaySound(AudioClipID.EnemyHit);
         //Possibly armor logic. 
         healthController.SubstractCurrentHealth(amount);
         EventManager.OnEnemyDamaged?.Invoke((int)amount, transform.position);
@@ -45,7 +46,7 @@ public class Enemy : MonoBehaviour, IDamagable
 
     public void GetKilled()
     {
-        ObjectPooler.Instance.DeSpawnObject(gameObject);
+        ObjectPooler.Instance.DespawnObject(gameObject);
         LootManager.Instance.DropLoot(enemyData.tier, transform.position);
         EventManager.OnEnemyKilled?.Invoke();
     }

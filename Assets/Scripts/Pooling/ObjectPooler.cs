@@ -77,7 +77,7 @@ public class ObjectPooler : SingletonMonoBehaviour<ObjectPooler>
         return objToSpawn;
     }
 
-    public void DeSpawnObject(GameObject objectToDeSpawn)
+    public void DespawnObject(GameObject objectToDeSpawn)
     {
         if (!poolDictionary.ContainsKey(objectToDeSpawn.name))
         {

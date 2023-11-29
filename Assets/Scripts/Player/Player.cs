@@ -67,6 +67,16 @@ public class Player : MonoBehaviour, IWeaponWielder, IDamagable
         {
             TestCombatStats();
         }
+
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            Test2();
+        }
+
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            Test3();
+        }
     }
 
     private void FixedUpdate()
@@ -101,17 +111,29 @@ public class Player : MonoBehaviour, IWeaponWielder, IDamagable
 
     public void TestCombatStats()
     {
+        //AudioManager.Instance.StopAllClips();
         Debug.Log("Upping the base damage");
         float current = Time.timeScale;
         Debug.Log(current);
         combatStats.UpdateCombatStat(StatType.DamageModifier, 1);
+        AudioManager.Instance.PauseAllSounds();
+    }
 
+    public void Test2()
+    {
+        AudioManager.Instance.ResumeAllSounds();
+    }
+
+    public void Test3()
+    {
+        AudioManager.Instance.PlaySound(AudioClipID.PlayerDeath);
     }
 
     public void GetDamaged(float amount)
     {
         healthController.SubstractCurrentHealth(amount);
         animationController.ChangeColorOnDamage();
+        AudioManager.Instance.PlaySound(AudioClipID.PlayerHit);
 
         if(healthController.GetCurrentHealth() <= 0)
         {
@@ -121,6 +143,7 @@ public class Player : MonoBehaviour, IWeaponWielder, IDamagable
 
     public void GetKilled()
     {
+        //AudioManager.Instance.PlaySound(AudioClipID.Something);
         EventManager.OnPlayerDeath?.Invoke();
     }
 

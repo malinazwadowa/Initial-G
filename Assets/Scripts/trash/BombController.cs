@@ -37,7 +37,7 @@ public class BombController : MonoBehaviour
     public void ExplosionAnimationDmg()
     {
         Explode();
-        AudioManager.Instance.PlaySound(AudioManagerClips.Explosion, audioSource);
+        //AudioManager.Instance.PlaySound(AudioManagerClips.Explosion, audioSource);
     }
     //Deals damage to all enemies in range.
     private void Explode()

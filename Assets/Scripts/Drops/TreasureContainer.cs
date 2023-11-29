@@ -25,7 +25,7 @@ public class TreasureContainer : MonoBehaviour, IDamagable
     public void GetKilled()
     {
         DropLoot(containerData.lootTable);
-        ObjectPooler.Instance.DeSpawnObject(gameObject);
+        ObjectPooler.Instance.DespawnObject(gameObject);
     }
 
     public void GetKnockbacked(float power, Vector3 knockbackDirection)

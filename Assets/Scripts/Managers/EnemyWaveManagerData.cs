@@ -18,12 +18,14 @@ public class EnemyWaveManagerData : ScriptableObject
     [Header("Wave Settings")]
     public EnemyWave[] enemyWaves;
 }
+
 [System.Serializable]
 public class EnemyWave
 {
     [HideInInspector] public string name;
     public EnemyNumbers[] enemyNumbers;
 }
+
 [System.Serializable]
 public class EnemyNumbers
 {

@@ -33,7 +33,7 @@ public class FloatingText : MonoBehaviour
         {
             myText.color = baseColor;
             myText.fontSize = baseFontSize;
-            ObjectPooler.Instance.DeSpawnObject(gameObject);
+            ObjectPooler.Instance.DespawnObject(gameObject);
         }
     }
 

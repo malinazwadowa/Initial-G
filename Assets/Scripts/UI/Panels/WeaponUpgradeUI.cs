@@ -14,7 +14,8 @@ public class WeaponUpgradeUI : MonoBehaviour
 
     [SerializeField] private MenuUI myMenu;
     private Player player;
-    PlayerInputController inputController;
+    private PlayerInputController inputController;
+    private AudioSource levelUpSound;
 
     private void OnEnable()
     {
@@ -26,8 +27,9 @@ public class WeaponUpgradeUI : MonoBehaviour
         EventManager.OnPlayerLevelUp -= Open;
     }
 
-    private void Open()
+    private void Open(AudioSource levelUpSound)
     {
+        this.levelUpSound = levelUpSound;
         TimeManager.PauseTime();
         inputController = PlayerManager.Instance.GetPlayerInputController();
         inputController.SwitchActionMap(inputController.inputActions.PopUpActions);
@@ -37,6 +39,7 @@ public class WeaponUpgradeUI : MonoBehaviour
 
     private void Close()
     {
+        levelUpSound.Stop();
         TimeManager.ResumeTime();
         myMenu.Close();
     }

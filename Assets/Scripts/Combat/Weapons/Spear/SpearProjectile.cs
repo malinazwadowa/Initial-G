@@ -24,7 +24,7 @@ public class SpearProjectile : MonoBehaviour
 
         if (!Utilities.IsObjectInView(0.2f, transform.position))
         {
-            ObjectPooler.Instance.DeSpawnObject(gameObject);
+            ObjectPooler.Instance.DespawnObject(gameObject);
         }
     }
 

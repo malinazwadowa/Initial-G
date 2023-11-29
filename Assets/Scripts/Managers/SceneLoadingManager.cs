@@ -45,7 +45,6 @@ public class SceneLoadingManager : SingletonMonoBehaviour<SceneLoadingManager>
 
         yield return new WaitUntil(() => asyncOperation.isDone == true);
 
-
         loadingCanvas.Close();
         isLoading = false;
     }

@@ -288,7 +288,7 @@ GameObject:
   - component: {fileID: 2120140027545151172}
   - component: {fileID: 2120140027545151173}
   m_Layer: 0
-  m_Name: SceneLoadingManager
+  m_Name: P_SceneLoadingManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
