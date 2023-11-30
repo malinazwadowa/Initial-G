@@ -562,7 +562,7 @@ PrefabInstance:
     - target: {fileID: 269123087682479539, guid: 6ea525e01a328fa4dbee7e13d06debd3,
         type: 3}
       propertyPath: m_Name
-      value: P_SceneSoundHandler
+      value: P_SceneAudioHandler
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ea525e01a328fa4dbee7e13d06debd3, type: 3}

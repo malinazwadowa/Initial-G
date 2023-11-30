@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SceneSoundHandler : MonoBehaviour
+public class SceneAudioHandler : MonoBehaviour
 {
     [SerializeField] private AudioClipsData audioClipsData;
     private void Start()
