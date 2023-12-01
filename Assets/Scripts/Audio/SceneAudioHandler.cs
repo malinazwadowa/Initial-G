@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class SceneAudioHandler : MonoBehaviour
 {
-    [SerializeField] private AudioClipsParameters audioClipsData;
+    [SerializeField] private AudioClipsParameters audioClipsParameters;
     private void Start()
     {
-        AudioManager.Instance.Initalize(audioClipsData);
+        AudioManager.Instance.Initalize(audioClipsParameters);
     }
 }

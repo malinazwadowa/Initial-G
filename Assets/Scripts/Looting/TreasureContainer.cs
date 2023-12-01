@@ -4,7 +4,7 @@ using static UnityEditor.Progress;
 
 public class TreasureContainer : MonoBehaviour, IDamagable
 {
-    public TreasureContainerData containerData;
+    public TreasureContainerParameters containerData;
     private HealthController healthController;
     
     void Start()

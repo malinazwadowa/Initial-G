@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d892964bef6d0cf4eb62f8e1394afc26, type: 3}
+  m_Script: {fileID: 11500000, guid: cc7f40822069e3c4ba756720d5cce005, type: 3}
   m_Name: AlphaDummyData
   m_EditorClassIdentifier: 
   tier: 2
-  speed: 2.6
-  maxHealth: 100
-  damage: 15
+  speed: 2
+  maxHealth: 60
+  damage: 10
   attackCooldown: 1
   armor: 0

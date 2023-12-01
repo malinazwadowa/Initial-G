@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "newTreasureContainerParameters", menuName = "ScriptableObjects/Loot/Treasure Container Parameters")]
-public class TreasureContainerData : ScriptableObject
+[Serializable]
+public class TreasureContainerParameters : ScriptableObject
 {
     [Header("Base Settings")]
-    public float health;
+    [SerializeField] public float health;
 
     [Header("Loot Settings")]
-    public List<ObjectWithWeight> lootTable;
+    [SerializeField] public List<ObjectWithWeight> lootTable;
 }
 

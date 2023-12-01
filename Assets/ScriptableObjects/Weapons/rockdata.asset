@@ -9,57 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e3846415487f2649b9e71609dfef2ba, type: 3}
+  m_Script: {fileID: 11500000, guid: 2e11eb95b7d9a8444bb3d266add0fa7f, type: 3}
   m_Name: rockdata
   m_EditorClassIdentifier: 
-  spawnDelayForAdditionalRocks: 0.1
-  spawnOffsetRangeForAdditionalRocks: 0.3
+  spawnDelayForAdditionalRocks: 0
+  spawnOffsetRangeForAdditionalRocks: 0
   rockRanks:
   - name: Rank 1
     projectilePrefab: {fileID: 7588590208296266261, guid: 54dfc9c391994ed4190ceedfe90edf13,
       type: 3}
     speed: 10
-    cooldown: 2
-    amount: 0
-    damage: 10
-    knockbackPower: 5
-  - name: Rank 2
-    projectilePrefab: {fileID: 7588590208296266261, guid: 54dfc9c391994ed4190ceedfe90edf13,
-      type: 3}
-    speed: 13
     cooldown: 1.5
     amount: 1
     damage: 10
     knockbackPower: 5
-  - name: Rank 3
-    projectilePrefab: {fileID: 7588590208296266261, guid: 54dfc9c391994ed4190ceedfe90edf13,
-      type: 3}
-    speed: 16
-    cooldown: 1
-    amount: 1
-    damage: 10
-    knockbackPower: 7
-  - name: Rank 4
-    projectilePrefab: {fileID: 7588590208296266261, guid: 54dfc9c391994ed4190ceedfe90edf13,
-      type: 3}
-    speed: 16
-    cooldown: 1
-    amount: 1
-    damage: 15
-    knockbackPower: 7
-  - name: Rank 5
-    projectilePrefab: {fileID: 7588590208296266261, guid: 54dfc9c391994ed4190ceedfe90edf13,
-      type: 3}
-    speed: 16
-    cooldown: 0.6
-    amount: 1
-    damage: 15
-    knockbackPower: 7
-  - name: Rank 6
-    projectilePrefab: {fileID: 1826926709015500744, guid: a932e2f40cd1ee94f981021155e14985,
-      type: 3}
-    speed: 5
-    cooldown: 1
-    amount: 1
-    damage: 20
-    knockbackPower: 10

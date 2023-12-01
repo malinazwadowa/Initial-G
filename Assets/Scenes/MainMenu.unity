@@ -6805,6 +6805,11 @@ PrefabInstance:
         type: 3}
       propertyPath: audioClipsData
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 269123087682479536, guid: 6ea525e01a328fa4dbee7e13d06debd3,
+        type: 3}
+      propertyPath: audioClipsParameters
+      value: 
       objectReference: {fileID: 11400000, guid: 0fb3e4a7ac51a414eb060127c30aad7b,
         type: 2}
     - target: {fileID: 269123087682479537, guid: 6ea525e01a328fa4dbee7e13d06debd3,
