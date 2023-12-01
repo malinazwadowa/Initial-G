@@ -4669,6 +4669,75 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1419637126}
   m_CullTransparentMesh: 1
+--- !u!1001 &1420084395
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 44099415912366625, guid: 94d0de597ee3e5143ad259b07f962047,
+        type: 3}
+      propertyPath: m_Name
+      value: P_GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 44099415912366627, guid: 94d0de597ee3e5143ad259b07f962047,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 44099415912366627, guid: 94d0de597ee3e5143ad259b07f962047,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 883.6334
+      objectReference: {fileID: 0}
+    - target: {fileID: 44099415912366627, guid: 94d0de597ee3e5143ad259b07f962047,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 578.0137
+      objectReference: {fileID: 0}
+    - target: {fileID: 44099415912366627, guid: 94d0de597ee3e5143ad259b07f962047,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 7.802935
+      objectReference: {fileID: 0}
+    - target: {fileID: 44099415912366627, guid: 94d0de597ee3e5143ad259b07f962047,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 44099415912366627, guid: 94d0de597ee3e5143ad259b07f962047,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 44099415912366627, guid: 94d0de597ee3e5143ad259b07f962047,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 44099415912366627, guid: 94d0de597ee3e5143ad259b07f962047,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 44099415912366627, guid: 94d0de597ee3e5143ad259b07f962047,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 44099415912366627, guid: 94d0de597ee3e5143ad259b07f962047,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 44099415912366627, guid: 94d0de597ee3e5143ad259b07f962047,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 94d0de597ee3e5143ad259b07f962047, type: 3}
 --- !u!1 &1425889648
 GameObject:
   m_ObjectHideFlags: 0
@@ -5476,7 +5545,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnOpenEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1620544096}
+        m_TargetAssemblyTypeName: SettingsControllerUI, Assembly-CSharp
+        m_MethodName: SetSilderValues
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnCloseEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -5546,6 +5627,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f23bf9e7c76b90e41b2634d39be1ab7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  masterVolumeSilder: {fileID: 1773546831}
+  soundsVolumeSilder: {fileID: 321757055}
+  musicVolumeSilder: {fileID: 1080117271}
 --- !u!1 &1641193855
 GameObject:
   m_ObjectHideFlags: 0

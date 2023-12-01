@@ -1,10 +1,10 @@
 using UnityEngine;
 using System;
 
-[CreateAssetMenu(fileName = "newSpearData", menuName = "Weapon Data/Spear Data/Base Data")]
+[CreateAssetMenu(fileName = "newSpearParameters", menuName = "ScriptableObjects/Weapons/Spear Parameters")]
 
 //Possibly should be changed to generic WeaponData with optional fields. Or should it ? O.o 
-public class SpearData : ScriptableObject
+public class SpearParameters : ScriptableObject
 {
     public event Action onWeaponDataChanged;
     private void OnValidate()

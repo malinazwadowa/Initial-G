@@ -8,7 +8,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
     [SerializeField] private GameObject soundPrefab;
     [SerializeField] private AudioMixer myMixer;
 
-    private AudioClipsData audioClips;
+    private AudioClipsParameters audioClips;
     
     private bool soundsPaused;
     private List<AudioSource> activeSoundSources;
@@ -28,23 +28,32 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
         DontDestroyOnLoad(this);
     }
 
-    public void Initalize(AudioClipsData clipsData)
+    public void Initalize(AudioClipsParameters clipsData)
     {
         StopAllCoroutines();
         SetAudioClipsData(clipsData);
-        PlayMusic(AudioClipID.Music);
-        activeSoundSources = new List<AudioSource>();
-    }
 
-    private void Start()
-    {
+        activeSoundSources = new List<AudioSource>();
+
         soundsGroup = myMixer.FindMatchingGroups("Sounds")[0];
         musicGroup = myMixer.FindMatchingGroups("Music")[0];
         masterGroup = myMixer.FindMatchingGroups("Master")[0];
+        
         soundsPaused = false;
+
+        PlayMusic(AudioClipID.Music);
     }
 
-    public void SetAudioClipsData(AudioClipsData data)
+    public void UpdateSettings()
+    {
+        if (GameManager.Instance.loadedData == null) { return; }
+
+        SetVolume(MixerGroup.Master, GameManager.Instance.loadedData.settingsData.masterVolume);
+        SetVolume(MixerGroup.Sounds, GameManager.Instance.loadedData.settingsData.soundVolume);
+        SetVolume(MixerGroup.Music, GameManager.Instance.loadedData.settingsData.musicVolume);
+    }
+
+    public void SetAudioClipsData(AudioClipsParameters data)
     {
         audioClips = data;
     }
@@ -53,6 +62,13 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
     {
         float valueAdjusted = Mathf.Log10(value) * 20;
         myMixer.SetFloat(groupName.ToString(), valueAdjusted);
+    }
+
+    public float GetCurrentVolume(MixerGroup groupName)
+    {
+        float volume;
+        myMixer.GetFloat(groupName.ToString(), out volume);
+        return Mathf.Pow(10, volume / 20);
     }
 
     public AudioSource PlaySound(AudioClipID sound, bool looping = false)

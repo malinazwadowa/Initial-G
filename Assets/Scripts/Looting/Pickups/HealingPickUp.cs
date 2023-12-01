@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "newPickUpItemData", menuName = "PickUp Items/Red Apple/Base Data")]
+[CreateAssetMenu(fileName = "newPickUpItemParameters", menuName = "ScriptableObjects/Loot/PickUp Items/Healing PickUp Parameters")]
 public class HealingPickUp : PickUpableItem
 {
     public float restoreAmount;

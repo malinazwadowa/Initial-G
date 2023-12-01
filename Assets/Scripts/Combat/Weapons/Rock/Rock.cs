@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Rock : Weapon
 {
-    [SerializeField] private RockData rockBaseData;
+    [SerializeField] private RockParameters rockBaseData;
     private RockRank rockCurrentRankData;
     private WeaponProperties currentRockProperties;
 

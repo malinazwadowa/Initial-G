@@ -1729,7 +1729,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnOpenEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6619805318315334925}
+        m_TargetAssemblyTypeName: SettingsControllerUI, Assembly-CSharp
+        m_MethodName: SetSilderValues
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnCloseEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -1775,6 +1787,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f23bf9e7c76b90e41b2634d39be1ab7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  masterVolumeSilder: {fileID: 1351245644429504396}
+  soundsVolumeSilder: {fileID: 7787721349809073503}
+  musicVolumeSilder: {fileID: 1169931387299503773}
 --- !u!1 &7825966406699746198
 GameObject:
   m_ObjectHideFlags: 0

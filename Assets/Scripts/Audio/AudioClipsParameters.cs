@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "newSoundsData", menuName = "Data/Sound List")]
-public class AudioClipsData : ScriptableObject
+[CreateAssetMenu(fileName = "newAudioParameters", menuName = "ScriptableObjects/Sound List")]
+public class AudioClipsParameters : ScriptableObject
 {
     
     private void OnValidate()

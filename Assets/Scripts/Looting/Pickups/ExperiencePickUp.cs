@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "newPickUpItemData", menuName = "PickUp Items/Exp Pickup/Base Data")] 
+[CreateAssetMenu(fileName = "newPickUpItemParameters", menuName = "ScriptableObjects/Loot/PickUp Items/Exp PickUp Parameters")] 
 public class ExperiencePickUp : PickUpableItem
 {
     public int expAmount;

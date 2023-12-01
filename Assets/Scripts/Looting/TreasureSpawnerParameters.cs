@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "newTreasureSpawnerData", menuName = "Data /Treasure Spawner/Base Data")]
-public class TreasureSpawnerData : ScriptableObject
+[CreateAssetMenu(fileName = "newTreasureSpawnerParameters", menuName = "ScriptableObjects/Loot/Treasure Spawner Parameters")]
+public class TreasureSpawnerParameters : ScriptableObject
 {
     [Header("Base Settings")]
     public float spawnTimeInterval;

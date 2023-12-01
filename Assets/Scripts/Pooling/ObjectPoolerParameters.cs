@@ -3,8 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "ObjectPoolerData", menuName = "Data/ObjectPooler")]
-public class ObjectPoolerData : ScriptableObject
+[CreateAssetMenu(fileName = "ObjectPoolerParameters", menuName = "ScriptableObjects/ObjectPooler Parameters")]
+public class ObjectPoolerParameters : ScriptableObject
 {
     private void OnValidate()
     {

@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "newPlayerData", menuName = "Data/Player Data/Base Data")]
-public class PlayerData : ScriptableObject
+[CreateAssetMenu(fileName = "newPlayerParameters", menuName = "ScriptableObjects/Player Parameters")]
+public class PlayerParameters : ScriptableObject
 {
     [Header("Health")]
     public float maxHealth = 100;

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Spear :  Weapon
 {
-    [SerializeField] private SpearData spearBaseData;
+    [SerializeField] private SpearParameters spearBaseData;
     private SpearRank spearCurrentRankData;
     private WeaponProperties currentSpearProperties;
     

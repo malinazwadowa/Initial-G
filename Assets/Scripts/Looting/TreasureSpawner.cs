@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class TreasureSpawner : MonoBehaviour
 {
-    public TreasureSpawnerData treasureSpawnerData;
+    public TreasureSpawnerParameters treasureSpawnerData;
     private float timer;
     private float randomTimeOffset = 0;
     

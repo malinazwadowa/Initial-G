@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour, IWeaponWielder, IDamagable
 {
-    [SerializeField] public PlayerData playerData;
+    [SerializeField] public PlayerParameters playerData;
 
     private Transform center;
     private CombatStats combatStats;
@@ -76,6 +76,15 @@ public class Player : MonoBehaviour, IWeaponWielder, IDamagable
         if (Input.GetKeyDown(KeyCode.B))
         {
             Test3();
+            GameManager.Instance.Save();
+        }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            GameManager.Instance.Load();
+        }
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            Debug.Log(GameManager.Instance.loadedData.settingsData.masterVolume);
         }
     }
 

@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "newEnemyData", menuName = "Data/Enemy/Regular Enemy")]
-public class EnemyData : ScriptableObject
+[CreateAssetMenu(fileName = "newEnemyParameters", menuName = "ScriptableObjects/Enemy Parameters/Regular Enemy")]
+public class EnemyParameters : ScriptableObject
 {
     public int tier;
     public float speed;

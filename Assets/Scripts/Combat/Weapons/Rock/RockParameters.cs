@@ -2,10 +2,10 @@ using UnityEngine;
 using System;
 
 
-[CreateAssetMenu(fileName = "newRockData", menuName = "Weapon Data/Rock Data/Base Data")]
+[CreateAssetMenu(fileName = "newRockParameters", menuName = "ScriptableObjects/Weapons/Rock Parameters")]
 
 //Possibly should be changed to generic WeaponData with optional fields. Or should it ? O.o 
-public class RockData : ScriptableObject
+public class RockParameters : ScriptableObject
 {
     public event Action onWeaponDataChanged;
     private void OnValidate()

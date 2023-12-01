@@ -1,7 +1,7 @@
 using UnityEngine;
 using System;
 
-[CreateAssetMenu(fileName = "newHedgehogData", menuName = "Weapon Data/Hedgehog Data/Base Data")]
+[CreateAssetMenu(fileName = "newHedgehogParameters", menuName = "ScriptableObjects/Weapons/Hedgehog Parameters")]
 
 //Possibly should be changed to generic WeaponData with optional fields. Or should it ? O.o 
 public class HedgehogData : ScriptableObject

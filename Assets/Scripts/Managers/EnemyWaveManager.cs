@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyWaveManager : SingletonMonoBehaviour<EnemyWaveManager>
 {
-    public EnemyWaveManagerData enemyManagerData;
+    public EnemyWaveManagerParameters enemyManagerData;
     private EnemyWave currentWaveData;
 
     private int currentWave = 0;
