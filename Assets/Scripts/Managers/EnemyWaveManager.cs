@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyWaveManager : SingletonMonoBehaviour<EnemyWaveManager>
 {
-    public EnemyWaveManagerParameters enemyManagerData;
+    public SO_EnemyWaveManagerParameters enemyManagerData;
     private EnemyWave currentWaveData;
 
     private int currentWave = 0;
@@ -12,7 +12,7 @@ public class EnemyWaveManager : SingletonMonoBehaviour<EnemyWaveManager>
     private float timer;
     private float lerpFactor;
     private float waveDuration;
-    private float ratio = 0.6f; //0-1 ratio for lerp, % of wave time at which peak count of enemies is kept active.
+    private float ratio = 0.6f; //0-1 ratio for lerp, % of wave time at which peak count of enemies is being kept active
     void Start()
     {
         waveDuration = (enemyManagerData.levelDurationInMinutes / enemyManagerData.enemyWaves.Length) * 60;

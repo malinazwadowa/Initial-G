@@ -1,16 +1,20 @@
+using Newtonsoft.Json;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Dynamic;
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class AudioManager : SingletonMonoBehaviour<AudioManager>
+public class AudioManager : SingletonMonoBehaviour<AudioManager>, ISaveable
 {
     [SerializeField] private GameObject soundPrefab;
     [SerializeField] private AudioMixer myMixer;
 
-    private AudioClipsParameters audioClips;
+    private SO_AudioClipsParameters audioClips;
     
     private bool soundsPaused;
+    //private bool settingsUpdated;
     private List<AudioSource> activeSoundSources;
 
     private AudioMixerGroup soundsGroup;
@@ -22,13 +26,46 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
     private float cooldown = 0.05f;
     private Dictionary<AudioClipID, float> CooldownsDictionary = new Dictionary<AudioClipID, float>();
 
+    public SaveData SaveMyData()
+    {
+        AudioSaveData saveData = new AudioSaveData
+        {
+            masterVolume = GetCurrentVolume(MixerGroup.Master),
+            soundsVolume = GetCurrentVolume(MixerGroup.Sounds),
+            musicVolume = GetCurrentVolume(MixerGroup.Music),
+        };
+
+        return saveData;
+    }
+
+    public void LoadMyData(SaveData loadedData)
+    {
+        AudioSaveData data = (AudioSaveData)loadedData;
+        UpdateSettingsFromSaveFile(data);
+    }
+
+    [Serializable]
+    public class AudioSaveData : SaveData
+    {
+        public float masterVolume;
+        public float soundsVolume;
+        public float musicVolume;
+    }
+
+    private void UpdateSettingsFromSaveFile(AudioSaveData loadedData)
+    {
+        SetVolume(MixerGroup.Master, loadedData.masterVolume);
+        SetVolume(MixerGroup.Sounds, loadedData.soundsVolume);
+        SetVolume(MixerGroup.Music, loadedData.musicVolume);
+    }
+
     protected override void Awake()
     {
         base.Awake();
         DontDestroyOnLoad(this);
     }
 
-    public void Initalize(AudioClipsParameters clipsData)
+    public void Initalize(SO_AudioClipsParameters clipsData)
     {
         StopAllCoroutines();
         SetAudioClipsData(clipsData);
@@ -44,16 +81,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
         PlayMusic(AudioClipID.Music);
     }
 
-    public void UpdateSettings()
-    {
-        if (GameManager.Instance.loadedData == null) { return; }
-
-        SetVolume(MixerGroup.Master, GameManager.Instance.loadedData.settingsData.masterVolume);
-        SetVolume(MixerGroup.Sounds, GameManager.Instance.loadedData.settingsData.soundVolume);
-        SetVolume(MixerGroup.Music, GameManager.Instance.loadedData.settingsData.musicVolume);
-    }
-
-    public void SetAudioClipsData(AudioClipsParameters data)
+    public void SetAudioClipsData(SO_AudioClipsParameters data)
     {
         audioClips = data;
     }
@@ -175,4 +203,5 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
             RemoveSoundObject(audioSource);
         }
     }
+
 }

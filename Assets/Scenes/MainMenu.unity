@@ -958,6 +958,25 @@ MonoBehaviour:
   OnCancelEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &293547023 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8442061717345982331, guid: ba59031977221c544a142e7d0f27c6f8,
+    type: 3}
+  m_PrefabInstance: {fileID: 996673349}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &293547026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293547023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7eb300d9e367773418ca7833b39895ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 242bb297-fee0-4493-ab08-56cd3f536ef9
 --- !u!1 &297191585
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "newAudioParameters", menuName = "ScriptableObjects/Sound List")]
-public class AudioClipsParameters : ScriptableObject
+public class SO_AudioClipsParameters : ScriptableObject
 {
     
     private void OnValidate()

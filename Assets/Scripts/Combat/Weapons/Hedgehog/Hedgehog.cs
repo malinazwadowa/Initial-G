@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Hedgehog : Weapon
 {
-    public HedgehogParameters hedgehogBaseData;
+    public SO_HedgehogParameters hedgehogBaseData;
     private HedgehogRank hedgehogCurrentRankData;
     private WeaponProperties currentHedgehogProperties;
 

@@ -4,7 +4,7 @@ using System;
 [CreateAssetMenu(fileName = "newHedgehogParameters", menuName = "ScriptableObjects/Weapons/Hedgehog Parameters")]
 
 //Possibly should be changed to generic WeaponData with optional fields. Or should it ? O.o 
-public class HedgehogParameters : ScriptableObject
+public class SO_HedgehogParameters : ScriptableObject
 {
     public event Action OnWeaponDataChanged;
     private void OnValidate()

@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "newEnemyWaveManagerParameters", menuName = "ScriptableObjects/Enemy Wave Manager Parameters")]
-public class EnemyWaveManagerParameters : ScriptableObject
+public class SO_EnemyWaveManagerParameters : ScriptableObject
 {
     private void OnValidate()
     {

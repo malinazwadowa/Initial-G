@@ -4,7 +4,7 @@ using System;
 [CreateAssetMenu(fileName = "newSpearParameters", menuName = "ScriptableObjects/Weapons/Spear Parameters")]
 
 //Possibly should be changed to generic WeaponData with optional fields. Or should it ? O.o 
-public class SpearParameters : ScriptableObject
+public class SO_SpearParameters : ScriptableObject
 {
     public event Action onWeaponDataChanged;
     private void OnValidate()

@@ -4,7 +4,7 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "newTreasureContainerParameters", menuName = "ScriptableObjects/Loot/Treasure Container Parameters")]
 [Serializable]
-public class TreasureContainerParameters : ScriptableObject
+public class SO_TreasureContainerParameters : ScriptableObject
 {
     [Header("Base Settings")]
     [SerializeField] public float health;

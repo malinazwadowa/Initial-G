@@ -2,13 +2,11 @@ using UnityEngine;
 
 public class PickUpItem : MonoBehaviour
 {
-    public PickUpableItem pickUpType;
+    [SerializeField] private float travelSpeed;
+    [SerializeField] private float arcingDuration;
 
-    public float travelSpeed;
-    public float arcingDuration;
-
+    protected Player player;
     private Transform playerTransform;
-    private Player player;
     
     private bool hasCollided = false;
 
@@ -44,14 +42,11 @@ public class PickUpItem : MonoBehaviour
 
             hasCollided = true;
         }
-
-        
     }
 
-    private void Collect()
+    protected virtual void Collect()
     {
-        pickUpType.OnPickUp(player.gameObject);
-        ObjectPooler.Instance.DespawnObject(gameObject);
+
     }
 
     private void MoveObject()

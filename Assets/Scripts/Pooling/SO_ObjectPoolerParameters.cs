@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "ObjectPoolerParameters", menuName = "ScriptableObjects/ObjectPooler Parameters")]
-public class ObjectPoolerParameters : ScriptableObject
+public class SO_ObjectPoolerParameters : ScriptableObject
 {
     private void OnValidate()
     {

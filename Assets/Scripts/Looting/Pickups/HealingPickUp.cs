@@ -1,14 +1,15 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "newPickUpItemParameters", menuName = "ScriptableObjects/Loot/PickUp Items/Healing PickUp Parameters")]
-public class HealingPickUp : PickUpableItem
+public class HealingPickUp : PickUpItem
 {
-    public float restoreAmount;
-    public override void OnPickUp(GameObject collector)
-    {
-        AudioManager.Instance.PlaySound(AudioClipID.HealthPickup);
-        collector.GetComponent<HealthController>().AddCurrentHealth(restoreAmount);
-        //Destroy(gameobject);
-    }
+    [SerializeField] private SO_HealingPickUpParameters pickupParameters;
 
+    protected override void Collect()
+    {
+        base.Collect();
+
+        AudioManager.Instance.PlaySound(AudioClipID.HealthPickup);
+        player.GetComponent<HealthController>().AddCurrentHealth(pickupParameters.restoreAmount);
+        ObjectPooler.Instance.DespawnObject(gameObject);
+    }
 }

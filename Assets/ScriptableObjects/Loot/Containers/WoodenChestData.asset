@@ -9,14 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41c872be82b2828499f3c0d6b01a657b, type: 3}
+  m_Script: {fileID: 11500000, guid: c891173e23147aa408de1a31d6102aa6, type: 3}
   m_Name: WoodenChestData
   m_EditorClassIdentifier: 
-  health: 5
+  health: 15
   lootTable:
-  - prefab: {fileID: 7003750512685819325, guid: 32929456915d33b4c88d65fca6ffda8c,
-      type: 3}
-    weight: 1
   - prefab: {fileID: 6897662032327567190, guid: 19bb370e907ac1d49a3936570837baae,
       type: 3}
     weight: 1
+  - prefab: {fileID: 7003750512685819325, guid: 32929456915d33b4c88d65fca6ffda8c,
+      type: 3}
+    weight: 4

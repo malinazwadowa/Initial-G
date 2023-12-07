@@ -4,13 +4,13 @@ public class PlayerAnimationController : MonoBehaviour
 {
     private Animator animator;
     private PlayerMovementController movementController;
-    private PlayerParameters playerData;
+    private SO_PlayerParameters playerData;
     private SpriteRenderer[] spriteRenderers;
 
     private Color defaultColor = new Color(1f, 1f, 1f);
     [SerializeField] private Color beingHitColor;
 
-    public void Init(Animator animator, PlayerMovementController movementController, PlayerParameters playerData, SpriteRenderer[] spriteRenderers)
+    public void Init(Animator animator, PlayerMovementController movementController, SO_PlayerParameters playerData, SpriteRenderer[] spriteRenderers)
     {
         this.animator = animator;
         this.movementController = movementController;

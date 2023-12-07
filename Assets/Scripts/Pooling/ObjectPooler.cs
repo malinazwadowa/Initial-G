@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class ObjectPooler : SingletonMonoBehaviour<ObjectPooler>
 {
-    public ObjectPoolerParameters poolerSettings;
-    private ObjectPoolerParameters poolerSettingsCopy;
+    public SO_ObjectPoolerParameters poolerSettings;
+    private SO_ObjectPoolerParameters poolerSettingsCopy;
 
     private List<Pool> pools;
 

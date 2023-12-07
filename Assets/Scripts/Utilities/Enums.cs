@@ -47,3 +47,8 @@ public enum MixerGroup
     Sounds,
     Music
 }
+public enum GameLevel
+{
+    Forest,
+    Cementary
+}

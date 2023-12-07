@@ -1,13 +1,15 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "newPickUpItemParameters", menuName = "ScriptableObjects/Loot/PickUp Items/Exp PickUp Parameters")] 
-public class ExperiencePickUp : PickUpableItem
+public class ExperiencePickUp : PickUpItem
 {
-    public int expAmount;
-    public override void OnPickUp(GameObject collector)
-    {
-        AudioManager.Instance.PlaySound(AudioClipID.ExpPickUp);
-        collector.GetComponent<ExperienceController>().AddExperience(expAmount);
-    }
+    [SerializeField] private SO_ExperiencePickUpParameters pickupParameters;
 
+    protected override void Collect()
+    {
+        base.Collect();
+
+        AudioManager.Instance.PlaySound(AudioClipID.ExpPickUp);
+        player.GetComponent<ExperienceController>().AddExperience(pickupParameters.expAmount);
+        ObjectPooler.Instance.DespawnObject(gameObject);
+    }
 }

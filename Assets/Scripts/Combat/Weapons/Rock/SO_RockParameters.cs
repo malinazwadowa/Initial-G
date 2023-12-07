@@ -5,7 +5,7 @@ using System;
 [CreateAssetMenu(fileName = "newRockParameters", menuName = "ScriptableObjects/Weapons/Rock Parameters")]
 
 //Possibly should be changed to generic WeaponData with optional fields. Or should it ? O.o 
-public class RockParameters : ScriptableObject
+public class SO_RockParameters : ScriptableObject
 {
     public event Action onWeaponDataChanged;
     private void OnValidate()

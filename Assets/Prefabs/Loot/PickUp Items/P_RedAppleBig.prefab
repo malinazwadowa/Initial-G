@@ -94,9 +94,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8117751141206677387}
   - component: {fileID: 1903915564565959920}
-  - component: {fileID: 6391455341638967669}
+  - component: {fileID: 2291920169562473801}
   m_Layer: 9
-  m_Name: P_BigRedApple
+  m_Name: P_RedAppleBig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -134,7 +134,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0.005765915, y: 0.0056009293}
   m_Size: {x: 0.49956894, y: 0.5730572}
   m_Direction: 0
---- !u!114 &6391455341638967669
+--- !u!114 &2291920169562473801
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,9 +143,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 6897662032327567190}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dee324067f0538748bf4515138ad84ba, type: 3}
+  m_Script: {fileID: 11500000, guid: 3806e1cd6c77e564093d8f8f11cd8023, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickUpType: {fileID: 11400000, guid: 75edb44847cf07c498713cb26b36f4f5, type: 2}
   travelSpeed: 7
   arcingDuration: 0.8
+  pickupParameters: {fileID: 11400000, guid: 75edb44847cf07c498713cb26b36f4f5, type: 2}

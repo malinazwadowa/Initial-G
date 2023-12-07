@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e11eb95b7d9a8444bb3d266add0fa7f, type: 3}
+  m_Script: {fileID: 11500000, guid: 1f5b901006772d54f9dd7549af256615, type: 3}
   m_Name: rockdata
   m_EditorClassIdentifier: 
   spawnDelayForAdditionalRocks: 0

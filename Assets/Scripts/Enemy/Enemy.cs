@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour, IDamagable
 {
-    [SerializeField] public EnemyParameters enemyData;
+    [SerializeField] public SO_EnemyParameters enemyData;
 
     protected Player player;
     protected HealthController healthController;

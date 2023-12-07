@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour, IWeaponWielder, IDamagable
 {
-    [SerializeField] public PlayerParameters playerData;
+    [SerializeField] public SO_PlayerParameters playerData;
 
     private Transform center;
     private CombatStats combatStats;
@@ -70,13 +70,14 @@ public class Player : MonoBehaviour, IWeaponWielder, IDamagable
 
         if (Input.GetKeyDown(KeyCode.N))
         {
-            Test2();
+            //Test2();
+            SaveSystem.Load();
         }
 
         if (Input.GetKeyDown(KeyCode.B))
         {
-            Test3();
-            GameManager.Instance.Save();
+            //Test3();
+            SaveSystem.Save();
         }
         if (Input.GetKeyDown(KeyCode.L))
         {
@@ -130,7 +131,7 @@ public class Player : MonoBehaviour, IWeaponWielder, IDamagable
 
     public void Test2()
     {
-        AudioManager.Instance.ResumeAllSounds();
+        //AudioManager.Instance.ResumeAllSounds();
     }
 
     public void Test3()
