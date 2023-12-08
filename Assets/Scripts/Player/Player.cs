@@ -81,7 +81,7 @@ public class Player : MonoBehaviour, IWeaponWielder, IDamagable
         }
         if (Input.GetKeyDown(KeyCode.L))
         {
-            GameManager.Instance.Load();
+           // GameManager.Instance.Load();
         }
         if (Input.GetKeyDown(KeyCode.K))
         {

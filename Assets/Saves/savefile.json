@@ -1,12 +1,12 @@
 {
-  "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[SaveData1, Assembly-CSharp]], mscorlib]], mscorlib",
+  "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[SaveData, Assembly-CSharp]], mscorlib]], mscorlib",
   "242bb297-fee0-4493-ab08-56cd3f536ef9": {
-    "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[SaveData1, Assembly-CSharp]], mscorlib",
+    "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[SaveData, Assembly-CSharp]], mscorlib",
     "AudioManager": {
       "$type": "AudioManager+AudioSaveData, Assembly-CSharp",
-      "masterVolume": 0.981141031,
-      "soundsVolume": 0.0001,
-      "musicVolume": 0.0001
+      "masterVolume": 0.0001,
+      "soundsVolume": 0.305822253,
+      "musicVolume": 0.313534826
     }
   }
 }

@@ -35,6 +35,6 @@ public class LevelUnlocks
 
     public LevelUnlocks()
     {
-        LevelUnlockStatus = UnlocksManager.Instance.GetCurrentLevelUnlocks();
+        //LevelUnlockStatus = LevelUnlockHandler.Instance.GetCurrentLevelUnlocks();
     }
 }
