@@ -42,6 +42,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>, ISaveable
     {
         AudioSaveData data = (AudioSaveData)loadedData;
         UpdateSettingsFromSaveFile(data);
+        Debug.Log("Updated my settings from file AudioManager");
     }
 
     [Serializable]
@@ -90,6 +91,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>, ISaveable
     {
         float valueAdjusted = Mathf.Log10(value) * 20;
         myMixer.SetFloat(groupName.ToString(), valueAdjusted);
+        Debug.Log($"Setting some { groupName} volume");
     }
 
     public float GetCurrentVolume(MixerGroup groupName)

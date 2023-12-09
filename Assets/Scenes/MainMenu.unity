@@ -4020,19 +4020,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1620544096}
         m_TargetAssemblyTypeName: SettingsControllerUI, Assembly-CSharp
-        m_MethodName: SnapshotValues
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1620544096}
-        m_TargetAssemblyTypeName: SettingsControllerUI, Assembly-CSharp
-        m_MethodName: DisableSaveButtons
+        m_MethodName: SubmitChanges
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5628,19 +5616,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1620544096}
         m_TargetAssemblyTypeName: SettingsControllerUI, Assembly-CSharp
-        m_MethodName: ResetChanges
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1620544096}
-        m_TargetAssemblyTypeName: SettingsControllerUI, Assembly-CSharp
-        m_MethodName: DisableSaveButtons
+        m_MethodName: CancelChanges
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6053,31 +6029,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnOpenEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1620544096}
-        m_TargetAssemblyTypeName: SettingsControllerUI, Assembly-CSharp
-        m_MethodName: SetSilderValues
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1620544096}
-        m_TargetAssemblyTypeName: SettingsControllerUI, Assembly-CSharp
-        m_MethodName: SnapshotValues
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   OnCloseEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -6087,6 +6039,18 @@ MonoBehaviour:
   OnCancelEvent:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1620544096}
+        m_TargetAssemblyTypeName: SettingsControllerUI, Assembly-CSharp
+        m_MethodName: CancelChanges
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1620544094}
         m_TargetAssemblyTypeName: MenuUI, Assembly-CSharp
         m_MethodName: Close

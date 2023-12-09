@@ -4,9 +4,9 @@
     "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[SaveData, Assembly-CSharp]], mscorlib",
     "AudioManager": {
       "$type": "AudioManager+AudioSaveData, Assembly-CSharp",
-      "masterVolume": 0.0001,
-      "soundsVolume": 0.305822253,
-      "musicVolume": 0.313534826
+      "masterVolume": 0.5200774,
+      "soundsVolume": 0.465100139,
+      "musicVolume": 0.802818
     }
   }
 }

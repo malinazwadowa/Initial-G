@@ -1,11 +1,26 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class GameManager : SingletonMonoBehaviour<GameManager> , ISaveable
 {
     public event Action OnGamePaused;
     public SaveDataOld loadedData;
     private Dictionary<GameLevel, bool> levelUnlockStatus;
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            //Test2();
+            SaveSystem.Load();
+        }
+
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            //Test3();
+            SaveSystem.Save();
+        }
+    }
     public SaveData SaveMyData()
     {
         throw new NotImplementedException();
@@ -56,11 +71,12 @@ public class GameManager : SingletonMonoBehaviour<GameManager> , ISaveable
         base.Awake();
         DontDestroyOnLoad(this);
         SaveSystem.Initialize();
+        
     }
 
     private void Start()
     {
-        
+        SaveSystem.Load();
     }
 
     public void PauseGame()
