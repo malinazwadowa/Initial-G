@@ -6,7 +6,19 @@
       "$type": "AudioManager+AudioSaveData, Assembly-CSharp",
       "masterVolume": 0.5200774,
       "soundsVolume": 0.465100139,
-      "musicVolume": 0.802818
+      "musicVolume": 0.135230318
+    }
+  },
+  "ba5d5c22-bb5d-4180-850d-0254b5556987": {
+    "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[SaveData, Assembly-CSharp]], mscorlib",
+    "LevelUnlockController": {
+      "$type": "LevelUnlockController+LevelUnlockData, Assembly-CSharp",
+      "levelUnlockStatus": {
+        "$type": "System.Collections.Generic.Dictionary`2[[GameLevel, Assembly-CSharp],[System.Boolean, mscorlib]], mscorlib",
+        "Forest": false,
+        "Cementary": true,
+        "dupa": false
+      }
     }
   }
 }

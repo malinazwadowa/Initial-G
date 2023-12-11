@@ -15,7 +15,6 @@ public class SaveableEntity : MonoBehaviour
 
     public Dictionary<string, SaveData> SaveData()
     {
-        
         Dictionary<string, SaveData> data = new Dictionary<string, SaveData>();
 
         foreach(ISaveable saveable in GetComponents<ISaveable>())

@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 44099415912366627}
   - component: {fileID: 44099415912366624}
+  - component: {fileID: 9082055458375173534}
+  - component: {fileID: 6615044501888973533}
   m_Layer: 0
   m_Name: P_GameManager
   m_TagString: Untagged
@@ -44,3 +46,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eea8446a89c6e7e48b19d6e4936ffb4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelUnlockController: {fileID: 0}
+--- !u!114 &9082055458375173534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 44099415912366625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb50909d91a65234092c8309b4dd6044, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6615044501888973533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 44099415912366625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7eb300d9e367773418ca7833b39895ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: ba5d5c22-bb5d-4180-850d-0254b5556987

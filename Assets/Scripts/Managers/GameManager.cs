@@ -2,11 +2,14 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : SingletonMonoBehaviour<GameManager> , ISaveable
+public class GameManager : SingletonMonoBehaviour<GameManager>
 {
     public event Action OnGamePaused;
     public SaveDataOld loadedData;
-    private Dictionary<GameLevel, bool> levelUnlockStatus;
+    //private Dictionary<GameLevel, bool> levelUnlockStatus;
+    [HideInInspector] public GameLevel CurrentGameLevel { get; private set; }
+    [HideInInspector] public LevelUnlockController levelUnlockController { get; private set; }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.N))
@@ -20,21 +23,16 @@ public class GameManager : SingletonMonoBehaviour<GameManager> , ISaveable
             //Test3();
             SaveSystem.Save();
         }
-    }
-    public SaveData SaveMyData()
-    {
-        throw new NotImplementedException();
-    }
 
-    public void LoadMyData(SaveData savedData)
-    {
-        GameSaveData loadedData = (GameSaveData)savedData;
-        if(loadedData == null)
+        if (Input.GetKeyDown(KeyCode.O))
         {
-           // loadedData.InitializeLevelUnlocks(loadedData);
+            Dictionary<GameLevel, bool> levelUnlockStatus = levelUnlockController.GetCurrentLevelUnlockStatus();
+            Debug.Log(levelUnlockStatus.Count);
+            Debug.Log(levelUnlockStatus[GameLevel.Cementary]);
         }
-
     }
+    
+
 
     [Serializable]
     private class GameSaveData : SaveData
@@ -70,8 +68,10 @@ public class GameManager : SingletonMonoBehaviour<GameManager> , ISaveable
     {
         base.Awake();
         DontDestroyOnLoad(this);
-        SaveSystem.Initialize();
+
+        levelUnlockController = GetComponent<LevelUnlockController>();
         
+        SaveSystem.Initialize();
     }
 
     private void Start()
