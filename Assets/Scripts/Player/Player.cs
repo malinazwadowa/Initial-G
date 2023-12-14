@@ -68,25 +68,6 @@ public class Player : MonoBehaviour, IWeaponWielder, IDamagable
             TestCombatStats();
         }
 
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            //Test2();
-            SaveSystem.Load();
-        }
-
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            //Test3();
-            SaveSystem.Save();
-        }
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-           // GameManager.Instance.Load();
-        }
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            Debug.Log(GameManager.Instance.loadedData.settingsData.masterVolume);
-        }
     }
 
     private void FixedUpdate()

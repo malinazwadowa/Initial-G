@@ -9,16 +9,21 @@ public class LevelSelectionControllerUI : MonoBehaviour
     public GameObject levelButtons;
     public MainMenuUI mainMenu;
 
-
     private List<LevelInfo> levelInfos;
     private List<Button> buttons;
+
     public class LevelInfo
     {
-        public string levelName;
+        public GameLevel gameLevel;
         public bool isUnlocked;
     }
 
-    public void SetupLevels()
+    public void LoadGameLevel(GameLevel gameLevel)
+    {
+        GameManager.Instance.LoadGameLevel(gameLevel);
+    }
+
+    public void SetUpButtonLogic()
     {
         levelInfos = new List<LevelInfo>();
         buttons = new List<Button>();
@@ -28,14 +33,11 @@ public class LevelSelectionControllerUI : MonoBehaviour
             buttons.Add(button);
         }
 
-        
-
         Dictionary <GameLevel, bool> levelUnlockStatus = GameManager.Instance.levelUnlockController.GetCurrentLevelUnlockStatus();
-        Debug.Log("levelunlockstatus zassany : "+ levelUnlockStatus.Count);
 
         foreach (GameLevel level in Enum.GetValues(typeof(GameLevel)))
         {
-            levelInfos.Add(new LevelInfo { levelName = level.ToString(), isUnlocked = levelUnlockStatus[level] });
+            levelInfos.Add(new LevelInfo { gameLevel = level, isUnlocked = levelUnlockStatus[level] });
         }
 
         for(int i=0; i<levelInfos.Count; i++)
@@ -44,9 +46,9 @@ public class LevelSelectionControllerUI : MonoBehaviour
 
             if (buttons[i].interactable)
             {
-                buttons[i].GetComponentInChildren<TextMeshProUGUI>().text = levelInfos[i].levelName;
+                buttons[i].GetComponentInChildren<TextMeshProUGUI>().text = levelInfos[i].gameLevel.ToString();
                 int index = i;
-                buttons[i].onClick.AddListener(() => mainMenu.LoadLevel(levelInfos[index].levelName));
+                buttons[i].onClick.AddListener(() => LoadGameLevel(levelInfos[index].gameLevel));
             }
             else
             {
@@ -55,21 +57,4 @@ public class LevelSelectionControllerUI : MonoBehaviour
         }
 
     }
-
-    // Start is called before the first frame update
-    void Awake()
-    {
-        buttons = new List<Button>();
-        foreach(Button button in levelButtons.GetComponentsInChildren<Button>())
-        {
-            buttons.Add(button);
-        }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
 }

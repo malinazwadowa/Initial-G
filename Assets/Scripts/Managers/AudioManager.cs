@@ -1,8 +1,6 @@
-using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Dynamic;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -40,9 +38,10 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>, ISaveable
 
     public void LoadMyData(SaveData loadedData)
     {
-        AudioSaveData data = (AudioSaveData)loadedData;
-        UpdateSettingsFromSaveFile(data);
-        Debug.Log("Updated my settings from file AudioManager");
+        if (loadedData is AudioSaveData audioSaveData)
+        {
+            UpdateSettingsFromSaveFile(audioSaveData);
+        }
     }
 
     [Serializable]
@@ -59,7 +58,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>, ISaveable
         SetVolume(MixerGroup.Sounds, loadedData.soundsVolume);
         SetVolume(MixerGroup.Music, loadedData.musicVolume);
     }
-
+    
     protected override void Awake()
     {
         base.Awake();
@@ -91,7 +90,6 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>, ISaveable
     {
         float valueAdjusted = Mathf.Log10(value) * 20;
         myMixer.SetFloat(groupName.ToString(), valueAdjusted);
-        Debug.Log($"Setting some { groupName} volume");
     }
 
     public float GetCurrentVolume(MixerGroup groupName)

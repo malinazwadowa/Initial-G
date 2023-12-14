@@ -1,14 +1,5 @@
 {
   "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[SaveData, Assembly-CSharp]], mscorlib]], mscorlib",
-  "242bb297-fee0-4493-ab08-56cd3f536ef9": {
-    "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[SaveData, Assembly-CSharp]], mscorlib",
-    "AudioManager": {
-      "$type": "AudioManager+AudioSaveData, Assembly-CSharp",
-      "masterVolume": 0.5200774,
-      "soundsVolume": 0.465100139,
-      "musicVolume": 0.135230318
-    }
-  },
   "ba5d5c22-bb5d-4180-850d-0254b5556987": {
     "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[SaveData, Assembly-CSharp]], mscorlib",
     "LevelUnlockController": {
@@ -19,6 +10,15 @@
         "Cementary": true,
         "dupa": false
       }
+    }
+  },
+  "242bb297-fee0-4493-ab08-56cd3f536ef9": {
+    "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[SaveData, Assembly-CSharp]], mscorlib",
+    "AudioManager": {
+      "$type": "AudioManager+AudioSaveData, Assembly-CSharp",
+      "masterVolume": 1.0,
+      "soundsVolume": 0.0001,
+      "musicVolume": 0.0001
     }
   }
 }

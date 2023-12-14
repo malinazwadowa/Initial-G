@@ -936,19 +936,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnOpenEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1132233419}
-        m_TargetAssemblyTypeName: MenuUI, Assembly-CSharp
-        m_MethodName: Close
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   OnCloseEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -3247,7 +3235,7 @@ MonoBehaviour:
   m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 0.047
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -3746,7 +3734,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1132233420}
         m_TargetAssemblyTypeName: LevelSelectionControllerUI, Assembly-CSharp
-        m_MethodName: SetupLevels
+        m_MethodName: SetUpButtonLogic
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6249,9 +6237,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f23bf9e7c76b90e41b2634d39be1ab7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  masterVolumeSilder: {fileID: 1773546831}
-  soundsVolumeSilder: {fileID: 321757055}
-  musicVolumeSilder: {fileID: 1080117271}
+  masterVolumeSlider: {fileID: 1773546831}
+  soundsVolumeSlider: {fileID: 321757055}
+  musicVolumeSlider: {fileID: 1080117271}
   saveButtons: {fileID: 1938170839}
   regularButtons: {fileID: 2121445988}
 --- !u!1 &1641193855

@@ -3,9 +3,9 @@ using UnityEngine.UI;
 
 public class SettingsControllerUI : MonoBehaviour
 {
-    [SerializeField] private Slider masterVolumeSilder;
-    [SerializeField] private Slider soundsVolumeSilder;
-    [SerializeField] private Slider musicVolumeSilder;
+    [SerializeField] private Slider masterVolumeSlider;
+    [SerializeField] private Slider soundsVolumeSlider;
+    [SerializeField] private Slider musicVolumeSlider;
 
     [SerializeField] private GameObject saveButtons;
     [SerializeField] private GameObject regularButtons;
@@ -24,7 +24,7 @@ public class SettingsControllerUI : MonoBehaviour
     {
         initalValuesSet = false;    
         
-        SnapshotValues();
+        SnapshotVolumeValues();
         SetSilderValues();
 
         initalValuesSet = true;
@@ -38,7 +38,7 @@ public class SettingsControllerUI : MonoBehaviour
 
     public void SubmitChanges()
     {
-        SnapshotValues();
+        SnapshotVolumeValues();
         DisableSaveButtons();
     }
 
@@ -70,7 +70,7 @@ public class SettingsControllerUI : MonoBehaviour
         regularButtons.SetActive(true);
     }
 
-    private void SnapshotValues()
+    private void SnapshotVolumeValues()
     {
         VolumeValues currentVolumeValues = new VolumeValues
         {
@@ -84,15 +84,15 @@ public class SettingsControllerUI : MonoBehaviour
 
     private void SetSilderValues()
     {
-        masterVolumeSilder.value = AudioManager.Instance.GetCurrentVolume(MixerGroup.Master);
-        soundsVolumeSilder.value = AudioManager.Instance.GetCurrentVolume(MixerGroup.Sounds);
-        musicVolumeSilder.value = AudioManager.Instance.GetCurrentVolume(MixerGroup.Music);
+        masterVolumeSlider.value = AudioManager.Instance.GetCurrentVolume(MixerGroup.Master);
+        soundsVolumeSlider.value = AudioManager.Instance.GetCurrentVolume(MixerGroup.Sounds);
+        musicVolumeSlider.value = AudioManager.Instance.GetCurrentVolume(MixerGroup.Music);
     }
 
     private void ResetChanges()
     {
-        masterVolumeSilder.value = storedVolumeValues.master;
-        soundsVolumeSilder.value = storedVolumeValues.sounds;
-        musicVolumeSilder.value = storedVolumeValues.music;
+        masterVolumeSlider.value = storedVolumeValues.master;
+        soundsVolumeSlider.value = storedVolumeValues.sounds;
+        musicVolumeSlider.value = storedVolumeValues.music;
     }
 }

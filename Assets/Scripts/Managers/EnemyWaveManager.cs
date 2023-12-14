@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyWaveManager : SingletonMonoBehaviour<EnemyWaveManager>
@@ -13,6 +12,7 @@ public class EnemyWaveManager : SingletonMonoBehaviour<EnemyWaveManager>
     private float lerpFactor;
     private float waveDuration;
     private float ratio = 0.6f; //0-1 ratio for lerp, % of wave time at which peak count of enemies is being kept active
+
     void Start()
     {
         waveDuration = (enemyManagerData.levelDurationInMinutes / enemyManagerData.enemyWaves.Length) * 60;
@@ -22,8 +22,6 @@ public class EnemyWaveManager : SingletonMonoBehaviour<EnemyWaveManager>
         {
             ObjectPooler.Instance.CreatePool(entry.Key, entry.Value);
         }
-        //Debug.Log("Waveduration is: " + waveDuration +" seconds");
-        //SpawnOnCall(PoolableObject.Test, Vector2.zero);
     }
 
     void Update()

@@ -13,6 +13,7 @@ public class SaveableEntity : MonoBehaviour
         id = Guid.NewGuid().ToString();
     }
 
+
     public Dictionary<string, SaveData> SaveData()
     {
         Dictionary<string, SaveData> data = new Dictionary<string, SaveData>();
@@ -21,7 +22,7 @@ public class SaveableEntity : MonoBehaviour
         {
             data[saveable.GetType().ToString()] = saveable.SaveMyData();
         }
-
+        
         return data;
     }
 
@@ -30,7 +31,6 @@ public class SaveableEntity : MonoBehaviour
         foreach (ISaveable saveable in GetComponents<ISaveable>())
         {
             string typeName = saveable.GetType().ToString();
-            Debug.Log($"{typeName}");
 
             if (dataDictionary.TryGetValue(typeName, out SaveData value))
             {

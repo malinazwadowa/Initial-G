@@ -26,8 +26,10 @@ public static class SaveSystem
 
     public static void Load() 
     {
+        Debug.Log("GameLoaded start");
         Dictionary<string, Dictionary<string, SaveData>> saveData = LoadFile();
         LoadData(saveData);
+        Debug.Log("GameLoaded end");
     }
     
     private static void SaveData(Dictionary<string, Dictionary<string, SaveData>> saveData) 
@@ -58,7 +60,6 @@ public static class SaveSystem
 
         try
         {
-
             JsonSerializerSettings settings = new JsonSerializerSettings
             {
                 TypeNameHandling = TypeNameHandling.All

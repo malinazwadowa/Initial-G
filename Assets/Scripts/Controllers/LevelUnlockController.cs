@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class LevelUnlockController : MonoBehaviour, ISaveable
 {
-    private GameLevel baseLevel = GameLevel.Cementary;
+    private GameLevel startingLevel = GameLevel.Cementary;
     private Dictionary<GameLevel, bool> currentLevelUnlockStatus = new Dictionary<GameLevel, bool>();
+
 
     public SaveData SaveMyData()
     {
@@ -19,11 +20,11 @@ public class LevelUnlockController : MonoBehaviour, ISaveable
 
     public void LoadMyData(SaveData savedData)
     {
-        LevelUnlockData loadedData = (LevelUnlockData)savedData;
-        
-        currentLevelUnlockStatus = loadedData.levelUnlockStatus;
-
-        UpdateLevelUnlockDictionary();
+        if (savedData is LevelUnlockData levelUnlockData)
+        {
+            currentLevelUnlockStatus = levelUnlockData.levelUnlockStatus;
+            UpdateLevelUnlockDictionary();
+        }
     }
 
     [Serializable]
@@ -32,25 +33,27 @@ public class LevelUnlockController : MonoBehaviour, ISaveable
         public Dictionary<GameLevel, bool> levelUnlockStatus;
     }
 
+    private void Start()
+    {
+        UpdateLevelUnlockDictionary();
+    }
+
     private Dictionary<GameLevel, bool> UpdateLevelUnlockDictionary()
     {
         foreach (GameLevel level in Enum.GetValues(typeof(GameLevel)))
         {
-            //levelUnlockStatus.Add(level, false);
             if (!currentLevelUnlockStatus.ContainsKey(level))
             {
                 currentLevelUnlockStatus.Add(level, false);
+                if(level  == startingLevel) { UnlockGameLevel(startingLevel); }
             }
         }
-
-        UnlockGameLevel(baseLevel, currentLevelUnlockStatus);
-
         return currentLevelUnlockStatus;
     }
 
-    public void UnlockGameLevel(GameLevel levelName, Dictionary<GameLevel, bool> levelUnlockStatus)
+    public void UnlockGameLevel(GameLevel levelName)
     {
-        levelUnlockStatus[levelName] = true;
+        currentLevelUnlockStatus[levelName] = true;
     }
 
     public Dictionary<GameLevel, bool> GetCurrentLevelUnlockStatus()

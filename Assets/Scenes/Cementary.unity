@@ -6145,9 +6145,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f23bf9e7c76b90e41b2634d39be1ab7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  masterVolumeSilder: {fileID: 9105148399861511280}
-  soundsVolumeSilder: {fileID: 38528767985841827}
-  musicVolumeSilder: {fileID: 8982153059805463905}
+  masterVolumeSlider: {fileID: 9105148399861511280}
+  soundsVolumeSlider: {fileID: 38528767985841827}
+  musicVolumeSlider: {fileID: 8982153059805463905}
   saveButtons: {fileID: 1446094073}
   regularButtons: {fileID: 999285089}
 --- !u!222 &4070390456044580716
