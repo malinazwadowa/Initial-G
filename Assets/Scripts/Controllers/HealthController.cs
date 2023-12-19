@@ -8,7 +8,7 @@ public class HealthController : MonoBehaviour
 
     public Action OnHealthChanged;
 
-    public void Init(float maxHealth)
+    public void Initialize(float maxHealth)
     {
         this.maxHealth = maxHealth;
         currentHealth = maxHealth;

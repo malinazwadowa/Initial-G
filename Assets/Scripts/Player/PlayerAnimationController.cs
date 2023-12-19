@@ -10,7 +10,7 @@ public class PlayerAnimationController : MonoBehaviour
     private Color defaultColor = new Color(1f, 1f, 1f);
     [SerializeField] private Color beingHitColor;
 
-    public void Init(Animator animator, PlayerMovementController movementController, SO_PlayerParameters playerData, SpriteRenderer[] spriteRenderers)
+    public void Initialize(Animator animator, PlayerMovementController movementController, SO_PlayerParameters playerData, SpriteRenderer[] spriteRenderers)
     {
         this.animator = animator;
         this.movementController = movementController;

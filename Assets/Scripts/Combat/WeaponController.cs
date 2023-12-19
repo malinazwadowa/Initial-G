@@ -2,26 +2,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-
 public class WeaponController : MonoBehaviour
 {
-    public List<GameObject> availableWeapons = new List<GameObject>();
-
     private IWeaponWielder myWeaponWielder;
+    private CharacterStats characterStats;
 
     [HideInInspector] public List<Weapon> equippedWeapons = new List<Weapon>();
+    public List<GameObject> availableWeapons = new List<GameObject>();
 
-    private CombatStats combatStats;
-
-    public void Init(IWeaponWielder weaponWielder, CombatStats combatStats = null)
+    public void Initalize(IWeaponWielder weaponWielder, CharacterStats characterStats)
     {
-        this.combatStats = combatStats ?? new CombatStats();
-
         myWeaponWielder = weaponWielder;
 
-        EquipWeapon<Hedgehog>();
-        EquipWeapon<Spear>();
+        this.characterStats = characterStats;
+
         EquipWeapon<Rock>();
+        EquipWeapon<Spear>();
+        EquipWeapon<Hedgehog>();
+        
     }
 
     void Update()
@@ -40,10 +38,6 @@ public class WeaponController : MonoBehaviour
             weapon.WeaponTick();
         }
     }
-    private void AddWeapon(Weapon weapon)
-    {
-        equippedWeapons.Add(weapon);
-    }
 
     public void EquipWeapon<T>() where T : Weapon
     {
@@ -52,8 +46,8 @@ public class WeaponController : MonoBehaviour
         {
             GameObject weapon = Instantiate(weaponPrefab, transform);
             T weaponScript = weapon.GetComponent<T>();
-            weaponScript.Init(myWeaponWielder, combatStats);
-            AddWeapon(weaponScript);
+            weaponScript.Initialize(myWeaponWielder, characterStats);
+            equippedWeapons.Add(weaponScript);
         }
     }
 

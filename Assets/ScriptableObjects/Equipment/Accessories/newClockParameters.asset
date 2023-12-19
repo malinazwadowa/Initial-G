@@ -9,12 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6abb751c3c9b8a44c84f28e338e28493, type: 3}
-  m_Name: SunflowerData 1
+  m_Script: {fileID: 11500000, guid: dcac4d34787d0154ea208db36479651e, type: 3}
+  m_Name: newClockParameters
   m_EditorClassIdentifier: 
-  tier: 1
-  speed: 1
-  maxHealth: 15
-  damage: 5
-  attackCooldown: 1
-  armor: 0
+  numberOfRanks: 5
+  value: 10

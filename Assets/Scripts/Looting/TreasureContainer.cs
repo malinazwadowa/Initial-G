@@ -10,7 +10,7 @@ public class TreasureContainer : MonoBehaviour, IDamagable
     void Start()
     {
         healthController = GetComponent<HealthController>();
-        healthController.Init(containerData.health);
+        healthController.Initialize(containerData.health);
     }
 
     public void GetDamaged(float amount)

@@ -9,7 +9,7 @@ public class ExperienceController : MonoBehaviour
     private float maxExpForCurrentLevel;
     private ExpBarUI expBar;
 
-    public void Init(ExpBarUI expBar)
+    public void Initialize(ExpBarUI expBar)
     {
         this.expBar = expBar;
         currentExp = 0;

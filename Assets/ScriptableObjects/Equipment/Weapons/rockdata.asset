@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f5b901006772d54f9dd7549af256615, type: 3}
   m_Name: rockdata
   m_EditorClassIdentifier: 
-  spawnDelayForAdditionalRocks: 0
-  spawnOffsetRangeForAdditionalRocks: 0
+  spawnDelayForAdditionalRocks: 0.15
+  spawnOffsetRangeForAdditionalRocks: 0.6
   rockRanks:
   - name: Rank 1
     projectilePrefab: {fileID: 7588590208296266261, guid: 54dfc9c391994ed4190ceedfe90edf13,
       type: 3}
     speed: 10
     cooldown: 1.5
-    amount: 1
+    amount: 6
     damage: 10
     knockbackPower: 5

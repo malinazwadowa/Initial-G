@@ -14,7 +14,7 @@ public class HedgehogProjectile : MonoBehaviour
     private float knockbackPower;
     private float duration;
 
-    public void Init(Transform weaponsTransform, float damage, float speed, float knockbackPower, float radius, float duration)
+    public void Initalize(Transform weaponsTransform, float damage, float speed, float knockbackPower, float radius, float duration)
     {
         this.damage = damage;
         this.speed = speed;

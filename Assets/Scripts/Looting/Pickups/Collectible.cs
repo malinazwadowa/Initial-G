@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PickUpItem : MonoBehaviour
+public class Collectible : MonoBehaviour
 {
     [SerializeField] private float travelSpeed;
     [SerializeField] private float arcingDuration;

@@ -10,7 +10,7 @@ public class RockProjectile : MonoBehaviour
     private float speed;
     private float knockbackPower;
 
-    public void Init(Vector3 throwOrigin, Transform target, float damage, float speed, float knockbackPower)
+    public void Initialize(Vector3 throwOrigin, Transform target, float damage, float speed, float knockbackPower)
     {
         
         this.throwOrigin = throwOrigin;

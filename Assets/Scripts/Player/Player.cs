@@ -6,7 +6,7 @@ public class Player : MonoBehaviour, IWeaponWielder, IDamagable
     [SerializeField] public SO_PlayerParameters playerData;
 
     private Transform center;
-    private CombatStats combatStats;
+    
 
     [HideInInspector] public PlayerInputActions InputActions { get; private set; }
     private Animator animator;
@@ -19,13 +19,14 @@ public class Player : MonoBehaviour, IWeaponWielder, IDamagable
     private PlayerAnimationController animationController;
     private LootCollisionHandler lootCollisionHandler;
 
+    private CharacterStatsController characterStatsController;
+    private AccessoryController accessoryController;
+
     [HideInInspector] public WeaponController weaponController;
     [HideInInspector] public PlayerInputController InputController { get; private set; }
 
     private void Awake()
     {
-        combatStats = new CombatStats(playerData.baseDamageModifier, playerData.baseWeaponSpeed, playerData.baseCooldownModifier);
-        
         InputActions = new PlayerInputActions();
         animator = GetComponent<Animator>();
         spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
@@ -41,16 +42,21 @@ public class Player : MonoBehaviour, IWeaponWielder, IDamagable
         InputController = GetComponent<PlayerInputController>();
         experienceController = GetComponent<ExperienceController>();
 
+        characterStatsController = GetComponent<CharacterStatsController>();
+        accessoryController = GetComponent<AccessoryController>();
+
+        characterStatsController.Initialize();
+        experienceController.Initialize(FindAnyObjectByType<ExpBarUI>());
+        healthController.Initialize(playerData.maxHealth);
+
+        lootCollisionHandler.Initialize(playerData.lootingRadius);
+        movementController.Initialize(playerData, rigidBody);
+        animationController.Initialize(animator, movementController, playerData, spriteRenderers);
+        InputController.Initialize(movementController, InputActions);
 
 
-        experienceController.Init(FindAnyObjectByType<ExpBarUI>());
-        healthController.Init(playerData.maxHealth);
-
-        lootCollisionHandler.Init(playerData.lootingRadius);
-        movementController.Init(playerData, rigidBody);
-        animationController.Init(animator, movementController, playerData, spriteRenderers);
-        InputController.Init(movementController, InputActions);
-        weaponController.Init(this, combatStats);
+        accessoryController.Initialize(characterStatsController);
+        weaponController.Initalize(this, characterStatsController.GetStats());
     }
 
     private void Start()
@@ -106,7 +112,7 @@ public class Player : MonoBehaviour, IWeaponWielder, IDamagable
         Debug.Log("Upping the base damage");
         float current = Time.timeScale;
         Debug.Log(current);
-        combatStats.UpdateCombatStat(StatType.DamageModifier, 1);
+        //combatStats.UpdateCombatStat(StatType.DamageModifier, 1);
         AudioManager.Instance.PauseAllSounds();
     }
 

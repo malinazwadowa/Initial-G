@@ -46,8 +46,9 @@ public class WeaponUpgradeUI : MonoBehaviour
 
     public void OfferWeaponUpgrade()
     {
-        
+
         weapons = player.weaponController.equippedWeapons;
+        
 
         leftWeaponId = Random.Range(0, weapons.Count);
         rightWeaponId = leftWeaponId;
@@ -59,6 +60,7 @@ public class WeaponUpgradeUI : MonoBehaviour
 
         leftText.text = weapons[leftWeaponId].GetType().Name;
         rightText.text = weapons[rightWeaponId].GetType().Name;
+        
     }
 
     public void UpgradeLeftWeapon()

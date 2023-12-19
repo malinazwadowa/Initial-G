@@ -19,6 +19,8 @@ GameObject:
   - component: {fileID: 509307841282388345}
   - component: {fileID: 383067496925055401}
   - component: {fileID: 8078250743339324175}
+  - component: {fileID: 1496833859253251527}
+  - component: {fileID: 6251444836387317112}
   - component: {fileID: 908786877458798833}
   - component: {fileID: -7073341481528486003}
   m_Layer: 7
@@ -316,6 +318,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8987713c420b33942844a5592436c897, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1496833859253251527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1380912778314320832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7475b4208dfc8db4ea5e64266e0337a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6251444836387317112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1380912778314320832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5d60132a1f2b7a4ba699bdb70edaa41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equippedAccessories: []
+  availableAccessories:
+  - {fileID: 428154919615283862, guid: ac19876c3e98920439f8e8b5da76f535, type: 3}
+  - {fileID: 5575680701261846008, guid: b4b07aae3978883469266c496f7eeb76, type: 3}
 --- !u!114 &908786877458798833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -328,11 +358,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 628454c9dd25174488e6981e2f8b932f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  availableWeapons:
-  - {fileID: 8923503329484286133, guid: 039119011dc11b7499859cf33785b51d, type: 3}
-  - {fileID: 6554547693428024977, guid: 34efbbefda69e6f4abd2a06183a2c3f6, type: 3}
-  - {fileID: 3887739600524060785, guid: 2bab34fbbb0295742b2aa20ec8323523, type: 3}
   equippedWeapons: []
+  availableWeapons:
+  - {fileID: 3959019659549421026, guid: 6733869323336ff48b8e145332e36618, type: 3}
+  - {fileID: 8923503329484286133, guid: 039119011dc11b7499859cf33785b51d, type: 3}
+  - {fileID: 3887739600524060785, guid: 2bab34fbbb0295742b2aa20ec8323523, type: 3}
 --- !u!114 &-7073341481528486003
 MonoBehaviour:
   m_ObjectHideFlags: 0

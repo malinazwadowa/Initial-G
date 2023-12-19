@@ -1,72 +1,64 @@
 using System.Collections;
 using UnityEngine;
 
-public class Rock : Weapon
+public class Rock : Weapon 
 {
-    [SerializeField] private SO_RockParameters rockBaseData;
-    private RockRank rockCurrentRankData;
-    private WeaponProperties currentRockProperties;
-
-    private float timer = 2;
-
-    void Start()
+    private SO_RockParameters baseParameters;
+    private RockRank currentRankParameters;
+    private float timer;
+    
+    public override void Initialize(IWeaponWielder weaponWielder, CharacterStats characterStats)
     {
-        rockCurrentRankData = rockBaseData.rockRanks[currentRank];
-        currentRockProperties = new WeaponProperties();
-        SetCurrentProperties();
-
-        rockBaseData.onWeaponDataChanged += SetCurrentProperties;
+        base.Initialize(weaponWielder, characterStats);
+        baseParameters = ItemParametersList.Instance.SO_RockParameters;
+        currentRankParameters = baseParameters.rockRanks[currentRank];
     }
-    public override void SetCurrentProperties()
-    {
-        WeaponProperties rockProperties = new WeaponProperties();
-        rockProperties.damage = rockCurrentRankData.damage * combatStats.damageModifier;
-        rockProperties.cooldown = rockCurrentRankData.cooldown * combatStats.cooldownModifier;
-        rockProperties.speed = rockCurrentRankData.speed * combatStats.speedModifier;
-        rockProperties.amount = rockCurrentRankData.amount;
-        rockProperties.prefab = rockCurrentRankData.projectilePrefab;
-        rockProperties.knockbackPower = rockCurrentRankData.knockbackPower;
-        currentRockProperties = rockProperties;
-    }
+    
     public override void WeaponTick()
     {
         base.WeaponTick();
 
         timer += Time.deltaTime;
-        if (timer > currentRockProperties.cooldown)
-        {   
-            StartCoroutine(ThrowRocks(rockBaseData.spawnDelayForAdditionalRocks, currentRockProperties.amount));
+        if (timer > currentRankParameters.cooldown * characterStats.cooldownModifier)
+        {
+            StartCoroutine(ThrowRocks(baseParameters.spawnDelayForAdditionalRocks, currentRankParameters.amount));
             timer = 0;
         }
     }
 
-    private void SpawnRocks()
+    private IEnumerator ThrowRocks(float delay, int amount)
     {
-        Vector3 spawnPosition = myWeaponWielder.GetCenterPosition() + GetRandomSpawnOffset(rockBaseData.spawnOffsetRangeForAdditionalRocks);
-
-        if (Utilities.GetClosestEnemy(spawnPosition) != null)
+        if (currentRankParameters.amount > 0)
         {
-            GameObject newRock = ObjectPooler.Instance.SpawnObject(currentRockProperties.prefab, spawnPosition);
-            newRock.GetComponent<RockProjectile>().Init(spawnPosition, Utilities.GetClosestEnemy(spawnPosition), currentRockProperties.damage, currentRockProperties.speed, currentRockProperties.knockbackPower);
+            SpawnRock();
+        }
+
+        for (int i = 1; i < amount; i++)
+        {
+            yield return new WaitForSeconds(delay);
+            SpawnRock();
+        }
+    }
+
+    private void SpawnRock()
+    {
+        Vector3 spawnPosition = weaponWielder.GetCenterPosition() + GetRandomSpawnOffset(baseParameters.spawnOffsetRangeForAdditionalRocks);
+        Transform target = Utilities.GetClosestEnemy(spawnPosition);
+        if (target != null)
+        {
+            GameObject newRock = ObjectPooler.Instance.SpawnObject(currentRankParameters.projectilePrefab, spawnPosition);
+            newRock.GetComponent<RockProjectile>().Initialize
+                (
+                spawnPosition,
+                target,
+                currentRankParameters.damage * characterStats.damageModifier,
+                currentRankParameters.speed * characterStats.weaponSpeedModifier,
+                currentRankParameters.knockbackPower
+                );
         }
         else
         {
             return;
-        }
-        
-    }
-
-    private IEnumerator ThrowRocks(float delay, int amount)
-    {
-        if (currentRockProperties.amount > 0)
-        {
-            SpawnRocks();
-        }
-
-        for (int i = 1; i < amount ; i++)
-        {
-            yield return new WaitForSeconds(delay);
-            SpawnRocks();
         }
     }
 
@@ -76,16 +68,15 @@ public class Rock : Weapon
         spawnOffset.x = Random.Range(-offsetValue, offsetValue);
         spawnOffset.y = Random.Range(-offsetValue, offsetValue);
         return spawnOffset;
-        
     }
+
     public override void RankUp()
     {
-        if (currentRank < rockBaseData.rockRanks.Length - 1)
+        if (currentRank < baseParameters.rockRanks.Length - 1)
         {
             base.RankUp();
             Debug.Log("Ranking up Rock.");
-            rockCurrentRankData = rockBaseData.rockRanks[currentRank];
-            SetCurrentProperties();
+            currentRankParameters = baseParameters.rockRanks[currentRank];
         }
         else
         {

@@ -4,6 +4,14 @@ public enum StatType
     SpeedModifier,
     CooldownModifier
 }
+public enum StatModifier
+{
+    MoveSpeedModifier,
+    WeaponSpeedModifier,
+    DamageModifier,
+    CooldownModifier,
+    PickUpRadius
+}
 public enum SectorOfChunk
 {
     LeftBottomCorner,

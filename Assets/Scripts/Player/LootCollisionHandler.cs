@@ -5,7 +5,7 @@ public class LootCollisionHandler : MonoBehaviour
 {
     private float lootingRadius;
     [SerializeField] private CircleCollider2D myCollider;
-    public void Init(float lootingRadius)
+    public void Initialize(float lootingRadius)
     {
         this.lootingRadius = lootingRadius;
         SetRadius(lootingRadius);

@@ -11,7 +11,7 @@ public class PlayerMovementController : MonoBehaviour
     public float runRatio = 1;
     public float speedModifiers = 1;
     
-    public void Init(SO_PlayerParameters playerData, Rigidbody2D rigidBody)
+    public void Initialize(SO_PlayerParameters playerData, Rigidbody2D rigidBody)
     {
         this.playerData = playerData;
         this.rigidBody = rigidBody;

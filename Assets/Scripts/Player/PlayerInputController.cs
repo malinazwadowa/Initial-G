@@ -12,7 +12,7 @@ public class PlayerInputController : MonoBehaviour
 
     private bool movementInputEnabled = true;
 
-    public void Init(PlayerMovementController playerMovementController, PlayerInputActions playerInputActions)
+    public void Initialize(PlayerMovementController playerMovementController, PlayerInputActions playerInputActions)
     {
         this.playerMovementController = playerMovementController;
         this.inputActions = playerInputActions;

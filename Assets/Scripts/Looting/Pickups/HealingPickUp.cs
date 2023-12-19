@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class HealingPickUp : PickUpItem
+public class HealingPickUp : Collectible
 {
     [SerializeField] private SO_HealingPickUpParameters pickupParameters;
 

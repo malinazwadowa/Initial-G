@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour, IDamagable
         player = PlayerManager.Instance.GetPlayer();
          
         healthController = GetComponent<HealthController>();
-        healthController.Init(enemyData.maxHealth);
+        healthController.Initialize(enemyData.maxHealth);
 
         enemyMovementController = GetComponent<EnemyMovementController>();
     }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ExperiencePickUp : PickUpItem
+public class ExperiencePickUp : Collectible
 {
     [SerializeField] private SO_ExperiencePickUpParameters pickupParameters;
 
