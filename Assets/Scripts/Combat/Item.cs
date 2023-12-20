@@ -3,10 +3,12 @@ using UnityEngine;
 public class Item : MonoBehaviour 
 {
     protected int currentRank;
-    //Some data for UI as well, like icon 
+
+    public SO_Item baseItemParameters;
 
     public virtual void RankUp()
     {
         currentRank++;
+        EquipmentControllerUI.Instance.UpdateItemRank(GetType(), currentRank);
     }
 }

@@ -2,10 +2,9 @@ using UnityEngine;
 
 public class Hedgehog : Weapon
 {
-    public SO_HedgehogParameters baseParameters;
+    private SO_HedgehogParameters baseParameters;
     private HedgehogRank currentRankParameters;
-    //private WeaponProperties currentRankParameters;
-
+    
     private bool hasFinishedSpinning = true;
     private float cooldownTimer;
     private float durationTimer;
@@ -13,8 +12,9 @@ public class Hedgehog : Weapon
     public override void Initialize(IWeaponWielder weaponWielder, CharacterStats characterStats)
     {
         base.Initialize(weaponWielder, characterStats);
-        baseParameters = ItemParametersList.Instance.SO_HedgehogParameters;
-        currentRankParameters = baseParameters.hedgehogRanks[currentRank];
+
+        baseParameters = (SO_HedgehogParameters)baseItemParameters;
+        currentRankParameters = baseParameters.ranks[currentRank];
         cooldownTimer = float.PositiveInfinity;
     }
 
@@ -65,11 +65,11 @@ public class Hedgehog : Weapon
 
     public override void RankUp()
     {
-        if (currentRank < baseParameters.hedgehogRanks.Length - 1)
+        if (currentRank < baseParameters.ranks.Length - 1)
         {
             base.RankUp();
             Debug.Log("Ranking up Hedgehog.");
-            currentRankParameters = baseParameters.hedgehogRanks[currentRank];
+            currentRankParameters = baseParameters.ranks[currentRank];
         }
         else
         {

@@ -18,6 +18,7 @@ public class WeaponController : MonoBehaviour
 
         EquipWeapon<Rock>();
         EquipWeapon<Spear>();
+
         EquipWeapon<Hedgehog>();
         
     }
@@ -32,7 +33,10 @@ public class WeaponController : MonoBehaviour
                 weapon.RankUp();
             }
         }
-
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            
+        }
         foreach (Weapon weapon in equippedWeapons)
         {
             weapon.WeaponTick();
@@ -47,6 +51,13 @@ public class WeaponController : MonoBehaviour
             GameObject weapon = Instantiate(weaponPrefab, transform);
             T weaponScript = weapon.GetComponent<T>();
             weaponScript.Initialize(myWeaponWielder, characterStats);
+
+            if( weaponScript is Spear)
+            {
+                Spear spear = weaponScript as Spear;
+                //EquipmentControllerUI.Instance.AddItem(spear.)
+            }
+
             equippedWeapons.Add(weaponScript);
         }
     }

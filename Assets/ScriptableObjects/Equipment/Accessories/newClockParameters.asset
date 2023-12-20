@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcac4d34787d0154ea208db36479651e, type: 3}
   m_Name: newClockParameters
   m_EditorClassIdentifier: 
-  numberOfRanks: 5
+  icon: {fileID: 608153777, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+  numberOfRanks: 6
   value: 10

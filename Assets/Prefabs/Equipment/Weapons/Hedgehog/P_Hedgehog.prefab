@@ -44,4 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6acfe2caa55f0841a1ec13eb3283571, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hedgehogBaseData: {fileID: 11400000, guid: 56b986252d160f54f9eb99e44a97cbe8, type: 2}
+  baseItemParameters: {fileID: 11400000, guid: 56b986252d160f54f9eb99e44a97cbe8, type: 2}

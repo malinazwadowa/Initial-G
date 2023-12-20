@@ -1,27 +1,25 @@
 using UnityEngine;
-using System;
 
 [CreateAssetMenu(fileName = "newHedgehogParameters", menuName = "ScriptableObjects/Weapons/Hedgehog Parameters")]
 
-//Possibly should be changed to generic WeaponData with optional fields. Or should it ? O.o 
-public class SO_HedgehogParameters : ScriptableObject
+public class SO_HedgehogParameters : SO_Item
 {
-    public event Action OnWeaponDataChanged;
     private void OnValidate()
     {
-        for (int i = 0; i < hedgehogRanks.Length; ++i)
+        for (int i = 0; i < ranks.Length; ++i)
         {
-            hedgehogRanks[i].name = "Rank " + (i + 1);
+            ranks[i].name = "Rank " + (i + 1);
         }
-        OnWeaponDataChanged?.Invoke();
+        maxRank = ranks.Length;
     }
 
     [Header("Rank independend settings")]
     
 
     [Header("Settings for each rank")]
-    public HedgehogRank[] hedgehogRanks;
+    public HedgehogRank[] ranks;
 }
+
 [System.Serializable]
 public class HedgehogRank
 {

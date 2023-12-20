@@ -1,20 +1,16 @@
 using UnityEngine;
-using System;
-
 
 [CreateAssetMenu(fileName = "newRockParameters", menuName = "ScriptableObjects/Weapons/Rock Parameters")]
 
-//Possibly should be changed to generic WeaponData with optional fields. Or should it ? O.o 
-public class SO_RockParameters : ScriptableObject
+public class SO_RockParameters : SO_Item
 {
-    public event Action onWeaponDataChanged;
     private void OnValidate()
     {
-        for (int i = 0; i < rockRanks.Length; ++i)
+        for (int i = 0; i < ranks.Length; ++i)
         {
-            rockRanks[i].name = "Rank " + (i + 1);
+            ranks[i].name = "Rank " + (i + 1);
         }
-        onWeaponDataChanged?.Invoke();
+        maxRank = ranks.Length;
     }
 
     [Header("Rank independend settings")]
@@ -22,10 +18,11 @@ public class SO_RockParameters : ScriptableObject
     public float spawnOffsetRangeForAdditionalRocks;
 
     [Header("Settings for each rank")]
-    public RockRank[] rockRanks;
+    public RockRank[] ranks;
 }
+
 [System.Serializable]
-public class RockRank
+public class RockRank 
 {
     [HideInInspector] public string name;
 

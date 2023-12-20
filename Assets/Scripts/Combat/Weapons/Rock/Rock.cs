@@ -10,8 +10,9 @@ public class Rock : Weapon
     public override void Initialize(IWeaponWielder weaponWielder, CharacterStats characterStats)
     {
         base.Initialize(weaponWielder, characterStats);
-        baseParameters = ItemParametersList.Instance.SO_RockParameters;
-        currentRankParameters = baseParameters.rockRanks[currentRank];
+
+        baseParameters = (SO_RockParameters)baseItemParameters;
+        currentRankParameters = baseParameters.ranks[currentRank];
     }
     
     public override void WeaponTick()
@@ -72,11 +73,11 @@ public class Rock : Weapon
 
     public override void RankUp()
     {
-        if (currentRank < baseParameters.rockRanks.Length - 1)
+        if (currentRank < baseParameters.ranks.Length - 1)
         {
             base.RankUp();
             Debug.Log("Ranking up Rock.");
-            currentRankParameters = baseParameters.rockRanks[currentRank];
+            currentRankParameters = baseParameters.ranks[currentRank];
         }
         else
         {

@@ -5,12 +5,13 @@ public class Clock : Accessory
     private SO_ClockParameters parameters;
     private StatModifier modifierType = StatModifier.CooldownModifier;
     private float value;
-    private float numberOfRanks;
+    private int numberOfRanks;
 
     public override void Initalize(CharacterStatsController characterStatsController)
     {
         base.Initalize(characterStatsController);
-        parameters = ItemParametersList.Instance.SO_ClockParameters;
+
+        parameters = (SO_ClockParameters)baseItemParameters;
         value = parameters.value / 100;
         numberOfRanks = parameters.numberOfRanks;
         ApplyEffect();

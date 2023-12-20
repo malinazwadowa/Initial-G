@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 public class Accessory : Item
 {
@@ -9,7 +6,7 @@ public class Accessory : Item
     public virtual void Initalize(CharacterStatsController characterStatsController)
     {
         this.characterStatsController = characterStatsController;
-        
+        EquipmentControllerUI.Instance.AddItem(baseItemParameters.icon, GetType(), baseItemParameters.maxRank);
     }
 
     public virtual void ApplyEffect()

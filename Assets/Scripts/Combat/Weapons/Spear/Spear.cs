@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Spear :  Weapon
 {
-    [SerializeField] private SO_SpearParameters baseParameters;
+    private SO_SpearParameters baseParameters;
     private SpearRank currentRankParameters;
 
     private float timer = 2;
@@ -11,8 +11,9 @@ public class Spear :  Weapon
     public override void Initialize(IWeaponWielder weaponWielder, CharacterStats characterStats)
     {
         base.Initialize(weaponWielder, characterStats);
-        baseParameters = ItemParametersList.Instance.SO_SpearParameters;
-        currentRankParameters = baseParameters.spearRanks[currentRank];
+
+        baseParameters = (SO_SpearParameters)baseItemParameters;
+        currentRankParameters = baseParameters.ranks[currentRank];
     }
 
     public override void WeaponTick()
@@ -83,11 +84,11 @@ public class Spear :  Weapon
 
     public override void RankUp()
     {
-        if (currentRank < baseParameters.spearRanks.Length - 1)
+        if (currentRank < baseParameters.ranks.Length - 1)
         {
             base.RankUp();
             Debug.Log("Ranking up Spear.");
-            currentRankParameters = baseParameters.spearRanks[currentRank];
+            currentRankParameters = baseParameters.ranks[currentRank];
         }
         else
         {

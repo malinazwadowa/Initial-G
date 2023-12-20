@@ -5,12 +5,13 @@ public class Amulet : Accessory
     private SO_AmuletParameters parameters;
     private StatModifier modifierType = StatModifier.DamageModifier;
     private float value;
-    private float numberOfRanks;
+    private int numberOfRanks;
 
     public override void Initalize(CharacterStatsController characterStatsController)
     {
         base.Initalize(characterStatsController);
-        parameters = ItemParametersList.Instance.SO_AmuletParameters;
+
+        parameters = (SO_AmuletParameters)baseItemParameters;
         value = parameters.value;
         numberOfRanks = parameters.numberOfRanks;
         ApplyEffect();

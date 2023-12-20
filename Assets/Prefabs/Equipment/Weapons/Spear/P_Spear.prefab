@@ -44,14 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcbbb05b05155614c9aa4593237d9f22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseCooldownMultiplier: 1
-  baseDamageMultiplier: 1
-  baseSpeedMultiplier: 1
-  currentRank: 0
-  spearBaseData: {fileID: 11400000, guid: 6532f3f7d16420c4fad267811b6cb796, type: 2}
-  spearCurrentRankData:
-    name: 
-    projectilePrefab: 0
-    speed: 0
-    cooldownTime: 0
-    amount: 0
+  baseItemParameters: {fileID: 11400000, guid: 6532f3f7d16420c4fad267811b6cb796, type: 2}

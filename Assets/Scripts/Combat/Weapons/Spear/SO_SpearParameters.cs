@@ -1,19 +1,16 @@
 using UnityEngine;
-using System;
 
 [CreateAssetMenu(fileName = "newSpearParameters", menuName = "ScriptableObjects/Weapons/Spear Parameters")]
 
-//Possibly should be changed to generic WeaponData with optional fields. Or should it ? O.o 
-public class SO_SpearParameters : ScriptableObject
+public class SO_SpearParameters : SO_Item
 {
-    public event Action onWeaponDataChanged;
     private void OnValidate()
     {
-        for (int i = 0; i < spearRanks.Length; ++i)
+        for (int i = 0; i < ranks.Length; ++i)
         {
-            spearRanks[i].name = "Rank " + (i + 1);
+            ranks[i].name = "Rank " + (i + 1);
         }
-        onWeaponDataChanged?.Invoke();
+        maxRank = ranks.Length;
     }
 
     [Header("Rank independend settings")]
@@ -21,7 +18,7 @@ public class SO_SpearParameters : ScriptableObject
     public float projectileSpacing;
     
     [Header("Settings for each rank")]
-    public SpearRank[] spearRanks;
+    public SpearRank[] ranks;
 }
 [System.Serializable]
 public class SpearRank
