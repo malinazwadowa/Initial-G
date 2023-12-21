@@ -10,6 +10,22 @@
         "Cementary": true,
         "dupa": false
       }
+    },
+    "GameStatsController": {
+      "$type": "GameStatsController+GameStatsSaveData, Assembly-CSharp",
+      "gameStats": {
+        "$type": "GameStatsController+GameStats, Assembly-CSharp",
+        "enemyKilledCounts": {
+          "$type": "System.Collections.Generic.Dictionary`2[[EnemyType, Assembly-CSharp],[System.Int32, mscorlib]], mscorlib",
+          "Sunflower": 236
+        },
+        "weaponKillCounts": {
+          "$type": "System.Collections.Generic.Dictionary`2[[ItemType, Assembly-CSharp],[System.Int32, mscorlib]], mscorlib",
+          "Spear": 54,
+          "Rock": 180,
+          "Hedgehog": 2
+        }
+      }
     }
   },
   "242bb297-fee0-4493-ab08-56cd3f536ef9": {

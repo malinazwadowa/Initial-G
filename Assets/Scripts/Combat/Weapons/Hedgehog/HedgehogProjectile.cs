@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class HedgehogProjectile : MonoBehaviour
 {
+    private ItemType myWeaponType = ItemType.Hedgehog;
     [SerializeField] private Transform hedgehogsTransform;
     [SerializeField] private Collider2D hedgehogsCollider;
     
@@ -65,7 +66,7 @@ public class HedgehogProjectile : MonoBehaviour
             Vector3 direction = collision.transform.position - weaponsTransform.position;
 
             target.GetKnockbacked(knockbackPower, direction.normalized);
-            target.GetDamaged(damage);
+            target.GetDamaged(damage,myWeaponType);
         }
     }
 }

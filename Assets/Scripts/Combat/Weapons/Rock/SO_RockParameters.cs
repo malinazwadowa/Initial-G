@@ -2,7 +2,7 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "newRockParameters", menuName = "ScriptableObjects/Weapons/Rock Parameters")]
 
-public class SO_RockParameters : SO_Item
+public class SO_RockParameters : SO_ItemParameters
 {
     private void OnValidate()
     {

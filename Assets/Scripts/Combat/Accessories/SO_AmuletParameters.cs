@@ -2,7 +2,7 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "newAmuletParameters", menuName = "ScriptableObjects/Accessories/Amulet Parameters")]
 
-public class SO_AmuletParameters : SO_Item
+public class SO_AmuletParameters : SO_ItemParameters
 {
     private void OnValidate()
     {

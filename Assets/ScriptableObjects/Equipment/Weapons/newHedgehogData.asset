@@ -13,18 +13,9 @@ MonoBehaviour:
   m_Name: newHedgehogData
   m_EditorClassIdentifier: 
   icon: {fileID: 797102184, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
-  hedgehogRanks:
+  maxRank: 4
+  ranks:
   - name: Rank 1
-    projectilePrefab: {fileID: 2540002873092309467, guid: 8696e6bee6de5dc4392d29679ff4d199,
-      type: 3}
-    speed: 300
-    cooldown: 3
-    radius: 4
-    duration: 5
-    amount: 5
-    damage: 15
-    knockbackPower: 6
-  - name: Rank 2
     projectilePrefab: {fileID: 2540002873092309467, guid: 8696e6bee6de5dc4392d29679ff4d199,
       type: 3}
     speed: 200
@@ -34,37 +25,27 @@ MonoBehaviour:
     amount: 1
     damage: 10
     knockbackPower: 6
-  - name: Rank 3
+  - name: Rank 2
     projectilePrefab: {fileID: 2540002873092309467, guid: 8696e6bee6de5dc4392d29679ff4d199,
       type: 3}
     speed: 250
     cooldown: 3
-    radius: 2
+    radius: 3
     duration: 3
     amount: 2
     damage: 10
     knockbackPower: 6
-  - name: Rank 4
+  - name: Rank 3
     projectilePrefab: {fileID: 2540002873092309467, guid: 8696e6bee6de5dc4392d29679ff4d199,
       type: 3}
     speed: 300
     cooldown: 3
-    radius: 3
-    duration: 3
+    radius: 4
+    duration: 4
     amount: 3
-    damage: 13
+    damage: 10
     knockbackPower: 6
-  - name: Rank 5
-    projectilePrefab: {fileID: 2540002873092309467, guid: 8696e6bee6de5dc4392d29679ff4d199,
-      type: 3}
-    speed: 300
-    cooldown: 3
-    radius: 3
-    duration: 3
-    amount: 4
-    damage: 15
-    knockbackPower: 6
-  - name: Rank 6
+  - name: Rank 4
     projectilePrefab: {fileID: 2540002873092309467, guid: 8696e6bee6de5dc4392d29679ff4d199,
       type: 3}
     speed: 300

@@ -52,7 +52,7 @@ public class EnemyWaveManager : SingletonMonoBehaviour<EnemyWaveManager>
             if (ObjectPooler.Instance.CountOfActiveObjectsOfType(currentWaveData.enemyNumbers[i].enemyPrefab) < amountToKeepActive)
             {
                 GameObject newEnemy = ObjectPooler.Instance.SpawnObject(currentWaveData.enemyNumbers[i].enemyPrefab, Utilities.GetRandomPositionOutsideOfCameraView(enemyManagerData.spawnDistanceOffset), transform.rotation);
-                newEnemy.GetComponent<Enemy>().Init();
+                newEnemy.GetComponent<Enemy>().Initialize();
             }
         }
     }
@@ -88,6 +88,6 @@ public class EnemyWaveManager : SingletonMonoBehaviour<EnemyWaveManager>
     public void SpawnOnCall(GameObject enemyType, Vector2 position)
     {
         GameObject newEnemy = ObjectPooler.Instance.SpawnObject(enemyType, position, transform.rotation);
-        newEnemy.GetComponent<Enemy>().Init();
+        newEnemy.GetComponent<Enemy>().Initialize();
     }
 }

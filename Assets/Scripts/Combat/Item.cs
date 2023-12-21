@@ -4,7 +4,7 @@ public class Item : MonoBehaviour
 {
     protected int currentRank;
 
-    public SO_Item baseItemParameters;
+    public SO_ItemParameters baseItemParameters;
 
     public virtual void RankUp()
     {

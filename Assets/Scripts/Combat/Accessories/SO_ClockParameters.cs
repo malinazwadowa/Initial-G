@@ -2,7 +2,7 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "newClockParameters", menuName = "ScriptableObjects/Accessories/Clock Parameters")]
 
-public class SO_ClockParameters : SO_Item
+public class SO_ClockParameters : SO_ItemParameters
 {
     private void OnValidate()
     {

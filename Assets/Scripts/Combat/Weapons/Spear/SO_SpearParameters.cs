@@ -2,7 +2,7 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "newSpearParameters", menuName = "ScriptableObjects/Weapons/Spear Parameters")]
 
-public class SO_SpearParameters : SO_Item
+public class SO_SpearParameters : SO_ItemParameters
 {
     private void OnValidate()
     {

@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class RockProjectile : MonoBehaviour
 {
+    private ItemType myWeaponType = ItemType.Rock;
     private Transform target;
     private Vector3 throwOrigin;
     private Vector3 direction;
@@ -49,7 +50,7 @@ public class RockProjectile : MonoBehaviour
         IDamagable target = collision.gameObject.GetComponent<IDamagable>();
         if ( target != null)
         {
-            target.GetDamaged(damage);
+            target.GetDamaged(damage, myWeaponType);
             target.GetKnockbacked(knockbackPower, direction.normalized);
         }
     }

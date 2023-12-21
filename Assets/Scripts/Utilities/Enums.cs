@@ -1,8 +1,15 @@
-public enum StatType
+public enum EnemyType
 {
-    DamageModifier,
-    SpeedModifier,
-    CooldownModifier
+    Sunflower,
+    TargetDummy,
+    AlphaDummy
+}
+public enum ItemType
+{
+    None,
+    Spear,
+    Rock,
+    Hedgehog
 }
 public enum StatModifier
 {

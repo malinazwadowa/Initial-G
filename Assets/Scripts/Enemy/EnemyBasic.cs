@@ -14,7 +14,7 @@ public class EnemyBasic : Enemy
         {
             attackTimer += Time.deltaTime;
 
-            if(attackTimer > enemyData.attackCooldown)
+            if(attackTimer > enemyParameters.attackCooldown)
             {
                 canAttack = true;
                 attackTimer = 0;
@@ -22,12 +22,12 @@ public class EnemyBasic : Enemy
         }
     }
 
-    public override void Init()
+    public override void Initialize()
     {
-        base.Init();
+        base.Initialize();
 
         movementController = GetComponent<EnemyMovementController>();
-        movementController.Init(enemyData.speed);
+        movementController.Init(enemyParameters.speed);
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -44,7 +44,7 @@ public class EnemyBasic : Enemy
     {
         if (!canAttack) { return; }
 
-        target.GetDamaged(enemyData.damage);
+        target.GetDamaged(enemyParameters.damage);
         canAttack = false;
     }
 }

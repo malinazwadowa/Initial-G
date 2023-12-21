@@ -3,6 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "newEnemyParameters", menuName = "ScriptableObjects/Enemy Parameters/Regular Enemy")]
 public class SO_EnemyParameters : ScriptableObject
 {
+    public EnemyType type;
     public int tier;
     public float speed;
 

@@ -2,7 +2,7 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "newHedgehogParameters", menuName = "ScriptableObjects/Weapons/Hedgehog Parameters")]
 
-public class SO_HedgehogParameters : SO_Item
+public class SO_HedgehogParameters : SO_ItemParameters
 {
     private void OnValidate()
     {

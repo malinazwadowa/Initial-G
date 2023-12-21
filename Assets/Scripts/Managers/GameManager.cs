@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using UnityEditorInternal.Profiling.Memory.Experimental.FileFormat;
 using UnityEngine;
+using static GameStatsController;
 
 public class GameManager : SingletonMonoBehaviour<GameManager>
 {
@@ -8,7 +10,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     
     [HideInInspector] public GameLevel CurrentGameLevel { get; private set; }
     [HideInInspector] public LevelUnlockController levelUnlockController { get; private set; }
-
+    [HideInInspector] public GameStatsController gameStatsController;
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.N))
@@ -37,13 +39,14 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         DontDestroyOnLoad(this);
 
         levelUnlockController = GetComponent<LevelUnlockController>();
-
+        gameStatsController = GetComponent<GameStatsController>();
         SaveSystem.Initialize();
     }
 
     private void Start()
     {
         SaveSystem.Load();
+        Debug.Log(gameStatsController.gameStats.enemyKilledCounts.TryGetValue(EnemyType.Sunflower, out int currentCount) + " "+ currentCount);
     }
 
     public void PauseGame()
@@ -67,5 +70,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         CurrentGameLevel = gameLevel;
         SceneName sceneName = (SceneName)gameLevel;
         SceneLoadingManager.Instance.Load(sceneName);
+
+        gameStatsController.Initalize();
     }
 }

@@ -13,7 +13,7 @@ public class TreasureContainer : MonoBehaviour, IDamagable
         healthController.Initialize(containerData.health);
     }
 
-    public void GetDamaged(float amount)
+    public void GetDamaged(float amount, ItemType damageSource)
     {
         healthController.SubstractCurrentHealth(amount);
         if (healthController.GetCurrentHealth() <= 0)

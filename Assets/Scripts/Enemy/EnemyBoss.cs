@@ -33,9 +33,9 @@ public class EnemyBoss : Enemy
         }
         //Debug.Log(dupa1);
     }
-    public override void Init()
+    public override void Initialize()
     {
-        base.Init();
+        base.Initialize();
 
         agent = GetComponent<NavMeshAgent>();
         //Needed due to how NavMeshPlus works.
