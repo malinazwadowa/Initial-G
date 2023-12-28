@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using UnityEngine;
 
 public class Hedgehog : Weapon
@@ -14,6 +15,7 @@ public class Hedgehog : Weapon
         base.Initialize(weaponWielder, characterStats);
 
         baseParameters = (SO_HedgehogParameters)baseItemParameters;
+        weaponType = baseParameters.weaponType;
         currentRankParameters = baseParameters.ranks[currentRank];
         cooldownTimer = float.PositiveInfinity;
     }

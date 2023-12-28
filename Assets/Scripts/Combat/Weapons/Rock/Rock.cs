@@ -12,6 +12,7 @@ public class Rock : Weapon
         base.Initialize(weaponWielder, characterStats);
 
         baseParameters = (SO_RockParameters)baseItemParameters;
+        weaponType = baseParameters.weaponType;
         currentRankParameters = baseParameters.ranks[currentRank];
     }
     

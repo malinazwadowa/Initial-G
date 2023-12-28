@@ -351,8 +351,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7275665481512118575}
-        m_TargetAssemblyTypeName: WeaponUpgradeUI, Assembly-CSharp
-        m_MethodName: OfferWeaponUpgrade
+        m_TargetAssemblyTypeName: LevelUpUI, Assembly-CSharp
+        m_MethodName: PresentEquipmentUpgradeChoices
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

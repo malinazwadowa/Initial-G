@@ -1,7 +1,10 @@
+using UnityEngine;
+
 public class Weapon : Item
 {
     protected IWeaponWielder weaponWielder;
     protected CharacterStats characterStats;
+    [HideInInspector] public WeaponType weaponType;
 
     public virtual void Initialize(IWeaponWielder weaponWielder, CharacterStats characterStats)
     {

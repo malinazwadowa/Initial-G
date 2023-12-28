@@ -126,7 +126,7 @@ public class Player : MonoBehaviour, IWeaponWielder, IDamagable
         AudioManager.Instance.PlaySound(AudioClipID.PlayerDeath);
     }
 
-    public void GetDamaged(float amount, ItemType damageSource)
+    public void GetDamaged(float amount, WeaponType damageSource)
     {
         healthController.SubstractCurrentHealth(amount);
         animationController.ChangeColorOnDamage();

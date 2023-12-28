@@ -4,12 +4,26 @@ public enum EnemyType
     TargetDummy,
     AlphaDummy
 }
-public enum ItemType
+
+public enum ConditionType
 {
-    None,
+    UnlockedByDefault,
+    UnlockedWithWeaponKills,
+    UnlockedWithEnemyKilled,
+    UnlockedWithMaxRankOfWeapon,
+    UnlockedWithMaxRankOfAccessory
+}
+public enum WeaponType
+{
+    DefaultValue,
     Spear,
     Rock,
     Hedgehog
+}
+public enum AccessoryType
+{
+    Amulet,
+    Clock
 }
 public enum StatModifier
 {

@@ -11,6 +11,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     [HideInInspector] public GameLevel CurrentGameLevel { get; private set; }
     [HideInInspector] public LevelUnlockController levelUnlockController { get; private set; }
     [HideInInspector] public GameStatsController gameStatsController;
+    [HideInInspector] public ItemUnlockController itemUnlockController;
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.N))
@@ -30,6 +31,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             Dictionary<GameLevel, bool> levelUnlockStatus = levelUnlockController.GetCurrentLevelUnlockStatus();
             Debug.Log(levelUnlockStatus.Count);
             Debug.Log(levelUnlockStatus[GameLevel.Cementary]);
+                Debug.Log(gameStatsController.gameStats.enemyKilledCounts.TryGetValue(EnemyType.Sunflower, out int currentCount) + " " + currentCount);
         }
     }
 
@@ -40,13 +42,16 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
         levelUnlockController = GetComponent<LevelUnlockController>();
         gameStatsController = GetComponent<GameStatsController>();
+        itemUnlockController = GetComponent<ItemUnlockController>();
         SaveSystem.Initialize();
+        
     }
 
     private void Start()
     {
         SaveSystem.Load();
-        Debug.Log(gameStatsController.gameStats.enemyKilledCounts.TryGetValue(EnemyType.Sunflower, out int currentCount) + " "+ currentCount);
+        gameStatsController.Initalize();
+        itemUnlockController.Initalize();
     }
 
     public void PauseGame()
@@ -71,6 +76,6 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         SceneName sceneName = (SceneName)gameLevel;
         SceneLoadingManager.Instance.Load(sceneName);
 
-        gameStatsController.Initalize();
+        
     }
 }

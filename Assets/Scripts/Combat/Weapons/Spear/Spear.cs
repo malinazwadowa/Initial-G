@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using System.Collections;
 using UnityEngine;
 
@@ -13,6 +14,7 @@ public class Spear :  Weapon
         base.Initialize(weaponWielder, characterStats);
 
         baseParameters = (SO_SpearParameters)baseItemParameters;
+        weaponType = baseParameters.weaponType;
         currentRankParameters = baseParameters.ranks[currentRank];
     }
 

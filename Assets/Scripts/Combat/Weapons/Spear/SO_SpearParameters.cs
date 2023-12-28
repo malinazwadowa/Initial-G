@@ -2,10 +2,11 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "newSpearParameters", menuName = "ScriptableObjects/Weapons/Spear Parameters")]
 
-public class SO_SpearParameters : SO_ItemParameters
+public class SO_SpearParameters : SO_WeaponParameters
 {
-    private void OnValidate()
+    protected override void OnValidate()
     {
+        base.OnValidate();
         for (int i = 0; i < ranks.Length; ++i)
         {
             ranks[i].name = "Rank " + (i + 1);

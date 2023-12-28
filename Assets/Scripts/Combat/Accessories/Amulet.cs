@@ -13,6 +13,7 @@ public class Amulet : Accessory
 
         parameters = (SO_AmuletParameters)baseItemParameters;
         value = parameters.value;
+        accessoryType = parameters.accessoryType;
         numberOfRanks = parameters.numberOfRanks;
         ApplyEffect();
     }

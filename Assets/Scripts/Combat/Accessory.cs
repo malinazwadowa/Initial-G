@@ -1,7 +1,10 @@
 
+using UnityEngine;
+
 public class Accessory : Item
 {
     protected CharacterStatsController characterStatsController;
+    [HideInInspector] public AccessoryType accessoryType;
 
     public virtual void Initalize(CharacterStatsController characterStatsController)
     {

@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4acb55f1f9fc9be49b52bc33c065c4fc, type: 3}
+  m_Name: newWeaponUnlockConditions
+  m_EditorClassIdentifier: 
+  Initialize: 0
+  weaponsConditions:
+  - name: Spear unlock condition
+    conditionType: 0
+    weaponType: 0
+    accessoryType: 0
+    enemyType: 0
+    amount: 0
+    type: 1
+  - name: Rock unlock condition
+    conditionType: 0
+    weaponType: 0
+    accessoryType: 0
+    enemyType: 0
+    amount: 0
+    type: 2
+  - name: Hedgehog unlock condition
+    conditionType: 0
+    weaponType: 0
+    accessoryType: 0
+    enemyType: 0
+    amount: 0
+    type: 3
+  accessoriesConditions:
+  - name: Amulet unlock condition
+    conditionType: 0
+    weaponType: 0
+    accessoryType: 0
+    enemyType: 0
+    amount: 0
+    type: 0
+  - name: Clock unlock condition
+    conditionType: 0
+    weaponType: 0
+    accessoryType: 0
+    enemyType: 0
+    amount: 0
+    type: 1

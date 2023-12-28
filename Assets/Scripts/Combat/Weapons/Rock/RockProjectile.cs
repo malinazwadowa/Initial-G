@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class RockProjectile : MonoBehaviour
 {
-    private ItemType myWeaponType = ItemType.Rock;
+    private WeaponType myWeaponType = WeaponType.Rock;
     private Transform target;
     private Vector3 throwOrigin;
     private Vector3 direction;

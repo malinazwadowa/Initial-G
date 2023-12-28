@@ -13,6 +13,7 @@ public class Clock : Accessory
 
         parameters = (SO_ClockParameters)baseItemParameters;
         value = parameters.value / 100;
+        accessoryType = parameters.accessoryType;
         numberOfRanks = parameters.numberOfRanks;
         ApplyEffect();
     }

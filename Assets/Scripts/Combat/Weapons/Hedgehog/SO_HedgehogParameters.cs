@@ -2,10 +2,11 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "newHedgehogParameters", menuName = "ScriptableObjects/Weapons/Hedgehog Parameters")]
 
-public class SO_HedgehogParameters : SO_ItemParameters
+public class SO_HedgehogParameters : SO_WeaponParameters
 {
-    private void OnValidate()
+    protected override void OnValidate()
     {
+        base.OnValidate();
         for (int i = 0; i < ranks.Length; ++i)
         {
             ranks[i].name = "Rank " + (i + 1);

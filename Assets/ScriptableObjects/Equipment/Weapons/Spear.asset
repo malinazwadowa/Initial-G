@@ -12,8 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 774f360a2b3cd3c47aea9233815b0218, type: 3}
   m_Name: Spear
   m_EditorClassIdentifier: 
+  unlockCondition:
+    name: 
+    conditionType: 0
+    weaponType: 0
+    accessoryType: 0
+    enemyType: 0
+    amount: 0
   icon: {fileID: -2108517000, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
   maxRank: 3
+  weaponType: 1
   spawnDelayForAdditionalProjectiles: 0.14
   projectileSpacing: 0.7
   ranks:

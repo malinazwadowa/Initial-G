@@ -1,0 +1,40 @@
+{
+  "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[SaveData, Assembly-CSharp]], mscorlib]], mscorlib",
+  "ba5d5c22-bb5d-4180-850d-0254b5556987": {
+    "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[SaveData, Assembly-CSharp]], mscorlib",
+    "LevelUnlockController": {
+      "$type": "LevelUnlockController+LevelUnlockData, Assembly-CSharp",
+      "levelUnlockStatus": {
+        "$type": "System.Collections.Generic.Dictionary`2[[GameLevel, Assembly-CSharp],[System.Boolean, mscorlib]], mscorlib",
+        "Forest": false,
+        "Cementary": true,
+        "dupa": false
+      }
+    },
+    "GameStatsController": {
+      "$type": "GameStatsController+GameStatsSaveData, Assembly-CSharp",
+      "gameStats": {
+        "$type": "GameStatsController+GameStats, Assembly-CSharp",
+        "enemyKilledCounts": {
+          "$type": "System.Collections.Generic.Dictionary`2[[EnemyType, Assembly-CSharp],[System.Int32, mscorlib]], mscorlib",
+          "Sunflower": 236
+        },
+        "weaponKillCounts": {
+          "$type": "System.Collections.Generic.Dictionary`2[[ItemType, Assembly-CSharp],[System.Int32, mscorlib]], mscorlib",
+          "Spear": 54,
+          "Rock": 180,
+          "Hedgehog": 2
+        }
+      }
+    }
+  },
+  "242bb297-fee0-4493-ab08-56cd3f536ef9": {
+    "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[SaveData, Assembly-CSharp]], mscorlib",
+    "AudioManager": {
+      "$type": "AudioManager+AudioSaveData, Assembly-CSharp",
+      "masterVolume": 1.0,
+      "soundsVolume": 0.216051474,
+      "musicVolume": 0.0632611141
+    }
+  }
+}

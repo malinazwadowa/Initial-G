@@ -12,8 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f5b901006772d54f9dd7549af256615, type: 3}
   m_Name: rockdata
   m_EditorClassIdentifier: 
+  unlockCondition:
+    name: 
+    conditionType: 0
+    weaponType: 1
+    accessoryType: 0
+    enemyType: 0
+    amount: 0
   icon: {fileID: 21300110, guid: 29c9cded5e558164aaf8c9bf08aa1510, type: 3}
   maxRank: 3
+  weaponType: 2
   spawnDelayForAdditionalRocks: 0.15
   spawnOffsetRangeForAdditionalRocks: 0.6
   ranks:

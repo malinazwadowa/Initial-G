@@ -12,7 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78ae37cc6f4347847812feb0f2f374da, type: 3}
   m_Name: newAmuletParameters
   m_EditorClassIdentifier: 
+  unlockCondition:
+    name: 
+    conditionType: 2
+    weaponType: 0
+    accessoryType: 0
+    enemyType: 0
+    amount: 150
   icon: {fileID: 21300064, guid: 29c9cded5e558164aaf8c9bf08aa1510, type: 3}
   maxRank: 5
+  accessoryType: 0
   numberOfRanks: 5
   value: 0.1

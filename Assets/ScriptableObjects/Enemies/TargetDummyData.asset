@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6abb751c3c9b8a44c84f28e338e28493, type: 3}
   m_Name: TargetDummyData
   m_EditorClassIdentifier: 
+  type: 1
   tier: 1
   speed: 2
   maxHealth: 30

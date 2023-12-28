@@ -17,12 +17,12 @@
         "$type": "GameStatsController+GameStats, Assembly-CSharp",
         "enemyKilledCounts": {
           "$type": "System.Collections.Generic.Dictionary`2[[EnemyType, Assembly-CSharp],[System.Int32, mscorlib]], mscorlib",
-          "Sunflower": 236
+          "Sunflower": 120
         },
         "weaponKillCounts": {
-          "$type": "System.Collections.Generic.Dictionary`2[[ItemType, Assembly-CSharp],[System.Int32, mscorlib]], mscorlib",
-          "Spear": 54,
-          "Rock": 180,
+          "$type": "System.Collections.Generic.Dictionary`2[[WeaponType, Assembly-CSharp],[System.Int32, mscorlib]], mscorlib",
+          "Rock": 95,
+          "Spear": 23,
           "Hedgehog": 2
         }
       }
@@ -32,9 +32,9 @@
     "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[SaveData, Assembly-CSharp]], mscorlib",
     "AudioManager": {
       "$type": "AudioManager+AudioSaveData, Assembly-CSharp",
-      "masterVolume": 1.0,
-      "soundsVolume": 0.216051474,
-      "musicVolume": 0.0632611141
+      "masterVolume": 0.0890635252,
+      "soundsVolume": 0.9753121,
+      "musicVolume": 0.0890635252
     }
   }
 }

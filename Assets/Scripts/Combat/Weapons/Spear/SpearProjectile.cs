@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class SpearProjectile : MonoBehaviour
 {
-    private ItemType myWeaponType = ItemType.Spear;
+    private WeaponType myWeaponType = WeaponType.Spear;
     private Vector3 movementDirection;
     private float damage;
     private float speed;

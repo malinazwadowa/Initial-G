@@ -1,10 +1,11 @@
+using NaughtyAttributes;
 using UnityEngine;
 
 public class Item : MonoBehaviour 
 {
     protected int currentRank;
 
-    public SO_ItemParameters baseItemParameters;
+    [Expandable] public SO_ItemParameters baseItemParameters;
 
     public virtual void RankUp()
     {

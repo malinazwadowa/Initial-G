@@ -2,15 +2,17 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "newAmuletParameters", menuName = "ScriptableObjects/Accessories/Amulet Parameters")]
 
-public class SO_AmuletParameters : SO_ItemParameters
+public class SO_AmuletParameters : SO_AccessoryParameters
 {
-    private void OnValidate()
+    protected override void OnValidate()
     {
+        base.OnValidate();
         maxRank = numberOfRanks;
     }
 
+    [Header("Amount of ranks")]
     public int numberOfRanks;
-
-    [Header("Increase per rank of item")]
+    
+    [Header("Per rank damage modifier increase")]
     public float value;
 }

@@ -2,10 +2,11 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "newRockParameters", menuName = "ScriptableObjects/Weapons/Rock Parameters")]
 
-public class SO_RockParameters : SO_ItemParameters
+public class SO_RockParameters : SO_WeaponParameters
 {
-    private void OnValidate()
+    protected override void OnValidate()
     {
+        base.OnValidate();
         for (int i = 0; i < ranks.Length; ++i)
         {
             ranks[i].name = "Rank " + (i + 1);

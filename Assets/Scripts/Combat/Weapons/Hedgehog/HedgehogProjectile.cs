@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class HedgehogProjectile : MonoBehaviour
 {
-    private ItemType myWeaponType = ItemType.Hedgehog;
+    private WeaponType myWeaponType = WeaponType.Hedgehog;
     [SerializeField] private Transform hedgehogsTransform;
     [SerializeField] private Collider2D hedgehogsCollider;
     
