@@ -4,17 +4,15 @@ public class PlayerAnimationController : MonoBehaviour
 {
     private Animator animator;
     private PlayerMovementController movementController;
-    private SO_PlayerParameters playerData;
     private SpriteRenderer[] spriteRenderers;
 
     private Color defaultColor = new Color(1f, 1f, 1f);
     [SerializeField] private Color beingHitColor;
 
-    public void Initialize(Animator animator, PlayerMovementController movementController, SO_PlayerParameters playerData, SpriteRenderer[] spriteRenderers)
+    public void Initialize(Animator animator, PlayerMovementController movementController, SpriteRenderer[] spriteRenderers)
     {
         this.animator = animator;
         this.movementController = movementController;
-        this.playerData = playerData;
         this.spriteRenderers = spriteRenderers;
     }
 
@@ -37,7 +35,7 @@ public class PlayerAnimationController : MonoBehaviour
         animator.SetBool("isWalking", true);
         animator.SetBool("isIdling", false);
 
-        float velocityValue = (movementController.runRatio * movementController.speedModifiers) / (playerData.baseRunRatio * 2);
+        float velocityValue = (movementController.runRatio * movementController.characterStats.moveSpeedModifier) / (movementController.playerData.baseRunRatio * 2);
         float velocityX = Mathf.Lerp(0, 2, velocityValue * Mathf.Abs(input.x)) * Mathf.Sign(input.x);
         float velocityY = Mathf.Lerp(0, 2, velocityValue * Mathf.Abs(input.y)) * Mathf.Sign(input.y);
         

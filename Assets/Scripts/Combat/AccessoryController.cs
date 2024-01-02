@@ -6,7 +6,7 @@ public class AccessoryController : MonoBehaviour
     private CharacterStatsController characterStatsController;
 
     [HideInInspector] public List<Accessory> equippedAccessories = new List<Accessory>();
-    public List<GameObject> availableAccessories = new List<GameObject>();
+    //public List<GameObject> availableAccessories = new List<GameObject>();
 
     private void Update()
     {
@@ -23,8 +23,8 @@ public class AccessoryController : MonoBehaviour
     {
         this.characterStatsController = characterStatsController;
 
-        EquipAccessory<Amulet>();
-        EquipAccessory<Clock>();
+        //EquipAccessory<Amulet>();
+        //EquipAccessory<Clock>();
     }
 
     public void EquipAccessory<T>() where T : Accessory
@@ -41,16 +41,16 @@ public class AccessoryController : MonoBehaviour
 
     private GameObject GetAccessoryPrefab<T>() where T : Accessory
     {
-        if (availableAccessories != null)
+        if (GameManager.Instance.itemController.allItemPrefabs != null)
         {
-            GameObject prefab = availableAccessories.Find(weaponPrefab => weaponPrefab.GetComponent<T>() != null);
+            GameObject prefab = GameManager.Instance.itemController.allItemPrefabs.Find(weaponPrefab => weaponPrefab.GetComponent<T>() != null);
             if (prefab != null)
             {
                 return prefab;
             }
             else
             {
-                Debug.LogError($"Accessory prefab for type {typeof(T)} not found in the available list!");
+                Debug.LogError($"Accessory prefab for type {typeof(T)} not found in the equpment list!");
                 return null;
             }
         }

@@ -35,8 +35,8 @@ public class CharacterStatsController : MonoBehaviour
                 characterStats.cooldownModifier -= value;
                 break;
 
-            case StatModifier.PickUpRadius:
-                characterStats.pickUpRadius += value;
+            case StatModifier.LootingRadius:
+                characterStats.lootingRadiusModifier += value;
                 break;
 
             default:

@@ -20,7 +20,7 @@ MonoBehaviour:
     enemyType: 0
     amount: 0
   icon: {fileID: -2108517000, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
-  maxRank: 3
+  maxRank: 5
   weaponType: 1
   spawnDelayForAdditionalProjectiles: 0.14
   projectileSpacing: 0.7
@@ -42,6 +42,22 @@ MonoBehaviour:
     damage: 10
     knockbackPower: 6
   - name: Rank 3
+    projectilePrefab: {fileID: 8291530308845601912, guid: 15fbe4c8a851b404b8579560d12d659e,
+      type: 3}
+    speed: 10
+    cooldown: 1
+    amount: 5
+    damage: 10
+    knockbackPower: 6
+  - name: Rank 4
+    projectilePrefab: {fileID: 8291530308845601912, guid: 15fbe4c8a851b404b8579560d12d659e,
+      type: 3}
+    speed: 10
+    cooldown: 1
+    amount: 5
+    damage: 10
+    knockbackPower: 6
+  - name: Rank 5
     projectilePrefab: {fileID: 8291530308845601912, guid: 15fbe4c8a851b404b8579560d12d659e,
       type: 3}
     speed: 10

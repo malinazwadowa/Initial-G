@@ -4,7 +4,7 @@ using UnityEngine;
 using NaughtyAttributes;
 
 [CreateAssetMenu(fileName = "newItemUnlockConditions", menuName = "ScriptableObjects/ItemUnlockConditions")]
-public class SO_ItemUnlockParameters : ScriptableObject
+public class SO_ItemControllerParameters : ScriptableObject
 {
     public bool Initialize;
 

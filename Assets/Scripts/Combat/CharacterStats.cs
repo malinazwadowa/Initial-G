@@ -7,16 +7,16 @@ public class CharacterStats
     public float damageModifier;
     public float cooldownModifier;
     public float durationModifier;
-    public float pickUpRadius;
+    public float lootingRadiusModifier;
 
-    public CharacterStats(float moveSpeedModifier, float weaponSpeedModifier, float damageModifier, float cooldownModifier, float durationModifier, float pickUpRadius)
+    public CharacterStats(float moveSpeedModifier, float weaponSpeedModifier, float damageModifier, float cooldownModifier, float durationModifier, float lootingRadiusModifier)
     {
         this.moveSpeedModifier = moveSpeedModifier;
         this.weaponSpeedModifier = weaponSpeedModifier;
         this.damageModifier = damageModifier;
         this.cooldownModifier = cooldownModifier;
         this.durationModifier = durationModifier;
-        this.pickUpRadius = pickUpRadius;
+        this.lootingRadiusModifier = lootingRadiusModifier;
     }
 
     public CharacterStats() : this(1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f)

@@ -1,16 +1,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemUnlockController : MonoBehaviour
+public class ItemsController : MonoBehaviour
 {
-    public SO_ItemUnlockParameters itemUnlockParameters;
+    public SO_ItemControllerParameters itemUnlockParameters;
 
     //all weapons
     //all accessories? 
-    public List<GameObject> allItems = new List<GameObject>();
+    public List<GameObject> allItemPrefabs = new List<GameObject>();
+
+    [HideInInspector] public List<Item> allItems = new List<Item>();
     //public List<GameObject> allAccessories = new List<GameObject>();
 
-    [HideInInspector] public List<GameObject> unlockedItems = new List<GameObject>();
+    [HideInInspector] public List<Item> unlockedItems = new List<Item>();
     //[HideInInspector] public List<GameObject> unlockedAccessories = new List<GameObject>();
 
 
@@ -18,14 +20,59 @@ public class ItemUnlockController : MonoBehaviour
 
     public void Initalize()
     {
+        SetAllItems();
         Debug.Log(unlockedItems.Count);
         CheckItemUnlocks();
         Debug.Log(unlockedItems.Count);
     }
 
+    private void SetAllItems()
+    {
+        foreach(GameObject eqItemPrefab in allItemPrefabs)
+        {
+            Item itemComponent = eqItemPrefab.GetComponent<Item>();
+
+            if (itemComponent != null)
+            {
+                allItems.Add(itemComponent);
+            }
+        }
+    }
+
+    public List<Weapon> GetUnlockedWeapons()
+    {
+        List<Weapon> list = new List<Weapon>();
+        foreach(Item item in unlockedItems)
+        {
+            if(item is Weapon)
+            {
+                list.Add((Weapon)item);
+            }
+        }
+        return list;
+    }
+
+    public List<Accessory> GetUnlockedAccessories()
+    {
+        List<Accessory> list = new List<Accessory>();
+        foreach (Item item in unlockedItems)
+        {
+            if (item is Accessory)
+            {
+                list.Add((Accessory)item);
+            }
+        }
+        return list;
+    }
+
+    public List<Item> GetUnlockedItems()
+    {
+        return unlockedItems;
+    }
+
     private void CheckItemUnlocks()
     {
-        foreach(GameObject item in allItems)
+        foreach(Item item in allItems)
         {
             Item myScript = item.GetComponent<Item>();
             UnlockCondition condition = myScript.baseItemParameters.unlockCondition;

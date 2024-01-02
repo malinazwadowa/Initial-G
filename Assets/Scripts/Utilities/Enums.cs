@@ -4,7 +4,13 @@ public enum EnemyType
     TargetDummy,
     AlphaDummy
 }
-
+public enum UpgradeCase
+{
+    UpgradeOrNew,
+    JustUpgrade,
+    JustNew,
+    None
+}
 public enum ConditionType
 {
     UnlockedByDefault,
@@ -18,12 +24,17 @@ public enum WeaponType
     DefaultValue,
     Spear,
     Rock,
-    Hedgehog
+    Hedgehog,
+    TempSpear1,
+    TempSpear2,
+    TempSpear3
 }
 public enum AccessoryType
 {
     Amulet,
-    Clock
+    Clock,
+    Boot,
+    Hook
 }
 public enum StatModifier
 {
@@ -31,7 +42,7 @@ public enum StatModifier
     WeaponSpeedModifier,
     DamageModifier,
     CooldownModifier,
-    PickUpRadius
+    LootingRadius
 }
 public enum SectorOfChunk
 {

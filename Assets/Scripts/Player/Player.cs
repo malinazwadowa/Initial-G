@@ -20,9 +20,8 @@ public class Player : MonoBehaviour, IWeaponWielder, IDamagable
     private LootCollisionHandler lootCollisionHandler;
 
     private CharacterStatsController characterStatsController;
-    private AccessoryController accessoryController;
-
-    [HideInInspector] public WeaponController weaponController;
+    [HideInInspector] public AccessoryController accessoryController { get; private set; }
+    [HideInInspector] public WeaponController weaponController { get; private set; }
     [HideInInspector] public PlayerInputController InputController { get; private set; }
 
     private void Awake()
@@ -49,9 +48,9 @@ public class Player : MonoBehaviour, IWeaponWielder, IDamagable
         experienceController.Initialize(FindAnyObjectByType<ExpBarUI>());
         healthController.Initialize(playerData.maxHealth);
 
-        lootCollisionHandler.Initialize(playerData.lootingRadius);
-        movementController.Initialize(playerData, rigidBody);
-        animationController.Initialize(animator, movementController, playerData, spriteRenderers);
+        lootCollisionHandler.Initialize(playerData.lootingRadius, characterStatsController.characterStats);
+        movementController.Initialize(playerData, rigidBody, characterStatsController.characterStats);
+        animationController.Initialize(animator, movementController, spriteRenderers);
         InputController.Initialize(movementController, InputActions);
 
 

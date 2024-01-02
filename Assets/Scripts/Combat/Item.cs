@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Item : MonoBehaviour 
 {
-    protected int currentRank;
+    [HideInInspector] public int currentRank { get; private set; }
 
     [Expandable] public SO_ItemParameters baseItemParameters;
 

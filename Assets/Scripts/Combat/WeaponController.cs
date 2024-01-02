@@ -8,7 +8,7 @@ public class WeaponController : MonoBehaviour
     private CharacterStats characterStats;
 
     [HideInInspector] public List<Weapon> equippedWeapons = new List<Weapon>();
-    public List<GameObject> availableWeapons = new List<GameObject>();
+    //public List<GameObject> availableWeapons = new List<GameObject>();
 
     public void Initalize(IWeaponWielder weaponWielder, CharacterStats characterStats)
     {
@@ -17,9 +17,9 @@ public class WeaponController : MonoBehaviour
         this.characterStats = characterStats;
 
         EquipWeapon<Rock>();
-        EquipWeapon<Spear>();
+        //EquipWeapon<Spear>();
 
-        EquipWeapon<Hedgehog>();
+       // EquipWeapon<Hedgehog>();
         
     }
 
@@ -52,28 +52,23 @@ public class WeaponController : MonoBehaviour
             T weaponScript = weapon.GetComponent<T>();
             weaponScript.Initialize(myWeaponWielder, characterStats);
 
-            if( weaponScript is Spear)
-            {
-                Spear spear = weaponScript as Spear;
-                //EquipmentControllerUI.Instance.AddItem(spear.)
-            }
-
             equippedWeapons.Add(weaponScript);
         }
     }
 
     private GameObject GetWeaponPrefab<T>() where T : Weapon
     {
-        if (availableWeapons != null)
+        if (GameManager.Instance.itemController.allItemPrefabs != null)
         {
-            GameObject prefab = availableWeapons.Find(weaponPrefab => weaponPrefab.GetComponent<T>() != null);
+            GameObject prefab = GameManager.Instance.itemController.allItemPrefabs.Find(weaponPrefab => weaponPrefab.GetComponent<T>() != null);
+            //GameObject prefab = availableWeapons.Find(weaponPrefab => weaponPrefab.GetComponent<T>() != null);
             if (prefab != null)
             {
                 return prefab;
             }
             else
             {
-                Debug.LogError($"Weapon prefab for type {typeof(T)} not found in the available list!");
+                Debug.LogError($"Weapon prefab for type {typeof(T)} not found in the equipment list!");
                 return null;
             }
         }

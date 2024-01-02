@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 167364672967377362}
   - component: {fileID: 3782181235588230811}
   m_Layer: 0
-  m_Name: P_Rock
+  m_Name: P_Weapon_Rock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,3 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseItemParameters: {fileID: 11400000, guid: 92a9bdb93d5ccd5478d632d9ff172537, type: 2}
+  weaponType: 0

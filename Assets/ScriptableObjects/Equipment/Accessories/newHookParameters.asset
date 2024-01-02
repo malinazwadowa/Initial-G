@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78ae37cc6f4347847812feb0f2f374da, type: 3}
-  m_Name: newAmuletParameters
+  m_Script: {fileID: 11500000, guid: dd629c6d5eff6b5468aff00f474972d3, type: 3}
+  m_Name: newHookParameters
   m_EditorClassIdentifier: 
   unlockCondition:
     name: 
@@ -18,9 +18,9 @@ MonoBehaviour:
     weaponType: 0
     accessoryType: 0
     enemyType: 0
-    amount: 150
-  icon: {fileID: 21300064, guid: 29c9cded5e558164aaf8c9bf08aa1510, type: 3}
+    amount: 0
+  icon: {fileID: 21300000, guid: 6d6088174bb906b49ad8428526ee337b, type: 3}
   maxRank: 5
-  accessoryType: 0
+  accessoryType: 3
   numberOfRanks: 5
   value: 0.1
