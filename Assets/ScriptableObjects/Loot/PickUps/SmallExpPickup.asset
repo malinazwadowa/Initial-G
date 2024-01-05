@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02c4376a433e91b44b753e4c47f35551, type: 3}
   m_Name: SmallExpPickup
   m_EditorClassIdentifier: 
-  expAmount: 25
+  expAmount: 2500000

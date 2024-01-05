@@ -6,7 +6,7 @@ public class Accessory : Item
     protected CharacterStatsController characterStatsController;
     [HideInInspector] public AccessoryType accessoryType;
 
-    public virtual void Initalize(CharacterStatsController characterStatsController)
+    public virtual void Initialize(CharacterStatsController characterStatsController)
     {
         this.characterStatsController = characterStatsController;
         EquipmentControllerUI.Instance.AddItem(baseItemParameters.icon, GetType(), baseItemParameters.maxRank);

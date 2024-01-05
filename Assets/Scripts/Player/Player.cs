@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class Player : MonoBehaviour, IWeaponWielder, IDamagable
+public class Player : MonoBehaviour, IItemWielder, IDamagable
 {
     [SerializeField] public SO_PlayerParameters playerData;
 
@@ -20,8 +20,8 @@ public class Player : MonoBehaviour, IWeaponWielder, IDamagable
     private LootCollisionHandler lootCollisionHandler;
 
     private CharacterStatsController characterStatsController;
-    [HideInInspector] public AccessoryController accessoryController { get; private set; }
-    [HideInInspector] public WeaponController weaponController { get; private set; }
+
+    [HideInInspector] public ItemController ItemController { get; private set; }
     [HideInInspector] public PlayerInputController InputController { get; private set; }
 
     private void Awake()
@@ -33,8 +33,7 @@ public class Player : MonoBehaviour, IWeaponWielder, IDamagable
 
         
         healthController = GetComponent<HealthController>();
-        weaponController = GetComponent<WeaponController>();
-
+        ItemController = GetComponent<ItemController>();
         lootCollisionHandler = GetComponentInChildren<LootCollisionHandler>();
         movementController = GetComponent<PlayerMovementController>();
         animationController = GetComponent<PlayerAnimationController>();
@@ -42,7 +41,6 @@ public class Player : MonoBehaviour, IWeaponWielder, IDamagable
         experienceController = GetComponent<ExperienceController>();
 
         characterStatsController = GetComponent<CharacterStatsController>();
-        accessoryController = GetComponent<AccessoryController>();
 
         characterStatsController.Initialize();
         experienceController.Initialize(FindAnyObjectByType<ExpBarUI>());
@@ -53,9 +51,7 @@ public class Player : MonoBehaviour, IWeaponWielder, IDamagable
         animationController.Initialize(animator, movementController, spriteRenderers);
         InputController.Initialize(movementController, InputActions);
 
-
-        accessoryController.Initialize(characterStatsController);
-        weaponController.Initalize(this, characterStatsController.GetStats());
+        ItemController.Initialize(this, characterStatsController);
     }
 
     private void Start()
@@ -125,7 +121,7 @@ public class Player : MonoBehaviour, IWeaponWielder, IDamagable
         AudioManager.Instance.PlaySound(AudioClipID.PlayerDeath);
     }
 
-    public void GetDamaged(float amount, WeaponType damageSource)
+    public void GetDamaged(float amount, string damageSource)
     {
         healthController.SubstractCurrentHealth(amount);
         animationController.ChangeColorOnDamage();

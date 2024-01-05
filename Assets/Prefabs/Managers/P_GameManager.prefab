@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameStatsController: {fileID: 0}
-  itemController: {fileID: 0}
+  itemsUnlockController: {fileID: 0}
 --- !u!114 &9082055458375173534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101,6 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemUnlockParameters: {fileID: 11400000, guid: b58c0fda58fe5ef4b9c2b0335e83ffef,
     type: 2}
+  allItemsList: {fileID: 11400000, guid: 9fe07be64d9ebe6458523a06ab0704f2, type: 2}
   allItemPrefabs:
   - {fileID: 8923503329484286133, guid: 039119011dc11b7499859cf33785b51d, type: 3}
   - {fileID: 3959019659549421026, guid: 6733869323336ff48b8e145332e36618, type: 3}
@@ -113,4 +114,6 @@ MonoBehaviour:
   - {fileID: 8280863537462495397, guid: 7bdb81391d5ea094b97a7ba9bbc2f580, type: 3}
   - {fileID: 8119043119895366922, guid: 162b4f2b000466540951713907622190, type: 3}
   allItems: []
+  unlockedAccessories: []
+  unlockedWeapons: []
   unlockedItems: []

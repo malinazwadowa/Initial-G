@@ -1,10 +1,16 @@
 using NaughtyAttributes;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
 public class UnlockCondition
 {
+
+    private List<string> accessoryTypes;
+    private List<string> weaponTypes;
+
+
     [HideInInspector] public string name;
     public ConditionType conditionType;
     private bool unlockedByDefault;
@@ -15,12 +21,13 @@ public class UnlockCondition
     private bool unlockedWithMaxRankOfAccessory;
 
     [AllowNesting]
-    [ShowIf(EConditionOperator.Or, "unlockedWithWeaponKills", "unlockedWithMaxRankOfWeapon")]
-    public WeaponType weaponType;
+    [ShowIf(EConditionOperator.Or, "unlockedWithWeaponKills", "unlockedWithMaxRankOfWeapon")][Dropdown("weaponTypes")] 
+    public string weaponType;
 
     [AllowNesting]
-    [ShowIf("unlockedWithMaxRankOfAccessory")]
-    public AccessoryType accessoryType;
+    [ShowIf("unlockedWithMaxRankOfAccessory")][Dropdown("accessoryTypes")] 
+    public string accessoryType;
+    //public AccessoryType accessoryType;
 
     [AllowNesting]
     [ShowIf("unlockedWithEnemyKilled")]
@@ -29,8 +36,12 @@ public class UnlockCondition
     [AllowNesting]
     [ShowIf(EConditionOperator.Or, "unlockedWithWeaponKills", "unlockedWithEnemyKilled")]
     public int amount;
+
     public void Validate()
     {
+        accessoryTypes = ItemDatabase.AccessoryTypes;
+        weaponTypes = ItemDatabase.WeaponTypes;
+
         if (conditionType == ConditionType.UnlockedWithWeaponKills)
         {
             unlockedWithWeaponKills = true;

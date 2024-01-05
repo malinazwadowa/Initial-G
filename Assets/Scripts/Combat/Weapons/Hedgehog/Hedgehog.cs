@@ -10,12 +10,11 @@ public class Hedgehog : Weapon
     private float cooldownTimer;
     private float durationTimer;
 
-    public override void Initialize(IWeaponWielder weaponWielder, CharacterStats characterStats)
+    public override void Initialize(IItemWielder weaponWielder, CharacterStats characterStats)
     {
         base.Initialize(weaponWielder, characterStats);
 
         baseParameters = (SO_HedgehogParameters)baseItemParameters;
-        weaponType = baseParameters.weaponType;
         currentRankParameters = baseParameters.ranks[currentRank];
         cooldownTimer = float.PositiveInfinity;
     }
@@ -55,6 +54,7 @@ public class Hedgehog : Weapon
 
             GameObject newHog = ObjectPooler.Instance.SpawnObject(currentRankParameters.projectilePrefab, weaponWielder.GetCenterPosition(), rotation);
             newHog.GetComponent<HedgehogProjectile>().Initalize(
+                this.name,
                 weaponWielder.GetCenterTransform(),
                 currentRankParameters.damage * characterStats.damageModifier,
                 currentRankParameters.speed * characterStats.weaponSpeedModifier,

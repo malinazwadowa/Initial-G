@@ -7,9 +7,9 @@ public class Clock : Accessory
     private float value;
     private int numberOfRanks;
 
-    public override void Initalize(CharacterStatsController characterStatsController)
+    public override void Initialize(CharacterStatsController characterStatsController)
     {
-        base.Initalize(characterStatsController);
+        base.Initialize(characterStatsController);
 
         parameters = (SO_ClockParameters)baseItemParameters;
         value = parameters.value / 100;

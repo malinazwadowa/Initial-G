@@ -2,14 +2,15 @@ using UnityEngine;
 
 public class SpearProjectile : MonoBehaviour
 {
-    private WeaponType myWeaponType = WeaponType.Spear;
+    private string weaponType;
     private Vector3 movementDirection;
     private float damage;
     private float speed;
     private float knockbackPower;
 
-    public void Init(Vector3 movementDirection, float damage, float speed, float knockbackPower)
+    public void Init(string weaponType, Vector3 movementDirection, float damage, float speed, float knockbackPower)
     {
+        this.weaponType = weaponType;
         this.movementDirection = movementDirection;
         this.damage = damage;
         this.speed = speed;
@@ -41,7 +42,7 @@ public class SpearProjectile : MonoBehaviour
         {
             Vector3 direction = collision.transform.position - transform.position;
 
-            target.GetDamaged(damage, myWeaponType);
+            target.GetDamaged(damage, weaponType);
             
             target.GetKnockbacked(knockbackPower, direction.normalized);
         }

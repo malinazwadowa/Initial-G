@@ -11,7 +11,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     [HideInInspector] public GameLevel CurrentGameLevel { get; private set; }
     [HideInInspector] public LevelUnlockController levelUnlockController { get; private set; }
     [HideInInspector] public GameStatsController gameStatsController;
-    [HideInInspector] public ItemsController itemController;
+    [HideInInspector] public ItemsDataController itemsDataController;
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.N))
@@ -42,7 +42,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
         levelUnlockController = GetComponent<LevelUnlockController>();
         gameStatsController = GetComponent<GameStatsController>();
-        itemController = GetComponent<ItemsController>();
+        itemsDataController = GetComponent<ItemsDataController>();
         SaveSystem.Initialize();
         
     }
@@ -51,7 +51,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     {
         SaveSystem.Load();
         gameStatsController.Initalize();
-        itemController.Initalize();
+        itemsDataController.Initalize();
     }
 
     public void PauseGame()

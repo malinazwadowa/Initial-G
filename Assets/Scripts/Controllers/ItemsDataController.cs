@@ -1,40 +1,57 @@
+using NaughtyAttributes;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemsController : MonoBehaviour
+public class ItemsDataController : MonoBehaviour
 {
-    public SO_ItemControllerParameters itemUnlockParameters;
+    [Expandable][SerializeField] private SO_ItemsList allItemsList;
 
-    //all weapons
-    //all accessories? 
-    public List<GameObject> allItemPrefabs = new List<GameObject>();
-
+    [HideInInspector] public List<GameObject> allItemPrefabs = new List<GameObject>() ;
     [HideInInspector] public List<Item> allItems = new List<Item>();
-    //public List<GameObject> allAccessories = new List<GameObject>();
 
     [HideInInspector] public List<Item> unlockedItems = new List<Item>();
-    //[HideInInspector] public List<GameObject> unlockedAccessories = new List<GameObject>();
+    [HideInInspector] public List<Accessory> unlockedAccessories = new List<Accessory>();
+    [HideInInspector] public List<Weapon> unlockedWeapons = new List<Weapon>();
 
+    [HideInInspector] public Dictionary<string, GameObject> typeOfItems = new Dictionary<string, GameObject>();
+    [HideInInspector] public List<string> accessoryTypes = new List<string>();
+    [HideInInspector] public List<string> weaponTypes = new List<string>();
 
-    //private Dictionary<Item, bool> itemUnlockStatus = new Dictionary<Item, bool>();
-
-    public void Initalize()
+    private void OnValidate()
     {
-        SetAllItems();
-        Debug.Log(unlockedItems.Count);
-        CheckItemUnlocks();
-        Debug.Log(unlockedItems.Count);
+        SetDataFromSO();
     }
 
-    private void SetAllItems()
-    {
-        foreach(GameObject eqItemPrefab in allItemPrefabs)
-        {
-            Item itemComponent = eqItemPrefab.GetComponent<Item>();
+    public void Initalize()
+    { 
+        SetDataFromSO();
+        CheckItemUnlocks();
+        SortUnlockedItems();
+    }
 
-            if (itemComponent != null)
+    private void SetDataFromSO()
+    {
+        allItems = allItemsList.allItems;
+        allItemPrefabs = allItemsList.allItemPrefabs;
+        typeOfItems = allItemsList.typeOfItems;
+        accessoryTypes = allItemsList.accessoryTypes;
+        weaponTypes = allItemsList.weaponTypes;
+    }
+
+    public void SortUnlockedItems()
+    {
+        unlockedWeapons.Clear();
+        unlockedAccessories.Clear();
+
+        foreach (Item unlockedItem in unlockedItems)
+        {
+            if (unlockedItem is Weapon weapon)
             {
-                allItems.Add(itemComponent);
+                unlockedWeapons.Add(weapon);
+            }
+            else if (unlockedItem is Accessory accessory)
+            {
+                unlockedAccessories.Add(accessory);
             }
         }
     }

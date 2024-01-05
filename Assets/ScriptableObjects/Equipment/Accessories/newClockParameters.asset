@@ -20,7 +20,7 @@ MonoBehaviour:
     enemyType: 0
     amount: 0
   icon: {fileID: 608153777, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
-  maxRank: 6
+  maxRank: 2
   accessoryType: 1
-  numberOfRanks: 6
+  numberOfRanks: 2
   value: 10

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public interface IWeaponWielder
+public interface IItemWielder
 {
     public Vector3 GetCenterPosition();
     public Transform GetCenterTransform();

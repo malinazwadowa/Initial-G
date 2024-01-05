@@ -3,20 +3,22 @@ using UnityEngine;
 
 public class HedgehogProjectile : MonoBehaviour
 {
-    private WeaponType myWeaponType = WeaponType.Hedgehog;
+    //private WeaponType myWeaponType = WeaponType.Hedgehog;
     [SerializeField] private Transform hedgehogsTransform;
     [SerializeField] private Collider2D hedgehogsCollider;
     
     private Transform weaponsTransform;
     private float timer;
 
+    private string weaponType;
     private float damage;
     private float speed;
     private float knockbackPower;
     private float duration;
 
-    public void Initalize(Transform weaponsTransform, float damage, float speed, float knockbackPower, float radius, float duration)
+    public void Initalize(string weaponType, Transform weaponsTransform, float damage, float speed, float knockbackPower, float radius, float duration)
     {
+        this.weaponType = weaponType;
         this.damage = damage;
         this.speed = speed;
         this.knockbackPower = knockbackPower;
@@ -66,7 +68,7 @@ public class HedgehogProjectile : MonoBehaviour
             Vector3 direction = collision.transform.position - weaponsTransform.position;
 
             target.GetKnockbacked(knockbackPower, direction.normalized);
-            target.GetDamaged(damage,myWeaponType);
+            target.GetDamaged(damage, weaponType);
         }
     }
 }

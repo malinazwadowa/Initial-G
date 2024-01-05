@@ -15,10 +15,10 @@ MonoBehaviour:
   unlockCondition:
     name: 
     conditionType: 0
-    weaponType: 1
-    accessoryType: 0
+    weaponType: Spear
+    accessoryType: Boot
     enemyType: 0
-    amount: 0
+    amount: 150
   icon: {fileID: 21300110, guid: 29c9cded5e558164aaf8c9bf08aa1510, type: 3}
   maxRank: 4
   weaponType: 2

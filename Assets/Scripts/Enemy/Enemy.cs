@@ -33,7 +33,7 @@ public class Enemy : MonoBehaviour, IDamagable
         }
     }
   
-    public void GetDamaged(float amount, WeaponType damageSource)
+    public void GetDamaged(float amount, string damageSource)
     {
         AudioManager.Instance.PlaySound(AudioClipID.EnemyHit);
         healthController.SubstractCurrentHealth(amount);

@@ -12,12 +12,12 @@ public class GameStatsController : MonoBehaviour, ISaveable
     public class GameStats
     {
         public Dictionary<EnemyType, int> enemyKilledCounts;
-        public Dictionary<WeaponType, int> weaponKillCounts;
+        public Dictionary<string, int> weaponKillCounts;
 
         public GameStats()
         {
             enemyKilledCounts = new Dictionary<EnemyType, int>();
-            weaponKillCounts = new Dictionary<WeaponType, int>();
+            weaponKillCounts = new Dictionary<string, int>();
         }
     }
 
@@ -66,7 +66,7 @@ public class GameStatsController : MonoBehaviour, ISaveable
             gameStats.enemyKilledCounts[enemyType] = currentCount + sessionStats.enemyKilledCounts[enemyType];
         }
 
-        foreach (WeaponType itemType in sessionStats.weaponKillCounts.Keys)
+        foreach (string itemType in sessionStats.weaponKillCounts.Keys)
         {
             gameStats.weaponKillCounts.TryGetValue(itemType, out int currentCount);
             gameStats.weaponKillCounts[itemType] = currentCount + sessionStats.weaponKillCounts[itemType];
@@ -79,7 +79,7 @@ public class GameStatsController : MonoBehaviour, ISaveable
         sessionStats.enemyKilledCounts[type] = currentCount + 1;
     }
 
-    public void RegisterWeaponKill(WeaponType type)
+    public void RegisterWeaponKill(string type)
     {
         sessionStats.weaponKillCounts.TryGetValue(type, out int currentCount);
         sessionStats.weaponKillCounts[type] = currentCount + 1;

@@ -9,12 +9,11 @@ public class SpearClone3 : Weapon
 
     private float timer = 2;
 
-    public override void Initialize(IWeaponWielder weaponWielder, CharacterStats characterStats)
+    public override void Initialize(IItemWielder weaponWielder, CharacterStats characterStats)
     {
         base.Initialize(weaponWielder, characterStats);
 
         baseParameters = (SO_SpearParameters)baseItemParameters;
-        weaponType = baseParameters.weaponType;
         currentRankParameters = baseParameters.ranks[currentRank];
     }
 
@@ -38,6 +37,7 @@ public class SpearClone3 : Weapon
         {
             GameObject newSpear = ObjectPooler.Instance.SpawnObject(currentRankParameters.projectilePrefab, position);
             newSpear.GetComponent<SpearProjectile>().Init(
+                this.name,
                 direction,
                 currentRankParameters.damage * characterStats.damageModifier,
                 currentRankParameters.speed * characterStats.weaponSpeedModifier,
@@ -77,6 +77,7 @@ public class SpearClone3 : Weapon
 
         GameObject nextSpear = ObjectPooler.Instance.SpawnObject(currentRankParameters.projectilePrefab, position);
         nextSpear.GetComponent<SpearProjectile>().Init(
+            this.name,
             direction,
             currentRankParameters.damage * characterStats.damageModifier,
             currentRankParameters.speed * characterStats.weaponSpeedModifier,

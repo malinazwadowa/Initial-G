@@ -15,7 +15,7 @@ MonoBehaviour:
   unlockCondition:
     name: 
     conditionType: 0
-    weaponType: 0
+    weaponType: 5
     accessoryType: 0
     enemyType: 0
     amount: 0

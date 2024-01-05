@@ -7,12 +7,11 @@ public class Rock : Weapon
     private RockRank currentRankParameters;
     private float timer;
     
-    public override void Initialize(IWeaponWielder weaponWielder, CharacterStats characterStats)
+    public override void Initialize(IItemWielder weaponWielder, CharacterStats characterStats)
     {
         base.Initialize(weaponWielder, characterStats);
 
         baseParameters = (SO_RockParameters)baseItemParameters;
-        weaponType = baseParameters.weaponType;
         currentRankParameters = baseParameters.ranks[currentRank];
     }
     
@@ -51,6 +50,7 @@ public class Rock : Weapon
             GameObject newRock = ObjectPooler.Instance.SpawnObject(currentRankParameters.projectilePrefab, spawnPosition);
             newRock.GetComponent<RockProjectile>().Initialize
                 (
+                this.name,
                 spawnPosition,
                 target,
                 currentRankParameters.damage * characterStats.damageModifier,

@@ -37,6 +37,9 @@ public class CharacterStatsController : MonoBehaviour
 
             case StatModifier.LootingRadius:
                 characterStats.lootingRadiusModifier += value;
+
+                //HMMM
+                gameObject.GetComponentInChildren<LootCollisionHandler>().UpdateRadiusValue();
                 break;
 
             default:

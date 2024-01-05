@@ -11,10 +11,10 @@ public class LootCollisionHandler : MonoBehaviour
     {
         this.lootingRadius = lootingRadius;
         this.characterStats = characterStats;
-        SetRadius();
+        UpdateRadiusValue();
     }
 
-    private void SetRadius()
+    public void UpdateRadiusValue()
     {
         myCollider.radius = lootingRadius * characterStats.lootingRadiusModifier;
     }
