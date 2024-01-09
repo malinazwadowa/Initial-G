@@ -1,6 +1,4 @@
 using NaughtyAttributes;
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SO_ItemParameters : ScriptableObject
@@ -15,6 +13,9 @@ public class SO_ItemParameters : ScriptableObject
     
     [Header("Icon for UI")]
     public Sprite icon;
+
+    [ResizableTextArea][Header("Item description")]
+    public string description;
 
     [HideInInspector] public int maxRank;
 }

@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class Boot : Accessory
+public class Clock : Accessory
 {
-    private SO_BootParameters parameters;
-    private StatModifier modifierType = StatModifier.MoveSpeedModifier;
+    private SO_ClockParameters parameters;
+    private StatModifier modifierType = StatModifier.CooldownModifier;
     private float value;
     private int numberOfRanks;
 
@@ -11,9 +11,8 @@ public class Boot : Accessory
     {
         base.Initialize(characterStatsController);
 
-        parameters = (SO_BootParameters)baseItemParameters;
-        value = parameters.value;
-        accessoryType = parameters.accessoryType;
+        parameters = (SO_ClockParameters)baseItemParameters;
+        value = parameters.value / 100;
         numberOfRanks = parameters.numberOfRanks;
         ApplyEffect();
     }
@@ -30,11 +29,11 @@ public class Boot : Accessory
         {
             base.RankUp();
             ApplyEffect();
-            Debug.Log("Ranking up Boot.");
+            Debug.Log("Ranking up Clock.");
         }
         else
         {
-            Debug.Log("Maximum Boot rank reached.");
+            Debug.Log("Maximum Clock rank reached.");
         }
     }
 }

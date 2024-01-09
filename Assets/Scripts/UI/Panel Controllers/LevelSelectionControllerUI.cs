@@ -33,22 +33,29 @@ public class LevelSelectionControllerUI : MonoBehaviour
             buttons.Add(button);
         }
 
-        Dictionary <GameLevel, bool> levelUnlockStatus = GameManager.Instance.levelUnlockController.GetCurrentLevelUnlockStatus();
+        Dictionary<GameLevel, bool> levelUnlockStatus = GameManager.Instance.LevelUnlockController.GetCurrentLevelUnlockStatus();
 
         foreach (GameLevel level in Enum.GetValues(typeof(GameLevel)))
         {
+            Debug.Log(level.ToString());
             levelInfos.Add(new LevelInfo { gameLevel = level, isUnlocked = levelUnlockStatus[level] });
         }
 
-        for(int i=0; i<levelInfos.Count; i++)
+        for (int i = 0; i < levelInfos.Count; i++)
         {
+            int index = i;
+            buttons[i].onClick.RemoveAllListeners();
             buttons[i].interactable = levelInfos[i].isUnlocked;
 
             if (buttons[i].interactable)
             {
                 buttons[i].GetComponentInChildren<TextMeshProUGUI>().text = levelInfos[i].gameLevel.ToString();
-                int index = i;
-                buttons[i].onClick.AddListener(() => LoadGameLevel(levelInfos[index].gameLevel));
+
+                buttons[i].onClick.AddListener(() =>
+                {
+                    Debug.Log("Button Clicked: " + levelInfos[index].gameLevel.ToString());
+                    LoadGameLevel(levelInfos[index].gameLevel);
+                });
             }
             else
             {

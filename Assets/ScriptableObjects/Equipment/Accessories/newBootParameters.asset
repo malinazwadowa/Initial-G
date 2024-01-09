@@ -20,7 +20,7 @@ MonoBehaviour:
     enemyType: 0
     amount: 0
   icon: {fileID: 8952162787185664858, guid: 410a682b748d49d5b553923210776e64, type: 3}
+  description: Increases movement speed.
   maxRank: 2
-  accessoryType: 2
   numberOfRanks: 2
-  value: 0.1
+  value: 0.5

@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public static class Utilities
 {
@@ -150,5 +149,17 @@ public static class Utilities
             randomValue -= item.weight;
         }
         return null;
+    }
+
+    public static void RemoveChildren(Transform parent)
+    {
+        // Iterate through each child of the parent
+        foreach (Transform child in parent)
+        {
+            Object.Destroy(child.gameObject);
+        }
+
+        // Clear the list of children in the parent Transform
+        parent.DetachChildren();
     }
 }

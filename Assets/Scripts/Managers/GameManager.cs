@@ -1,17 +1,15 @@
 using System;
 using System.Collections.Generic;
-using UnityEditorInternal.Profiling.Memory.Experimental.FileFormat;
 using UnityEngine;
-using static GameStatsController;
 
 public class GameManager : SingletonMonoBehaviour<GameManager>
 {
     public event Action OnGamePaused;
     
     [HideInInspector] public GameLevel CurrentGameLevel { get; private set; }
-    [HideInInspector] public LevelUnlockController levelUnlockController { get; private set; }
+    [HideInInspector] public LevelUnlockController LevelUnlockController { get; private set; }
     [HideInInspector] public GameStatsController gameStatsController;
-    [HideInInspector] public ItemsDataController itemsDataController;
+    [HideInInspector] public ItemDataController itemDataController;
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.N))
@@ -28,10 +26,10 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
         if (Input.GetKeyDown(KeyCode.O))
         {
-            Dictionary<GameLevel, bool> levelUnlockStatus = levelUnlockController.GetCurrentLevelUnlockStatus();
+            Dictionary<GameLevel, bool> levelUnlockStatus = LevelUnlockController.GetCurrentLevelUnlockStatus();
             Debug.Log(levelUnlockStatus.Count);
             Debug.Log(levelUnlockStatus[GameLevel.Cementary]);
-                Debug.Log(gameStatsController.gameStats.enemyKilledCounts.TryGetValue(EnemyType.Sunflower, out int currentCount) + " " + currentCount);
+               Debug.Log(gameStatsController.gameStats.enemyKilledCounts.TryGetValue(EnemyType.Sunflower, out int currentCount) + " " + currentCount);
         }
     }
 
@@ -40,9 +38,9 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         base.Awake();
         DontDestroyOnLoad(this);
 
-        levelUnlockController = GetComponent<LevelUnlockController>();
+        LevelUnlockController = GetComponent<LevelUnlockController>();
         gameStatsController = GetComponent<GameStatsController>();
-        itemsDataController = GetComponent<ItemsDataController>();
+        itemDataController = GetComponent<ItemDataController>();
         SaveSystem.Initialize();
         
     }
@@ -51,7 +49,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     {
         SaveSystem.Load();
         gameStatsController.Initalize();
-        itemsDataController.Initalize();
+        itemDataController.Initalize();
     }
 
     public void PauseGame()

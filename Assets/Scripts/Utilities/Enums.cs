@@ -55,13 +55,6 @@ public enum SectorOfChunk
     MiddleTop,
     MiddleBottom
 }
-public enum SceneName
-{
-    Forest,
-    Cementary,
-    Loading,
-    MainMenu
-}
 public enum OccupiedSide
 {
     Top,
@@ -87,9 +80,16 @@ public enum MixerGroup
     Sounds,
     Music
 }
+public enum SceneName
+{
+    Cementary,
+    Forest,
+    Loading,
+    MainMenu
+}
 public enum GameLevel
 {
-    Forest,
     Cementary,
+    Forest,
     dupa
 }

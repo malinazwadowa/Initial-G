@@ -2,7 +2,7 @@ using NaughtyAttributes;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemsDataController : MonoBehaviour
+public class ItemDataController : MonoBehaviour
 {
     [Expandable][SerializeField] private SO_ItemsList allItemsList;
 

@@ -82,7 +82,7 @@ public class ItemController : MonoBehaviour
 
         if (WeaponController.EquippedWeapons.Count < 4)
         {
-            List<Weapon> weapons = GameManager.Instance.itemsDataController.GetUnlockedWeapons();
+            List<Weapon> weapons = GameManager.Instance.itemDataController.GetUnlockedWeapons();
             foreach (Weapon weapon in weapons)
             {
                 if (!EquippedItems.Any(equippedItem => equippedItem.GetType() == weapon.GetType()))
@@ -94,7 +94,7 @@ public class ItemController : MonoBehaviour
 
         if (AccessoryController.EquippedAccessories.Count < 4)
         {
-            List<Accessory> accessories = GameManager.Instance.itemsDataController.GetUnlockedAccessories();
+            List<Accessory> accessories = GameManager.Instance.itemDataController.GetUnlockedAccessories();
 
             foreach (Accessory accessory in accessories)
             {
@@ -110,9 +110,9 @@ public class ItemController : MonoBehaviour
 
     private GameObject GetItemPrefab(Type itemType)
     {
-        if (GameManager.Instance.itemsDataController.allItemPrefabs != null)
+        if (GameManager.Instance.itemDataController.allItemPrefabs != null)
         {
-            GameObject prefab = GameManager.Instance.itemsDataController.allItemPrefabs.Find(itemPrefab => itemPrefab.GetComponent(itemType) != null);
+            GameObject prefab = GameManager.Instance.itemDataController.allItemPrefabs.Find(itemPrefab => itemPrefab.GetComponent(itemType) != null);
 
             if (prefab != null)
             {

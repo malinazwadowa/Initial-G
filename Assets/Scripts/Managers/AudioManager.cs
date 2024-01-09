@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
+[RequireComponent(typeof(SaveableEntity))]
 public class AudioManager : SingletonMonoBehaviour<AudioManager>, ISaveable
 {
     [SerializeField] private GameObject soundPrefab;

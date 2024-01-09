@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8442061717345982330}
   - component: {fileID: 8442061717345982329}
+  - component: {fileID: 293547026}
   m_Layer: 0
   m_Name: P_AudioManager
   m_TagString: Untagged
@@ -47,3 +48,16 @@ MonoBehaviour:
   soundPrefab: {fileID: 2900440211940102472, guid: c3847fc93470c174ab750630d1c0d19f,
     type: 3}
   myMixer: {fileID: 24100000, guid: f269d1fc20b36334abd7605319ff3067, type: 2}
+--- !u!114 &293547026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8442061717345982331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7eb300d9e367773418ca7833b39895ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 242bb297-fee0-4493-ab08-56cd3f536ef9

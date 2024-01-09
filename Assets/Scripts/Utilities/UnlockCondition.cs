@@ -6,7 +6,6 @@ using UnityEngine;
 [Serializable]
 public class UnlockCondition
 {
-
     private List<string> accessoryTypes;
     private List<string> weaponTypes;
 

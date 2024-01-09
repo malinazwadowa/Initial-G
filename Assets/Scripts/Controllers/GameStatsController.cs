@@ -41,6 +41,11 @@ public class GameStatsController : MonoBehaviour, ISaveable
         }
     }
 
+    public int GetEnemyKilledCountOfType(EnemyType enemyType)
+    {
+        return gameStats.enemyKilledCounts[enemyType];
+    }
+
     [Serializable]
     public class GameStatsSaveData : SaveData
     {

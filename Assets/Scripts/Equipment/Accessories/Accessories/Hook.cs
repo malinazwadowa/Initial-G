@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class Amulet : Accessory
+public class Hook : Accessory
 {
-    private SO_AmuletParameters parameters;
-    private StatModifier modifierType = StatModifier.DamageModifier;
+    private SO_HookParameters parameters;
+    private StatModifier modifierType = StatModifier.LootingRadius;
     private float value;
     private int numberOfRanks;
 
@@ -11,9 +11,8 @@ public class Amulet : Accessory
     {
         base.Initialize(characterStatsController);
 
-        parameters = (SO_AmuletParameters)baseItemParameters;
+        parameters = (SO_HookParameters)baseItemParameters;
         value = parameters.value;
-        accessoryType = parameters.accessoryType;
         numberOfRanks = parameters.numberOfRanks;
         ApplyEffect();
     }
@@ -30,11 +29,11 @@ public class Amulet : Accessory
         {
             base.RankUp();
             ApplyEffect();
-            Debug.Log("Ranking up amuleto.");
+            Debug.Log("Ranking up hook.");
         }
         else
         {
-            Debug.Log("Maximum Amulet rank reached.");
+            Debug.Log("Maximum Hook rank reached.");
         }
     }
 }

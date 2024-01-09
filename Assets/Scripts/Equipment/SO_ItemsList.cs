@@ -18,13 +18,11 @@ public class SO_ItemsList : ScriptableObject
 
     private void OnValidate()
     {
-        
         CleanUpLists();
         SetAllItems();
         SetTypeOfItems();
 
         ItemDatabase.SetData(typeOfItems, accessoryTypes, weaponTypes);
-        
     }
     private void CleanUpLists()
     {

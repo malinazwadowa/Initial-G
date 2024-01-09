@@ -20,6 +20,7 @@ MonoBehaviour:
     enemyType: 0
     amount: 0
   icon: {fileID: 21300000, guid: 6d6088174bb906b49ad8428526ee337b, type: 3}
+  description: Increases pickup range.
   maxRank: 4
   accessoryType: 3
   numberOfRanks: 4

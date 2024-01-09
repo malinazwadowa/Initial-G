@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-
+[DisallowMultipleComponent]
 public class SaveableEntity : MonoBehaviour
 {
     public string id = string.Empty;

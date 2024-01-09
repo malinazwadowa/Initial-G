@@ -15,13 +15,13 @@ MonoBehaviour:
   unlockCondition:
     name: 
     conditionType: 0
-    weaponType: Spear
+    weaponType: Rock
     accessoryType: Boot
     enemyType: 0
     amount: 150
   icon: {fileID: 21300110, guid: 29c9cded5e558164aaf8c9bf08aa1510, type: 3}
+  description: Throws projectiles at nearby enemy positions.
   maxRank: 4
-  weaponType: 2
   spawnDelayForAdditionalRocks: 0.15
   spawnOffsetRangeForAdditionalRocks: 0.6
   ranks:

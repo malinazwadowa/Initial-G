@@ -1,17 +1,24 @@
 /*
- * - 
- * - weapon projectiles have unesscary refference to prefab and other data, get what is needed for projectile no more and pass it as spear properties, in  weapon script itself we can refer to current rank data ?
- *       - the naming Properties sucks, think of better one. its related to projectile/collision/impact 
-   >>>> kinda fixed.. but still dont like it that much. projectiles only get what they need but WeaponProperties is still in use name makes sense
-
- * - check if preloading enemydata for pooler works
- * - update weapon collisions
+ * - Weapon upgrade popup:
+ - needs randomized panel order
  * 
+ * - Save system:
+ - profiles 
  * 
- * 
- * NOTES:
- * - //GetClosestEnemy(Vector3 position) Could be replaced with holding list of active enemies to avoid scanning around player
- * 
- * 
- * 
+ * - Enemy type should be updated: or should it?
+- 
+ * - LevelLoading is not working when reordered
+ - it is now but SceneNAme and GameLevel enums are troublesome
+ *
+ *
+ *- prefabize controllers and other scene components
+ *
+ *
+ *- enemy/weapon collision handling
+- multiple hits from one projectile 
+ *
+ *
+ *- EXP formula
+ *
  */
+

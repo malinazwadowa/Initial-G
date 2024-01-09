@@ -17,11 +17,14 @@
         "$type": "GameStatsController+GameStats, Assembly-CSharp",
         "enemyKilledCounts": {
           "$type": "System.Collections.Generic.Dictionary`2[[EnemyType, Assembly-CSharp],[System.Int32, mscorlib]], mscorlib",
-          "Sunflower": 37
+          "Sunflower": 5517
         },
         "weaponKillCounts": {
           "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Int32, mscorlib]], mscorlib",
-          "P_Weapon_Spear(Clone)": 37
+          "P_Weapon_Spear(Clone)": 1346,
+          "P_TempSpear1(Clone)": 1328,
+          "P_Weapon_Rock(Clone)": 1833,
+          "P_Weapon_Hedgehog(Clone)": 1010
         }
       }
     }

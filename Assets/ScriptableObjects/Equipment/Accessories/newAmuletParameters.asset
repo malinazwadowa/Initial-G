@@ -20,6 +20,7 @@ MonoBehaviour:
     enemyType: 0
     amount: 150
   icon: {fileID: 21300064, guid: 29c9cded5e558164aaf8c9bf08aa1510, type: 3}
+  description: Increases overall damage done.
   maxRank: 2
   accessoryType: 0
   numberOfRanks: 2

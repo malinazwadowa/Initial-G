@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlockCondition:
     name: 
-    conditionType: 0
+    conditionType: 2
     weaponType: 0
     accessoryType: 0
     enemyType: 0
-    amount: 0
+    amount: 5000
   icon: {fileID: 608153777, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+  description: Reduces cooldown duration.
   maxRank: 2
-  accessoryType: 1
   numberOfRanks: 2
-  value: 10
+  value: 30
