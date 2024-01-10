@@ -1,9 +1,11 @@
+using NaughtyAttributes;
 using System.Collections.Generic;
 using UnityEngine;
 using static UnityEditor.Progress;
 
 public class TreasureContainer : MonoBehaviour, IDamagable
 {
+    [Expandable]
     public SO_TreasureContainerParameters containerData;
     private HealthController healthController;
     

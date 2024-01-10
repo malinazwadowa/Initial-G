@@ -21,5 +21,44 @@
  *- EXP formula
  *
  *- add scrolling to level unlock list & items unlock list
+ *
+ *
+ *------------
+ *Items:
+ * - healing something for healing collectibles
+ * - exping something for expingens
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
  */
+
+
 

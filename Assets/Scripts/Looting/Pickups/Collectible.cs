@@ -4,6 +4,7 @@ public class Collectible : MonoBehaviour
 {
     [SerializeField] private float travelSpeed;
     [SerializeField] private float arcingDuration;
+    [SerializeField] public CollectibleType type;
 
     protected Player player;
     private Transform playerTransform;
@@ -46,7 +47,7 @@ public class Collectible : MonoBehaviour
 
     protected virtual void Collect()
     {
-
+        GameManager.Instance.gameStatsController.RegisterCollectiblePickUp(type);
     }
 
     private void MoveObject()
@@ -57,7 +58,7 @@ public class Collectible : MonoBehaviour
 
         Vector3 direction = Vector3.Lerp( - (playerTransform.position - transform.position).normalized * 1.1f, (playerTransform.position - transform.position).normalized * 2.5f, lerpFactor);
 
-        transform.position += direction * Time.deltaTime * travelSpeed;
+        transform.position += Time.deltaTime * travelSpeed * direction;
 
         if (Vector3.Distance(transform.position, playerTransform.position) < 0.2f)
         {

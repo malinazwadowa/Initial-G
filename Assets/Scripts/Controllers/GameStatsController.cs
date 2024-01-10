@@ -14,12 +14,14 @@ public class GameStatsController : MonoBehaviour, ISaveable
         public Dictionary<EnemyType, int> enemyKilledCounts;
         public Dictionary<string, int> weaponKillCounts;
         public List<string> itemsFullyRankedUp;
+        public Dictionary<CollectibleType, int> collectibleCounts;
 
         public GameStats()
         {
             enemyKilledCounts = new Dictionary<EnemyType, int>();
             weaponKillCounts = new Dictionary<string, int>();
             itemsFullyRankedUp = new List<string>();
+            collectibleCounts = new Dictionary<CollectibleType, int>();
         }
     }
 
@@ -93,12 +95,17 @@ public class GameStatsController : MonoBehaviour, ISaveable
                 gameStats.itemsFullyRankedUp.Add(itemType);
             }
         }
+
+        foreach (CollectibleType collectibleType in sessionStats.collectibleCounts.Keys)
+        {
+            gameStats.collectibleCounts.TryGetValue(collectibleType, out int currentCount);
+            gameStats.collectibleCounts[collectibleType] = currentCount + sessionStats.collectibleCounts[collectibleType];
+        }
     }
 
     public void RegisterFullyRankedUpItem(string type)
     {
         sessionStats.itemsFullyRankedUp.Add(type);
-        Debug.Log($"Registred new maxrankweapon:{type}");
     }
 
     public void RegisterEnemyKill(EnemyType type)
@@ -111,5 +118,11 @@ public class GameStatsController : MonoBehaviour, ISaveable
     {
         sessionStats.weaponKillCounts.TryGetValue(type, out int currentCount);
         sessionStats.weaponKillCounts[type] = currentCount + 1;
+    }
+
+    public void RegisterCollectiblePickUp(CollectibleType collectibleType)
+    {
+        sessionStats.collectibleCounts.TryGetValue(collectibleType, out int currentCount);
+        sessionStats.collectibleCounts[collectibleType] = currentCount + 1;
     }
 }

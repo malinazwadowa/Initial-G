@@ -4,6 +4,11 @@ public enum EnemyType
     TargetDummy,
     AlphaDummy
 }
+public enum CollectibleType
+{
+    Healing,
+    Experience
+}
 public enum UpgradeCase
 {
     UpgradeOrNew,
@@ -17,7 +22,8 @@ public enum ConditionType
     UnlockedWithWeaponKills,
     UnlockedWithEnemyKilled,
     UnlockedWithMaxRankOfWeapon,
-    UnlockedWithMaxRankOfAccessory
+    UnlockedWithMaxRankOfAccessory,
+    UnlockedWithCollectedItems
 }
 public enum WeaponType
 {

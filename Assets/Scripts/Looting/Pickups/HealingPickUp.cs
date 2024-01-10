@@ -1,7 +1,9 @@
+using NaughtyAttributes;
 using UnityEngine;
 
 public class HealingPickUp : Collectible
 {
+    [Expandable]
     [SerializeField] private SO_HealingPickUpParameters pickupParameters;
 
     protected override void Collect()

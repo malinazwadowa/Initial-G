@@ -148,4 +148,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   travelSpeed: 7
   arcingDuration: 0.8
+  type: 1
   pickupParameters: {fileID: 11400000, guid: f339de4bd526c804da4b176f07fbd9e7, type: 2}

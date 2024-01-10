@@ -17,6 +17,7 @@ public class UnlockCondition
     //unlocked with max rank of item instead od below tbd later
     private bool unlockedWithMaxRankOfWeapon;
     private bool unlockedWithMaxRankOfAccessory;
+    private bool unlockedWithCollectedItems;
 
     [AllowNesting]
     [ShowIf(EConditionOperator.Or, "unlockedWithWeaponKills", "unlockedWithMaxRankOfWeapon")][Dropdown("WeaponTypes")] 
@@ -25,21 +26,61 @@ public class UnlockCondition
     [AllowNesting]
     [ShowIf("unlockedWithMaxRankOfAccessory")][Dropdown("AccessoryTypes")]
     public string accessoryType;
-    //public AccessoryType accessoryType;
 
     [AllowNesting]
     [ShowIf("unlockedWithEnemyKilled")]
     public EnemyType enemyType;
+    
+    [AllowNesting]
+    [ShowIf("unlockedWithCollectedItems")]
+    public CollectibleType collectibleType;
+
+
 
     [AllowNesting]
-    [ShowIf(EConditionOperator.Or, "unlockedWithWeaponKills", "unlockedWithEnemyKilled")]
+    [ShowIf(EConditionOperator.Or, "unlockedWithWeaponKills", "unlockedWithEnemyKilled", "unlockedWithCollectedItems")]
     public int amount;
-
-    
 
     public void Validate()
     {
+        unlockedByDefault = false;
+        unlockedWithWeaponKills = false;
+        unlockedWithEnemyKilled = false;
+        unlockedWithMaxRankOfAccessory = false;
+        unlockedWithMaxRankOfWeapon = false;
+        unlockedWithCollectedItems = false;
 
+        switch (conditionType)
+        {
+            case ConditionType.UnlockedWithWeaponKills:
+                unlockedWithWeaponKills = true;
+                break;
+
+            case ConditionType.UnlockedWithEnemyKilled:
+                unlockedWithEnemyKilled = true;
+                break;
+
+            case ConditionType.UnlockedWithMaxRankOfAccessory:
+                unlockedWithMaxRankOfAccessory = true;
+                break;
+
+            case ConditionType.UnlockedByDefault:
+                unlockedByDefault = true;
+                break;
+
+            case ConditionType.UnlockedWithMaxRankOfWeapon:
+                unlockedWithMaxRankOfWeapon = true;
+                break;
+            
+            case ConditionType.UnlockedWithCollectedItems:
+                unlockedWithCollectedItems = true;
+                break;
+
+            default:
+                unlockedByDefault = true;
+                break;
+        }
+        /*
         if (conditionType == ConditionType.UnlockedWithWeaponKills)
         {
             unlockedWithWeaponKills = true;
@@ -83,6 +124,6 @@ public class UnlockCondition
         else
         {
             unlockedByDefault = true;
-        }
-    }
+        } */
+    } 
 }

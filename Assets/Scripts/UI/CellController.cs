@@ -99,6 +99,22 @@ public class CellController : MonoBehaviour
             }
         }
 
+        else if (conditionType == ConditionType.UnlockedWithCollectedItems)
+        {
+            statsController.gameStats.collectibleCounts.TryGetValue(condition.collectibleType, out int count);
+
+            if (count < condition.amount)
+            {
+                panelText.text = new string($"Unlocked by picking up more of {condition.collectibleType} type collectibles.");
+
+                sliderFill.fillAmount = (float)count / condition.amount;
+                progressText.text = string.Format("{0}/{1}", (float)count, condition.amount);
+                slider.SetActive(true);
+
+                SetToLocked();
+            }
+
+        }
         else
         {
         }
