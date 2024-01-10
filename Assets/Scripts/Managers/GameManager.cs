@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,11 +6,13 @@ using UnityEngine;
 public class GameManager : SingletonMonoBehaviour<GameManager>
 {
     public event Action OnGamePaused;
-    
+
     [HideInInspector] public GameLevel CurrentGameLevel { get; private set; }
     [HideInInspector] public LevelUnlockController LevelUnlockController { get; private set; }
     [HideInInspector] public GameStatsController gameStatsController;
     [HideInInspector] public ItemDataController itemDataController;
+
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.N))

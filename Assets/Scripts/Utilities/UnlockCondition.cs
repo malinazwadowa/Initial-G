@@ -6,9 +6,8 @@ using UnityEngine;
 [Serializable]
 public class UnlockCondition
 {
-    private List<string> accessoryTypes;
-    private List<string> weaponTypes;
-
+    private List<string> WeaponTypes => ItemTypesDatabase.WeaponTypes;
+    private List<string> AccessoryTypes => ItemTypesDatabase.AccessoryTypes;
 
     [HideInInspector] public string name;
     public ConditionType conditionType;
@@ -20,11 +19,11 @@ public class UnlockCondition
     private bool unlockedWithMaxRankOfAccessory;
 
     [AllowNesting]
-    [ShowIf(EConditionOperator.Or, "unlockedWithWeaponKills", "unlockedWithMaxRankOfWeapon")][Dropdown("weaponTypes")] 
+    [ShowIf(EConditionOperator.Or, "unlockedWithWeaponKills", "unlockedWithMaxRankOfWeapon")][Dropdown("WeaponTypes")] 
     public string weaponType;
 
     [AllowNesting]
-    [ShowIf("unlockedWithMaxRankOfAccessory")][Dropdown("accessoryTypes")] 
+    [ShowIf("unlockedWithMaxRankOfAccessory")][Dropdown("AccessoryTypes")]
     public string accessoryType;
     //public AccessoryType accessoryType;
 
@@ -36,10 +35,10 @@ public class UnlockCondition
     [ShowIf(EConditionOperator.Or, "unlockedWithWeaponKills", "unlockedWithEnemyKilled")]
     public int amount;
 
+    
+
     public void Validate()
     {
-        accessoryTypes = ItemDatabase.AccessoryTypes;
-        weaponTypes = ItemDatabase.WeaponTypes;
 
         if (conditionType == ConditionType.UnlockedWithWeaponKills)
         {

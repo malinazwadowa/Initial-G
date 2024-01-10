@@ -7,7 +7,7 @@ public class SO_BootParameters : SO_AccessoryParameters
     protected override void OnValidate()
     {
         base.OnValidate();
-        maxRank = numberOfRanks;
+        amountOfRanks = numberOfRanks;
     }
 
     [Header("Amount of ranks")]

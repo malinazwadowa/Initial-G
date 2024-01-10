@@ -13,7 +13,7 @@ public class Boot : Accessory
 
         parameters = (SO_BootParameters)baseItemParameters;
         value = parameters.value;
-        numberOfRanks = parameters.numberOfRanks;
+        numberOfRanks = parameters.numberOfRanks - 1;
         ApplyEffect();
     }
 
@@ -25,15 +25,7 @@ public class Boot : Accessory
 
     public override void RankUp()
     {
-        if (currentRank < numberOfRanks - 1)
-        {
-            base.RankUp();
-            ApplyEffect();
-            Debug.Log("Ranking up Boot.");
-        }
-        else
-        {
-            Debug.Log("Maximum Boot rank reached.");
-        }
+        base.RankUp();
+        ApplyEffect();
     }
 }

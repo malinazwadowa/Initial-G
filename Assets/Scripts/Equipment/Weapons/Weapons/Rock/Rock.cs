@@ -50,7 +50,7 @@ public class Rock : Weapon
             GameObject newRock = ObjectPooler.Instance.SpawnObject(currentRankParameters.projectilePrefab, spawnPosition);
             newRock.GetComponent<RockProjectile>().Initialize
                 (
-                this.name,
+                this.GetType().Name,
                 spawnPosition,
                 target,
                 currentRankParameters.damage * characterStats.damageModifier,
@@ -74,6 +74,7 @@ public class Rock : Weapon
 
     public override void RankUp()
     {
+        /*
         if (currentRank < baseParameters.ranks.Length - 1)
         {
             base.RankUp();
@@ -83,6 +84,7 @@ public class Rock : Weapon
         else
         {
             Debug.Log("Maximum Rock rank reached.");
-        }
+        } */
+        base.RankUp();
     }
 }

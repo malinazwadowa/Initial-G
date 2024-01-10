@@ -4,43 +4,36 @@ using UnityEngine.UI;
 
 public class CellController : MonoBehaviour
 {
-    public Sprite lockedImage;
-    public RawImage panelBackground;
-    public RawImage itemBackground;
+    [SerializeField] private Image itemIcon;
+    [SerializeField] private Sprite lockedImage;
+    [SerializeField] private RawImage panelBackground;
+    [SerializeField] private RawImage itemBackground;
 
+    [SerializeField] private GameObject slider;
+    [SerializeField] private Image sliderFill;
+    [SerializeField] private Image sliderBackground;
 
-    public Color unlockedColor;
-    public Color lockedColor;
-    public Color weaponColor;
-    public Color accessoryColor;
+    [SerializeField] private Color unlockedColor;
+    [SerializeField] private Color lockedColor;
+    [SerializeField] private Color weaponColor;
+    [SerializeField] private Color accessoryColor;
 
-    public Image weaponIcon;
-
-    public GameObject slider;
-    public Image sliderFill;
-    public Image sliderBackground;
-    
-    public TextMeshProUGUI titleText;
-    public TextMeshProUGUI panelText;
-    public TextMeshProUGUI progressText;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [SerializeField] private TextMeshProUGUI titleText;
+    [SerializeField] private TextMeshProUGUI panelText;
+    [SerializeField] private TextMeshProUGUI progressText;
 
     public void SetUp(Item item)
     {
+        GameStatsController statsController = GameManager.Instance.gameStatsController;
         ConditionType conditionType = item.baseItemParameters.unlockCondition.conditionType;
-        
-        if(item is Weapon)
+        UnlockCondition condition = item.baseItemParameters.unlockCondition;
+
+        itemIcon.sprite = item.baseItemParameters.icon;
+        titleText.text = item.GetType().Name;
+        panelText.text = item.baseItemParameters.description;
+        slider.SetActive(false);
+
+        if (item is Weapon)
         {
             itemBackground.color = weaponColor;
         }
@@ -49,59 +42,72 @@ public class CellController : MonoBehaviour
             itemBackground.color = accessoryColor;
         }
 
-
         if (conditionType == ConditionType.UnlockedByDefault)
         {
-            titleText.text = item.GetType().Name;
-            weaponIcon.sprite = item.baseItemParameters.icon;
-            panelText.text = item.baseItemParameters.description;
-            slider.SetActive(false);
+
         }
+
         else if (conditionType == ConditionType.UnlockedWithEnemyKilled)
         {
-            weaponIcon.sprite = item.baseItemParameters.icon;
-            string enemy = item.baseItemParameters.unlockCondition.enemyType.ToString();
+            int currentVale = statsController.GetEnemyKilledCountOfType(condition.enemyType);
             
-
-            int currentVale = GameManager.Instance.gameStatsController.GetEnemyKilledCountOfType(item.baseItemParameters.unlockCondition.enemyType);
-            int targetValue = item.baseItemParameters.unlockCondition.amount;
-            
-            if( currentVale < targetValue )
+            if( currentVale < condition.amount)
             {
-                panelText.text = new string($"Unlocked by killing enemy called: {enemy}");
+                panelText.text = new string($"Unlocked by killing enemy called: {condition.enemyType}");
 
-                float dups = (float) currentVale / targetValue;
-                sliderFill.fillAmount = dups;
-                progressText.text = string.Format("{0}/{1}", currentVale, targetValue);
+                sliderFill.fillAmount = (float)currentVale / condition.amount;
+                progressText.text = string.Format("{0}/{1}", currentVale, condition.amount);
+                slider.SetActive(true);
 
-                titleText.text = new string("???");
-                weaponIcon.sprite = lockedImage;
-                panelBackground.color = lockedColor;
+                SetToLocked();
             }
-            else
-            {
-                panelText.text = item.baseItemParameters.description;
-                titleText.text = item.GetType().Name;
-                slider.SetActive(false);
-            }
-            
         }
+
         else if (conditionType == ConditionType.UnlockedWithWeaponKills)
         {
+            int killCount = statsController.GetWeaponKillCount(condition.weaponType);
+            if ( killCount < condition.amount)
+            {
+                panelText.text = new string($"Unlocked by killing enemies with the {condition.weaponType}.");
 
-        }
-        else if (conditionType == ConditionType.UnlockedWithMaxRankOfAccessory)
-        {
+                sliderFill.fillAmount = (float)killCount / condition.amount;
+                progressText.text = string.Format("{0}/{1}", (float)killCount, condition.amount);
+                slider.SetActive(true);
+
+                SetToLocked();
+            }
             
         }
+
+        else if (conditionType == ConditionType.UnlockedWithMaxRankOfAccessory)
+        {
+            if (!statsController.gameStats.itemsFullyRankedUp.Contains(condition.accessoryType))
+            {
+                panelText.text = new string($"Unlocked by reaching max rank of: {condition.accessoryType}");
+
+                SetToLocked();
+            }
+        }
+
         else if (conditionType == ConditionType.UnlockedWithMaxRankOfWeapon)
         {
+            if (!statsController.gameStats.itemsFullyRankedUp.Contains(condition.weaponType))
+            {
+                panelText.text = new string($"Unlocked by reaching max rank of: {condition.weaponType}");
 
+                SetToLocked();
+            }
         }
+
         else
         {
         }
+    }
 
-
+    private void SetToLocked()
+    {
+        titleText.text = new string("???");
+        itemIcon.sprite = lockedImage;
+        panelBackground.color = lockedColor;
     }
 }

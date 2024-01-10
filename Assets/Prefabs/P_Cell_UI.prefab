@@ -808,7 +808,7 @@ MonoBehaviour:
   lockedColor: {r: 0.376, g: 0.376, b: 0.376, a: 1}
   weaponColor: {r: 1, g: 0.3529412, b: 0.20392157, a: 1}
   accessoryColor: {r: 0.19215687, g: 0.6313726, b: 0.1764706, a: 1}
-  weaponIcon: {fileID: 3065920644584874759}
+  itemIcon: {fileID: 3065920644584874759}
   slider: {fileID: 935505935}
   sliderFill: {fileID: 2071572978}
   sliderBackground: {fileID: 417830799}

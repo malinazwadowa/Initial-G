@@ -9,7 +9,7 @@ public class Weapon : Item
     {
         this.weaponWielder = weaponWielder;
         this.characterStats = characterStats;
-        EquipmentControllerUI.Instance.AddItem(baseItemParameters.icon, GetType(), baseItemParameters.maxRank);
+        EquipmentControllerUI.Instance.AddItem(baseItemParameters.icon, GetType(), baseItemParameters.amountOfRanks);
     }
 
     public virtual void WeaponTick()

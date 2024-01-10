@@ -87,16 +87,7 @@ public class SpearClone3 : Weapon
 
     public override void RankUp()
     {
-        if (currentRank < baseParameters.ranks.Length - 1)
-        {
-            base.RankUp();
-            Debug.Log("Ranking up Spear.");
-            currentRankParameters = baseParameters.ranks[currentRank];
-        }
-        else
-        {
-            Debug.Log("Maximum Spear rank reached.");
-        }
+        base.RankUp();
     }
 }
 

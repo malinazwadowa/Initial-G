@@ -20,5 +20,6 @@
  *
  *- EXP formula
  *
+ *- add scrolling to level unlock list & items unlock list
  */
 

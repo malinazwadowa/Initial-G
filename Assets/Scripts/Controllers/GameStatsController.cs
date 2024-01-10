@@ -13,11 +13,13 @@ public class GameStatsController : MonoBehaviour, ISaveable
     {
         public Dictionary<EnemyType, int> enemyKilledCounts;
         public Dictionary<string, int> weaponKillCounts;
+        public List<string> itemsFullyRankedUp;
 
         public GameStats()
         {
             enemyKilledCounts = new Dictionary<EnemyType, int>();
             weaponKillCounts = new Dictionary<string, int>();
+            itemsFullyRankedUp = new List<string>();
         }
     }
 
@@ -43,7 +45,14 @@ public class GameStatsController : MonoBehaviour, ISaveable
 
     public int GetEnemyKilledCountOfType(EnemyType enemyType)
     {
-        return gameStats.enemyKilledCounts[enemyType];
+        gameStats.enemyKilledCounts.TryGetValue(enemyType, out int value);
+        return value;
+    }
+    
+    public int GetWeaponKillCount(string weaponType)
+    {
+        gameStats.weaponKillCounts.TryGetValue(weaponType, out int value); 
+        return value;
     }
 
     [Serializable]
@@ -76,6 +85,20 @@ public class GameStatsController : MonoBehaviour, ISaveable
             gameStats.weaponKillCounts.TryGetValue(itemType, out int currentCount);
             gameStats.weaponKillCounts[itemType] = currentCount + sessionStats.weaponKillCounts[itemType];
         }
+
+        foreach(string itemType in sessionStats.itemsFullyRankedUp)
+        {
+            if (!gameStats.itemsFullyRankedUp.Contains(itemType))
+            {
+                gameStats.itemsFullyRankedUp.Add(itemType);
+            }
+        }
+    }
+
+    public void RegisterFullyRankedUpItem(string type)
+    {
+        sessionStats.itemsFullyRankedUp.Add(type);
+        Debug.Log($"Registred new maxrankweapon:{type}");
     }
 
     public void RegisterEnemyKill(EnemyType type)

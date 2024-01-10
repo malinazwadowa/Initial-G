@@ -9,7 +9,7 @@ public class Accessory : Item
     public virtual void Initialize(CharacterStatsController characterStatsController)
     {
         this.characterStatsController = characterStatsController;
-        EquipmentControllerUI.Instance.AddItem(baseItemParameters.icon, GetType(), baseItemParameters.maxRank);
+        EquipmentControllerUI.Instance.AddItem(baseItemParameters.icon, GetType(), baseItemParameters.amountOfRanks);
     }
 
     public virtual void ApplyEffect()

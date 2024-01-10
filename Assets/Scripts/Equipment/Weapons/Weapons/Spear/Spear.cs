@@ -77,7 +77,7 @@ public class Spear :  Weapon
 
         GameObject nextSpear = ObjectPooler.Instance.SpawnObject(currentRankParameters.projectilePrefab, position);
         nextSpear.GetComponent<SpearProjectile>().Init(
-            this.name,
+            this.GetType().Name,
             direction,
             currentRankParameters.damage * characterStats.damageModifier,
             currentRankParameters.speed * characterStats.weaponSpeedModifier,
@@ -87,9 +87,10 @@ public class Spear :  Weapon
 
     public override void RankUp()
     {
+        /*
         Debug.Log("current rank to: " + currentRank);
         Debug.Log("baserank params: " + baseParameters.ranks.Length);
-        if (currentRank < baseParameters.ranks.Length - 1)
+        if (currentRank < baseParameters.maxRank)
         {
             base.RankUp();
             Debug.Log("Ranking up Spear.");
@@ -98,7 +99,8 @@ public class Spear :  Weapon
         else
         {
             Debug.Log("Maximum Spear rank reached.");
-        }
+        } */
+        base.RankUp();
     }
 }
 

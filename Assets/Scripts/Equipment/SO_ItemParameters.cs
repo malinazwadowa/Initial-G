@@ -17,5 +17,5 @@ public class SO_ItemParameters : ScriptableObject
     [ResizableTextArea][Header("Item description")]
     public string description;
 
-    [HideInInspector] public int maxRank;
+    [HideInInspector] public int amountOfRanks;
 }

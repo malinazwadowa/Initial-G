@@ -1,8 +1,9 @@
+using NaughtyAttributes;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour, IDamagable
 {
-    [SerializeField] public SO_EnemyParameters enemyParameters;
+    [Expandable][SerializeField] public SO_EnemyParameters enemyParameters;
 
     protected Player player;
     protected HealthController healthController;

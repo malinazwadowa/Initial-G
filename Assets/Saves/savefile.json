@@ -6,8 +6,8 @@
       "$type": "LevelUnlockController+LevelUnlockData, Assembly-CSharp",
       "levelUnlockStatus": {
         "$type": "System.Collections.Generic.Dictionary`2[[GameLevel, Assembly-CSharp],[System.Boolean, mscorlib]], mscorlib",
-        "Forest": false,
         "Cementary": true,
+        "Forest": false,
         "dupa": false
       }
     },
@@ -17,14 +17,19 @@
         "$type": "GameStatsController+GameStats, Assembly-CSharp",
         "enemyKilledCounts": {
           "$type": "System.Collections.Generic.Dictionary`2[[EnemyType, Assembly-CSharp],[System.Int32, mscorlib]], mscorlib",
-          "Sunflower": 5517
+          "Sunflower": 13
         },
         "weaponKillCounts": {
           "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Int32, mscorlib]], mscorlib",
-          "P_Weapon_Spear(Clone)": 1346,
-          "P_TempSpear1(Clone)": 1328,
-          "P_Weapon_Rock(Clone)": 1833,
-          "P_Weapon_Hedgehog(Clone)": 1010
+          "P_Weapon_Spear(Clone)": 13
+        },
+        "itemsFullyRankedUp": {
+          "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+          "$values": [
+            "Spear",
+            "Amulet",
+            "Hedgehog"
+          ]
         }
       }
     }
@@ -34,7 +39,7 @@
     "AudioManager": {
       "$type": "AudioManager+AudioSaveData, Assembly-CSharp",
       "masterVolume": 0.981141031,
-      "soundsVolume": 0.127600536,
+      "soundsVolume": 0.2902434,
       "musicVolume": 0.0001
     }
   }

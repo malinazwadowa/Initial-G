@@ -100,13 +100,25 @@ public class ItemDataController : MonoBehaviour
                     unlockedItems.Add(item);
                     break;
                 case ConditionType.UnlockedWithEnemyKilled:
-                    if (GameManager.Instance.gameStatsController.gameStats.enemyKilledCounts[condition.enemyType] >= condition.amount)
+                    if (GameManager.Instance.gameStatsController.gameStats.enemyKilledCounts.TryGetValue(condition.enemyType, out int enemyKills) && enemyKills >= condition.amount)
                     {
                         unlockedItems.Add(item);
                     }
                     break;
                 case ConditionType.UnlockedWithWeaponKills:
-                    if (GameManager.Instance.gameStatsController.gameStats.weaponKillCounts[condition.weaponType] >= condition.amount)
+                    if (GameManager.Instance.gameStatsController.gameStats.weaponKillCounts.TryGetValue(condition.weaponType, out int weaponKills) && weaponKills >= condition.amount)
+                    {
+                        unlockedItems.Add(item);
+                    }
+                    break;
+                case ConditionType.UnlockedWithMaxRankOfWeapon:
+                    if(GameManager.Instance.gameStatsController.gameStats.itemsFullyRankedUp.Contains(condition.weaponType))
+                    {
+                        unlockedItems.Add(item);
+                    }
+                    break;
+                case ConditionType.UnlockedWithMaxRankOfAccessory:
+                    if (GameManager.Instance.gameStatsController.gameStats.itemsFullyRankedUp.Contains(condition.accessoryType))
                     {
                         unlockedItems.Add(item);
                     }

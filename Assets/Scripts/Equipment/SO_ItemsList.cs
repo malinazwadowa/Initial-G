@@ -22,7 +22,7 @@ public class SO_ItemsList : ScriptableObject
         SetAllItems();
         SetTypeOfItems();
 
-        ItemDatabase.SetData(typeOfItems, accessoryTypes, weaponTypes);
+        ItemTypesDatabase.SetItemsData(typeOfItems, accessoryTypes, weaponTypes);
     }
     private void CleanUpLists()
     {

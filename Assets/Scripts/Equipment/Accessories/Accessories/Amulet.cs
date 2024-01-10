@@ -13,7 +13,7 @@ public class Amulet : Accessory
 
         parameters = (SO_AmuletParameters)baseItemParameters;
         value = parameters.value;
-        numberOfRanks = parameters.numberOfRanks;
+        numberOfRanks = parameters.numberOfRanks - 1;
         ApplyEffect();
     }
 
@@ -25,15 +25,7 @@ public class Amulet : Accessory
 
     public override void RankUp()
     {
-        if (currentRank < numberOfRanks - 1)
-        {
-            base.RankUp();
-            ApplyEffect();
-            Debug.Log("Ranking up amuleto.");
-        }
-        else
-        {
-            Debug.Log("Maximum Amulet rank reached.");
-        }
+        base.RankUp();
+        ApplyEffect();
     }
 }

@@ -54,7 +54,7 @@ public class Hedgehog : Weapon
 
             GameObject newHog = ObjectPooler.Instance.SpawnObject(currentRankParameters.projectilePrefab, weaponWielder.GetCenterPosition(), rotation);
             newHog.GetComponent<HedgehogProjectile>().Initalize(
-                this.name,
+                this.GetType().Name,
                 weaponWielder.GetCenterTransform(),
                 currentRankParameters.damage * characterStats.damageModifier,
                 currentRankParameters.speed * characterStats.weaponSpeedModifier,
@@ -67,6 +67,7 @@ public class Hedgehog : Weapon
 
     public override void RankUp()
     {
+        /*
         if (currentRank < baseParameters.ranks.Length - 1)
         {
             base.RankUp();
@@ -76,7 +77,8 @@ public class Hedgehog : Weapon
         else
         {
             Debug.Log("Maximum Hedgehog rank reached.");
-        }
+        } */
+        base.RankUp();
     }
 
 }

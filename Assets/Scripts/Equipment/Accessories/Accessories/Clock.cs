@@ -13,7 +13,7 @@ public class Clock : Accessory
 
         parameters = (SO_ClockParameters)baseItemParameters;
         value = parameters.value / 100;
-        numberOfRanks = parameters.numberOfRanks;
+        numberOfRanks = parameters.numberOfRanks - 1;
         ApplyEffect();
     }
 
@@ -25,15 +25,7 @@ public class Clock : Accessory
 
     public override void RankUp()
     {
-        if (currentRank < numberOfRanks - 1)
-        {
-            base.RankUp();
-            ApplyEffect();
-            Debug.Log("Ranking up Clock.");
-        }
-        else
-        {
-            Debug.Log("Maximum Clock rank reached.");
-        }
+        base.RankUp();
+        ApplyEffect();
     }
 }

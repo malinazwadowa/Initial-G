@@ -11,7 +11,7 @@ public class SO_RockParameters : SO_WeaponParameters
         {
             ranks[i].name = "Rank " + (i + 1);
         }
-        maxRank = ranks.Length;
+        amountOfRanks = ranks.Length - 1;
     }
 
     [Header("Rank independend settings")]
