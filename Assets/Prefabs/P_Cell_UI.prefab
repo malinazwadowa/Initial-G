@@ -801,20 +801,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d61a1538a378271439584355b82c9da2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemIcon: {fileID: 3065920644584874759}
   lockedImage: {fileID: 21300000, guid: 2bb4e96f5d0b02c468932d665a015c54, type: 3}
   panelBackground: {fileID: 6859172484564214818}
   itemBackground: {fileID: 1770778555}
+  slider: {fileID: 935505935}
+  sliderFill: {fileID: 2071572978}
+  sliderBackground: {fileID: 417830799}
   unlockedColor: {r: 0.8313726, g: 0.8313726, b: 0.8313726, a: 0}
   lockedColor: {r: 0.376, g: 0.376, b: 0.376, a: 1}
   weaponColor: {r: 1, g: 0.3529412, b: 0.20392157, a: 1}
   accessoryColor: {r: 0.19215687, g: 0.6313726, b: 0.1764706, a: 1}
-  itemIcon: {fileID: 3065920644584874759}
-  slider: {fileID: 935505935}
-  sliderFill: {fileID: 2071572978}
-  sliderBackground: {fileID: 417830799}
   titleText: {fileID: 8802244949378567905}
   panelText: {fileID: 8079589992913620237}
-  progressText: {fileID: 884577449509673598}
+  sliderProgressText: {fileID: 884577449509673598}
 --- !u!1 &8612395247766669697
 GameObject:
   m_ObjectHideFlags: 0

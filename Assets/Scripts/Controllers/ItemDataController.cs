@@ -29,6 +29,12 @@ public class ItemDataController : MonoBehaviour
         SortUnlockedItems();
     }
 
+    public void CheckForNewUnlocks()
+    {
+        CheckItemUnlocks();
+        SortUnlockedItems();
+    }
+
     private void SetDataFromSO()
     {
         allItems = allItemsList.allItems;
@@ -119,6 +125,12 @@ public class ItemDataController : MonoBehaviour
                     break;
                 case ConditionType.UnlockedWithMaxRankOfAccessory:
                     if (GameManager.Instance.gameStatsController.gameStats.itemsFullyRankedUp.Contains(condition.accessoryType))
+                    {
+                        unlockedItems.Add(item);
+                    }
+                    break;
+                case ConditionType.UnlockedWithCollectedItems:
+                    if (GameManager.Instance.gameStatsController.gameStats.collectibleCounts.TryGetValue(condition.collectibleType, out int amount) && amount >= condition.amount)
                     {
                         unlockedItems.Add(item);
                     }

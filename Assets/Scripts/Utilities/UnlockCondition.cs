@@ -35,8 +35,6 @@ public class UnlockCondition
     [ShowIf("unlockedWithCollectedItems")]
     public CollectibleType collectibleType;
 
-
-
     [AllowNesting]
     [ShowIf(EConditionOperator.Or, "unlockedWithWeaponKills", "unlockedWithEnemyKilled", "unlockedWithCollectedItems")]
     public int amount;

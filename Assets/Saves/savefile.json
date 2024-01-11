@@ -17,12 +17,13 @@
         "$type": "GameStatsController+GameStats, Assembly-CSharp",
         "enemyKilledCounts": {
           "$type": "System.Collections.Generic.Dictionary`2[[EnemyType, Assembly-CSharp],[System.Int32, mscorlib]], mscorlib",
-          "Sunflower": 381
+          "Sunflower": 799
         },
         "weaponKillCounts": {
           "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Int32, mscorlib]], mscorlib",
-          "P_Weapon_Spear(Clone)": 93,
-          "Rock": 288
+          "P_Weapon_Spear(Clone)": 200,
+          "Rock": 551,
+          "P_TempSpear1(Clone)": 48
         },
         "itemsFullyRankedUp": {
           "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
@@ -30,13 +31,15 @@
             "Spear",
             "Rock",
             "Amulet",
-            "Boot"
+            "Boot",
+            "Hook",
+            "SpearClone1"
           ]
         },
         "collectibleCounts": {
           "$type": "System.Collections.Generic.Dictionary`2[[CollectibleType, Assembly-CSharp],[System.Int32, mscorlib]], mscorlib",
-          "Experience": 151,
-          "Healing": 4
+          "Experience": 314,
+          "Healing": 10
         }
       }
     }

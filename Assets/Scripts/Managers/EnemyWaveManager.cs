@@ -1,8 +1,10 @@
+using NaughtyAttributes;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyWaveManager : SingletonMonoBehaviour<EnemyWaveManager>
 {
+    [Expandable]
     public SO_EnemyWaveManagerParameters enemyManagerData;
     private EnemyWave currentWaveData;
 

@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -53,6 +52,7 @@ public class ItemController : MonoBehaviour
             EquippedItems.Add(instantiatedItem);
         }
     }
+
     private Item InstantiateItem(GameObject itemPrefab)
     {
         GameObject itemObject = Instantiate(itemPrefab, transform);

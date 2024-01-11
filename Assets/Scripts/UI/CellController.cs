@@ -20,7 +20,7 @@ public class CellController : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI titleText;
     [SerializeField] private TextMeshProUGUI panelText;
-    [SerializeField] private TextMeshProUGUI progressText;
+    [SerializeField] private TextMeshProUGUI sliderProgressText;
 
     public void SetUp(Item item)
     {
@@ -33,15 +33,76 @@ public class CellController : MonoBehaviour
         panelText.text = item.baseItemParameters.description;
         slider.SetActive(false);
 
-        if (item is Weapon)
+        itemBackground.color = (item is Weapon) ? weaponColor : accessoryColor;
+
+        switch (conditionType)
         {
-            itemBackground.color = weaponColor;
-        }
-        else
-        {
-            itemBackground.color = accessoryColor;
+            case ConditionType.UnlockedByDefault:
+                // Code for UnlockedByDefault condition
+                break;
+
+            case ConditionType.UnlockedWithEnemyKilled:
+                int currentVale = statsController.GetEnemyKilledCountOfType(condition.enemyType);
+
+                if (currentVale < condition.amount)
+                {
+                    panelText.text = new string($"Unlocked by killing enemy called: {condition.enemyType}");
+
+                    EnableSlider(currentVale, condition.amount);
+
+                    SetCellToLocked();
+                }
+                break;
+
+            case ConditionType.UnlockedWithWeaponKills:
+                int killCount = statsController.GetWeaponKillCount(condition.weaponType);
+                if (killCount < condition.amount)
+                {
+                    panelText.text = new string($"Unlocked by killing enemies with the {condition.weaponType}.");
+
+                    EnableSlider(killCount, condition.amount);
+
+                    SetCellToLocked();
+                }
+                break;
+
+            case ConditionType.UnlockedWithMaxRankOfAccessory:
+                if (!statsController.gameStats.itemsFullyRankedUp.Contains(condition.accessoryType))
+                {
+                    panelText.text = new string($"Unlocked by reaching max rank of: {condition.accessoryType}");
+
+                    SetCellToLocked();
+                }
+                break;
+
+            case ConditionType.UnlockedWithMaxRankOfWeapon:
+                if (!statsController.gameStats.itemsFullyRankedUp.Contains(condition.weaponType))
+                {
+                    panelText.text = new string($"Unlocked by reaching max rank of: {condition.weaponType}");
+
+                    SetCellToLocked();
+                }
+                break;
+
+            case ConditionType.UnlockedWithCollectedItems:
+                statsController.gameStats.collectibleCounts.TryGetValue(condition.collectibleType, out int count);
+
+                if (count < condition.amount)
+                {
+                    panelText.text = new string($"Unlocked by picking up more of {condition.collectibleType} type collectibles.");
+
+                    EnableSlider(count, condition.amount);
+
+                    SetCellToLocked();
+                }
+                break;
+
+            default:
+                // Default case if the conditionType doesn't match any of the specified cases
+                break;
         }
 
+        /*
         if (conditionType == ConditionType.UnlockedByDefault)
         {
 
@@ -117,13 +178,20 @@ public class CellController : MonoBehaviour
         }
         else
         {
-        }
+        } */
     }
 
-    private void SetToLocked()
+    private void SetCellToLocked()
     {
         titleText.text = new string("???");
         itemIcon.sprite = lockedImage;
         panelBackground.color = lockedColor;
+    }
+
+    private void EnableSlider(int currentValue, int targetValue)
+    {
+        sliderFill.fillAmount = (float)currentValue / targetValue;
+        sliderProgressText.text = string.Format("{0}/{1}", currentValue, targetValue);
+        slider.SetActive(true);
     }
 }

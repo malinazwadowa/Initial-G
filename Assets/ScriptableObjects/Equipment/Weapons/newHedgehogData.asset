@@ -14,14 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlockCondition:
     name: 
-    conditionType: 0
+    conditionType: 5
     weaponType: Rock
     accessoryType: 
     enemyType: 0
-    amount: 0
+    collectibleType: 0
+    amount: 10
   icon: {fileID: 797102184, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
   description: Spins projectiles around the player.
-  maxRank: 4
+  amountOfRanks: 3
   ranks:
   - name: Rank 1
     projectilePrefab: {fileID: 2540002873092309467, guid: 8696e6bee6de5dc4392d29679ff4d199,

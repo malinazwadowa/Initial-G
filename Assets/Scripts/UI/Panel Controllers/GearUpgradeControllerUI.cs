@@ -103,7 +103,6 @@ public class GearUpgradeControllerUI : MonoBehaviour
         switch (upgradeCase)
         {
             case UpgradeCase.UpgradeOrNew:
-
                 bool upgradeOption = UnityEngine.Random.Range(0, 2) == 0;
                 if (upgradeOption)
                 {

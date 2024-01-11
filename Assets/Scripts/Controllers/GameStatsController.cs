@@ -45,18 +45,6 @@ public class GameStatsController : MonoBehaviour, ISaveable
         }
     }
 
-    public int GetEnemyKilledCountOfType(EnemyType enemyType)
-    {
-        gameStats.enemyKilledCounts.TryGetValue(enemyType, out int value);
-        return value;
-    }
-    
-    public int GetWeaponKillCount(string weaponType)
-    {
-        gameStats.weaponKillCounts.TryGetValue(weaponType, out int value); 
-        return value;
-    }
-
     [Serializable]
     public class GameStatsSaveData : SaveData
     {
@@ -124,5 +112,16 @@ public class GameStatsController : MonoBehaviour, ISaveable
     {
         sessionStats.collectibleCounts.TryGetValue(collectibleType, out int currentCount);
         sessionStats.collectibleCounts[collectibleType] = currentCount + 1;
+    }
+    public int GetEnemyKilledCountOfType(EnemyType enemyType)
+    {
+        gameStats.enemyKilledCounts.TryGetValue(enemyType, out int value);
+        return value;
+    }
+    
+    public int GetWeaponKillCount(string weaponType)
+    {
+        gameStats.weaponKillCounts.TryGetValue(weaponType, out int value); 
+        return value;
     }
 }
