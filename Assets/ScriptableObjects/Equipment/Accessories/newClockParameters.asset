@@ -18,9 +18,10 @@ MonoBehaviour:
     weaponType: 0
     accessoryType: 0
     enemyType: 0
-    amount: 5000
+    collectibleType: 0
+    amount: 100
   icon: {fileID: 608153777, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
   description: Reduces cooldown duration.
-  maxRank: 2
+  amountOfRanks: 2
   numberOfRanks: 2
   value: 30

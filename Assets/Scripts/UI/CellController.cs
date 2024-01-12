@@ -7,7 +7,9 @@ public class CellController : MonoBehaviour
     [SerializeField] private Image itemIcon;
     [SerializeField] private Sprite lockedImage;
     [SerializeField] private RawImage panelBackground;
+    [SerializeField] private RawImage panelHighlight;
     [SerializeField] private RawImage itemBackground;
+
 
     [SerializeField] private GameObject slider;
     [SerializeField] private Image sliderFill;
@@ -29,11 +31,20 @@ public class CellController : MonoBehaviour
         UnlockCondition condition = item.baseItemParameters.unlockCondition;
 
         itemIcon.sprite = item.baseItemParameters.icon;
+        itemBackground.color = (item is Weapon) ? weaponColor : accessoryColor;
+        
         titleText.text = item.GetType().Name;
         panelText.text = item.baseItemParameters.description;
+        
         slider.SetActive(false);
-
-        itemBackground.color = (item is Weapon) ? weaponColor : accessoryColor;
+        panelHighlight.gameObject.SetActive(false);
+        
+        if (GameManager.Instance.gameStatsController.OverallStats.unseenItems.Contains(item.GetType().Name))
+        {
+            panelHighlight.gameObject.SetActive(true);
+            GameManager.Instance.gameStatsController.OverallStats.unseenItems.Remove(item.GetType().Name);
+            GameManager.Instance.gameStatsController.OverallStats.seenItems.Add(item.GetType().Name);
+        }
 
         switch (conditionType)
         {
@@ -67,7 +78,7 @@ public class CellController : MonoBehaviour
                 break;
 
             case ConditionType.UnlockedWithMaxRankOfAccessory:
-                if (!statsController.gameStats.itemsFullyRankedUp.Contains(condition.accessoryType))
+                if (!statsController.OverallStats.itemsFullyRankedUp.Contains(condition.accessoryType))
                 {
                     panelText.text = new string($"Unlocked by reaching max rank of: {condition.accessoryType}");
 
@@ -76,7 +87,7 @@ public class CellController : MonoBehaviour
                 break;
 
             case ConditionType.UnlockedWithMaxRankOfWeapon:
-                if (!statsController.gameStats.itemsFullyRankedUp.Contains(condition.weaponType))
+                if (!statsController.OverallStats.itemsFullyRankedUp.Contains(condition.weaponType))
                 {
                     panelText.text = new string($"Unlocked by reaching max rank of: {condition.weaponType}");
 
@@ -85,7 +96,7 @@ public class CellController : MonoBehaviour
                 break;
 
             case ConditionType.UnlockedWithCollectedItems:
-                statsController.gameStats.collectibleCounts.TryGetValue(condition.collectibleType, out int count);
+                statsController.OverallStats.collectibleCounts.TryGetValue(condition.collectibleType, out int count);
 
                 if (count < condition.amount)
                 {

@@ -37,7 +37,7 @@ public class Spear :  Weapon
         {
             GameObject newSpear = ObjectPooler.Instance.SpawnObject(currentRankParameters.projectilePrefab, position);
             newSpear.GetComponent<SpearProjectile>().Init(
-                this.name,
+                this.GetType().Name,
                 direction,
                 currentRankParameters.damage * characterStats.damageModifier,
                 currentRankParameters.speed * characterStats.weaponSpeedModifier,

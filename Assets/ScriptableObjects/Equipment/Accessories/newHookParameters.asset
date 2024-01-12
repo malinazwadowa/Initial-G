@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlockCondition:
     name: 
-    conditionType: 0
-    weaponType: 0
+    conditionType: 3
+    weaponType: Rock
     accessoryType: 0
     enemyType: 0
+    collectibleType: 0
     amount: 0
   icon: {fileID: 21300000, guid: 6d6088174bb906b49ad8428526ee337b, type: 3}
   description: Increases pickup range.
-  maxRank: 4
-  accessoryType: 3
+  amountOfRanks: 4
   numberOfRanks: 4
   value: 0.3

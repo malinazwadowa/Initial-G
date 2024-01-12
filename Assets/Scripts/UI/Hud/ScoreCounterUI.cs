@@ -4,8 +4,6 @@ using UnityEngine;
 public class ScoreCounterUI : MonoBehaviour
 {
     private TextMeshProUGUI text;
-    private int score = 0;
-    //score manager ~
 
     private void OnEnable()
     {
@@ -20,12 +18,11 @@ public class ScoreCounterUI : MonoBehaviour
     void Start()
     {
         text = GetComponentInChildren<TextMeshProUGUI>();
-        text.text = $"Score: {score}";
+        text.text = $"Score: {LevelManager.Instance.Score}";
     }
 
     private void UpdateScore()
     {
-        score++;
-        text.text = $"Score: {score}";
+        text.text = $"Score: {LevelManager.Instance.Score}";
     }
 }

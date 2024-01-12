@@ -4,6 +4,7 @@ public class DeathScreenUI : MonoBehaviour
 {
     public MenuUI myMenu;
     private PlayerInputController inputController;
+    public ResultsController resultsController;
 
     private void OnEnable()
     {

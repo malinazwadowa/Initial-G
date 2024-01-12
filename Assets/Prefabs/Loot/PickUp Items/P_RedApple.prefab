@@ -64,6 +64,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   travelSpeed: 7
   arcingDuration: 0.8
+  type: 0
   pickupParameters: {fileID: 11400000, guid: 743e3e76f166d5945b7028f423bd4f8b, type: 2}
 --- !u!1 &7205908724294218587
 GameObject:

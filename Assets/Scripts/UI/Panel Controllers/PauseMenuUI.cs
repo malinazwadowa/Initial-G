@@ -44,7 +44,7 @@ public class PauseMenuUI : MonoBehaviour
 
     public void RestartLevel()
     {
-        TimeManager.ResumeTime();
         SceneLoadingManager.Instance.ReLoadScene();
+        TimeManager.ResumeTime();
     }
 }

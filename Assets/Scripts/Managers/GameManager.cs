@@ -32,7 +32,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             Dictionary<GameLevel, bool> levelUnlockStatus = LevelUnlockController.GetCurrentLevelUnlockStatus();
             Debug.Log(levelUnlockStatus.Count);
             Debug.Log(levelUnlockStatus[GameLevel.Cementary]);
-               Debug.Log(gameStatsController.gameStats.enemyKilledCounts.TryGetValue(EnemyType.Sunflower, out int currentCount) + " " + currentCount);
+               Debug.Log(gameStatsController.OverallStats.enemyKilledCounts.TryGetValue(EnemyType.Sunflower, out int currentCount) + " " + currentCount);
         }
     }
 
@@ -69,6 +69,11 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public void ResumeGame()
     {
         TimeManager.ResumeTime();
+    }
+
+    private void OnSceneLoad()
+    {
+        //
     }
 
     public void LoadGameLevel(GameLevel gameLevel)

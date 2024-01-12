@@ -6,8 +6,8 @@ public class GameStatsController : MonoBehaviour, ISaveable
 {
     //private Dictionary<EnemyType, int> enemyKilledCounts = new Dictionary<EnemyType, int>();
     //private Dictionary<ItemType, int> weaponKillCounts = new Dictionary<ItemType, int>();
-    private GameStats sessionStats;
-    public GameStats gameStats { get; private set; }
+    public GameStats SessionStats { get; private set; }
+    public GameStats OverallStats { get; private set; }
 
     public class GameStats
     {
@@ -15,6 +15,9 @@ public class GameStatsController : MonoBehaviour, ISaveable
         public Dictionary<string, int> weaponKillCounts;
         public List<string> itemsFullyRankedUp;
         public Dictionary<CollectibleType, int> collectibleCounts;
+        
+        public List<string> unseenItems;
+        public List<string> seenItems;
 
         public GameStats()
         {
@@ -22,6 +25,9 @@ public class GameStatsController : MonoBehaviour, ISaveable
             weaponKillCounts = new Dictionary<string, int>();
             itemsFullyRankedUp = new List<string>();
             collectibleCounts = new Dictionary<CollectibleType, int>();
+            
+            unseenItems = new List<string>();
+            seenItems = new List<string>();
         }
     }
 
@@ -31,7 +37,7 @@ public class GameStatsController : MonoBehaviour, ISaveable
 
         GameStatsSaveData gameStatsSaveData = new GameStatsSaveData
         {
-            gameStats = this.gameStats
+            gameStats = this.OverallStats
         };
 
         return gameStatsSaveData;
@@ -41,7 +47,7 @@ public class GameStatsController : MonoBehaviour, ISaveable
     {
         if (savedData is GameStatsSaveData gameStatsSaveData)
         {
-            gameStats = gameStatsSaveData.gameStats;
+            OverallStats = gameStatsSaveData.gameStats;
         }
     }
 
@@ -53,75 +59,75 @@ public class GameStatsController : MonoBehaviour, ISaveable
 
     public void Initalize()
     {
-        sessionStats = new GameStats();
+        SessionStats = new GameStats();
 
-        if(gameStats == null)
+        if(OverallStats == null)
         {
-            gameStats = new GameStats();
+            OverallStats = new GameStats();
         }
         
     }
 
     private void StoreSessionStats()
     {
-        foreach(EnemyType enemyType in sessionStats.enemyKilledCounts.Keys)
+        foreach(EnemyType enemyType in SessionStats.enemyKilledCounts.Keys)
         {
-            gameStats.enemyKilledCounts.TryGetValue(enemyType, out int currentCount);
-            gameStats.enemyKilledCounts[enemyType] = currentCount + sessionStats.enemyKilledCounts[enemyType];
+            OverallStats.enemyKilledCounts.TryGetValue(enemyType, out int currentCount);
+            OverallStats.enemyKilledCounts[enemyType] = currentCount + SessionStats.enemyKilledCounts[enemyType];
         }
 
-        foreach (string itemType in sessionStats.weaponKillCounts.Keys)
+        foreach (string itemType in SessionStats.weaponKillCounts.Keys)
         {
-            gameStats.weaponKillCounts.TryGetValue(itemType, out int currentCount);
-            gameStats.weaponKillCounts[itemType] = currentCount + sessionStats.weaponKillCounts[itemType];
+            OverallStats.weaponKillCounts.TryGetValue(itemType, out int currentCount);
+            OverallStats.weaponKillCounts[itemType] = currentCount + SessionStats.weaponKillCounts[itemType];
         }
 
-        foreach(string itemType in sessionStats.itemsFullyRankedUp)
+        foreach(string itemType in SessionStats.itemsFullyRankedUp)
         {
-            if (!gameStats.itemsFullyRankedUp.Contains(itemType))
+            if (!OverallStats.itemsFullyRankedUp.Contains(itemType))
             {
-                gameStats.itemsFullyRankedUp.Add(itemType);
+                OverallStats.itemsFullyRankedUp.Add(itemType);
             }
         }
 
-        foreach (CollectibleType collectibleType in sessionStats.collectibleCounts.Keys)
+        foreach (CollectibleType collectibleType in SessionStats.collectibleCounts.Keys)
         {
-            gameStats.collectibleCounts.TryGetValue(collectibleType, out int currentCount);
-            gameStats.collectibleCounts[collectibleType] = currentCount + sessionStats.collectibleCounts[collectibleType];
+            OverallStats.collectibleCounts.TryGetValue(collectibleType, out int currentCount);
+            OverallStats.collectibleCounts[collectibleType] = currentCount + SessionStats.collectibleCounts[collectibleType];
         }
     }
 
     public void RegisterFullyRankedUpItem(string type)
     {
-        sessionStats.itemsFullyRankedUp.Add(type);
+        SessionStats.itemsFullyRankedUp.Add(type);
     }
 
     public void RegisterEnemyKill(EnemyType type)
     {
-        sessionStats.enemyKilledCounts.TryGetValue(type, out int currentCount);
-        sessionStats.enemyKilledCounts[type] = currentCount + 1;
+        SessionStats.enemyKilledCounts.TryGetValue(type, out int currentCount);
+        SessionStats.enemyKilledCounts[type] = currentCount + 1;
     }
 
     public void RegisterWeaponKill(string type)
     {
-        sessionStats.weaponKillCounts.TryGetValue(type, out int currentCount);
-        sessionStats.weaponKillCounts[type] = currentCount + 1;
+        SessionStats.weaponKillCounts.TryGetValue(type, out int currentCount);
+        SessionStats.weaponKillCounts[type] = currentCount + 1;
     }
 
     public void RegisterCollectiblePickUp(CollectibleType collectibleType)
     {
-        sessionStats.collectibleCounts.TryGetValue(collectibleType, out int currentCount);
-        sessionStats.collectibleCounts[collectibleType] = currentCount + 1;
+        SessionStats.collectibleCounts.TryGetValue(collectibleType, out int currentCount);
+        SessionStats.collectibleCounts[collectibleType] = currentCount + 1;
     }
     public int GetEnemyKilledCountOfType(EnemyType enemyType)
     {
-        gameStats.enemyKilledCounts.TryGetValue(enemyType, out int value);
+        OverallStats.enemyKilledCounts.TryGetValue(enemyType, out int value);
         return value;
     }
     
     public int GetWeaponKillCount(string weaponType)
     {
-        gameStats.weaponKillCounts.TryGetValue(weaponType, out int value); 
+        OverallStats.weaponKillCounts.TryGetValue(weaponType, out int value); 
         return value;
     }
 }

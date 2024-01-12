@@ -17,41 +17,38 @@
         "$type": "GameStatsController+GameStats, Assembly-CSharp",
         "enemyKilledCounts": {
           "$type": "System.Collections.Generic.Dictionary`2[[EnemyType, Assembly-CSharp],[System.Int32, mscorlib]], mscorlib",
-          "Sunflower": 2169
+          "Sunflower": 230
         },
         "weaponKillCounts": {
           "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Int32, mscorlib]], mscorlib",
-          "Spear": 175,
-          "P_TempSpear1(Clone)": 266,
-          "Rock": 1728
+          "Spear": 49,
+          "Rock": 145,
+          "Hedgehog": 16,
+          "P_TempSpear1(Clone)": 20
         },
         "itemsFullyRankedUp": {
           "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
           "$values": [
+            "Amulet",
+            "Rock",
+            "Spear",
+            "Hook",
             "Boot",
             "SpearClone1",
-            "Spear",
-            "Rock",
-            "Amulet"
+            "Hedgehog"
           ]
         },
         "collectibleCounts": {
           "$type": "System.Collections.Generic.Dictionary`2[[CollectibleType, Assembly-CSharp],[System.Int32, mscorlib]], mscorlib",
-          "Experience": 220
+          "Experience": 101
         },
         "unseenItems": {
-          "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+          "$type": "System.Collections.Generic.List`1[[Item, Assembly-CSharp]], mscorlib",
           "$values": []
         },
         "seenItems": {
-          "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
-          "$values": [
-            "Rock",
-            "Spear",
-            "SpearClone1",
-            "Boot",
-            "Amulet"
-          ]
+          "$type": "System.Collections.Generic.List`1[[Item, Assembly-CSharp]], mscorlib",
+          "$values": []
         }
       }
     }
@@ -61,7 +58,7 @@
     "AudioManager": {
       "$type": "AudioManager+AudioSaveData, Assembly-CSharp",
       "masterVolume": 0.981141031,
-      "soundsVolume": 0.042308677,
+      "soundsVolume": 0.138932943,
       "musicVolume": 0.0001
     }
   }

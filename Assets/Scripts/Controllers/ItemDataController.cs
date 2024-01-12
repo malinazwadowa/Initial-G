@@ -67,9 +67,9 @@ public class ItemDataController : MonoBehaviour
         List<Weapon> list = new List<Weapon>();
         foreach(Item item in unlockedItems)
         {
-            if(item is Weapon)
+            if(item is Weapon weapon)
             {
-                list.Add((Weapon)item);
+                list.Add(weapon);
             }
         }
         return list;
@@ -80,9 +80,9 @@ public class ItemDataController : MonoBehaviour
         List<Accessory> list = new List<Accessory>();
         foreach (Item item in unlockedItems)
         {
-            if (item is Accessory)
+            if (item is Accessory accessory)
             {
-                list.Add((Accessory)item);
+                list.Add(accessory);
             }
         }
         return list;
@@ -95,6 +95,8 @@ public class ItemDataController : MonoBehaviour
 
     private void CheckItemUnlocks()
     {
+        unlockedItems.Clear();
+
         foreach(Item item in allItems)
         {
             Item myScript = item.GetComponent<Item>();
@@ -103,43 +105,60 @@ public class ItemDataController : MonoBehaviour
             switch (condition.conditionType)
             {
                 case ConditionType.UnlockedByDefault:
-                    unlockedItems.Add(item);
+                    UnlockItem(item);
                     break;
+
                 case ConditionType.UnlockedWithEnemyKilled:
-                    if (GameManager.Instance.gameStatsController.gameStats.enemyKilledCounts.TryGetValue(condition.enemyType, out int enemyKills) && enemyKills >= condition.amount)
+                    if (GameManager.Instance.gameStatsController.OverallStats.enemyKilledCounts.TryGetValue(condition.enemyType, out int enemyKills) && enemyKills >= condition.amount)
                     {
-                        unlockedItems.Add(item);
+                        UnlockItem(item);
                     }
                     break;
+
                 case ConditionType.UnlockedWithWeaponKills:
-                    if (GameManager.Instance.gameStatsController.gameStats.weaponKillCounts.TryGetValue(condition.weaponType, out int weaponKills) && weaponKills >= condition.amount)
+                    if (GameManager.Instance.gameStatsController.OverallStats.weaponKillCounts.TryGetValue(condition.weaponType, out int weaponKills) && weaponKills >= condition.amount)
                     {
-                        unlockedItems.Add(item);
+                        UnlockItem(item);
                     }
                     break;
+
                 case ConditionType.UnlockedWithMaxRankOfWeapon:
-                    if(GameManager.Instance.gameStatsController.gameStats.itemsFullyRankedUp.Contains(condition.weaponType))
+                    if(GameManager.Instance.gameStatsController.OverallStats.itemsFullyRankedUp.Contains(condition.weaponType))
                     {
-                        unlockedItems.Add(item);
+                        UnlockItem(item);
                     }
                     break;
+
                 case ConditionType.UnlockedWithMaxRankOfAccessory:
-                    if (GameManager.Instance.gameStatsController.gameStats.itemsFullyRankedUp.Contains(condition.accessoryType))
+                    if (GameManager.Instance.gameStatsController.OverallStats.itemsFullyRankedUp.Contains(condition.accessoryType))
                     {
-                        unlockedItems.Add(item);
+                        UnlockItem(item);
                     }
                     break;
+
                 case ConditionType.UnlockedWithCollectedItems:
-                    if (GameManager.Instance.gameStatsController.gameStats.collectibleCounts.TryGetValue(condition.collectibleType, out int amount) && amount >= condition.amount)
+                    if (GameManager.Instance.gameStatsController.OverallStats.collectibleCounts.TryGetValue(condition.collectibleType, out int amount) && amount >= condition.amount)
                     {
-                        unlockedItems.Add(item);
+                        //unlockedItems.Add(item);
+                        UnlockItem(item);
                     }
                     break;
+
                 default:
                     Debug.Log("Unhandled condition");
                     break;
                     //case ConditionType.UnlockedWithMaxRankOfWeapon:
             }
         }
+    }
+
+    private void UnlockItem(Item item)
+    {
+        if (!GameManager.Instance.gameStatsController.OverallStats.unseenItems.Contains(item.GetType().Name) && !GameManager.Instance.gameStatsController.OverallStats.seenItems.Contains(item.GetType().Name))
+        {
+            GameManager.Instance.gameStatsController.OverallStats.unseenItems.Add(item.GetType().Name);
+        } 
+
+        unlockedItems.Add(item);
     }
 }

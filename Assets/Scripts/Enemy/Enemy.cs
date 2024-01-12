@@ -50,8 +50,9 @@ public class Enemy : MonoBehaviour, IDamagable
     {
         ObjectPooler.Instance.DespawnObject(gameObject);
         LootManager.Instance.DropLoot(enemyParameters.tier, transform.position);
-        EventManager.OnEnemyKilled?.Invoke();
         GameManager.Instance.gameStatsController.RegisterEnemyKill(enemyParameters.type);
+        LevelManager.Instance.AddScore();
+        EventManager.OnEnemyKilled?.Invoke();
     }
 
     public void GetKnockbacked(float power, Vector3 knockbackDirection)
