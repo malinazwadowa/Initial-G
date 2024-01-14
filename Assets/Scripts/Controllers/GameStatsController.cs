@@ -15,6 +15,7 @@ public class GameStatsController : MonoBehaviour, ISaveable
         public Dictionary<string, int> weaponKillCounts;
         public List<string> itemsFullyRankedUp;
         public Dictionary<CollectibleType, int> collectibleCounts;
+        public Dictionary<string, float> weaponDamageDone;
         
         public List<string> unseenItems;
         public List<string> seenItems;
@@ -25,7 +26,8 @@ public class GameStatsController : MonoBehaviour, ISaveable
             weaponKillCounts = new Dictionary<string, int>();
             itemsFullyRankedUp = new List<string>();
             collectibleCounts = new Dictionary<CollectibleType, int>();
-            
+            weaponDamageDone = new Dictionary<string, float>();
+
             unseenItems = new List<string>();
             seenItems = new List<string>();
         }
@@ -119,6 +121,16 @@ public class GameStatsController : MonoBehaviour, ISaveable
         SessionStats.collectibleCounts.TryGetValue(collectibleType, out int currentCount);
         SessionStats.collectibleCounts[collectibleType] = currentCount + 1;
     }
+
+    public void RegisterWeaponDamage(string weaponType, float damageAmount)
+    {
+        SessionStats.weaponDamageDone.TryGetValue(weaponType, out float damageDone);
+        SessionStats.weaponDamageDone[weaponType] = damageDone + damageAmount;
+    }
+
+
+
+
     public int GetEnemyKilledCountOfType(EnemyType enemyType)
     {
         OverallStats.enemyKilledCounts.TryGetValue(enemyType, out int value);

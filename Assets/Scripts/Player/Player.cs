@@ -14,13 +14,13 @@ public class Player : MonoBehaviour, IItemWielder, IDamagable
     private Rigidbody2D rigidBody;
 
     private HealthController healthController;
-    private ExperienceController experienceController;
     private PlayerMovementController movementController;
     private PlayerAnimationController animationController;
     private LootCollisionHandler lootCollisionHandler;
 
     private CharacterStatsController characterStatsController;
 
+    [HideInInspector] public  ExperienceController ExperienceController { get; private set; }
     [HideInInspector] public ItemController ItemController { get; private set; }
     [HideInInspector] public PlayerInputController InputController { get; private set; }
 
@@ -38,12 +38,12 @@ public class Player : MonoBehaviour, IItemWielder, IDamagable
         movementController = GetComponent<PlayerMovementController>();
         animationController = GetComponent<PlayerAnimationController>();
         InputController = GetComponent<PlayerInputController>();
-        experienceController = GetComponent<ExperienceController>();
+        ExperienceController = GetComponent<ExperienceController>();
 
         characterStatsController = GetComponent<CharacterStatsController>();
 
         characterStatsController.Initialize();
-        experienceController.Initialize(FindAnyObjectByType<ExpBarUI>());
+        ExperienceController.Initialize(FindAnyObjectByType<ExpBarUI>());
         healthController.Initialize(playerData.maxHealth);
 
         lootCollisionHandler.Initialize(playerData.lootingRadius, characterStatsController.characterStats);

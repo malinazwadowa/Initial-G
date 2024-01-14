@@ -41,7 +41,7 @@ siplified time menager, added call in level manager to unpause the game un start
  * - healing something for healing collectibles
  * - exping something for expingens
  *
- *
+ * ------ weapon logs  ar gathered in enemy, not a big deal, we aint gonna have more targets most likely but seems a but odd tbh
  *
  *
  *

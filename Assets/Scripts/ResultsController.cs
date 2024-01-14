@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,13 +17,14 @@ public class ResultsController : MonoBehaviour
     public void PresentResults()
     {
         player = PlayerManager.Instance.GetPlayer();
-        UpdateTexts();
+        UpdateGeneralData();
         GetWeaponResults();
     }
-    private void UpdateTexts()
+    private void UpdateGeneralData()
     {
         scoreText.text = new string($"Score: {LevelManager.Instance.Score}");
-        timeText.text = $"{(int)LevelManager.Instance.SessionTime/60}:{(int)LevelManager.Instance.SessionTime % 60}";
+        levelText.text = new string($"Level gained: {player.ExperienceController.CurrentLevel}");
+        timeText.text = TextUtilities.FormatTime(LevelManager.Instance.SessionTime);
     }
 
     private void GetWeaponResults()
@@ -36,41 +35,54 @@ public class ResultsController : MonoBehaviour
         foreach (Item item in player.ItemController.EquippedItems)
         {
             myRow = Instantiate(itemRow);
-            RowController rowController = myRow.GetComponent<RowController>();
+            RowComponents rowComponents = myRow.GetComponent<RowComponents>();
 
-            rowController.itemImage.sprite = item.baseItemParameters.icon;
-
+            rowComponents.itemImage.sprite = item.baseItemParameters.icon;
+            rowComponents.rankText.text = (item.currentRank + 1).ToString();
 
             int j = item.currentRank;
             for (int i = 0; i < item.baseItemParameters.amountOfRanks; i++)
             {
                 GameObject rankGameObject = new GameObject("RankImage");
-                rankGameObject.transform.SetParent(rowController.ranksGrid.transform, false);
+                rankGameObject.transform.SetParent(rowComponents.ranksGrid.transform, false);
 
                 RawImage rankImage = rankGameObject.AddComponent<RawImage>();
                 if (i<=j)
                 {
-                    rankImage.texture = rowController.rankFilled;
+                    rankImage.texture = rowComponents.rankFilled;
                 }
                 else
                 {
-                    rankImage.texture = rowController.rankEmpty;
+                    rankImage.texture = rowComponents.rankEmpty;
                 }
             }
 
-
-            rowController.rankText.text = (item.currentRank + 1).ToString();
             if (GameManager.Instance.gameStatsController.SessionStats.weaponKillCounts.TryGetValue(item.GetType().Name, out int count))
             {
-                rowController.killCountText.text = count.ToString();
+                rowComponents.killCountText.text = TextUtilities.FormatBigNumber(count);
             }
             else
             {
-                rowController.killCountText.text = "---";
+                rowComponents.killCountText.text = "---";
+            }
+
+            if (GameManager.Instance.gameStatsController.SessionStats.weaponDamageDone.TryGetValue(item.GetType().Name, out float damageDone))
+            {
+                rowComponents.damageDoneText.text = TextUtilities.FormatBigNumber(damageDone);
+
+                //float activeTimeInMins = (Time.time - item.GetTimeEquipped()) / 60;
+                string formattedDPS = TextUtilities.FormatBigNumber((float)damageDone / (Time.time - item.TimeOfEquipping));
+                rowComponents.dpsText.text = $"{formattedDPS} / sec";
+            }
+            else
+            {
+                rowComponents.damageDoneText.text = "---";
+                rowComponents.dpsText.text = "---";
             }
 
 
-            if(item is Weapon)
+
+            if (item is Weapon)
             {
                 myRow.transform.SetParent(itemsTable, false);
             }

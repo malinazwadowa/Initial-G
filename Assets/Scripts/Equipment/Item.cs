@@ -5,6 +5,12 @@ public class Item : MonoBehaviour
 {
     [HideInInspector] public int currentRank { get; private set; }
     [Expandable] public SO_ItemParameters baseItemParameters;
+    public float TimeOfEquipping { get; private set; }
+
+    protected void SetEquippedTime()
+    {
+        TimeOfEquipping = Time.time;
+    }
 
     public virtual void RankUp()
     {

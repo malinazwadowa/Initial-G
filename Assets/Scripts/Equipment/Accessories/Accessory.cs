@@ -9,6 +9,7 @@ public class Accessory : Item
     {
         this.characterStatsController = characterStatsController;
         EquipmentControllerUI.Instance.AddItem(baseItemParameters.icon, GetType(), baseItemParameters.amountOfRanks);
+        SetEquippedTime();
     }
 
     public virtual void ApplyEffect()

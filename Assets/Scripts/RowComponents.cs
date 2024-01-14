@@ -4,12 +4,14 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RowController : MonoBehaviour
+public class RowComponents : MonoBehaviour
 {
     public Image itemImage;
     public Transform ranksGrid;
     public TextMeshProUGUI rankText;
     public TextMeshProUGUI killCountText;
+    public TextMeshProUGUI damageDoneText;
+    public TextMeshProUGUI dpsText;
     public Texture rankEmpty;
     public Texture rankFilled;
 

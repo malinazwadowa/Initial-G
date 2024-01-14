@@ -5,7 +5,7 @@ using UnityEngine.Events;
 public class ExperienceController : MonoBehaviour
 {
     private int currentExp;
-    private int currentLevel;
+    public int CurrentLevel { get; private set; }
     private float maxExpForCurrentLevel;
     private ExpBarUI expBar;
 
@@ -13,7 +13,7 @@ public class ExperienceController : MonoBehaviour
     {
         this.expBar = expBar;
         currentExp = 0;
-        currentLevel = 1;
+        CurrentLevel = 1;
         maxExpForCurrentLevel = 100;
         UpdateExpBar();
     }
@@ -31,7 +31,7 @@ public class ExperienceController : MonoBehaviour
     private void LevelUp()
     {
         currentExp = 0;
-        currentLevel++;
+        CurrentLevel++;
         maxExpForCurrentLevel *= 1.5f;
         UpdateExpBar();
         AudioSource levelUpSound = AudioManager.Instance.PlaySound(AudioClipID.LevelUp);
