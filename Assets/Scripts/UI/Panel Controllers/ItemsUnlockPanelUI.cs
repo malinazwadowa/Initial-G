@@ -1,10 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class ItemsUnlockPanelUI : MonoBehaviour
 {
     public GameObject cellPrefab;
     public Transform grid;
+    private List<CellController> cellControllers = new List<CellController>();
 
     public void PresentData()
     {
@@ -18,7 +20,19 @@ public class ItemsUnlockPanelUI : MonoBehaviour
             
             cellRectTransform.SetParent(grid, false);
 
-            myCell.GetComponent<CellController>().SetUp(item);
+            CellController cellScript = myCell.GetComponent<CellController>();
+            cellScript.SetUp(item);
+            cellControllers.Add(cellScript);
         }
+
+        foreach (CellController cellController in cellControllers)
+        {
+            if (!GameManager.Instance.gameStatsController.OverallStats.seenItems.Contains(cellController.myItemType) && cellController.isMyItemUnlocked)
+            {
+                cellController.HighlightAsNew();
+                GameManager.Instance.gameStatsController.OverallStats.seenItems.Add(cellController.myItemType);
+            }
+        }
+
     }
 }

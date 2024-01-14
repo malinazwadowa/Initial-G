@@ -24,11 +24,17 @@ public class CellController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI panelText;
     [SerializeField] private TextMeshProUGUI sliderProgressText;
 
+    [HideInInspector] public bool isMyItemUnlocked;
+    [HideInInspector] public string myItemType;
+
     public void SetUp(Item item)
     {
         GameStatsController statsController = GameManager.Instance.gameStatsController;
         ConditionType conditionType = item.baseItemParameters.unlockCondition.conditionType;
         UnlockCondition condition = item.baseItemParameters.unlockCondition;
+
+        isMyItemUnlocked = true;
+        myItemType = item.GetType().Name;
 
         itemIcon.sprite = item.baseItemParameters.icon;
         itemBackground.color = (item is Weapon) ? weaponColor : accessoryColor;
@@ -39,12 +45,6 @@ public class CellController : MonoBehaviour
         slider.SetActive(false);
         panelHighlight.gameObject.SetActive(false);
         
-        if (GameManager.Instance.gameStatsController.OverallStats.unseenItems.Contains(item.GetType().Name))
-        {
-            panelHighlight.gameObject.SetActive(true);
-            GameManager.Instance.gameStatsController.OverallStats.unseenItems.Remove(item.GetType().Name);
-            GameManager.Instance.gameStatsController.OverallStats.seenItems.Add(item.GetType().Name);
-        }
 
         switch (conditionType)
         {
@@ -112,84 +112,6 @@ public class CellController : MonoBehaviour
                 // Default case if the conditionType doesn't match any of the specified cases
                 break;
         }
-
-        /*
-        if (conditionType == ConditionType.UnlockedByDefault)
-        {
-
-        }
-
-        else if (conditionType == ConditionType.UnlockedWithEnemyKilled)
-        {
-            int currentVale = statsController.GetEnemyKilledCountOfType(condition.enemyType);
-            
-            if( currentVale < condition.amount)
-            {
-                panelText.text = new string($"Unlocked by killing enemy called: {condition.enemyType}");
-
-                sliderFill.fillAmount = (float)currentVale / condition.amount;
-                progressText.text = string.Format("{0}/{1}", currentVale, condition.amount);
-                slider.SetActive(true);
-
-                SetToLocked();
-            }
-        }
-
-        else if (conditionType == ConditionType.UnlockedWithWeaponKills)
-        {
-            int killCount = statsController.GetWeaponKillCount(condition.weaponType);
-            if ( killCount < condition.amount)
-            {
-                panelText.text = new string($"Unlocked by killing enemies with the {condition.weaponType}.");
-
-                sliderFill.fillAmount = (float)killCount / condition.amount;
-                progressText.text = string.Format("{0}/{1}", (float)killCount, condition.amount);
-                slider.SetActive(true);
-
-                SetToLocked();
-            }
-            
-        }
-
-        else if (conditionType == ConditionType.UnlockedWithMaxRankOfAccessory)
-        {
-            if (!statsController.gameStats.itemsFullyRankedUp.Contains(condition.accessoryType))
-            {
-                panelText.text = new string($"Unlocked by reaching max rank of: {condition.accessoryType}");
-
-                SetToLocked();
-            }
-        }
-
-        else if (conditionType == ConditionType.UnlockedWithMaxRankOfWeapon)
-        {
-            if (!statsController.gameStats.itemsFullyRankedUp.Contains(condition.weaponType))
-            {
-                panelText.text = new string($"Unlocked by reaching max rank of: {condition.weaponType}");
-
-                SetToLocked();
-            }
-        }
-
-        else if (conditionType == ConditionType.UnlockedWithCollectedItems)
-        {
-            statsController.gameStats.collectibleCounts.TryGetValue(condition.collectibleType, out int count);
-
-            if (count < condition.amount)
-            {
-                panelText.text = new string($"Unlocked by picking up more of {condition.collectibleType} type collectibles.");
-
-                sliderFill.fillAmount = (float)count / condition.amount;
-                progressText.text = string.Format("{0}/{1}", (float)count, condition.amount);
-                slider.SetActive(true);
-
-                SetToLocked();
-            }
-
-        }
-        else
-        {
-        } */
     }
 
     private void SetCellToLocked()
@@ -197,6 +119,7 @@ public class CellController : MonoBehaviour
         titleText.text = new string("???");
         itemIcon.sprite = lockedImage;
         panelBackground.color = lockedColor;
+        isMyItemUnlocked = false;
     }
 
     private void EnableSlider(int currentValue, int targetValue)
@@ -204,5 +127,10 @@ public class CellController : MonoBehaviour
         sliderFill.fillAmount = (float)currentValue / targetValue;
         sliderProgressText.text = string.Format("{0}/{1}", currentValue, targetValue);
         slider.SetActive(true);
+    }
+
+    public void HighlightAsNew()
+    {
+        panelHighlight.gameObject.SetActive(true);
     }
 }

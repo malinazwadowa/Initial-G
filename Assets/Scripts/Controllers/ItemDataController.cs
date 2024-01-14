@@ -154,10 +154,6 @@ public class ItemDataController : MonoBehaviour
 
     private void UnlockItem(Item item)
     {
-        if (!GameManager.Instance.gameStatsController.OverallStats.unseenItems.Contains(item.GetType().Name) && !GameManager.Instance.gameStatsController.OverallStats.seenItems.Contains(item.GetType().Name))
-        {
-            GameManager.Instance.gameStatsController.OverallStats.unseenItems.Add(item.GetType().Name);
-        } 
 
         unlockedItems.Add(item);
     }

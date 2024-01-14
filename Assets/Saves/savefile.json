@@ -17,31 +17,30 @@
         "$type": "GameStatsController+GameStats, Assembly-CSharp",
         "enemyKilledCounts": {
           "$type": "System.Collections.Generic.Dictionary`2[[EnemyType, Assembly-CSharp],[System.Int32, mscorlib]], mscorlib",
-          "Sunflower": 2169
+          "Sunflower": 46
         },
         "weaponKillCounts": {
           "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Int32, mscorlib]], mscorlib",
-          "Spear": 175,
-          "P_TempSpear1(Clone)": 266,
-          "Rock": 1728
+          "Spear": 42,
+          "P_TempSpear1(Clone)": 3,
+          "Rock": 1
         },
         "itemsFullyRankedUp": {
           "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
           "$values": [
-            "Boot",
-            "SpearClone1",
-            "Spear",
             "Rock",
-            "Amulet"
+            "Spear",
+            "Amulet",
+            "SpearClone1",
+            "Boot"
           ]
         },
         "collectibleCounts": {
           "$type": "System.Collections.Generic.Dictionary`2[[CollectibleType, Assembly-CSharp],[System.Int32, mscorlib]], mscorlib",
-          "Experience": 220
+          "Experience": 20
         },
-        "unseenItems": {
-          "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
-          "$values": []
+        "weaponDamageDone": {
+          "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Single, mscorlib]], mscorlib"
         },
         "seenItems": {
           "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
@@ -61,8 +60,8 @@
     "AudioManager": {
       "$type": "AudioManager+AudioSaveData, Assembly-CSharp",
       "masterVolume": 0.981141031,
-      "soundsVolume": 0.042308677,
-      "musicVolume": 0.0001
+      "soundsVolume": 0.9753121,
+      "musicVolume": 0.947549641
     }
   }
 }

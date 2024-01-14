@@ -17,7 +17,6 @@ public class GameStatsController : MonoBehaviour, ISaveable
         public Dictionary<CollectibleType, int> collectibleCounts;
         public Dictionary<string, float> weaponDamageDone;
         
-        public List<string> unseenItems;
         public List<string> seenItems;
 
         public GameStats()
@@ -28,7 +27,6 @@ public class GameStatsController : MonoBehaviour, ISaveable
             collectibleCounts = new Dictionary<CollectibleType, int>();
             weaponDamageDone = new Dictionary<string, float>();
 
-            unseenItems = new List<string>();
             seenItems = new List<string>();
         }
     }
