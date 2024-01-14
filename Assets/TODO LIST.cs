@@ -31,6 +31,11 @@
  *10
  *- randomize spawn offset for enemies
  *
+ *11
+ *- time management issues after new panel - unable to pause/resume correctly 
+ issues appear to be caused by calls from panels on restart and bad logic in time manager causing issues in playtime
+siplified time menager, added call in level manager to unpause the game un start, "fixed"
+
  *------------
  *Item ideas:
  * - healing something for healing collectibles

@@ -30,7 +30,7 @@ public class ResultsController : MonoBehaviour
 
     private void GetWeaponResults()
     {
-        List<GameObject> queue = new List<GameObject>();
+        List<GameObject> accessoriesQueue = new List<GameObject>();
         GameObject myRow;
 
         foreach (Item item in player.ItemController.EquippedItems)
@@ -66,7 +66,7 @@ public class ResultsController : MonoBehaviour
             }
             else
             {
-                rowController.killCountText.text = string.Empty;
+                rowController.killCountText.text = "---";
             }
 
 
@@ -76,12 +76,11 @@ public class ResultsController : MonoBehaviour
             }
             else
             {
-                queue.Add(myRow);
+                accessoriesQueue.Add(myRow);
             }
-            //ImageConversion itemImage = myRow.transform.Find()
         }
 
-        foreach(GameObject row in queue)
+        foreach(GameObject row in accessoriesQueue)
         {
             row.transform.SetParent(itemsTable, false);
         }

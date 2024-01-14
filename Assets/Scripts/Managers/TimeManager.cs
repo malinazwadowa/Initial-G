@@ -7,16 +7,18 @@ public static class TimeManager
 
     public static void PauseTime()
     {
-        if(isPaused) { return; }
-        lastTimeScale = Time.timeScale;
+        Debug.Log("trying to pause time");
+        //(isPaused) { return; }
+        //lastTimeScale = Time.timeScale;
         Time.timeScale = 0f;
         isPaused = true;
     }
     
     public static void ResumeTime()
     {
-        if(!isPaused) { return; }
-        Time.timeScale = lastTimeScale;
+        Debug.Log("trying to resume time");
+        //if(!isPaused) { return; }
+        Time.timeScale = 1f;
         isPaused = false;
     }
 
@@ -28,6 +30,7 @@ public static class TimeManager
 
     public static void ResetTimeScale()
     {
+        lastTimeScale = Time.timeScale;
         Time.timeScale = 1f;
     }
 }

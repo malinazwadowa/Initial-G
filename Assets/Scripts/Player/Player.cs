@@ -6,7 +6,7 @@ public class Player : MonoBehaviour, IItemWielder, IDamagable
     [SerializeField] public SO_PlayerParameters playerData;
 
     private Transform center;
-    
+    private bool isAlive = true;
 
     [HideInInspector] public PlayerInputActions InputActions { get; private set; }
     private Animator animator;
@@ -135,8 +135,10 @@ public class Player : MonoBehaviour, IItemWielder, IDamagable
 
     public void GetKilled()
     {
+        if (!isAlive) { return; }
         //AudioManager.Instance.PlaySound(AudioClipID.Something);
         EventManager.OnPlayerDeath?.Invoke();
+        isAlive = false;
     }
 
     public void GetKnockbacked(float power, Vector3 knockbackDirection)

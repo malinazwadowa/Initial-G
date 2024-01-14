@@ -7,12 +7,12 @@ public class ScoreCounterUI : MonoBehaviour
 
     private void OnEnable()
     {
-        EventManager.OnEnemyKilled += UpdateScore;
+        //EventManager.OnEnemyKilled += UpdateScore;
     }
 
     private void OnDisable()
     {
-        EventManager.OnEnemyKilled -= UpdateScore;
+        //EventManager.OnEnemyKilled -= UpdateScore;
     }
 
     void Start()
@@ -21,8 +21,12 @@ public class ScoreCounterUI : MonoBehaviour
         text.text = $"Score: {LevelManager.Instance.Score}";
     }
 
-    private void UpdateScore()
+    public void UpdateScore()
     {
         text.text = $"Score: {LevelManager.Instance.Score}";
+    }
+    public void SetScore(int value)
+    {
+        text.text = $"Score: {value}";
     }
 }

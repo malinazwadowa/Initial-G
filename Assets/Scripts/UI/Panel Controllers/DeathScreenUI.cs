@@ -25,8 +25,8 @@ public class DeathScreenUI : MonoBehaviour
 
     public void RestartLevel()
     {
+        TimeManager.ResetTimeScale();
         SceneLoadingManager.Instance.ReLoadScene();
-        TimeManager.ResumeTime();
     }
 
     public void ExitToMainMenu()
