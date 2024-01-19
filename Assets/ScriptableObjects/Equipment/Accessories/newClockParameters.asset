@@ -20,7 +20,7 @@ MonoBehaviour:
     enemyType: 0
     collectibleType: 0
     amount: 100
-  icon: {fileID: 608153777, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+  icon: {fileID: 21300000, guid: 0fc31d8eb9df5454798385c30d08160b, type: 3}
   description: Reduces cooldown duration.
   amountOfRanks: 2
   numberOfRanks: 2

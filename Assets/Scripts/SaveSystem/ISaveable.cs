@@ -1,5 +1,6 @@
 public interface ISaveable
 {
-    SaveData SaveMyData();
-    void LoadMyData(SaveData savedData);
+    ObjectData SaveMyData();
+    void LoadMyData(ObjectData savedData);
+    void WipeMyData();
 }

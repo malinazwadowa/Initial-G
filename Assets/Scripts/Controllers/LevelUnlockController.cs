@@ -8,9 +8,9 @@ public class LevelUnlockController : MonoBehaviour, ISaveable
     private Dictionary<GameLevel, bool> currentLevelUnlockStatus = new Dictionary<GameLevel, bool>();
 
 
-    public SaveData SaveMyData()
+    public ObjectData SaveMyData()
     {
-        SaveData saveData = new LevelUnlockData
+        ObjectData saveData = new LevelUnlockData
         {
             levelUnlockStatus = currentLevelUnlockStatus,
         };
@@ -18,7 +18,7 @@ public class LevelUnlockController : MonoBehaviour, ISaveable
         return saveData;
     }
 
-    public void LoadMyData(SaveData savedData)
+    public void LoadMyData(ObjectData savedData)
     {
         if (savedData is LevelUnlockData levelUnlockData)
         {
@@ -27,8 +27,15 @@ public class LevelUnlockController : MonoBehaviour, ISaveable
         }
     }
 
+    public void WipeMyData()
+    {
+        Debug.Log("my data is wiped leveunlockcontr)");
+        currentLevelUnlockStatus.Clear();
+        UpdateLevelUnlockDictionary();
+    }
+
     [Serializable]
-    public class LevelUnlockData : SaveData
+    public class LevelUnlockData : ObjectData
     {
         public Dictionary<GameLevel, bool> levelUnlockStatus;
     }

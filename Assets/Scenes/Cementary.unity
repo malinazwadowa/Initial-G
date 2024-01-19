@@ -4095,7 +4095,7 @@ GameObject:
   - component: {fileID: 1392591558}
   - component: {fileID: 1392591559}
   m_Layer: 0
-  m_Name: ResultsWindowBackground
+  m_Name: ResultsWindow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11761,7 +11761,7 @@ PrefabInstance:
     - target: {fileID: 6767124096746729671, guid: 05ada44e053334040a3f962dd1f484d4,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 61.12
       objectReference: {fileID: 0}
     - target: {fileID: 6767124096746729671, guid: 05ada44e053334040a3f962dd1f484d4,
         type: 3}
@@ -11781,7 +11781,7 @@ PrefabInstance:
     - target: {fileID: 6767124097118933481, guid: 05ada44e053334040a3f962dd1f484d4,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 133.23999
       objectReference: {fileID: 0}
     - target: {fileID: 6767124097118933481, guid: 05ada44e053334040a3f962dd1f484d4,
         type: 3}
@@ -12637,6 +12637,47 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 617430319, guid: 85bf29d86ff69c74e83af5c78a9f56e2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 617430319, guid: 85bf29d86ff69c74e83af5c78a9f56e2, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 617430319, guid: 85bf29d86ff69c74e83af5c78a9f56e2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 178.7315
+      objectReference: {fileID: 0}
+    - target: {fileID: 617430319, guid: 85bf29d86ff69c74e83af5c78a9f56e2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1355803972, guid: 85bf29d86ff69c74e83af5c78a9f56e2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1355803973, guid: 85bf29d86ff69c74e83af5c78a9f56e2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1355803973, guid: 85bf29d86ff69c74e83af5c78a9f56e2, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1355803973, guid: 85bf29d86ff69c74e83af5c78a9f56e2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 536.1945
+      objectReference: {fileID: 0}
+    - target: {fileID: 1355803973, guid: 85bf29d86ff69c74e83af5c78a9f56e2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2013878904245729186, guid: 85bf29d86ff69c74e83af5c78a9f56e2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7275665481512118574, guid: 85bf29d86ff69c74e83af5c78a9f56e2,
         type: 3}
       propertyPath: m_RootOrder
@@ -12696,6 +12737,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: P_WeaponUpgradePopUp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7787510757200588674, guid: 85bf29d86ff69c74e83af5c78a9f56e2,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7787510757200588674, guid: 85bf29d86ff69c74e83af5c78a9f56e2,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85bf29d86ff69c74e83af5c78a9f56e2, type: 3}

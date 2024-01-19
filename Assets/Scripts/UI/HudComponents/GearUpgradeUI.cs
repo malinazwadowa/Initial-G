@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class GearUpgradeControllerUI : MonoBehaviour
+public class GearUpgradeUI : MonoBehaviour
 {
     public List<GameObject> panels;
 
@@ -103,7 +103,7 @@ public class GearUpgradeControllerUI : MonoBehaviour
         switch (upgradeCase)
         {
             case UpgradeCase.UpgradeOrNew:
-                bool upgradeOption = UnityEngine.Random.Range(0, 2) == 0;
+                bool upgradeOption = Random.Range(0, 2) == 0;
                 if (upgradeOption)
                 {
                     SetUpEquipNew(panel);

@@ -19,7 +19,7 @@ public class Item : MonoBehaviour
 
         Debug.Log($"Ranking up {this.GetType().Name} current rank is {currentRank}");
         currentRank++;
-        EquipmentControllerUI.Instance.UpdateItemRank(GetType(), currentRank);
+        EquipmentUI.Instance.UpdateItemRank(GetType(), currentRank);
 
         Debug.Log($"Ranking up {this.GetType().Name} rank after ranking up is {currentRank} and max rank is {baseItemParameters.amountOfRanks - 1}");
 

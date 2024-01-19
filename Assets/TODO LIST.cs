@@ -1,9 +1,12 @@
 /*1
  * - Weapon upgrade popup:
  - needs randomized panel order
+
  * 2
+ * 
  * - Save system:
- - profiles 
+ - profiles Xd
+ * 
  * 3
  * - Enemy type should be updated: or should it?
 - 
@@ -21,7 +24,6 @@
  *7
  *- EXP formula
  *
- *
  *8
  *- add scrolling to level unlock list & items unlock list
  *
@@ -36,6 +38,24 @@
  issues appear to be caused by calls from panels on restart and bad logic in time manager causing issues in playtime
 siplified time menager, added call in level manager to unpause the game un start, "fixed"
 
+ * 12
+ * - item unlocking happens only during game manager init ~~~ 
+ * 
+ * 13 
+ * - sesion data is not being wiped, game data is not updated after session 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * WYJEBAC SAVEDATACOSTAM SYSTEM DATA, ZAPAKOWAC TO W JESZCZE JEDEN SLOWNIK XdDD
+POTEM ZROBIC RESZETE POD SLOWNIK, ISI
+ * 
+ * speerate list for profile states and Isavaable it, then - profile controller ~~ 
+then use profilename string as key but need rename also, noo, we can make it  oke some crazy stuff here will see
+ * 
+ * 
+ * 
  *------------
  *Item ideas:
  * - healing something for healing collectibles
@@ -45,7 +65,7 @@ siplified time menager, added call in level manager to unpause the game un start
  *
  *
  *
- *
+ * -- SPRAWDZAJ PRZY LADOWANIU MOICH DANYCH CZY SA PUSTE I JAK SA PUSTE TO WIPE/GENERATE NEW 
  *
  *
  *

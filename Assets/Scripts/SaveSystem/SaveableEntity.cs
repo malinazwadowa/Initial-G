@@ -14,28 +14,54 @@ public class SaveableEntity : MonoBehaviour
     }
 
 
-    public Dictionary<string, SaveData> SaveData()
+    public Dictionary<string, ObjectData> SaveData(bool saveOnlyCore = false)
     {
-        Dictionary<string, SaveData> data = new Dictionary<string, SaveData>();
+        Dictionary<string, ObjectData> data = new Dictionary<string, ObjectData>();
 
         foreach(ISaveable saveable in GetComponents<ISaveable>())
         {
-            data[saveable.GetType().ToString()] = saveable.SaveMyData();
+            ObjectData saveData = saveable.SaveMyData();
+
+            if((saveData.IsCoreData && saveOnlyCore) || (!saveData.IsCoreData && !saveOnlyCore))
+            {
+                data[saveable.GetType().ToString()] = saveData;
+            }
         }
         
         return data;
     }
 
-    public void LoadData(Dictionary<string, SaveData> dataDictionary)
+    public void LoadData(Dictionary<string, ObjectData> dataDictionary, bool loadOnlyCore = false)
     {
         foreach (ISaveable saveable in GetComponents<ISaveable>())
         {
             string typeName = saveable.GetType().ToString();
 
-            if (dataDictionary.TryGetValue(typeName, out SaveData value))
+            if (dataDictionary.TryGetValue(typeName, out ObjectData value))
             {
-                saveable.LoadMyData(value);
+                if ((!loadOnlyCore && !value.IsCoreData) || (loadOnlyCore && value.IsCoreData))
+                {
+                    saveable.LoadMyData(value);
+                }
+            }
+
+        }
+    }
+
+    public void WipeProfileData()
+    {
+        foreach (ISaveable saveable in GetComponents<ISaveable>())
+        {
+            ObjectData saveData = saveable.SaveMyData();
+
+            bool isCoreData = saveData.IsCoreData;
+
+            if (!isCoreData)
+            {
+                Debug.Log("Wiping non-core saveable: " + saveable.GetType().ToString());
+                saveable.WipeMyData();
             }
         }
+
     }
 }

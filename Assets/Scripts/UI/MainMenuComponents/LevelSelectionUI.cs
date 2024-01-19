@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LevelSelectionControllerUI : MonoBehaviour
+public class LevelSelectionUI : MonoBehaviour
 {
     public GameObject levelButtons;
     public MainMenuUI mainMenu;
@@ -20,7 +20,7 @@ public class LevelSelectionControllerUI : MonoBehaviour
 
     public void LoadGameLevel(GameLevel gameLevel)
     {
-        GameManager.Instance.LoadGameLevel(gameLevel);
+        GameManager.Instance.LoadGameLevel((SceneName)gameLevel);
     }
 
     public void SetUpButtonLogic()

@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-public class FloatingTextController : MonoBehaviour
+public class FloatingTextSpawnerUI : MonoBehaviour
 {
     public GameObject floatingTextPrefab;
     

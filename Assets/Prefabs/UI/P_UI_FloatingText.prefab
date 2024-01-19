@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3697483828346039016}
   - component: {fileID: 108435074871971781}
   m_Layer: 0
-  m_Name: P_FloatingText
+  m_Name: P_UI_FloatingText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

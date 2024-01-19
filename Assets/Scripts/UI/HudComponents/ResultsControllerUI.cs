@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ResultsController : MonoBehaviour
+public class ResultsControllerUI : MonoBehaviour
 {
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI timeText;
@@ -35,7 +35,7 @@ public class ResultsController : MonoBehaviour
         foreach (Item item in player.ItemController.EquippedItems)
         {
             myRow = Instantiate(itemRow);
-            RowComponents rowComponents = myRow.GetComponent<RowComponents>();
+            RowComponentsUI rowComponents = myRow.GetComponent<RowComponentsUI>();
 
             rowComponents.itemImage.sprite = item.baseItemParameters.icon;
             rowComponents.rankText.text = (item.currentRank + 1).ToString();
@@ -70,7 +70,6 @@ public class ResultsController : MonoBehaviour
             {
                 rowComponents.damageDoneText.text = TextUtilities.FormatBigNumber(damageDone);
 
-                //float activeTimeInMins = (Time.time - item.GetTimeEquipped()) / 60;
                 string formattedDPS = TextUtilities.FormatBigNumber((float)damageDone / (Time.time - item.TimeOfEquipping));
                 rowComponents.dpsText.text = $"{formattedDPS} / sec";
             }

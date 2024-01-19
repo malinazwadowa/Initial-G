@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-public class FloatingText : MonoBehaviour
+public class FloatingTextUI : MonoBehaviour
 {
     [SerializeField] private float fadeOutSpeed;
     [SerializeField] private float moveSpeed;

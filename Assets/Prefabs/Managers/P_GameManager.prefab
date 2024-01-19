@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6615044501888973533}
   - component: {fileID: 364170888446489329}
   - component: {fileID: 698476129}
+  - component: {fileID: 2430286471902626872}
   m_Layer: 0
   m_Name: P_GameManager
   m_TagString: Untagged
@@ -49,7 +50,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameStatsController: {fileID: 0}
-  itemsUnlockController: {fileID: 0}
+  itemDataController: {fileID: 0}
+  profileController: {fileID: 0}
 --- !u!114 &9082055458375173534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,21 +101,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9bbb044841647344a8daa5d6b769531, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemUnlockParameters: {fileID: 11400000, guid: b58c0fda58fe5ef4b9c2b0335e83ffef,
-    type: 2}
   allItemsList: {fileID: 11400000, guid: 9fe07be64d9ebe6458523a06ab0704f2, type: 2}
   allItemPrefabs:
-  - {fileID: 8923503329484286133, guid: 039119011dc11b7499859cf33785b51d, type: 3}
   - {fileID: 3959019659549421026, guid: 6733869323336ff48b8e145332e36618, type: 3}
   - {fileID: 3887739600524060785, guid: 2bab34fbbb0295742b2aa20ec8323523, type: 3}
-  - {fileID: 428154919615283862, guid: ac19876c3e98920439f8e8b5da76f535, type: 3}
+  - {fileID: 8923503329484286133, guid: 039119011dc11b7499859cf33785b51d, type: 3}
+  - {fileID: 5663137655609539491, guid: c7dc1b14b96755048a5016152a16cd37, type: 3}
   - {fileID: 5575680701261846008, guid: b4b07aae3978883469266c496f7eeb76, type: 3}
   - {fileID: 6750827329578912333, guid: cf99fa99d61467b48ba5f17ab48b8a01, type: 3}
+  - {fileID: 428154919615283862, guid: ac19876c3e98920439f8e8b5da76f535, type: 3}
   - {fileID: 2938279282902152669, guid: 7be70af4ff5e6ee44a3380ea5ee058a0, type: 3}
-  - {fileID: 5663137655609539491, guid: c7dc1b14b96755048a5016152a16cd37, type: 3}
-  - {fileID: 8280863537462495397, guid: 7bdb81391d5ea094b97a7ba9bbc2f580, type: 3}
-  - {fileID: 8119043119895366922, guid: 162b4f2b000466540951713907622190, type: 3}
-  allItems: []
+  allItems:
+  - {fileID: 3782181235588230811, guid: 6733869323336ff48b8e145332e36618, type: 3}
+  - {fileID: 575180781969044593, guid: 2bab34fbbb0295742b2aa20ec8323523, type: 3}
+  - {fileID: 8923503329484286134, guid: 039119011dc11b7499859cf33785b51d, type: 3}
+  - {fileID: 8070114800796701528, guid: c7dc1b14b96755048a5016152a16cd37, type: 3}
+  - {fileID: 5575680701261846009, guid: b4b07aae3978883469266c496f7eeb76, type: 3}
+  - {fileID: 4979760414099561978, guid: cf99fa99d61467b48ba5f17ab48b8a01, type: 3}
+  - {fileID: 6892816886702229729, guid: ac19876c3e98920439f8e8b5da76f535, type: 3}
+  - {fileID: 630630366061450594, guid: 7be70af4ff5e6ee44a3380ea5ee058a0, type: 3}
+  unlockedItems: []
   unlockedAccessories: []
   unlockedWeapons: []
-  unlockedItems: []
+  accessoryTypes:
+  - Clock
+  - Boot
+  - Amulet
+  - Hook
+  weaponTypes:
+  - Rock
+  - Hedgehog
+  - Spear
+  - SpearClone1
+--- !u!114 &2430286471902626872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 44099415912366625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9edd4bec93ee5c24b88e93791f054687, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profileNames: []

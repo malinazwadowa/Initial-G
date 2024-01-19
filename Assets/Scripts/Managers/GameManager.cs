@@ -7,34 +7,12 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 {
     public event Action OnGamePaused;
 
-    [HideInInspector] public GameLevel CurrentGameLevel { get; private set; }
+    [HideInInspector] public SceneName CurrentGameLevel { get; private set; }
+    [HideInInspector] public int CurrentSaveProfileId { get; private set; }
     [HideInInspector] public LevelUnlockController LevelUnlockController { get; private set; }
     [HideInInspector] public GameStatsController gameStatsController;
     [HideInInspector] public ItemDataController itemDataController;
-
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            //Test2();
-            SaveSystem.Load();
-        }
-
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            //Test3();
-            SaveSystem.Save();
-        }
-
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            Dictionary<GameLevel, bool> levelUnlockStatus = LevelUnlockController.GetCurrentLevelUnlockStatus();
-            Debug.Log(levelUnlockStatus.Count);
-            Debug.Log(levelUnlockStatus[GameLevel.Cementary]);
-               Debug.Log(gameStatsController.OverallStats.enemyKilledCounts.TryGetValue(EnemyType.Sunflower, out int currentCount) + " " + currentCount);
-        }
-    }
+    [HideInInspector] public ProfileController profileController;
 
     protected override void Awake()
     {
@@ -44,15 +22,20 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         LevelUnlockController = GetComponent<LevelUnlockController>();
         gameStatsController = GetComponent<GameStatsController>();
         itemDataController = GetComponent<ItemDataController>();
+        profileController = GetComponent<ProfileController>();
         SaveSystem.Initialize();
         
+    }
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.B)) { SaveSystem.Save(); }
     }
 
     private void Start()
     {
-        SaveSystem.Load();
         gameStatsController.Initalize();
         itemDataController.Initalize();
+        SaveSystem.Load();
     }
 
     public void PauseGame()
@@ -71,17 +54,16 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         TimeManager.ResumeTime();
     }
 
-    private void OnSceneLoad()
+    private void OnSceneChange()
     {
-        //
+        gameStatsController.StoreSessionStats();
+        itemDataController.CheckForNewUnlocks();
     }
 
-    public void LoadGameLevel(GameLevel gameLevel)
+    public void LoadGameLevel(SceneName sceneName)
     {
-        CurrentGameLevel = gameLevel;
-        SceneName sceneName = (SceneName)gameLevel;
+        OnSceneChange();
+        CurrentGameLevel = sceneName;
         SceneLoadingManager.Instance.Load(sceneName);
-
-        
     }
 }

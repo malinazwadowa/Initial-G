@@ -25,10 +25,11 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>, ISaveable
     private float cooldown = 0.05f;
     private Dictionary<AudioClipID, float> CooldownsDictionary = new Dictionary<AudioClipID, float>();
 
-    public SaveData SaveMyData()
+    public ObjectData SaveMyData()
     {
         AudioSaveData saveData = new AudioSaveData
         {
+            IsCoreData = true,
             masterVolume = GetCurrentVolume(MixerGroup.Master),
             soundsVolume = GetCurrentVolume(MixerGroup.Sounds),
             musicVolume = GetCurrentVolume(MixerGroup.Music),
@@ -37,7 +38,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>, ISaveable
         return saveData;
     }
 
-    public void LoadMyData(SaveData loadedData)
+    public void LoadMyData(ObjectData loadedData)
     {
         if (loadedData is AudioSaveData audioSaveData)
         {
@@ -45,8 +46,13 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>, ISaveable
         }
     }
 
+    public void WipeMyData()
+    {
+           
+    }
+
     [Serializable]
-    public class AudioSaveData : SaveData
+    public class AudioSaveData : ObjectData
     {
         public float masterVolume;
         public float soundsVolume;

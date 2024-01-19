@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EquipmentControllerUI : SingletonMonoBehaviour<EquipmentControllerUI>
+public class EquipmentUI : SingletonMonoBehaviour<EquipmentUI>
 {
     [SerializeField] private Transform weaponRow;
     [SerializeField] private Transform accessoryRow;

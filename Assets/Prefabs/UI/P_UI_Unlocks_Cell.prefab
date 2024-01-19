@@ -830,7 +830,7 @@ GameObject:
   - component: {fileID: 7093269232685386094}
   - component: {fileID: 4300606902202606812}
   m_Layer: 5
-  m_Name: P_Cell_UI
+  m_Name: P_UI_Unlocks_Cell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -890,6 +890,8 @@ MonoBehaviour:
   titleText: {fileID: 8802244949378567905}
   panelText: {fileID: 8079589992913620237}
   sliderProgressText: {fileID: 884577449509673598}
+  isMyItemUnlocked: 0
+  myItemType: 
 --- !u!1 &8612395247766669697
 GameObject:
   m_ObjectHideFlags: 0

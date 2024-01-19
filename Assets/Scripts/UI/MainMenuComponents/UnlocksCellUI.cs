@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CellController : MonoBehaviour
+public class UnlocksCellUI : MonoBehaviour
 {
     [SerializeField] private Image itemIcon;
     [SerializeField] private Sprite lockedImage;
@@ -43,13 +43,12 @@ public class CellController : MonoBehaviour
         panelText.text = item.baseItemParameters.description;
         
         slider.SetActive(false);
-        panelHighlight.gameObject.SetActive(false);
-        
+        panelHighlight.enabled = false;
+
 
         switch (conditionType)
         {
             case ConditionType.UnlockedByDefault:
-                // Code for UnlockedByDefault condition
                 break;
 
             case ConditionType.UnlockedWithEnemyKilled:
@@ -131,6 +130,7 @@ public class CellController : MonoBehaviour
 
     public void HighlightAsNew()
     {
-        panelHighlight.gameObject.SetActive(true);
+        //panelHighlight.gameObject.SetActive(true);
+        panelHighlight.enabled = true;
     }
 }

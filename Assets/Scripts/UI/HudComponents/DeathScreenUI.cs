@@ -4,7 +4,7 @@ public class DeathScreenUI : MonoBehaviour
 {
     public MenuUI myMenu;
     private PlayerInputController inputController;
-    public ResultsController resultsController;
+    public ResultsControllerUI resultsController;
 
     private void OnEnable()
     {
@@ -26,12 +26,12 @@ public class DeathScreenUI : MonoBehaviour
     public void RestartLevel()
     {
         TimeManager.ResetTimeScale();
-        SceneLoadingManager.Instance.ReLoadScene();
+        GameManager.Instance.LoadGameLevel(GameManager.Instance.CurrentGameLevel);
     }
 
     public void ExitToMainMenu()
     {
-        SceneLoadingManager.Instance.Load(SceneName.MainMenu);
+        GameManager.Instance.LoadGameLevel(SceneName.MainMenu);
         TimeManager.ResumeTime();
     }
 

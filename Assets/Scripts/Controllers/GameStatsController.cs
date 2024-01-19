@@ -26,12 +26,12 @@ public class GameStatsController : MonoBehaviour, ISaveable
             itemsFullyRankedUp = new List<string>();
             collectibleCounts = new Dictionary<CollectibleType, int>();
             weaponDamageDone = new Dictionary<string, float>();
-
             seenItems = new List<string>();
         }
     }
+    
 
-    public SaveData SaveMyData()
+    public ObjectData SaveMyData()
     {
         StoreSessionStats();
 
@@ -43,7 +43,7 @@ public class GameStatsController : MonoBehaviour, ISaveable
         return gameStatsSaveData;
     }
 
-    public void LoadMyData(SaveData savedData)
+    public void LoadMyData(ObjectData savedData)
     {
         if (savedData is GameStatsSaveData gameStatsSaveData)
         {
@@ -51,8 +51,15 @@ public class GameStatsController : MonoBehaviour, ISaveable
         }
     }
 
+    public void WipeMyData()
+    {
+        OverallStats = new GameStats();
+        SessionStats = new GameStats();
+        Debug.Log("wiping my data, gamestatessssssssssssssssssssssssssssssssssssssssssssss");
+    }
+
     [Serializable]
-    public class GameStatsSaveData : SaveData
+    public class GameStatsSaveData : ObjectData
     {
         public GameStats gameStats;
     }
@@ -68,7 +75,7 @@ public class GameStatsController : MonoBehaviour, ISaveable
         
     }
 
-    private void StoreSessionStats()
+    public void StoreSessionStats()
     {
         foreach(EnemyType enemyType in SessionStats.enemyKilledCounts.Keys)
         {
@@ -95,6 +102,8 @@ public class GameStatsController : MonoBehaviour, ISaveable
             OverallStats.collectibleCounts.TryGetValue(collectibleType, out int currentCount);
             OverallStats.collectibleCounts[collectibleType] = currentCount + SessionStats.collectibleCounts[collectibleType];
         }
+
+        SessionStats = new GameStats();
     }
 
     public void RegisterFullyRankedUpItem(string type)
