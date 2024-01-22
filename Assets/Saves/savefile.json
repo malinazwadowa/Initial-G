@@ -296,15 +296,16 @@
             "$type": "GameStatsController+GameStats, Assembly-CSharp",
             "enemyKilledCounts": {
               "$type": "System.Collections.Generic.Dictionary`2[[EnemyType, Assembly-CSharp],[System.Int32, mscorlib]], mscorlib",
-              "Sunflower": 4309,
-              "TargetDummy": 16
+              "Sunflower": 5242,
+              "TargetDummy": 693,
+              "AlphaDummy": 51
             },
             "weaponKillCounts": {
               "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Int32, mscorlib]], mscorlib",
-              "Spear": 545,
-              "Rock": 3293,
-              "P_TempSpear1(Clone)": 356,
-              "Hedgehog": 131
+              "Spear": 909,
+              "Rock": 4181,
+              "P_TempSpear1(Clone)": 729,
+              "Hedgehog": 167
             },
             "itemsFullyRankedUp": {
               "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
@@ -321,8 +322,8 @@
             },
             "collectibleCounts": {
               "$type": "System.Collections.Generic.Dictionary`2[[CollectibleType, Assembly-CSharp],[System.Int32, mscorlib]], mscorlib",
-              "Experience": 719,
-              "Healing": 5
+              "Experience": 1898,
+              "Healing": 41
             },
             "weaponDamageDone": {
               "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Single, mscorlib]], mscorlib"
