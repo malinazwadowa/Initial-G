@@ -18,9 +18,10 @@ MonoBehaviour:
     weaponType: Rock
     accessoryType: Clock
     enemyType: 0
+    collectibleType: 0
     amount: 0
   icon: {fileID: -2108517000, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
-  description: Throws projectiles in the movement's direction
+  description: Throws projectiles in the movement's direction.
   amountOfRanks: 4
   spawnDelayForAdditionalProjectiles: 0.14
   projectileSpacing: 0.7

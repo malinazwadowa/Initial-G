@@ -1,23 +1,27 @@
 /*
- * 
- *4
- - it is now but SceneNAme and GameLevel enums are troublesome
+ *1.SceneNAme and GameLevel enums are troublesome
 -- gamelelve unlock manager needs refactor
  *
- *5
- *- prefabize controllers and other scene components
  *
- *6
- *- enemy/weapon collision handling
+ *2. prefabize controllers and other scene components
+ *
+ *
+ *3. enemy/weapon collision handling
 - multiple hits from one projectile 
  *
- *8
- *- add scrolling to level unlock list & items unlock list
  *
- *9.
- *- difficulty settings for wave manager, maybe broader
+ *4. add scrolling to level unlock list & items unlock list
  *
- * 
+ *
+ *5. difficulty settings for wave manager, maybe broader
+ *
+ *
+ *6. Offered item upgrades should have some priorties
+ *
+ *
+ *7. Add base Projectile clas - despawning logic 
+ *
+ *
  *------------
  *Item ideas:
  * - healing something for healing collectibles

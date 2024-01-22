@@ -18,8 +18,8 @@ public class ProfilesMenuControllerUI : MonoBehaviour
 
     public void SetUp()
     {
-        mainSection.gameObject.SetActive(true);
         Utilities.RemoveChildren(listTransform);
+
         foreach (string profilename in GameManager.Instance.profileController.profileNameToID.Keys)
         {
             GameObject newRow = Instantiate(rowPrefab);
@@ -57,7 +57,6 @@ public class ProfilesMenuControllerUI : MonoBehaviour
     public void LoadSelected()
     {
         GameManager.Instance.profileController.SwitchProfile(currentlySelectedRow.ProfileName);
-        myMenu.Close();
     }
 
     public void DeleteSelected()
@@ -68,13 +67,11 @@ public class ProfilesMenuControllerUI : MonoBehaviour
 
     public void CreateNewProfile()
     {
-        mainSection.gameObject.SetActive(false);
-        newProfilePrompt.gameObject.GetComponent<NewNameInputPromptUI>().OpenForNew(myMenu);
+        newProfilePrompt.gameObject.GetComponent<NewProfileNameInputPromptUI>().OpenForNew(myMenu);
     }
 
     public void RenameCurrentlySelected()
     {
-        mainSection.gameObject.SetActive(false);
-        newProfilePrompt.gameObject.GetComponent<NewNameInputPromptUI>().OpenForRename(myMenu, currentlySelectedRow.ProfileName);
+        newProfilePrompt.gameObject.GetComponent<NewProfileNameInputPromptUI>().OpenForRename(myMenu, currentlySelectedRow.ProfileName);
     }
 }

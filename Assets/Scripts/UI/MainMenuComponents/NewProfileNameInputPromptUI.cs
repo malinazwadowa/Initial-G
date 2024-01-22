@@ -2,14 +2,16 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class NewNameInputPromptUI : MonoBehaviour
+public class NewProfileNameInputPromptUI : MonoBehaviour
 {
     public TMP_InputField inputField;
     public TextMeshProUGUI errorText;
 
     public Button cancelButton;
     public Button acceptButton;
+
     private MenuUI ourMenu;
+
 
     public void Open(MenuUI ourMenu)
     {
@@ -23,18 +25,17 @@ public class NewNameInputPromptUI : MonoBehaviour
     {
         Open(ourMenu);
         acceptButton.onClick.RemoveAllListeners();
-        acceptButton.onClick.AddListener(OnAcceptNew);
+        acceptButton.onClick.AddListener(CreateNew);
     }
 
     public void OpenForRename(MenuUI ourMenu, string nameToChange)
     {
         Open(ourMenu);
-        acceptButton.onClick.AddListener(() => OnAcceptRename(nameToChange));
+        acceptButton.onClick.AddListener(() => Rename(nameToChange));
     }
 
-    public void OnAcceptRename(string nameToChange)
+    public void Rename(string nameToChange)
     {
-        Debug.Log("on accept rename ? ");
         string userInput = inputField.text;
         (bool isValid, string message) = CheckValidity(userInput);
 
@@ -50,7 +51,7 @@ public class NewNameInputPromptUI : MonoBehaviour
         }
     }
 
-    public void OnAcceptNew()
+    public void CreateNew()
     {
         string userInput = inputField.text;
         (bool isValid, string message) = CheckValidity(userInput);
@@ -68,7 +69,7 @@ public class NewNameInputPromptUI : MonoBehaviour
         }
     }
 
-    private void Close()
+    public void Close()
     {
         gameObject.SetActive (false);
         ourMenu.Open();
