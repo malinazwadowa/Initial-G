@@ -58,11 +58,12 @@ public static class Utilities
         int indexOfClosestEnemy = Utilities.GetIndexOfMin(distancesToEnemies);
         return enemiesFound[indexOfClosestEnemy].transform;
     }
+
     public static Vector3 GetRandomPositionOutsideOfCameraView(float distanceOffset)
     {
         float cameraHeight = Camera.main.orthographicSize;
         float cameraWidth = Camera.main.orthographicSize * Camera.main.aspect;
-        float spawnOffset = distanceOffset;
+        float randomizedOffset = Random.Range(0.5f, distanceOffset);
 
         Vector3 cameraWorldPosition = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, 0);
         Vector3 localSpawnPosition = Vector3.zero;
@@ -75,16 +76,16 @@ public static class Utilities
         switch (randomInt)
         {
             case 1:
-                localSpawnPosition = new Vector3(cameraWidth + spawnOffset, 0);
+                localSpawnPosition = new Vector3(cameraWidth + randomizedOffset, 0);
                 break;
             case 2:
-                localSpawnPosition = new Vector3(-cameraWidth - spawnOffset, 0);
+                localSpawnPosition = new Vector3(-cameraWidth - randomizedOffset, 0);
                 break;
             case 3:
-                localSpawnPosition = new Vector3(0, cameraHeight + spawnOffset);
+                localSpawnPosition = new Vector3(0, cameraHeight + randomizedOffset);
                 break;
             case 4:
-                localSpawnPosition = new Vector3(0, -cameraHeight - spawnOffset);
+                localSpawnPosition = new Vector3(0, -cameraHeight - randomizedOffset);
                 break;
             default:
                 Debug.Log("Failed to choose side to spawn");
@@ -94,11 +95,11 @@ public static class Utilities
         //Sets random position on chosen side.
         if (localSpawnPosition.x == 0)
         {
-            localSpawnPosition.x = Random.Range((-cameraWidth - spawnOffset), (cameraWidth + spawnOffset));
+            localSpawnPosition.x = Random.Range((-cameraWidth - randomizedOffset), (cameraWidth + randomizedOffset));
         }
         else
         {
-            localSpawnPosition.y = Random.Range((-cameraHeight - spawnOffset), (cameraHeight + spawnOffset));
+            localSpawnPosition.y = Random.Range((-cameraHeight - randomizedOffset), (cameraHeight + randomizedOffset));
         }
 
         foundPosition = localSpawnPosition + cameraWorldPosition;

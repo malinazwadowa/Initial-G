@@ -26,7 +26,7 @@ public class Enemy : MonoBehaviour, IDamagable
 
     public virtual void Update()
     {
-        if (!Utilities.IsObjectInView(1.2f, transform.position))
+        if (!Utilities.IsObjectInView(3f, transform.position))
         {
             ObjectPooler.Instance.DespawnObject(gameObject);
         }

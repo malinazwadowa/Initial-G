@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da905ded085f9e0469aac16c87272a2e, type: 3}
   m_Name: newEnemyManagerData
   m_EditorClassIdentifier: 
-  spawnDistanceOffset: 1
+  spawnDistanceOffset: 2.5
   levelDurationInMinutes: 5
   enemyWaves:
   - name: Wave 1
