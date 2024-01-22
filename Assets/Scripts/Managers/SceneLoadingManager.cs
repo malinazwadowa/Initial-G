@@ -48,9 +48,4 @@ public class SceneLoadingManager : SingletonMonoBehaviour<SceneLoadingManager>
         loadingCanvas.Close();
         isLoading = false;
     }
-
-    public void ReLoadScene()
-    {
-        Load(currentSceneName);
-    }
 }

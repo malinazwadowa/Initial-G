@@ -26,12 +26,12 @@ public class DeathScreenUI : MonoBehaviour
     public void RestartLevel()
     {
         TimeManager.ResetTimeScale();
-        GameManager.Instance.LoadGameLevel(GameManager.Instance.CurrentGameLevel);
+        GameManager.Instance.ChangeScene(GameManager.Instance.CurrentScene);
     }
 
     public void ExitToMainMenu()
     {
-        GameManager.Instance.LoadGameLevel(SceneName.MainMenu);
+        GameManager.Instance.ChangeScene(SceneName.MainMenu);
         TimeManager.ResumeTime();
     }
 

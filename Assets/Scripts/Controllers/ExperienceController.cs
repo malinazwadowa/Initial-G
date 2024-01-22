@@ -32,7 +32,7 @@ public class ExperienceController : MonoBehaviour
     {
         currentExp = 0;
         CurrentLevel++;
-        maxExpForCurrentLevel *= 1.5f;
+        maxExpForCurrentLevel = (float)(maxExpForCurrentLevel * 1.05) + 75;
         UpdateExpBar();
         AudioSource levelUpSound = AudioManager.Instance.PlaySound(AudioClipID.LevelUp);
         EventManager.OnPlayerLevelUp?.Invoke(levelUpSound);//Will require ID of sort as argument later for multiple players.

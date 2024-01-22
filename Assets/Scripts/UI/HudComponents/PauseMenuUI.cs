@@ -39,12 +39,14 @@ public class PauseMenuUI : MonoBehaviour
     public void ExitToMainMenu()
     {
         TimeManager.ResumeTime();
-        SceneLoadingManager.Instance.Load(SceneName.MainMenu);
+        //SceneLoadingManager.Instance.Load(SceneName.MainMenu);
+        GameManager.Instance.ChangeScene(SceneName.MainMenu);
     }
 
     public void RestartLevel()
     {
-        SceneLoadingManager.Instance.ReLoadScene();
+        //SceneLoadingManager.Instance.ReLoadScene();
+        GameManager.Instance.ReloadCurrentScene();
         TimeManager.ResumeTime();
     }
 }

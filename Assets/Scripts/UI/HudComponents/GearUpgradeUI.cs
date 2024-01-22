@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -57,6 +58,13 @@ public class GearUpgradeUI : MonoBehaviour
         Close();
     }
 
+    private void OnClickHealPlayer(Player player)
+    {
+        player.GetComponent<HealthController>().AddCurrentHealth(25);
+        AudioManager.Instance.PlaySound(AudioClipID.HealthPickup);
+        Close();
+    }
+
     private void UpdateEquipmentState()
     {
         upgradableItems = player.ItemController.GetUpgradableItems();
@@ -91,7 +99,9 @@ public class GearUpgradeUI : MonoBehaviour
     {
         UpdateEquipmentState();
 
-        foreach(GameObject panel in panels)
+        List<GameObject> shuffledPanels = panels.OrderBy(panel => UnityEngine.Random.value).ToList();
+
+        foreach (GameObject panel in shuffledPanels)
         {
             UpgradeCase upgradeCase = GetUpgradeCase();
             SetUpOptions(upgradeCase, panel);
@@ -161,7 +171,7 @@ public class GearUpgradeUI : MonoBehaviour
         Button button = panel.GetComponentInChildren<Button>();
 
         button.onClick.RemoveAllListeners();
-        button.onClick.AddListener(() => Close());
+        button.onClick.AddListener(() => OnClickHealPlayer(player));
 
         TextMeshProUGUI text = panel.transform.Find("PanelText").GetComponent<TextMeshProUGUI>();
 

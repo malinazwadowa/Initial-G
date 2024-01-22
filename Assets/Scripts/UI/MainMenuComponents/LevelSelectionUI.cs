@@ -20,7 +20,7 @@ public class LevelSelectionUI : MonoBehaviour
 
     public void LoadGameLevel(GameLevel gameLevel)
     {
-        GameManager.Instance.LoadGameLevel((SceneName)gameLevel);
+        GameManager.Instance.ChangeScene((SceneName)gameLevel);
     }
 
     public void SetUpButtonLogic()

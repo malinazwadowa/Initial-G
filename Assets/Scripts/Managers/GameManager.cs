@@ -7,7 +7,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 {
     public event Action OnGamePaused;
 
-    [HideInInspector] public SceneName CurrentGameLevel { get; private set; }
+    [HideInInspector] public SceneName CurrentScene { get; private set; }
     [HideInInspector] public int CurrentSaveProfileId { get; private set; }
     [HideInInspector] public LevelUnlockController LevelUnlockController { get; private set; }
     [HideInInspector] public GameStatsController gameStatsController;
@@ -58,12 +58,18 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     {
         gameStatsController.StoreSessionStats();
         itemDataController.CheckForNewUnlocks();
+        SaveSystem.Save();
     }
 
-    public void LoadGameLevel(SceneName sceneName)
+    public void ChangeScene(SceneName sceneName)
     {
         OnSceneChange();
-        CurrentGameLevel = sceneName;
+        CurrentScene = sceneName;
         SceneLoadingManager.Instance.Load(sceneName);
+    }
+
+    public void ReloadCurrentScene()
+    {
+        ChangeScene(CurrentScene);
     }
 }

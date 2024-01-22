@@ -1,11 +1,16 @@
 /*1
+ * 2
+ * 
+ * - save system:
+ - profiles xdxdxdxd
+ *7
+ *- EXP formula
+ *
+ *
+ *
  * - Weapon upgrade popup:
  - needs randomized panel order
 
- * 2
- * 
- * - Save system:
- - profiles Xd
  * 
  * 3
  * - Enemy type should be updated: or should it?
@@ -20,9 +25,6 @@
  *6
  *- enemy/weapon collision handling
 - multiple hits from one projectile 
- *
- *7
- *- EXP formula
  *
  *8
  *- add scrolling to level unlock list & items unlock list
