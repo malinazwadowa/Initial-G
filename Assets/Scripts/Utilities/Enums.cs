@@ -91,6 +91,5 @@ public enum SceneName
 {
     Cementary,
     Forest,
-    Loading,
     MainMenu
 }

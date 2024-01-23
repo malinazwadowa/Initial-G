@@ -34,6 +34,7 @@ public class ProfilesMenuControllerUI : MonoBehaviour
                 rowScript.toggle.isOn = true;
                 rowScript.SwitchLoadedHighlight();
                 currentlySelectedRow = rowScript;
+                newRow.transform.SetAsFirstSibling();
             }
         }
     }

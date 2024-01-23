@@ -15,12 +15,13 @@ public class LevelSelectionUI : MonoBehaviour
     
     public void SetUpButtonLogic()
     {
+        Utilities.RemoveChildren(levelButtonList);
         Dictionary<SceneName, bool> levelUnlockStatus = GameManager.Instance.LevelUnlockController.GetCurrentLevelUnlockStatus();
 
         foreach (SceneName level in levelUnlockStatus.Keys)
         {
             GameObject buttonObject = Instantiate(buttonPrefab);
-            buttonObject.transform.SetParent(levelButtonList, true);
+            buttonObject.transform.SetParent(levelButtonList, false);
 
             Button button = buttonObject.GetComponent<Button>();
             button.interactable = levelUnlockStatus[level];

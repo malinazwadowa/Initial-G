@@ -8,7 +8,6 @@ public class LevelUnlockController : MonoBehaviour, ISaveable
 
     private Dictionary<SceneName, bool> currentLevelUnlockStatus = new Dictionary<SceneName, bool>();
 
-
     public ObjectData SaveMyData()
     {
         ObjectData saveData = new LevelUnlockData

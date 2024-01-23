@@ -6,14 +6,20 @@
       "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ObjectData, Assembly-CSharp]], mscorlib",
       "ProfileController": {
         "$type": "ProfileController+ProfilesData, Assembly-CSharp",
-        "currentProfileName": "default",
+        "currentProfileName": "gtrgd",
         "profileNames": {
           "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
           "$values": []
         },
         "profileNameToID": {
           "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.String, mscorlib]], mscorlib",
-          "default": "2f228e59-8c1a-4db1-9dc7-616222b39775"
+          "default": "a4546a46-d793-4287-99cb-e22611dbb8ed",
+          "dasdas": "82232fb9-e421-4270-b658-63582fbecf74",
+          "qweas": "4871ae77-e6f2-4fb5-9432-9d58cf69769c",
+          "asdgrwe": "76e381c2-0dc9-4722-95bd-c8094c6c312c",
+          "asfgwe": "d991d609-1170-4976-9340-8510bef42aa0",
+          "qwdsdas": "6d9008ac-96d2-4780-8e22-912f95a28a4c",
+          "gtrgd": "e7d3d8a4-b929-4e17-9208-3779d13ced41"
         },
         "IsCoreData": true
       }
@@ -23,7 +29,7 @@
       "AudioManager": {
         "$type": "AudioManager+AudioSaveData, Assembly-CSharp",
         "masterVolume": 0.981141031,
-        "soundsVolume": 0.06163352,
+        "soundsVolume": 0.224107236,
         "musicVolume": 0.0001,
         "IsCoreData": true
       }
@@ -31,7 +37,7 @@
   },
   "profilesData": {
     "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ObjectData, Assembly-CSharp]], mscorlib]], mscorlib]], mscorlib",
-    "2f228e59-8c1a-4db1-9dc7-616222b39775": {
+    "a4546a46-d793-4287-99cb-e22611dbb8ed": {
       "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ObjectData, Assembly-CSharp]], mscorlib]], mscorlib",
       "ba5d5c22-bb5d-4180-850d-0254b5556987": {
         "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ObjectData, Assembly-CSharp]], mscorlib",
@@ -40,8 +46,7 @@
           "levelUnlockStatus": {
             "$type": "System.Collections.Generic.Dictionary`2[[SceneName, Assembly-CSharp],[System.Boolean, mscorlib]], mscorlib",
             "Cementary": true,
-            "Forest": false,
-            "Loading": false
+            "Forest": false
           },
           "IsCoreData": false
         },
@@ -51,25 +56,260 @@
             "$type": "GameStatsController+GameStats, Assembly-CSharp",
             "enemyKilledCounts": {
               "$type": "System.Collections.Generic.Dictionary`2[[EnemyType, Assembly-CSharp],[System.Int32, mscorlib]], mscorlib",
-              "Sunflower": 67
+              "Sunflower": 44
             },
             "weaponKillCounts": {
               "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Int32, mscorlib]], mscorlib",
-              "Spear": 54,
-              "P_TempSpear1(Clone)": 6,
-              "Rock": 7
+              "Spear": 11,
+              "Rock": 30,
+              "P_TempSpear1(Clone)": 3
             },
             "itemsFullyRankedUp": {
               "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
               "$values": [
-                "Spear",
                 "Amulet",
-                "Boot"
+                "Rock"
               ]
             },
             "collectibleCounts": {
               "$type": "System.Collections.Generic.Dictionary`2[[CollectibleType, Assembly-CSharp],[System.Int32, mscorlib]], mscorlib",
-              "Experience": 11
+              "Experience": 8
+            },
+            "weaponDamageDone": {
+              "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Single, mscorlib]], mscorlib"
+            },
+            "seenItems": {
+              "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+              "$values": [
+                "Rock",
+                "Hedgehog",
+                "Spear",
+                "SpearClone1",
+                "Boot",
+                "Amulet",
+                "Hook"
+              ]
+            }
+          },
+          "IsCoreData": false
+        }
+      },
+      "242bb297-fee0-4493-ab08-56cd3f536ef9": {
+        "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ObjectData, Assembly-CSharp]], mscorlib"
+      }
+    },
+    "82232fb9-e421-4270-b658-63582fbecf74": {
+      "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ObjectData, Assembly-CSharp]], mscorlib]], mscorlib",
+      "ba5d5c22-bb5d-4180-850d-0254b5556987": {
+        "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ObjectData, Assembly-CSharp]], mscorlib",
+        "LevelUnlockController": {
+          "$type": "LevelUnlockController+LevelUnlockData, Assembly-CSharp",
+          "levelUnlockStatus": {
+            "$type": "System.Collections.Generic.Dictionary`2[[SceneName, Assembly-CSharp],[System.Boolean, mscorlib]], mscorlib",
+            "Cementary": true,
+            "Forest": false
+          },
+          "IsCoreData": false
+        },
+        "GameStatsController": {
+          "$type": "GameStatsController+GameStatsSaveData, Assembly-CSharp",
+          "gameStats": {
+            "$type": "GameStatsController+GameStats, Assembly-CSharp",
+            "enemyKilledCounts": {
+              "$type": "System.Collections.Generic.Dictionary`2[[EnemyType, Assembly-CSharp],[System.Int32, mscorlib]], mscorlib"
+            },
+            "weaponKillCounts": {
+              "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Int32, mscorlib]], mscorlib"
+            },
+            "itemsFullyRankedUp": {
+              "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "collectibleCounts": {
+              "$type": "System.Collections.Generic.Dictionary`2[[CollectibleType, Assembly-CSharp],[System.Int32, mscorlib]], mscorlib"
+            },
+            "weaponDamageDone": {
+              "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Single, mscorlib]], mscorlib"
+            },
+            "seenItems": {
+              "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+              "$values": []
+            }
+          },
+          "IsCoreData": false
+        }
+      },
+      "242bb297-fee0-4493-ab08-56cd3f536ef9": {
+        "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ObjectData, Assembly-CSharp]], mscorlib"
+      }
+    },
+    "4871ae77-e6f2-4fb5-9432-9d58cf69769c": {
+      "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ObjectData, Assembly-CSharp]], mscorlib]], mscorlib",
+      "ba5d5c22-bb5d-4180-850d-0254b5556987": {
+        "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ObjectData, Assembly-CSharp]], mscorlib",
+        "LevelUnlockController": {
+          "$type": "LevelUnlockController+LevelUnlockData, Assembly-CSharp",
+          "levelUnlockStatus": {
+            "$type": "System.Collections.Generic.Dictionary`2[[SceneName, Assembly-CSharp],[System.Boolean, mscorlib]], mscorlib",
+            "Cementary": true,
+            "Forest": false
+          },
+          "IsCoreData": false
+        },
+        "GameStatsController": {
+          "$type": "GameStatsController+GameStatsSaveData, Assembly-CSharp",
+          "gameStats": {
+            "$type": "GameStatsController+GameStats, Assembly-CSharp",
+            "enemyKilledCounts": {
+              "$type": "System.Collections.Generic.Dictionary`2[[EnemyType, Assembly-CSharp],[System.Int32, mscorlib]], mscorlib"
+            },
+            "weaponKillCounts": {
+              "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Int32, mscorlib]], mscorlib"
+            },
+            "itemsFullyRankedUp": {
+              "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "collectibleCounts": {
+              "$type": "System.Collections.Generic.Dictionary`2[[CollectibleType, Assembly-CSharp],[System.Int32, mscorlib]], mscorlib"
+            },
+            "weaponDamageDone": {
+              "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Single, mscorlib]], mscorlib"
+            },
+            "seenItems": {
+              "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+              "$values": []
+            }
+          },
+          "IsCoreData": false
+        }
+      },
+      "242bb297-fee0-4493-ab08-56cd3f536ef9": {
+        "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ObjectData, Assembly-CSharp]], mscorlib"
+      }
+    },
+    "76e381c2-0dc9-4722-95bd-c8094c6c312c": {
+      "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ObjectData, Assembly-CSharp]], mscorlib]], mscorlib",
+      "ba5d5c22-bb5d-4180-850d-0254b5556987": {
+        "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ObjectData, Assembly-CSharp]], mscorlib",
+        "LevelUnlockController": {
+          "$type": "LevelUnlockController+LevelUnlockData, Assembly-CSharp",
+          "levelUnlockStatus": {
+            "$type": "System.Collections.Generic.Dictionary`2[[SceneName, Assembly-CSharp],[System.Boolean, mscorlib]], mscorlib",
+            "Cementary": true,
+            "Forest": false
+          },
+          "IsCoreData": false
+        },
+        "GameStatsController": {
+          "$type": "GameStatsController+GameStatsSaveData, Assembly-CSharp",
+          "gameStats": {
+            "$type": "GameStatsController+GameStats, Assembly-CSharp",
+            "enemyKilledCounts": {
+              "$type": "System.Collections.Generic.Dictionary`2[[EnemyType, Assembly-CSharp],[System.Int32, mscorlib]], mscorlib",
+              "Sunflower": 12
+            },
+            "weaponKillCounts": {
+              "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Int32, mscorlib]], mscorlib",
+              "Spear": 12
+            },
+            "itemsFullyRankedUp": {
+              "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "collectibleCounts": {
+              "$type": "System.Collections.Generic.Dictionary`2[[CollectibleType, Assembly-CSharp],[System.Int32, mscorlib]], mscorlib",
+              "Experience": 2
+            },
+            "weaponDamageDone": {
+              "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Single, mscorlib]], mscorlib"
+            },
+            "seenItems": {
+              "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+              "$values": []
+            }
+          },
+          "IsCoreData": false
+        }
+      },
+      "242bb297-fee0-4493-ab08-56cd3f536ef9": {
+        "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ObjectData, Assembly-CSharp]], mscorlib"
+      }
+    },
+    "d991d609-1170-4976-9340-8510bef42aa0": {
+      "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ObjectData, Assembly-CSharp]], mscorlib]], mscorlib",
+      "ba5d5c22-bb5d-4180-850d-0254b5556987": {
+        "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ObjectData, Assembly-CSharp]], mscorlib",
+        "LevelUnlockController": {
+          "$type": "LevelUnlockController+LevelUnlockData, Assembly-CSharp",
+          "levelUnlockStatus": {
+            "$type": "System.Collections.Generic.Dictionary`2[[SceneName, Assembly-CSharp],[System.Boolean, mscorlib]], mscorlib",
+            "Cementary": true,
+            "Forest": false
+          },
+          "IsCoreData": false
+        },
+        "GameStatsController": {
+          "$type": "GameStatsController+GameStatsSaveData, Assembly-CSharp",
+          "gameStats": {
+            "$type": "GameStatsController+GameStats, Assembly-CSharp",
+            "enemyKilledCounts": {
+              "$type": "System.Collections.Generic.Dictionary`2[[EnemyType, Assembly-CSharp],[System.Int32, mscorlib]], mscorlib"
+            },
+            "weaponKillCounts": {
+              "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Int32, mscorlib]], mscorlib"
+            },
+            "itemsFullyRankedUp": {
+              "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "collectibleCounts": {
+              "$type": "System.Collections.Generic.Dictionary`2[[CollectibleType, Assembly-CSharp],[System.Int32, mscorlib]], mscorlib"
+            },
+            "weaponDamageDone": {
+              "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Single, mscorlib]], mscorlib"
+            },
+            "seenItems": {
+              "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+              "$values": []
+            }
+          },
+          "IsCoreData": false
+        }
+      },
+      "242bb297-fee0-4493-ab08-56cd3f536ef9": {
+        "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ObjectData, Assembly-CSharp]], mscorlib"
+      }
+    },
+    "6d9008ac-96d2-4780-8e22-912f95a28a4c": {
+      "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ObjectData, Assembly-CSharp]], mscorlib]], mscorlib",
+      "ba5d5c22-bb5d-4180-850d-0254b5556987": {
+        "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ObjectData, Assembly-CSharp]], mscorlib",
+        "LevelUnlockController": {
+          "$type": "LevelUnlockController+LevelUnlockData, Assembly-CSharp",
+          "levelUnlockStatus": {
+            "$type": "System.Collections.Generic.Dictionary`2[[SceneName, Assembly-CSharp],[System.Boolean, mscorlib]], mscorlib",
+            "Cementary": true,
+            "Forest": false
+          },
+          "IsCoreData": false
+        },
+        "GameStatsController": {
+          "$type": "GameStatsController+GameStatsSaveData, Assembly-CSharp",
+          "gameStats": {
+            "$type": "GameStatsController+GameStats, Assembly-CSharp",
+            "enemyKilledCounts": {
+              "$type": "System.Collections.Generic.Dictionary`2[[EnemyType, Assembly-CSharp],[System.Int32, mscorlib]], mscorlib"
+            },
+            "weaponKillCounts": {
+              "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Int32, mscorlib]], mscorlib"
+            },
+            "itemsFullyRankedUp": {
+              "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+              "$values": []
+            },
+            "collectibleCounts": {
+              "$type": "System.Collections.Generic.Dictionary`2[[CollectibleType, Assembly-CSharp],[System.Int32, mscorlib]], mscorlib"
             },
             "weaponDamageDone": {
               "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Single, mscorlib]], mscorlib"
