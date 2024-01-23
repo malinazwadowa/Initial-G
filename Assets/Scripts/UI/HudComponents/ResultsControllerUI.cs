@@ -10,13 +10,29 @@ public class ResultsControllerUI : MonoBehaviour
     public TextMeshProUGUI levelText;
     public GameObject itemRow;
     public Transform itemsTable;
-    
+    public TextMeshProUGUI bannerText;
+
+    private Color red = new Color(199 / 255f, 10 / 255f, 29 / 255f);
+    private Color green = new Color(1f / 255f, 104f / 255f, 11f / 255f);
+
     //should be replaced in case of multiple players
     private Player player;
     
     public void PresentResults()
     {
         player = PlayerManager.Instance.GetPlayer();
+
+        if (!player.IsAlive)
+        {
+            bannerText.color = red;
+            bannerText.text = "You Died...";
+        }
+        else
+        {
+            bannerText.color = green;
+            bannerText.text = "You Won!";
+        }
+
         UpdateGeneralData();
         GetWeaponResults();
     }

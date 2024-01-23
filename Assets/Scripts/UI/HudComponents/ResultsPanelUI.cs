@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DeathScreenUI : MonoBehaviour
+public class ResultsPanelUI : MonoBehaviour
 {
     public MenuUI myMenu;
     private PlayerInputController inputController;
@@ -8,19 +8,30 @@ public class DeathScreenUI : MonoBehaviour
 
     private void OnEnable()
     {
-        EventManager.OnPlayerDeath += OpenMenu;
+        EventManager.OnPlayerDeath += () => OpenMenu(false);
+        EventManager.OnLevelCompleted += () => OpenMenu(true);
     }
 
     private void OnDisable()
     {
-        EventManager.OnPlayerDeath -= OpenMenu;
+        EventManager.OnPlayerDeath -= () => OpenMenu(false);
+        EventManager.OnLevelCompleted -= () => OpenMenu(true);
     }
 
-    private void OpenMenu()
+    private void OpenMenu(bool success)
     {
         myMenu.Open();
         AudioManager.Instance.StopAllClips();
-        AudioManager.Instance.PlaySound(AudioClipID.GameOver);
+
+        if(success)
+        {
+            AudioManager.Instance.PlaySound(AudioClipID.GameWon);
+        }
+        else
+        {
+            AudioManager.Instance.PlaySound(AudioClipID.GameOver);
+        }
+        //AudioManager.Instance.PlaySound(AudioClipID.GameOver);
     }
 
     public void RestartLevel()

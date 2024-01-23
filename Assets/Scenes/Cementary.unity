@@ -1933,6 +1933,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7151796045276764501, guid: 08fd5a15851688043b4e553a0b8c8eab,
+        type: 3}
+      propertyPath: levelDuration
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 7151796045276764503, guid: 08fd5a15851688043b4e553a0b8c8eab,
         type: 3}
       propertyPath: m_Name
@@ -4142,6 +4147,7 @@ MonoBehaviour:
   levelText: {fileID: 714512189}
   itemRow: {fileID: 6071718483001806306, guid: 9ed084f3f4f3dae4188dd16643aa0574, type: 3}
   itemsTable: {fileID: 744277798}
+  bannerText: {fileID: 5097102099104608774}
 --- !u!1 &1446094073
 GameObject:
   m_ObjectHideFlags: 0
@@ -8375,8 +8381,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4280093383
-  m_fontColor: {r: 0.78039217, g: 0.03933786, b: 0.114793934, a: 1}
+    rgba: 4278871808
+  m_fontColor: {r: 0.001913497, g: 0.4056604, b: 0.04031461, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -8992,7 +8998,7 @@ GameObject:
   - component: {fileID: 5097102100817216997}
   - component: {fileID: 5097102100817216998}
   m_Layer: 0
-  m_Name: P_UI_DeathScreen
+  m_Name: P_UI_ResultsScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9163,7 +9169,7 @@ GameObject:
   - component: {fileID: 5097102100926110080}
   - component: {fileID: 5097102100926110083}
   m_Layer: 0
-  m_Name: DeathScreenCanvas
+  m_Name: ResultsPanelCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11761,7 +11767,7 @@ PrefabInstance:
     - target: {fileID: 6767124096746729671, guid: 05ada44e053334040a3f962dd1f484d4,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 61.12
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6767124096746729671, guid: 05ada44e053334040a3f962dd1f484d4,
         type: 3}
@@ -11781,7 +11787,7 @@ PrefabInstance:
     - target: {fileID: 6767124097118933481, guid: 05ada44e053334040a3f962dd1f484d4,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 133.23999
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6767124097118933481, guid: 05ada44e053334040a3f962dd1f484d4,
         type: 3}

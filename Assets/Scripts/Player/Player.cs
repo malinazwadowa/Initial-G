@@ -6,7 +6,7 @@ public class Player : MonoBehaviour, IItemWielder, IDamagable
     [SerializeField] public SO_PlayerParameters playerData;
 
     private Transform center;
-    private bool isAlive = true;
+    public bool IsAlive {get; private set;}
 
     [HideInInspector] public PlayerInputActions InputActions { get; private set; }
     private Animator animator;
@@ -31,7 +31,7 @@ public class Player : MonoBehaviour, IItemWielder, IDamagable
         spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
         rigidBody = GetComponent<Rigidbody2D>();
 
-        
+        IsAlive = true;
         healthController = GetComponent<HealthController>();
         ItemController = GetComponent<ItemController>();
         lootCollisionHandler = GetComponentInChildren<LootCollisionHandler>();
@@ -92,10 +92,8 @@ public class Player : MonoBehaviour, IItemWielder, IDamagable
 
     private void OnTriggerStay2D(Collider2D collision)
     {/*
-        Debug.Log("Kope wroga");
         if (collision.TryGetComponent<Enemy>(out Enemy enemy))
         {
-            Debug.Log("Kope wroga");
             Vector3 direction = enemy.transform.position - weapon.transform.position;
             enemy.GetKnockbacked(3, direction);
         }*/
@@ -135,10 +133,10 @@ public class Player : MonoBehaviour, IItemWielder, IDamagable
 
     public void GetKilled()
     {
-        if (!isAlive) { return; }
+        if (!IsAlive) { return; }
         //AudioManager.Instance.PlaySound(AudioClipID.Something);
+        IsAlive = false;
         EventManager.OnPlayerDeath?.Invoke();
-        isAlive = false;
     }
 
     public void GetKnockbacked(float power, Vector3 knockbackDirection)
