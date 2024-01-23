@@ -10,28 +10,33 @@ public class NewProfileNameInputPromptUI : MonoBehaviour
     public Button cancelButton;
     public Button acceptButton;
 
-    private MenuUI ourMenu;
+    private MenuUI profilesMenu;
+    public MenuUI myMenu;
 
-
-    public void Open(MenuUI ourMenu)
+    public void Open(MenuUI menu)
     {
         gameObject.SetActive(true);
         errorText.gameObject.SetActive(false);
         inputField.text = "";
-        this.ourMenu = ourMenu;
+        this.profilesMenu = menu;
     }
 
-    public void OpenForNew(MenuUI ourMenu)
+    public void OpenForNew(MenuUI menu)
     {
-        Open(ourMenu);
+        Open(menu);
         acceptButton.onClick.RemoveAllListeners();
+
         acceptButton.onClick.AddListener(CreateNew);
+        myMenu.OnAcceptEvent.AddListener(CreateNew);
     }
 
-    public void OpenForRename(MenuUI ourMenu, string nameToChange)
+    public void OpenForRename(MenuUI menu, string nameToChange)
     {
-        Open(ourMenu);
+        Open(menu);
+        acceptButton.onClick.RemoveAllListeners();
+
         acceptButton.onClick.AddListener(() => Rename(nameToChange));
+        myMenu.OnAcceptEvent.AddListener(() => Rename(nameToChange));
     }
 
     public void Rename(string nameToChange)
@@ -72,7 +77,7 @@ public class NewProfileNameInputPromptUI : MonoBehaviour
     public void Close()
     {
         gameObject.SetActive (false);
-        ourMenu.Open();
+        profilesMenu.Open();
     }
 
     private (bool isValid, string message) CheckValidity(string userInput)

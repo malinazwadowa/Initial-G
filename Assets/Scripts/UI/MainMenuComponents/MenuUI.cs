@@ -9,7 +9,7 @@ public class MenuUI : MonoBehaviour
     [SerializeField] private UnityEvent OnOpenEvent;
     [SerializeField] private UnityEvent OnCloseEvent;
    
-    [SerializeField] private UnityEvent OnAcceptEvent;
+    [SerializeField] public UnityEvent OnAcceptEvent;
     [SerializeField] private UnityEvent OnCancelEvent;
 
     private PlayerInputActions inputActions;
