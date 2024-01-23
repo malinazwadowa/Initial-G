@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class LevelUnlockController : MonoBehaviour, ISaveable
 {
-    private GameLevel startingLevel = GameLevel.Cementary;
-    private Dictionary<GameLevel, bool> currentLevelUnlockStatus = new Dictionary<GameLevel, bool>();
+    public SceneName startingLevel;
+
+    private Dictionary<SceneName, bool> currentLevelUnlockStatus = new Dictionary<SceneName, bool>();
 
 
     public ObjectData SaveMyData()
@@ -29,7 +30,6 @@ public class LevelUnlockController : MonoBehaviour, ISaveable
 
     public void WipeMyData()
     {
-        Debug.Log("my data is wiped leveunlockcontr)");
         currentLevelUnlockStatus.Clear();
         UpdateLevelUnlockDictionary();
     }
@@ -37,7 +37,7 @@ public class LevelUnlockController : MonoBehaviour, ISaveable
     [Serializable]
     public class LevelUnlockData : ObjectData
     {
-        public Dictionary<GameLevel, bool> levelUnlockStatus;
+        public Dictionary<SceneName, bool> levelUnlockStatus;
     }
 
     private void Start()
@@ -45,25 +45,27 @@ public class LevelUnlockController : MonoBehaviour, ISaveable
         UpdateLevelUnlockDictionary();
     }
 
-    private Dictionary<GameLevel, bool> UpdateLevelUnlockDictionary()
+    private Dictionary<SceneName, bool> UpdateLevelUnlockDictionary()
     {
-        foreach (GameLevel level in Enum.GetValues(typeof(GameLevel)))
+        foreach (SceneName scene in Enum.GetValues(typeof(SceneName)))
         {
-            if (!currentLevelUnlockStatus.ContainsKey(level))
+            if(scene == SceneName.MainMenu) { continue; }
+
+            if (!currentLevelUnlockStatus.ContainsKey(scene))
             {
-                currentLevelUnlockStatus.Add(level, false);
-                if(level  == startingLevel) { UnlockGameLevel(startingLevel); }
+                currentLevelUnlockStatus.Add(scene, false);
+                if(scene  == startingLevel) { UnlockGameLevel(startingLevel); }
             }
         }
         return currentLevelUnlockStatus;
     }
 
-    public void UnlockGameLevel(GameLevel levelName)
+    public void UnlockGameLevel(SceneName levelName)
     {
         currentLevelUnlockStatus[levelName] = true;
     }
 
-    public Dictionary<GameLevel, bool> GetCurrentLevelUnlockStatus()
+    public Dictionary<SceneName, bool> GetCurrentLevelUnlockStatus()
     {
         return currentLevelUnlockStatus;
     }

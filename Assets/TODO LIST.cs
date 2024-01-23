@@ -1,8 +1,4 @@
 /*
- *1.SceneNAme and GameLevel enums are troublesome
--- gamelelve unlock manager needs refactor
- *
- *
  *2. prefabize controllers and other scene components
  *
  *
@@ -23,7 +19,7 @@
  *
  *
  *------------
- *Item ideas:
+ * Item ideas:
  * - healing something for healing collectibles
  * - exping something for expingens
  *

@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,7 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class SaveableEntity : MonoBehaviour
 {
+    [ReadOnly]
     public string id = string.Empty;
 
     [ContextMenu("Generate Id")]

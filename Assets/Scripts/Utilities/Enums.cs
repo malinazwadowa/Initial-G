@@ -93,9 +93,3 @@ public enum SceneName
     Loading,
     MainMenu
 }
-public enum GameLevel
-{
-    Cementary,
-    Forest,
-    dupa
-}
