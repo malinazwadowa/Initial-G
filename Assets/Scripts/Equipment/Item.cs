@@ -14,7 +14,7 @@ public class Item : MonoBehaviour
 
     public virtual void RankUp()
     {
-        Debug.Log($"Ranking up {this.GetType().Name.ToString()}");
+        Debug.Log($"Ranking up {this.GetType().Name}");
         if (currentRank >= baseItemParameters.amountOfRanks - 1) { Debug.Log($"{gameObject.GetType().Name} is max rank already"); return; }
 
         Debug.Log($"Ranking up {this.GetType().Name} current rank is {currentRank}");

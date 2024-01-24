@@ -20,7 +20,7 @@ public class LevelManager : SingletonMonoBehaviour<LevelManager>
     private void Update()
     {
         SessionTime += Time.deltaTime;
-        if(SessionTime >= levelDuration * 60 && !timeOver)
+        if(SessionTime >= levelDuration * 60 && !timeOver && !TimeManager.IsPaused)
         {
             timeOver = true;
             //EnemyWaveManager.Instance.ShouldSpawn(false);

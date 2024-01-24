@@ -1,4 +1,7 @@
 /*
+ * 1. Gearupgrade popup, object name update 
+ * 
+ * 
  *2. prefabize controllers and other scene components
  *
  *
@@ -17,7 +20,7 @@
  *
  *7. Add base Projectile clas - despawning logic 
  *
- *
+ *8. Critical - weapon popup causing results panel to not open 
  *------------
  * Item ideas:
  * - healing something for healing collectibles

@@ -78,50 +78,5 @@ public class UnlockCondition
                 unlockedByDefault = true;
                 break;
         }
-        /*
-        if (conditionType == ConditionType.UnlockedWithWeaponKills)
-        {
-            unlockedWithWeaponKills = true;
-            unlockedByDefault = false;
-            unlockedWithEnemyKilled = false;
-            unlockedWithMaxRankOfAccessory = false;
-            unlockedWithMaxRankOfWeapon = false;
-        }
-        else if (conditionType == ConditionType.UnlockedWithEnemyKilled)
-        {
-            unlockedWithEnemyKilled = true;
-            unlockedByDefault = false;
-            unlockedWithWeaponKills = false;
-            unlockedWithMaxRankOfAccessory = false;
-            unlockedWithMaxRankOfWeapon = false;
-        }
-        else if (conditionType == ConditionType.UnlockedWithMaxRankOfAccessory)
-        {
-            unlockedWithMaxRankOfAccessory = true;
-            unlockedByDefault = false;
-            unlockedWithWeaponKills = false;
-            unlockedWithEnemyKilled = false;
-            unlockedWithMaxRankOfWeapon = false;
-        }
-        else if (conditionType == ConditionType.UnlockedByDefault)
-        {
-            unlockedByDefault = true;
-            unlockedWithMaxRankOfAccessory = false;
-            unlockedWithWeaponKills = false;
-            unlockedWithEnemyKilled = false;
-            unlockedWithMaxRankOfWeapon = false;
-        }
-        else if (conditionType == ConditionType.UnlockedWithMaxRankOfWeapon)
-        {
-            unlockedWithMaxRankOfWeapon = true;
-            unlockedWithMaxRankOfAccessory = false;
-            unlockedWithWeaponKills = false;
-            unlockedWithEnemyKilled = false;
-            unlockedByDefault = false;
-        }
-        else
-        {
-            unlockedByDefault = true;
-        } */
     } 
 }

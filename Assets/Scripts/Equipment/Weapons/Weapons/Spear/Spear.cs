@@ -12,7 +12,6 @@ public class Spear :  Weapon
     public override void Initialize(IItemWielder weaponWielder, CharacterStats characterStats)
     {
         base.Initialize(weaponWielder, characterStats);
-        Debug.Log(" I am being initalized SZPIR");
         baseParameters = (SO_SpearParameters)baseItemParameters;
         currentRankParameters = baseParameters.ranks[currentRank];
     }
@@ -87,19 +86,6 @@ public class Spear :  Weapon
 
     public override void RankUp()
     {
-        /*
-        Debug.Log("current rank to: " + currentRank);
-        Debug.Log("baserank params: " + baseParameters.ranks.Length);
-        if (currentRank < baseParameters.maxRank)
-        {
-            base.RankUp();
-            Debug.Log("Ranking up Spear.");
-            currentRankParameters = baseParameters.ranks[currentRank];
-        }
-        else
-        {
-            Debug.Log("Maximum Spear rank reached.");
-        } */
         base.RankUp();
     }
 }

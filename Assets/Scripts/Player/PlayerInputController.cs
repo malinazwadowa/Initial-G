@@ -23,10 +23,6 @@ public class PlayerInputController : MonoBehaviour
     {
         HandleRunning();
         HandlePause();
-        if (inputActions.MenuActions.Dupa.WasPerformedThisFrame())
-        {
-            Debug.Log("Dupa");
-        }
     }
 
     private void FixedUpdate()

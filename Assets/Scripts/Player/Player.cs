@@ -62,13 +62,6 @@ public class Player : MonoBehaviour, IItemWielder, IDamagable
     private void Update()
     {
         animationController.SetAnimationVelocity(InputActions.GameplayActions.Movement.ReadValue<Vector2>());
-        
-        //Testing purposes
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            TestCombatStats();
-        }
-
     }
 
     private void FixedUpdate()
@@ -80,6 +73,7 @@ public class Player : MonoBehaviour, IItemWielder, IDamagable
     {
         return center.position;
     }
+
     public Transform GetCenterTransform()
     {
         return center;
@@ -97,26 +91,6 @@ public class Player : MonoBehaviour, IItemWielder, IDamagable
             Vector3 direction = enemy.transform.position - weapon.transform.position;
             enemy.GetKnockbacked(3, direction);
         }*/
-    }
-
-    public void TestCombatStats()
-    {
-        //AudioManager.Instance.StopAllClips();
-        Debug.Log("Upping the base damage");
-        float current = Time.timeScale;
-        Debug.Log(current);
-        //combatStats.UpdateCombatStat(StatType.DamageModifier, 1);
-        AudioManager.Instance.PauseAllSounds();
-    }
-
-    public void Test2()
-    {
-        //AudioManager.Instance.ResumeAllSounds();
-    }
-
-    public void Test3()
-    {
-        AudioManager.Instance.PlaySound(AudioClipID.PlayerDeath);
     }
 
     public void GetDamaged(float amount, string damageSource)

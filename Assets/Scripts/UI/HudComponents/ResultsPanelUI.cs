@@ -22,7 +22,7 @@ public class ResultsPanelUI : MonoBehaviour
     {
         myMenu.Open();
         AudioManager.Instance.StopAllClips();
-
+        
         if(success)
         {
             AudioManager.Instance.PlaySound(AudioClipID.GameWon);
