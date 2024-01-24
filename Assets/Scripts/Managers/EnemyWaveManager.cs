@@ -29,7 +29,7 @@ public class EnemyWaveManager : SingletonMonoBehaviour<EnemyWaveManager>
             ObjectPooler.Instance.CreatePool(entry.Key, entry.Value);
         }
     }
-    
+
     void Update()
     {
         timer += Time.deltaTime;
@@ -38,7 +38,7 @@ public class EnemyWaveManager : SingletonMonoBehaviour<EnemyWaveManager>
         {
             ManageWave();
         }
-        
+
         if (timer >= waveDuration && currentWaveId < enemyManagerData.enemyWaves.Length - 1)
         {
             currentWaveId++;
@@ -48,7 +48,7 @@ public class EnemyWaveManager : SingletonMonoBehaviour<EnemyWaveManager>
 
         lerpFactor = timer / (waveDuration * ratio);
 
-        if(!shouldSpawn)
+        if (!shouldSpawn)
         {
 
         }
@@ -68,7 +68,7 @@ public class EnemyWaveManager : SingletonMonoBehaviour<EnemyWaveManager>
         }
     }
 
-    public Dictionary<GameObject,int> GetAmountOfEachEnemyType()
+    public Dictionary<GameObject, int> GetAmountOfEachEnemyType()
     {
         Dictionary<GameObject, int> enemiesToSpawn = new Dictionary<GameObject, int>();
 
@@ -95,7 +95,7 @@ public class EnemyWaveManager : SingletonMonoBehaviour<EnemyWaveManager>
         }
         return enemiesToSpawn;
     }
-    
+
     public void ShouldSpawn(bool status)
     {
         shouldSpawn = status;

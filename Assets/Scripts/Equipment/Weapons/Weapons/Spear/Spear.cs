@@ -13,7 +13,7 @@ public class Spear :  Weapon
     {
         base.Initialize(weaponWielder, characterStats);
         baseParameters = (SO_SpearParameters)baseItemParameters;
-        currentRankParameters = baseParameters.ranks[currentRank];
+        currentRankParameters = baseParameters.ranks[CurrentRank];
     }
 
     public override void WeaponTick()

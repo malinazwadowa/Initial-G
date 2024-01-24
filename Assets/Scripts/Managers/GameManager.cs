@@ -31,7 +31,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     private void Start()
     {
-        gameStatsController.Initalize();
+        gameStatsController.Initialize();
         itemDataController.Initalize();
         SaveSystem.Load();
     }

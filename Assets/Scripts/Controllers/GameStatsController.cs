@@ -61,7 +61,7 @@ public class GameStatsController : MonoBehaviour, ISaveable
         public GameStats gameStats;
     }
 
-    public void Initalize()
+    public void Initialize()
     {
         SessionStats = new GameStats();
 

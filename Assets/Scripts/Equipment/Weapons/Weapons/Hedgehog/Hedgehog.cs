@@ -15,7 +15,7 @@ public class Hedgehog : Weapon
         base.Initialize(weaponWielder, characterStats);
 
         baseParameters = (SO_HedgehogParameters)baseItemParameters;
-        currentRankParameters = baseParameters.ranks[currentRank];
+        currentRankParameters = baseParameters.ranks[CurrentRank];
         cooldownTimer = float.PositiveInfinity;
     }
 

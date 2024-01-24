@@ -12,7 +12,7 @@ public class Rock : Weapon
         base.Initialize(weaponWielder, characterStats);
 
         baseParameters = (SO_RockParameters)baseItemParameters;
-        currentRankParameters = baseParameters.ranks[currentRank];
+        currentRankParameters = baseParameters.ranks[CurrentRank];
     }
     
     public override void WeaponTick()

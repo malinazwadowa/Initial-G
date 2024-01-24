@@ -2,16 +2,16 @@ using UnityEngine;
 
 public class CharacterStatsController : MonoBehaviour
 {
-    public CharacterStats characterStats { get; private set;}
+    public CharacterStats CharacterStats { get; private set; }
 
     public void Initialize(CharacterStats characterStats = null)
     {
-        this.characterStats = characterStats ?? new CharacterStats();   
+        this.CharacterStats = characterStats ?? new CharacterStats();
     }
 
     public CharacterStats GetStats()
     {
-        return characterStats;
+        return CharacterStats;
     }
 
     public void AddStatValue(StatModifier statModifier, float value)
@@ -19,24 +19,24 @@ public class CharacterStatsController : MonoBehaviour
         switch (statModifier)
         {
             case StatModifier.MoveSpeedModifier:
-                characterStats.moveSpeedModifier += value;
+                CharacterStats.moveSpeedModifier += value;
                 break;
 
             case StatModifier.WeaponSpeedModifier:
-                characterStats.weaponSpeedModifier += value;
+                CharacterStats.weaponSpeedModifier += value;
                 break;
 
             case StatModifier.DamageModifier:
-                characterStats.damageModifier += value;
+                CharacterStats.damageModifier += value;
                 break;
 
             case StatModifier.CooldownModifier:
-                if(characterStats.cooldownModifier - value < 0.1f) { return;}
-                characterStats.cooldownModifier -= value;
+                if (CharacterStats.cooldownModifier - value < 0.1f) { return; }
+                CharacterStats.cooldownModifier -= value;
                 break;
-
+                
             case StatModifier.LootingRadius:
-                characterStats.lootingRadiusModifier += value;
+                CharacterStats.lootingRadiusModifier += value;
 
                 //HMMM
                 gameObject.GetComponentInChildren<LootCollisionHandler>().UpdateRadiusValue();

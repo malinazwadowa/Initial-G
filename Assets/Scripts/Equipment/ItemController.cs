@@ -67,7 +67,7 @@ public class ItemController : MonoBehaviour
 
         foreach (Item item in EquippedItems)
         {
-            if (item.currentRank < item.baseItemParameters.amountOfRanks - 1)
+            if (item.CurrentRank < item.baseItemParameters.amountOfRanks - 1)
             {
                 items.Add(item);
             }

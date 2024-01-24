@@ -692,7 +692,16 @@
             },
             "seenItems": {
               "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
-              "$values": []
+              "$values": [
+                "Rock",
+                "Hedgehog",
+                "Spear",
+                "SpearClone1",
+                "Clock",
+                "Boot",
+                "Amulet",
+                "Hook"
+              ]
             }
           },
           "IsCoreData": false

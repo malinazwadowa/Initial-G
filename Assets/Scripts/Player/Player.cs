@@ -46,8 +46,8 @@ public class Player : MonoBehaviour, IItemWielder, IDamagable
         ExperienceController.Initialize(FindAnyObjectByType<ExpBarUI>());
         healthController.Initialize(playerData.maxHealth);
 
-        lootCollisionHandler.Initialize(playerData.lootingRadius, characterStatsController.characterStats);
-        movementController.Initialize(playerData, rigidBody, characterStatsController.characterStats);
+        lootCollisionHandler.Initialize(playerData.lootingRadius, characterStatsController.CharacterStats);
+        movementController.Initialize(playerData, rigidBody, characterStatsController.CharacterStats);
         animationController.Initialize(animator, movementController, spriteRenderers);
         InputController.Initialize(movementController, InputActions);
 

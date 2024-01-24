@@ -50,6 +50,7 @@ public class MenuUI : MonoBehaviour
         {
             OnCancelEvent?.Invoke();
         }
+
         if (inputActions.MenuActions.AcceptAction.WasPerformedThisFrame())
         {
             OnAcceptEvent?.Invoke();

@@ -20,16 +20,16 @@ public class ProfilesMenuControllerUI : MonoBehaviour
     {
         Utilities.RemoveChildren(listTransform);
 
-        foreach (string profilename in GameManager.Instance.profileController.profileNameToID.Keys)
+        foreach (string profileName in GameManager.Instance.profileController.profileNameToID.Keys)
         {
             GameObject newRow = Instantiate(rowPrefab);
             newRow.GetComponent<RectTransform>().SetParent(listTransform, false);
             ProfileRowUI rowScript = newRow.GetComponent<ProfileRowUI>();
-            rowScript.SetUp(profilename, this);
+            rowScript.SetUp(profileName, this);
             rowScript.toggle.group = toggleGroup;
-            
 
-            if(profilename == GameManager.Instance.profileController.GetCurrentProfileName())
+
+            if (profileName == GameManager.Instance.profileController.GetCurrentProfileName())
             {
                 rowScript.toggle.isOn = true;
                 rowScript.SwitchLoadedHighlight();
@@ -43,7 +43,7 @@ public class ProfilesMenuControllerUI : MonoBehaviour
     {
         currentlySelectedRow = rowScript;
 
-        if(currentlySelectedRow.ProfileName == GameManager.Instance.profileController.GetCurrentProfileName())
+        if (currentlySelectedRow.ProfileName == GameManager.Instance.profileController.GetCurrentProfileName())
         {
             loadButton.interactable = false;
             deleteButton.interactable = false;

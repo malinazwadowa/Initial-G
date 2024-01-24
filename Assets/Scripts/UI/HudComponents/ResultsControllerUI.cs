@@ -59,9 +59,9 @@ public class ResultsControllerUI : MonoBehaviour
             RowComponentsUI rowComponents = myRow.GetComponent<RowComponentsUI>();
 
             rowComponents.itemImage.sprite = item.baseItemParameters.icon;
-            rowComponents.rankText.text = (item.currentRank + 1).ToString();
+            rowComponents.rankText.text = (item.CurrentRank + 1).ToString();
 
-            int j = item.currentRank;
+            int j = item.CurrentRank;
             for (int i = 0; i < item.baseItemParameters.amountOfRanks; i++)
             {
                 GameObject rankGameObject = new GameObject("RankImage");
