@@ -21,7 +21,6 @@ public static class SaveSystem
         }
     }
     
-
     public static void Save()
     {
         SaveData savedData = LoadFile();
@@ -33,8 +32,6 @@ public static class SaveSystem
 
     public static void Load()
     {
-        Debug.Log("GameLoaded start");
-
         SaveData savedData = LoadFile();
 
         LoadCoreData(savedData);
@@ -42,8 +39,6 @@ public static class SaveSystem
 
         LoadProfileData(savedData);
         lastLoadedData = savedData;
-      
-        Debug.Log($"GameLoaded end selected profiles ID is: {selectedProfileID}");
     }
 
     public static void LoadCurrentProfileData()
@@ -51,7 +46,6 @@ public static class SaveSystem
         Save();
 
         selectedProfileID = GameManager.Instance.profileController.GetCurrentProfileId();
-        Debug.Log("loading profile wiping data next");
         WipeProfileData();
         
         Load();
@@ -80,7 +74,7 @@ public static class SaveSystem
             }
             
             Dictionary<string, Dictionary<string, ObjectData>> entityData;
-            Debug.Log($"ZAPISUJE DO PROFILE ID > {selectedProfileID} ");
+
             if (saveData.profilesData.ContainsKey(selectedProfileID))
             {
                 entityData = saveData.profilesData[selectedProfileID];
@@ -108,15 +102,10 @@ public static class SaveSystem
 
     private static void LoadProfileData(SaveData savedData) 
     {
-        Debug.Log($"laduje data profile");
         Dictionary<string, Dictionary<string, ObjectData>> profileData;
-
-        Debug.Log($"zaladwoane profile i sprawdzilem czy jest profil dla {selectedProfileID} no i jesli jest to to powinno byc : bnnuuumerki ile profili {savedData.profilesData.Count} ");
 
         if (savedData.profilesData.ContainsKey(selectedProfileID))
         {
-            Debug.Log($"profiles data ma wpis dla {selectedProfileID}");
-
            profileData = savedData.profilesData[selectedProfileID];
         }
         else

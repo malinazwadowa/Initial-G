@@ -60,7 +60,6 @@ public class SaveableEntity : MonoBehaviour
 
             if (!isCoreData)
             {
-                Debug.Log("Wiping non-core saveable: " + saveable.GetType().ToString());
                 saveable.WipeMyData();
             }
         }

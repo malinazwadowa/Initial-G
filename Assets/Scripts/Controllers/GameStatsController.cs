@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class GameStatsController : MonoBehaviour, ISaveable
 {
-    //private Dictionary<EnemyType, int> enemyKilledCounts = new Dictionary<EnemyType, int>();
-    //private Dictionary<ItemType, int> weaponKillCounts = new Dictionary<ItemType, int>();
     public GameStats SessionStats { get; private set; }
     public GameStats OverallStats { get; private set; }
 
@@ -55,7 +53,6 @@ public class GameStatsController : MonoBehaviour, ISaveable
     {
         OverallStats = new GameStats();
         SessionStats = new GameStats();
-        Debug.Log("wiping my data, gamestatessssssssssssssssssssssssssssssssssssssssssssss");
     }
 
     [Serializable]
@@ -72,7 +69,6 @@ public class GameStatsController : MonoBehaviour, ISaveable
         {
             OverallStats = new GameStats();
         }
-        
     }
 
     public void StoreSessionStats()
@@ -134,9 +130,6 @@ public class GameStatsController : MonoBehaviour, ISaveable
         SessionStats.weaponDamageDone.TryGetValue(weaponType, out float damageDone);
         SessionStats.weaponDamageDone[weaponType] = damageDone + damageAmount;
     }
-
-
-
 
     public int GetEnemyKilledCountOfType(EnemyType enemyType)
     {
