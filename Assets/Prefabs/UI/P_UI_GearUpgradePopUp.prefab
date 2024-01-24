@@ -479,7 +479,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 536.1945, y: -50}
+  m_AnchoredPosition: {x: 178.7315, y: -50}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &677167418
@@ -787,7 +787,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 178.7315, y: -50}
+  m_AnchoredPosition: {x: 536.1945, y: -50}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2088243638
@@ -1166,7 +1166,7 @@ GameObject:
   - component: {fileID: 7530576830799904209}
   - component: {fileID: 2894050797408213726}
   m_Layer: 5
-  m_Name: Weapon Upgrade Canvas
+  m_Name: GearUpgradeCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2057,7 +2057,7 @@ GameObject:
   - component: {fileID: 7275665481512118574}
   - component: {fileID: 7275665481512118575}
   m_Layer: 0
-  m_Name: P_UI_WeaponUpgradePopUp
+  m_Name: P_UI_GearUpgradePopUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2091,15 +2091,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a5898b05cc364441b1905d16ec983f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftText: {fileID: 677167420}
-  rightText: {fileID: 990598798}
-  myMenu: {fileID: 2894050797408213726}
-  buttons:
-  - {fileID: 489064325}
-  - {fileID: 492381492}
   panels:
   - {fileID: 1355803972}
   - {fileID: 617430318}
+  myMenu: {fileID: 2894050797408213726}
 --- !u!1 &8437712975850192406
 GameObject:
   m_ObjectHideFlags: 0
