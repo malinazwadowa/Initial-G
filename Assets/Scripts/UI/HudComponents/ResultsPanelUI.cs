@@ -8,30 +8,14 @@ public class ResultsPanelUI : MonoBehaviour
 
     private void OnEnable()
     {
-        EventManager.OnPlayerDeath += () => OpenMenu(false);
-        EventManager.OnLevelCompleted += () => OpenMenu(true);
+        EventManager.OnPlayerDeath += myMenu.Open;
+        EventManager.OnLevelCompleted += myMenu.Open;
     }
 
     private void OnDisable()
     {
-        EventManager.OnPlayerDeath -= () => OpenMenu(false);
-        EventManager.OnLevelCompleted -= () => OpenMenu(true);
-    }
-
-    private void OpenMenu(bool success)
-    {
-        myMenu.Open();
-        AudioManager.Instance.StopAllClips();
-        
-        if(success)
-        {
-            AudioManager.Instance.PlaySound(AudioClipID.GameWon);
-        }
-        else
-        {
-            AudioManager.Instance.PlaySound(AudioClipID.GameOver);
-        }
-        //AudioManager.Instance.PlaySound(AudioClipID.GameOver);
+        EventManager.OnPlayerDeath -= myMenu.Open;
+        EventManager.OnLevelCompleted -= myMenu.Open;
     }
 
     public void RestartLevel()

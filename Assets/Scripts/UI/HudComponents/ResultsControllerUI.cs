@@ -26,11 +26,16 @@ public class ResultsControllerUI : MonoBehaviour
         {
             bannerText.color = red;
             bannerText.text = "You Died...";
+            AudioManager.Instance.StopAllClips();
+            AudioManager.Instance.PlaySound(AudioClipID.GameOver);
+
         }
         else
         {
             bannerText.color = green;
             bannerText.text = "You Won!";
+            AudioManager.Instance.StopAllClips();
+            AudioManager.Instance.PlaySound(AudioClipID.GameWon);
         }
 
         UpdateGeneralData();
