@@ -10,7 +10,6 @@ public class UnlocksCellUI : MonoBehaviour
     [SerializeField] private RawImage panelHighlight;
     [SerializeField] private RawImage itemBackground;
 
-
     [SerializeField] private GameObject slider;
     [SerializeField] private Image sliderFill;
     [SerializeField] private Image sliderBackground;

@@ -15,12 +15,13 @@ public class EnemyWaveManager : SingletonMonoBehaviour<EnemyWaveManager>
     private float timer;
     private float lerpFactor;
     private float waveDuration;
-    private float ratio = 0.6f; //0-1 ratio for lerp, % of wave time at which peak count of enemies is being kept active
+    private readonly float ratio = 0.6f; //0-1 ratio for lerp, % of wave time at which peak count of enemies is being kept active
 
     private bool shouldSpawn = true;
 
     void Start()
     {
+        enemyManagerData = GameManager.Instance.levelDataController.GetCurrentLevelData().myEnemyWaveManagerParameters;
         waveDuration = (enemyManagerData.levelDurationInMinutes / enemyManagerData.enemyWaves.Length) * 60;
         currentWaveData = enemyManagerData.enemyWaves[currentWaveId];
 

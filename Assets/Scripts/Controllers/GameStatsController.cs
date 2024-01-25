@@ -14,7 +14,7 @@ public class GameStatsController : MonoBehaviour, ISaveable
         public List<string> itemsFullyRankedUp;
         public Dictionary<CollectibleType, int> collectibleCounts;
         public Dictionary<string, float> weaponDamageDone;
-        
+        public List<GameLevel> beatenLevels;
         public List<string> seenItems;
 
         public GameStats()
@@ -24,6 +24,7 @@ public class GameStatsController : MonoBehaviour, ISaveable
             itemsFullyRankedUp = new List<string>();
             collectibleCounts = new Dictionary<CollectibleType, int>();
             weaponDamageDone = new Dictionary<string, float>();
+            beatenLevels = new List<GameLevel>();
             seenItems = new List<string>();
         }
     }
@@ -100,6 +101,14 @@ public class GameStatsController : MonoBehaviour, ISaveable
         }
 
         SessionStats = new GameStats();
+    }
+
+    public void RegisterBeatenLevel(GameLevel gameLevel)
+    {
+        if (!OverallStats.beatenLevels.Contains(gameLevel))
+        {
+            OverallStats.beatenLevels.Add(gameLevel);
+        }
     }
 
     public void RegisterFullyRankedUpItem(string type)

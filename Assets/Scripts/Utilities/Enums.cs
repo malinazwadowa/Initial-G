@@ -23,7 +23,8 @@ public enum ConditionType
     UnlockedWithEnemyKilled,
     UnlockedWithMaxRankOfWeapon,
     UnlockedWithMaxRankOfAccessory,
-    UnlockedWithCollectedItems
+    UnlockedWithCollectedItems,
+    UnlockedWithLevelCompletion
 }
 public enum WeaponType
 {
@@ -89,7 +90,15 @@ public enum MixerGroup
 }
 public enum SceneName
 {
-    Cementary,
+    Cemetery,
     Forest,
     MainMenu
+}
+public enum GameLevel
+{
+    Cemetery,
+    Forest,
+    Test,
+    Test2,
+    Test3
 }

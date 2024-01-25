@@ -18,6 +18,8 @@ public class UnlockCondition
     private bool unlockedWithMaxRankOfWeapon;
     private bool unlockedWithMaxRankOfAccessory;
     private bool unlockedWithCollectedItems;
+    
+    private bool unlockedWithLevelCompletion;
 
     [AllowNesting]
     [ShowIf(EConditionOperator.Or, "unlockedWithWeaponKills", "unlockedWithMaxRankOfWeapon")][Dropdown("WeaponTypes")] 

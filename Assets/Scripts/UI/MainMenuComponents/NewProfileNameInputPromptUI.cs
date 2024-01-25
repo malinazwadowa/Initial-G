@@ -84,7 +84,7 @@ public class NewProfileNameInputPromptUI : MonoBehaviour
     {
         if (string.IsNullOrEmpty(userInput))
         {
-            return (false, "Please enter a profile name.");
+            return (false, "Enter a profile name.");
         }
         else if (GameManager.Instance.profileController.profileNameToID.ContainsKey(userInput))
         {

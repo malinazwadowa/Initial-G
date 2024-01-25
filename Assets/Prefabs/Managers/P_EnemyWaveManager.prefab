@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7847449750851279207}
   - component: {fileID: 7847449750851279206}
   m_Layer: 0
-  m_Name: P_EnemyManager
+  m_Name: P_EnemyWaveManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,4 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57093e0ae1523ba449bcec1fba383d9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyManagerData: {fileID: 11400000, guid: 02823af723614a849ae1fa8ac3199321, type: 2}
+  enemyManagerData: {fileID: 0}
+  spawnOffset: 2.5

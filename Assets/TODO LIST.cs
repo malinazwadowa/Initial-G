@@ -7,10 +7,7 @@
  *
  *3. enemy/weapon collision handling
 - multiple hits from one projectile 
- *
- *
- *4. add scrolling to level unlock list & items unlock list
- *
+
  *
  *5. difficulty settings for wave manager, maybe broader
  *
@@ -20,7 +17,6 @@
  *
  *7. Add base Projectile clas - despawning logic 
  *
- *8. Critical - weapon popup causing results panel to not open 
  *------------
  * Item ideas:
  * - healing something for healing collectibles

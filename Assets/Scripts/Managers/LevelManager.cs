@@ -11,20 +11,25 @@ public class LevelManager : SingletonMonoBehaviour<LevelManager>
 
     private bool timeOver = false;
 
+    private SO_GameLevel gameLevelData;
+
+
     private void Start()
     {
+        SetGameLevelData();
         scoreCounterUI = FindObjectOfType<ScoreCounterUI>();
         TimeManager.ResumeTime();
+        AudioManager.Instance.Initalize(gameLevelData.myAudioClipsParameters);
     }
 
     private void Update()
     {
         SessionTime += Time.deltaTime;
-        if(SessionTime >= levelDuration * 60 && !timeOver && !TimeManager.IsPaused)
+        if(SessionTime >= gameLevelData.duration * 60 && !timeOver && !TimeManager.IsPaused)
         {
             timeOver = true;
-            //EnemyWaveManager.Instance.ShouldSpawn(false);
             EventManager.OnLevelCompleted?.Invoke();
+            GameManager.Instance.gameStatsController.RegisterBeatenLevel(gameLevelData.type);
         }
     }
 
@@ -32,5 +37,10 @@ public class LevelManager : SingletonMonoBehaviour<LevelManager>
     {
         Score++;
         scoreCounterUI.SetScore(Score);
+    }
+
+    public void SetGameLevelData()
+    {
+        gameLevelData = GameManager.Instance.levelDataController.GetCurrentLevelData();
     }
 }

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ConfirmationWindow : MonoBehaviour
+public class ConfirmationWindowUI : MonoBehaviour
 {
     public Button acceptButton;
     public Button cancelButton;

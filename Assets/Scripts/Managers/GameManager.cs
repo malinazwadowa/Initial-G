@@ -4,10 +4,10 @@ using UnityEngine;
 public class GameManager : SingletonMonoBehaviour<GameManager>
 {
     public event Action OnGamePaused;
-
     [HideInInspector] public SceneName CurrentScene { get; private set; }
-    [HideInInspector] public int CurrentSaveProfileId { get; private set; }
-    [HideInInspector] public LevelUnlockController LevelUnlockController { get; private set; }
+    [HideInInspector] public GameLevel CurrentGameLevel { get; private set; }
+
+    [HideInInspector] public LevelDataController levelDataController;
     [HideInInspector] public GameStatsController gameStatsController;
     [HideInInspector] public ItemDataController itemDataController;
     [HideInInspector] public ProfileController profileController;
@@ -17,7 +17,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         base.Awake();
         DontDestroyOnLoad(this);
 
-        LevelUnlockController = GetComponent<LevelUnlockController>();
+        levelDataController = GetComponent<LevelDataController>();
         gameStatsController = GetComponent<GameStatsController>();
         itemDataController = GetComponent<ItemDataController>();
         profileController = GetComponent<ProfileController>();
@@ -32,8 +32,9 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     private void Start()
     {
         gameStatsController.Initialize();
-        itemDataController.Initalize();
+        itemDataController.Initialize();
         SaveSystem.Load();
+        levelDataController.UpdateLevelUnlockDictionary();
     }
 
     public void PauseGame()
@@ -56,6 +57,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     {
         gameStatsController.StoreSessionStats();
         itemDataController.CheckForNewUnlocks();
+        levelDataController.UpdateLevelUnlockDictionary();
         SaveSystem.Save();
     }
 
@@ -64,10 +66,17 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         OnSceneChange();
         CurrentScene = sceneName;
         SceneLoadingManager.Instance.Load(sceneName);
+
+        //LevelManager.Instance.SetGameLevelData()
     }
 
     public void ReloadCurrentScene()
     {
         ChangeScene(CurrentScene);
+    }
+
+    public void SetCurrentGameLevel(GameLevel gameLevel)
+    {
+        this.CurrentGameLevel = gameLevel;
     }
 }

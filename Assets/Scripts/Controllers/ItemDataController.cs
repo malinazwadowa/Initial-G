@@ -1,10 +1,11 @@
 using NaughtyAttributes;
 using System.Collections.Generic;
 using UnityEngine;
-
+//unlock able data controller
 public class ItemDataController : MonoBehaviour
 {
     [Expandable][SerializeField] private SO_ItemsList allItemsList;
+    
 
     [HideInInspector] public List<GameObject> allItemPrefabs = new List<GameObject>() ;
     [HideInInspector] public List<Item> allItems = new List<Item>();
@@ -22,7 +23,7 @@ public class ItemDataController : MonoBehaviour
         SetDataFromSO();
     }
 
-    public void Initalize()
+    public void Initialize()
     { 
         SetDataFromSO();
         CheckItemUnlocks();
@@ -154,7 +155,6 @@ public class ItemDataController : MonoBehaviour
 
     private void UnlockItem(Item item)
     {
-
         unlockedItems.Add(item);
     }
 }

@@ -8,17 +8,19 @@ public class LevelSelectionUI : MonoBehaviour
     public GameObject buttonPrefab;
     public Transform levelButtonList;
 
-    public void LoadGameLevel(SceneName gameLevel)
+    public void LoadGameLevel(GameLevel gameLevel)
     {
-        GameManager.Instance.ChangeScene(gameLevel);
+        GameManager.Instance.SetCurrentGameLevel(gameLevel);
+        SO_GameLevel levelData = GameManager.Instance.levelDataController.GetCurrentLevelData();
+        GameManager.Instance.ChangeScene(levelData.myScene);
     }
     
     public void SetUpButtonLogic()
     {
         Utilities.RemoveChildren(levelButtonList);
-        Dictionary<SceneName, bool> levelUnlockStatus = GameManager.Instance.LevelUnlockController.GetCurrentLevelUnlockStatus();
+        Dictionary<GameLevel, bool> levelUnlockStatus = GameManager.Instance.levelDataController.GetCurrentLevelUnlockStatus();
 
-        foreach (SceneName level in levelUnlockStatus.Keys)
+        foreach (GameLevel level in levelUnlockStatus.Keys)
         {
             GameObject buttonObject = Instantiate(buttonPrefab);
             buttonObject.transform.SetParent(levelButtonList, false);
@@ -34,7 +36,8 @@ public class LevelSelectionUI : MonoBehaviour
             else
             {
                 buttonObject.GetComponentInChildren<TextMeshProUGUI>().text = "Locked";
-            }
+            } 
+
         }
     }
 }
