@@ -83,12 +83,12 @@ public class PlayerInputController : MonoBehaviour
             EventManager.OnPauseRequest?.Invoke();
         }
     }
-
+    /*
     private void HandleAttackInput()
     {
         if (inputActions.GameplayActions.Attack.WasPerformedThisFrame())
         {
             onAttackInputPressed?.Invoke();
         }
-    }
+    } */
 }

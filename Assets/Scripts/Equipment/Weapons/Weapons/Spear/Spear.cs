@@ -1,5 +1,6 @@
 using NaughtyAttributes;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Spear :  Weapon
@@ -87,6 +88,26 @@ public class Spear :  Weapon
     public override void RankUp()
     {
         base.RankUp();
+        currentRankParameters = baseParameters.ranks[CurrentRank];
+    }
+    public override Dictionary<string, float> GetParameters(int rank)
+    {
+        Dictionary<string, float> parameters = new Dictionary<string, float>();
+
+        if (rank >= baseParameters.ranks.Length || rank < 0)
+        {
+            Debug.LogError("Invalid rank specified for GetParameters.");
+            return parameters;
+        }
+
+        SpearRank rankParameters = baseParameters.ranks[rank];
+        parameters.Add("speed", rankParameters.speed);
+        parameters.Add("cooldown", rankParameters.cooldown);
+        parameters.Add("amount", rankParameters.amount);
+        parameters.Add("damage", rankParameters.damage);
+        parameters.Add("knockbackPower", rankParameters.knockbackPower);
+
+        return parameters;
     }
 }
 

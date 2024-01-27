@@ -13,6 +13,6 @@ public class SO_BootParameters : SO_AccessoryParameters
     [Header("Amount of ranks")]
     public int numberOfRanks;
 
-    [Header("Per rank movement speed modifier increase")]
+    [Header("Per rank cooldown reduction in %")]
     public float value;
 }

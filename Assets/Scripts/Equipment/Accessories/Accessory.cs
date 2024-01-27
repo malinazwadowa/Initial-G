@@ -16,4 +16,9 @@ public class Accessory : Item
     {
 
     }
+
+    public virtual (StatModifier statModifier, float value) GetParameters(int rank)
+    {
+        return (default(StatModifier), default(float));
+    }
 }

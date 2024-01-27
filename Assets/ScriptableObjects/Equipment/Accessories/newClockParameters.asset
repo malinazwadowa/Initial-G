@@ -24,4 +24,4 @@ MonoBehaviour:
   description: Reduces cooldown duration.
   amountOfRanks: 2
   numberOfRanks: 2
-  value: 30
+  value: 20

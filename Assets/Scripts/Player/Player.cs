@@ -20,7 +20,7 @@ public class Player : MonoBehaviour, IItemWielder, IDamagable
 
     private CharacterStatsController characterStatsController;
 
-    [HideInInspector] public  ExperienceController ExperienceController { get; private set; }
+    [HideInInspector] public ExperienceController ExperienceController { get; private set; }
     [HideInInspector] public ItemController ItemController { get; private set; }
     [HideInInspector] public PlayerInputController InputController { get; private set; }
 

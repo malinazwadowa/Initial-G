@@ -1,4 +1,5 @@
 using NaughtyAttributes;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Hedgehog : Weapon
@@ -72,13 +73,37 @@ public class Hedgehog : Weapon
         {
             base.RankUp();
             Debug.Log("Ranking up Hedgehog.");
-            currentRankParameters = baseParameters.ranks[currentRank];
+            
         }
         else
         {
             Debug.Log("Maximum Hedgehog rank reached.");
         } */
         base.RankUp();
+        currentRankParameters = baseParameters.ranks[CurrentRank];
+        Debug.Log("Ranking up hedgehog");
+    }
+
+    public override Dictionary<string, float> GetParameters(int rank)
+    {
+        Dictionary<string, float> parameters = new Dictionary<string, float>();
+
+        if (rank >= baseParameters.ranks.Length || rank < 0)
+        {
+            Debug.LogError("Invalid rank specified for GetParameters.");
+            return parameters;
+        }
+
+        HedgehogRank rankParameters = baseParameters.ranks[rank];
+        parameters.Add("speed", rankParameters.speed);
+        parameters.Add("cooldown", rankParameters.cooldown);
+        parameters.Add("radius", rankParameters.radius);
+        parameters.Add("duration", rankParameters.duration);
+        parameters.Add("amount", rankParameters.amount);
+        parameters.Add("damage", rankParameters.damage);
+        parameters.Add("knockbackPower", rankParameters.knockbackPower);
+
+        return parameters;
     }
 
 }

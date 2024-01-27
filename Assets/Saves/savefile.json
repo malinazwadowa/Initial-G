@@ -21,7 +21,7 @@
       "AudioManager": {
         "$type": "AudioManager+AudioSaveData, Assembly-CSharp",
         "masterVolume": 0.981141031,
-        "soundsVolume": 0.0911207944,
+        "soundsVolume": 0.0215513222,
         "musicVolume": 0.0001,
         "IsCoreData": true
       }
@@ -114,19 +114,32 @@
             "$type": "GameStatsController+GameStats, Assembly-CSharp",
             "enemyKilledCounts": {
               "$type": "System.Collections.Generic.Dictionary`2[[EnemyType, Assembly-CSharp],[System.Int32, mscorlib]], mscorlib",
-              "Sunflower": 10
+              "Sunflower": 13516
             },
             "weaponKillCounts": {
               "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Int32, mscorlib]], mscorlib",
-              "Spear": 10
+              "Spear": 5436,
+              "Rock": 5008,
+              "P_TempSpear1(Clone)": 1737,
+              "Hedgehog": 1335
             },
             "itemsFullyRankedUp": {
               "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
-              "$values": []
+              "$values": [
+                "Spear",
+                "Clock",
+                "Boot",
+                "Amulet",
+                "Rock",
+                "SpearClone1",
+                "Hedgehog",
+                "Hook"
+              ]
             },
             "collectibleCounts": {
               "$type": "System.Collections.Generic.Dictionary`2[[CollectibleType, Assembly-CSharp],[System.Int32, mscorlib]], mscorlib",
-              "Experience": 2
+              "Experience": 5961,
+              "Healing": 39
             },
             "weaponDamageDone": {
               "$type": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Single, mscorlib]], mscorlib"
@@ -139,7 +152,16 @@
             },
             "seenItems": {
               "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
-              "$values": []
+              "$values": [
+                "Rock",
+                "Spear",
+                "SpearClone1",
+                "Clock",
+                "Boot",
+                "Amulet",
+                "Hedgehog",
+                "Hook"
+              ]
             }
           },
           "IsCoreData": false

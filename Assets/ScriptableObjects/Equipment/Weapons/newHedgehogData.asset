@@ -41,7 +41,7 @@ MonoBehaviour:
     cooldown: 3
     radius: 3
     duration: 3
-    amount: 2
+    amount: 7
     damage: 10
     knockbackPower: 6
   - name: Rank 3

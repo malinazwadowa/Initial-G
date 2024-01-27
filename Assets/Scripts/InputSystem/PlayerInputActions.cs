@@ -46,42 +46,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Attack"",
-                    ""type"": ""Button"",
-                    ""id"": ""8858e68e-58e8-46c9-ac88-8f205153cec1"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Stealth"",
-                    ""type"": ""Button"",
-                    ""id"": ""b1655c05-3cb7-47d2-88f8-ff34dd0dc7ea"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Throw"",
-                    ""type"": ""Button"",
-                    ""id"": ""e71db7c3-d35a-4b40-a526-610097ca4ecf"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""PickUp"",
-                    ""type"": ""Button"",
-                    ""id"": ""8491de4b-9977-470e-b956-c87bc15f0cc7"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""CancelAction"",
                     ""type"": ""Button"",
                     ""id"": ""b040f5e8-f1ee-47a4-96d2-e26c32805654"",
@@ -225,55 +189,11 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""b0819d9c-7f6d-4c53-aaf7-a8e23b56c608"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Run"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""ad3057c3-f681-4044-b36e-daed957bc74f"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""Attack"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""b9380b04-1f4c-4bf3-b429-4b1deb23bdec"",
-                    ""path"": ""<Keyboard>/ctrl"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""Stealth"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""66fae11d-056f-44d5-a8b2-c6d6f4f24796"",
-                    ""path"": ""<Keyboard>/f"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""Throw"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""2c2e2f63-06b4-43e0-a675-6aa5b11b2886"",
-                    ""path"": ""<Keyboard>/r"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""PickUp"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -290,11 +210,33 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""ca21ba64-e7c3-4dfe-9f72-23be80b33d4b"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""CancelAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""31879184-0fad-4235-b557-da132e2eaa3e"",
                     ""path"": ""<Keyboard>/enter"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
+                    ""action"": ""AcceptAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8e4bf33b-d73e-4d5b-baed-2a43cf8b205b"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""AcceptAction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -328,15 +270,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Dupa"",
-                    ""type"": ""Button"",
-                    ""id"": ""b893688d-71b0-4881-a3ea-449164d5c5f7"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -361,17 +294,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""AcceptAction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""4f70eb7d-c797-4a4b-81bb-7bdaeb7ca713"",
-                    ""path"": ""<Keyboard>/k"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""Dupa"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -393,10 +315,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_GameplayActions = asset.FindActionMap("GameplayActions", throwIfNotFound: true);
         m_GameplayActions_Movement = m_GameplayActions.FindAction("Movement", throwIfNotFound: true);
         m_GameplayActions_Run = m_GameplayActions.FindAction("Run", throwIfNotFound: true);
-        m_GameplayActions_Attack = m_GameplayActions.FindAction("Attack", throwIfNotFound: true);
-        m_GameplayActions_Stealth = m_GameplayActions.FindAction("Stealth", throwIfNotFound: true);
-        m_GameplayActions_Throw = m_GameplayActions.FindAction("Throw", throwIfNotFound: true);
-        m_GameplayActions_PickUp = m_GameplayActions.FindAction("PickUp", throwIfNotFound: true);
         m_GameplayActions_CancelAction = m_GameplayActions.FindAction("CancelAction", throwIfNotFound: true);
         m_GameplayActions_AcceptAction = m_GameplayActions.FindAction("AcceptAction", throwIfNotFound: true);
         // PopUpActions
@@ -405,7 +323,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_MenuActions = asset.FindActionMap("MenuActions", throwIfNotFound: true);
         m_MenuActions_AcceptAction = m_MenuActions.FindAction("AcceptAction", throwIfNotFound: true);
         m_MenuActions_CancelAction = m_MenuActions.FindAction("CancelAction", throwIfNotFound: true);
-        m_MenuActions_Dupa = m_MenuActions.FindAction("Dupa", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -469,10 +386,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private List<IGameplayActionsActions> m_GameplayActionsActionsCallbackInterfaces = new List<IGameplayActionsActions>();
     private readonly InputAction m_GameplayActions_Movement;
     private readonly InputAction m_GameplayActions_Run;
-    private readonly InputAction m_GameplayActions_Attack;
-    private readonly InputAction m_GameplayActions_Stealth;
-    private readonly InputAction m_GameplayActions_Throw;
-    private readonly InputAction m_GameplayActions_PickUp;
     private readonly InputAction m_GameplayActions_CancelAction;
     private readonly InputAction m_GameplayActions_AcceptAction;
     public struct GameplayActionsActions
@@ -481,10 +394,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public GameplayActionsActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_GameplayActions_Movement;
         public InputAction @Run => m_Wrapper.m_GameplayActions_Run;
-        public InputAction @Attack => m_Wrapper.m_GameplayActions_Attack;
-        public InputAction @Stealth => m_Wrapper.m_GameplayActions_Stealth;
-        public InputAction @Throw => m_Wrapper.m_GameplayActions_Throw;
-        public InputAction @PickUp => m_Wrapper.m_GameplayActions_PickUp;
         public InputAction @CancelAction => m_Wrapper.m_GameplayActions_CancelAction;
         public InputAction @AcceptAction => m_Wrapper.m_GameplayActions_AcceptAction;
         public InputActionMap Get() { return m_Wrapper.m_GameplayActions; }
@@ -502,18 +411,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Run.started += instance.OnRun;
             @Run.performed += instance.OnRun;
             @Run.canceled += instance.OnRun;
-            @Attack.started += instance.OnAttack;
-            @Attack.performed += instance.OnAttack;
-            @Attack.canceled += instance.OnAttack;
-            @Stealth.started += instance.OnStealth;
-            @Stealth.performed += instance.OnStealth;
-            @Stealth.canceled += instance.OnStealth;
-            @Throw.started += instance.OnThrow;
-            @Throw.performed += instance.OnThrow;
-            @Throw.canceled += instance.OnThrow;
-            @PickUp.started += instance.OnPickUp;
-            @PickUp.performed += instance.OnPickUp;
-            @PickUp.canceled += instance.OnPickUp;
             @CancelAction.started += instance.OnCancelAction;
             @CancelAction.performed += instance.OnCancelAction;
             @CancelAction.canceled += instance.OnCancelAction;
@@ -530,18 +427,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Run.started -= instance.OnRun;
             @Run.performed -= instance.OnRun;
             @Run.canceled -= instance.OnRun;
-            @Attack.started -= instance.OnAttack;
-            @Attack.performed -= instance.OnAttack;
-            @Attack.canceled -= instance.OnAttack;
-            @Stealth.started -= instance.OnStealth;
-            @Stealth.performed -= instance.OnStealth;
-            @Stealth.canceled -= instance.OnStealth;
-            @Throw.started -= instance.OnThrow;
-            @Throw.performed -= instance.OnThrow;
-            @Throw.canceled -= instance.OnThrow;
-            @PickUp.started -= instance.OnPickUp;
-            @PickUp.performed -= instance.OnPickUp;
-            @PickUp.canceled -= instance.OnPickUp;
             @CancelAction.started -= instance.OnCancelAction;
             @CancelAction.performed -= instance.OnCancelAction;
             @CancelAction.canceled -= instance.OnCancelAction;
@@ -609,14 +494,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private List<IMenuActionsActions> m_MenuActionsActionsCallbackInterfaces = new List<IMenuActionsActions>();
     private readonly InputAction m_MenuActions_AcceptAction;
     private readonly InputAction m_MenuActions_CancelAction;
-    private readonly InputAction m_MenuActions_Dupa;
     public struct MenuActionsActions
     {
         private @PlayerInputActions m_Wrapper;
         public MenuActionsActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @AcceptAction => m_Wrapper.m_MenuActions_AcceptAction;
         public InputAction @CancelAction => m_Wrapper.m_MenuActions_CancelAction;
-        public InputAction @Dupa => m_Wrapper.m_MenuActions_Dupa;
         public InputActionMap Get() { return m_Wrapper.m_MenuActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -632,9 +515,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @CancelAction.started += instance.OnCancelAction;
             @CancelAction.performed += instance.OnCancelAction;
             @CancelAction.canceled += instance.OnCancelAction;
-            @Dupa.started += instance.OnDupa;
-            @Dupa.performed += instance.OnDupa;
-            @Dupa.canceled += instance.OnDupa;
         }
 
         private void UnregisterCallbacks(IMenuActionsActions instance)
@@ -645,9 +525,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @CancelAction.started -= instance.OnCancelAction;
             @CancelAction.performed -= instance.OnCancelAction;
             @CancelAction.canceled -= instance.OnCancelAction;
-            @Dupa.started -= instance.OnDupa;
-            @Dupa.performed -= instance.OnDupa;
-            @Dupa.canceled -= instance.OnDupa;
         }
 
         public void RemoveCallbacks(IMenuActionsActions instance)
@@ -687,10 +564,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnRun(InputAction.CallbackContext context);
-        void OnAttack(InputAction.CallbackContext context);
-        void OnStealth(InputAction.CallbackContext context);
-        void OnThrow(InputAction.CallbackContext context);
-        void OnPickUp(InputAction.CallbackContext context);
         void OnCancelAction(InputAction.CallbackContext context);
         void OnAcceptAction(InputAction.CallbackContext context);
     }
@@ -701,6 +574,5 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     {
         void OnAcceptAction(InputAction.CallbackContext context);
         void OnCancelAction(InputAction.CallbackContext context);
-        void OnDupa(InputAction.CallbackContext context);
     }
 }
