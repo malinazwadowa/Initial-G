@@ -14,7 +14,6 @@ public class UnlocksCellUI : MonoBehaviour
     [SerializeField] private Image sliderFill;
     [SerializeField] private Image sliderBackground;
 
-    [SerializeField] private Color unlockedColor;
     [SerializeField] private Color lockedColor;
     [SerializeField] private Color weaponColor;
     [SerializeField] private Color accessoryColor;

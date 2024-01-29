@@ -25,7 +25,7 @@ public class LevelSelectionUI : MonoBehaviour
             GameObject buttonObject = Instantiate(buttonPrefab);
             buttonObject.transform.SetParent(levelButtonList, false);
 
-            Button button = buttonObject.GetComponent<Button>();
+            Button button = buttonObject.GetComponentInChildren<Button>();
             button.interactable = levelUnlockStatus[level];
 
             if (button.interactable)

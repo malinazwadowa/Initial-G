@@ -10,7 +10,7 @@ public class GearUpgradeColumnUI : MonoBehaviour
     
     public TextMeshProUGUI headerText;
     public TextMeshProUGUI panelText;
-    public TextMeshProUGUI weaponNameText;
+    public TextMeshProUGUI itemNameText;
 
     public GameObject panelRows;
     public GameObject panelTextObject;

@@ -45,7 +45,7 @@ public class ResultsControllerUI : MonoBehaviour
     {
         scoreText.text = new string($"Score: {LevelManager.Instance.Score}");
         levelText.text = new string($"Level gained: {player.ExperienceController.CurrentLevel}");
-        timeText.text = TextUtilities.FormatTime(LevelManager.Instance.SessionTime);
+        timeText.text = new string ("Time survived: ") + TextUtilities.FormatTime(LevelManager.Instance.SessionTime);
     }
 
     private void GetWeaponResults()

@@ -155,8 +155,8 @@ public class GearUpgradeUI : MonoBehaviour
         column.button.onClick.AddListener(() => OnClickRankUpItem(randomItem));
 
         column.headerText.text = new string($"Rank up item");
-        column.weaponNameText.text = new string($"{randomItem.GetType().Name}");
-        LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)column.weaponNameText.transform);
+        column.itemNameText.text = new string($"{randomItem.GetType().Name}");
+        LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)column.itemNameText.transform);
 
         if (randomItem is Weapon)
         {
@@ -207,17 +207,21 @@ public class GearUpgradeUI : MonoBehaviour
         column.button.onClick.AddListener(() => OnClickEquipItem(randomItem));
 
         column.headerText.text = new string($"Equip NEW item");
-        column.weaponNameText.text = new string($"{randomItem.GetType().Name}");
+        column.itemNameText.text = new string($"{randomItem.GetType().Name}");
         column.panelText.text = randomItem.baseItemParameters.description;
 
-        LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)column.weaponNameText.transform);
+        LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)column.itemNameText.transform);
     }
 
     public void SetUpBlank(GearUpgradeColumnUI column)
     {
         column.panelTextObject.SetActive(true);
-        
-        column.panelTextObject.GetComponent<TextMeshProUGUI>().text = new string($"Baraninka sie skonczyla zostal tylko falafel");
+        column.itemIcon.transform.parent.gameObject.SetActive(false);
+        column.itemNameText.gameObject.SetActive(false);
+
+
+        column.headerText.text = new string($"You are socked");
+        column.panelTextObject.GetComponent<TextMeshProUGUI>().text = new string($"Get some healing instead.");
 
         column.button.onClick.AddListener(() => OnClickHealPlayer(player));
     }

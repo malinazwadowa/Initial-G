@@ -2057,7 +2057,7 @@ GameObject:
   - component: {fileID: 7275665481512118574}
   - component: {fileID: 7275665481512118575}
   m_Layer: 0
-  m_Name: P_UI_GearUpgradePopUp
+  m_Name: P_UI_GearUpgradePopUp_old
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
