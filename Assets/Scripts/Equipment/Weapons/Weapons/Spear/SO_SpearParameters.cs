@@ -14,7 +14,7 @@ public class SO_SpearParameters : SO_WeaponParameters
         amountOfRanks = ranks.Length - 1;
     }
 
-    [Header("Rank independend settings")]
+    [Header("Rank independent settings")]
     public float spawnDelayForAdditionalProjectiles;
     public float projectileSpacing;
     
@@ -31,5 +31,6 @@ public class SpearRank
     public float cooldown;
     public int amount;
     public float damage;
+    public int piercing;
     public float knockbackPower;
 }

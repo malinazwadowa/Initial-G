@@ -36,12 +36,13 @@ public class SpearClone3 : Weapon
         if (currentRankParameters.amount > 0)
         {
             GameObject newSpear = ObjectPooler.Instance.SpawnObject(currentRankParameters.projectilePrefab, position);
-            newSpear.GetComponent<SpearProjectile>().Init(
+            newSpear.GetComponent<SpearProjectile>().Initialize(
                 this.name,
                 direction,
                 currentRankParameters.damage * characterStats.damageModifier,
                 currentRankParameters.speed * characterStats.weaponSpeedModifier,
-                currentRankParameters.knockbackPower
+                currentRankParameters.knockbackPower,
+                currentRankParameters.piercing
                 );
         }
 
@@ -76,12 +77,13 @@ public class SpearClone3 : Weapon
         yield return new WaitForSeconds(delay);
 
         GameObject nextSpear = ObjectPooler.Instance.SpawnObject(currentRankParameters.projectilePrefab, position);
-        nextSpear.GetComponent<SpearProjectile>().Init(
+        nextSpear.GetComponent<SpearProjectile>().Initialize(
             this.name,
             direction,
             currentRankParameters.damage * characterStats.damageModifier,
             currentRankParameters.speed * characterStats.weaponSpeedModifier,
-            currentRankParameters.knockbackPower
+            currentRankParameters.knockbackPower,
+            currentRankParameters.piercing
             );
     }
 

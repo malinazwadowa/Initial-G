@@ -32,5 +32,6 @@ public class RockRank
     public float cooldown;
     public int amount;
     public float damage;
+    public int piercing;
     public float knockbackPower;
 }

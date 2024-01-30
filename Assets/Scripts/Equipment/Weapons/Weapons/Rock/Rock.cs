@@ -56,7 +56,8 @@ public class Rock : Weapon
                 target,
                 currentRankParameters.damage * characterStats.damageModifier,
                 currentRankParameters.speed * characterStats.weaponSpeedModifier,
-                currentRankParameters.knockbackPower
+                currentRankParameters.knockbackPower,
+                currentRankParameters.piercing
                 );
         }
         else
@@ -106,6 +107,7 @@ public class Rock : Weapon
         parameters.Add("amount", rankParameters.amount);
         parameters.Add("damage", rankParameters.damage);
         parameters.Add("knockbackPower", rankParameters.knockbackPower);
+        parameters.Add("piercing", rankParameters.piercing);
 
         return parameters;
     }

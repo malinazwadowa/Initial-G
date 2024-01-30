@@ -20,6 +20,7 @@ public class GearUpgradeColumnUI : MonoBehaviour
     [SerializeField] private GearUpgradeRowUI cooldownRow;
     [SerializeField] private GearUpgradeRowUI speedRow;
     [SerializeField] private GearUpgradeRowUI amountRow;
+    [SerializeField] private GearUpgradeRowUI piercingRow;
     [SerializeField] private GearUpgradeRowUI radiusRow;
     [SerializeField] private GearUpgradeRowUI durationRow;
     [SerializeField] private GearUpgradeRowUI knockbackRow;
@@ -144,6 +145,7 @@ public class GearUpgradeColumnUI : MonoBehaviour
             "amount" => amountRow,
             "radius" => radiusRow,
             "duration" => durationRow,
+            "piercing" => piercingRow,
             "knockback" => knockbackRow,
             _ => null,
         };

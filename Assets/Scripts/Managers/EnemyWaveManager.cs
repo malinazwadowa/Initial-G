@@ -22,7 +22,9 @@ public class EnemyWaveManager : SingletonMonoBehaviour<EnemyWaveManager>
     void Start()
     {
         enemyManagerData = GameManager.Instance.levelDataController.GetCurrentLevelData().myEnemyWaveManagerParameters;
-        waveDuration = (enemyManagerData.levelDurationInMinutes / enemyManagerData.enemyWaves.Length) * 60;
+
+        waveDuration = (LevelManager.Instance.LevelDuration / enemyManagerData.enemyWaves.Length) * 60;
+
         currentWaveData = enemyManagerData.enemyWaves[currentWaveId];
 
         foreach (KeyValuePair<GameObject, int> entry in GetAmountOfEachEnemyType())

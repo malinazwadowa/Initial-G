@@ -5,21 +5,28 @@ public class LevelManager : SingletonMonoBehaviour<LevelManager>
     public int Score { get; private set; }
     public float SessionTime { get; private set; }
 
-    [Header("Level Duration in minutes")]
-    public float levelDuration;
+    //[Header("Level Duration in minutes")]
+    public float LevelDuration { get; private set; }
     private ScoreCounterUI scoreCounterUI;
 
     private bool timeOver = false;
 
     private SO_GameLevel gameLevelData;
 
+    protected override void Awake()
+    {
+        base.Awake();
+        SetGameLevelData();
+        LevelDuration = gameLevelData.duration;
+    }
 
     private void Start()
     {
-        SetGameLevelData();
+        
         scoreCounterUI = FindObjectOfType<ScoreCounterUI>();
         TimeManager.ResumeTime();
         AudioManager.Instance.Initalize(gameLevelData.myAudioClipsParameters);
+        
     }
 
     private void Update()

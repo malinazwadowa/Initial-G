@@ -54,7 +54,7 @@ public class Hedgehog : Weapon
             Quaternion rotation = Quaternion.Euler(0, 0, angle);
 
             GameObject newHog = ObjectPooler.Instance.SpawnObject(currentRankParameters.projectilePrefab, weaponWielder.GetCenterPosition(), rotation);
-            newHog.GetComponent<HedgehogProjectile>().Initalize(
+            newHog.GetComponent<HedgehogProjectile>().Initialize(
                 this.GetType().Name,
                 weaponWielder.GetCenterTransform(),
                 currentRankParameters.damage * characterStats.damageModifier,

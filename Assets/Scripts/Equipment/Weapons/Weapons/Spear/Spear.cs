@@ -36,12 +36,13 @@ public class Spear :  Weapon
         if(currentRankParameters.amount > 0)
         {
             GameObject newSpear = ObjectPooler.Instance.SpawnObject(currentRankParameters.projectilePrefab, position);
-            newSpear.GetComponent<SpearProjectile>().Init(
+            newSpear.GetComponent<SpearProjectile>().Initialize(
                 this.GetType().Name,
                 direction,
                 currentRankParameters.damage * characterStats.damageModifier,
                 currentRankParameters.speed * characterStats.weaponSpeedModifier,
-                currentRankParameters.knockbackPower
+                currentRankParameters.knockbackPower,
+                currentRankParameters.piercing
                 );
         }
         
@@ -76,12 +77,13 @@ public class Spear :  Weapon
         yield return new WaitForSeconds(delay);
 
         GameObject nextSpear = ObjectPooler.Instance.SpawnObject(currentRankParameters.projectilePrefab, position);
-        nextSpear.GetComponent<SpearProjectile>().Init(
+        nextSpear.GetComponent<SpearProjectile>().Initialize(
             this.GetType().Name,
             direction,
             currentRankParameters.damage * characterStats.damageModifier,
             currentRankParameters.speed * characterStats.weaponSpeedModifier,
-            currentRankParameters.knockbackPower
+            currentRankParameters.knockbackPower,
+            currentRankParameters.piercing
             );
     }
 
@@ -106,6 +108,7 @@ public class Spear :  Weapon
         parameters.Add("amount", rankParameters.amount);
         parameters.Add("damage", rankParameters.damage);
         parameters.Add("knockbackPower", rankParameters.knockbackPower);
+        parameters.Add("piercing", rankParameters.piercing);
 
         return parameters;
     }

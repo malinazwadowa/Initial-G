@@ -11,8 +11,8 @@ public class SO_EnemyWaveManagerParameters : ScriptableObject
         }
     }
 
-    [Header("Base Settings")]
-    public float levelDurationInMinutes;
+    //[Header("Base Settings")]
+    //public float levelDurationInMinutes;
 
     [Header("Wave Settings")]
     public EnemyWave[] enemyWaves;
