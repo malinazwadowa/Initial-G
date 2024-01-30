@@ -128,7 +128,6 @@ public class UnlocksCellUI : MonoBehaviour
 
     public void HighlightAsNew()
     {
-        //panelHighlight.gameObject.SetActive(true);
         panelHighlight.enabled = true;
     }
 }

@@ -16,7 +16,7 @@ public class ProfilesMenuControllerUI : MonoBehaviour
 
     public RectTransform mainSection;
 
-    public void SetUp()
+    public void SetUpProfilesList()
     {
         Utilities.RemoveChildren(listTransform);
 
@@ -27,7 +27,6 @@ public class ProfilesMenuControllerUI : MonoBehaviour
             ProfileRowUI rowScript = newRow.GetComponent<ProfileRowUI>();
             rowScript.SetUp(profileName, this);
             rowScript.toggle.group = toggleGroup;
-
 
             if (profileName == GameManager.Instance.profileController.GetCurrentProfileName())
             {
@@ -63,7 +62,7 @@ public class ProfilesMenuControllerUI : MonoBehaviour
     public void DeleteSelected()
     {
         GameManager.Instance.profileController.DeleteProfile(currentlySelectedRow.ProfileName);
-        SetUp();
+        SetUpProfilesList();
     }
 
     public void CreateNewProfile()
