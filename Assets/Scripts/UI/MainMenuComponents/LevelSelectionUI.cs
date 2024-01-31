@@ -15,7 +15,7 @@ public class LevelSelectionUI : MonoBehaviour
         GameManager.Instance.ChangeScene(levelData.myScene);
     }
     
-    public void SetUpButtonLogic()
+    public void PopulateLevelsList()
     {
         Utilities.RemoveChildren(levelButtonList);
         Dictionary<GameLevel, bool> levelUnlockStatus = GameManager.Instance.levelDataController.GetCurrentLevelUnlockStatus();

@@ -16,7 +16,7 @@ public class ProfilesMenuControllerUI : MonoBehaviour
 
     public RectTransform mainSection;
 
-    public void SetUpProfilesList()
+    public void PopulateProfilesList()
     {
         Utilities.RemoveChildren(listTransform);
 
@@ -62,7 +62,7 @@ public class ProfilesMenuControllerUI : MonoBehaviour
     public void DeleteSelected()
     {
         GameManager.Instance.profileController.DeleteProfile(currentlySelectedRow.ProfileName);
-        SetUpProfilesList();
+        PopulateProfilesList();
     }
 
     public void CreateNewProfile()

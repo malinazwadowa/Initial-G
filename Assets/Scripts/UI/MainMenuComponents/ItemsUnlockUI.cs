@@ -7,7 +7,7 @@ public class ItemsUnlockUI : MonoBehaviour
     public Transform grid;
     private List<UnlocksCellUI> cellControllers;
 
-    public void PresentData()
+    public void PopulateUnlocksGrid()
     {
         cellControllers = new List<UnlocksCellUI>();
         List<Item> allItems = GameManager.Instance.itemDataController.allItems;
