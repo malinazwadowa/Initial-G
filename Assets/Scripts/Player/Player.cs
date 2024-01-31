@@ -111,7 +111,7 @@ public class Player : MonoBehaviour, IItemWielder, IDamagable
 
         characterStatsController.Initialize();
         ExperienceController.Initialize(FindAnyObjectByType<ExpBarUI>());
-        healthController.Initialize(playerData.maxHealth);
+        healthController.Initialize(playerData.maxHealth, characterStatsController.GetStats(), 10);
         lootCollisionHandler.Initialize(playerData.lootingRadius, characterStatsController.CharacterStats);
         movementController.Initialize(playerData, rigidBody, characterStatsController.CharacterStats);
         animationController.Initialize(animator, movementController, spriteRenderers);

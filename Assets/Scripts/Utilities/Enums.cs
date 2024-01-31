@@ -49,7 +49,8 @@ public enum StatModifier
     WeaponSpeedModifier,
     DamageModifier,
     CooldownModifier,
-    LootingRadius
+    LootingRadius,
+    RegenerationModifier
 }
 public enum SectorOfChunk
 {

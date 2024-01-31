@@ -81,7 +81,7 @@ public class ObjectPooler : SingletonMonoBehaviour<ObjectPooler>
     {
         if (!poolDictionary.ContainsKey(objectToDeSpawn.name))
         {
-            Debug.Log($"Pool for {objectToDeSpawn} does't exist, cannot despawn the object.");
+            Debug.Log($"Pool for {objectToDeSpawn} doesn't exist, cannot despawn the object.");
             return;
         }
 

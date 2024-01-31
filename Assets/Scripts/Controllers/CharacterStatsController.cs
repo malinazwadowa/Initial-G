@@ -42,6 +42,11 @@ public class CharacterStatsController : MonoBehaviour
                 gameObject.GetComponentInChildren<LootCollisionHandler>().UpdateRadiusValue();
                 break;
 
+            case StatModifier.RegenerationModifier:
+                CharacterStats.healthRegenerationModifier += value;
+
+                break;
+
             default:
                 Debug.LogError("Invalid stat type: " + statModifier);
                 break;

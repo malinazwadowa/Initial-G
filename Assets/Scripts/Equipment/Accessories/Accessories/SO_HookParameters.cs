@@ -13,6 +13,6 @@ public class SO_HookParameters : SO_AccessoryParameters
     [Header("Amount of ranks")]
     public int numberOfRanks;
 
-    [Header("Per rank cooldown reduction in %")]
+    [Header("Per rank looting range increase in %")]
     public float value;
 }

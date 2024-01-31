@@ -21,11 +21,13 @@ MonoBehaviour:
   - {fileID: 6750827329578912333, guid: cf99fa99d61467b48ba5f17ab48b8a01, type: 3}
   - {fileID: 428154919615283862, guid: ac19876c3e98920439f8e8b5da76f535, type: 3}
   - {fileID: 2938279282902152669, guid: 7be70af4ff5e6ee44a3380ea5ee058a0, type: 3}
+  - {fileID: 8421265509367215421, guid: 2ca6149b369f0f643bc115ddd16bfeae, type: 3}
   allAccessoryPrefabs:
   - {fileID: 5575680701261846008, guid: b4b07aae3978883469266c496f7eeb76, type: 3}
   - {fileID: 6750827329578912333, guid: cf99fa99d61467b48ba5f17ab48b8a01, type: 3}
   - {fileID: 428154919615283862, guid: ac19876c3e98920439f8e8b5da76f535, type: 3}
   - {fileID: 2938279282902152669, guid: 7be70af4ff5e6ee44a3380ea5ee058a0, type: 3}
+  - {fileID: 8421265509367215421, guid: 2ca6149b369f0f643bc115ddd16bfeae, type: 3}
   allWeaponPrefabs:
   - {fileID: 3959019659549421026, guid: 6733869323336ff48b8e145332e36618, type: 3}
   - {fileID: 3887739600524060785, guid: 2bab34fbbb0295742b2aa20ec8323523, type: 3}
@@ -40,11 +42,13 @@ MonoBehaviour:
   - {fileID: 4979760414099561978, guid: cf99fa99d61467b48ba5f17ab48b8a01, type: 3}
   - {fileID: 6892816886702229729, guid: ac19876c3e98920439f8e8b5da76f535, type: 3}
   - {fileID: 630630366061450594, guid: 7be70af4ff5e6ee44a3380ea5ee058a0, type: 3}
+  - {fileID: 4750550834655977677, guid: 2ca6149b369f0f643bc115ddd16bfeae, type: 3}
   accessoryTypes:
   - Clock
   - Boot
   - Amulet
   - Hook
+  - VitalityRing
   weaponTypes:
   - Rock
   - Hedgehog

@@ -13,6 +13,6 @@ public class SO_AmuletParameters : SO_AccessoryParameters
     [Header("Amount of ranks")]
     public int numberOfRanks;
     
-    [Header("Per rank cooldown reduction in %")]
+    [Header("Per rank damage done increase in %")]
     public float value;
 }
