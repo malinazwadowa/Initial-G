@@ -55,7 +55,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     private void OnSceneChange()
     {
-        gameStatsController.StoreSessionStats();
+        gameStatsController.WipeSessionStats();
         itemDataController.CheckForNewUnlocks();
         levelDataController.UpdateLevelUnlockDictionary();
         SaveSystem.Save();

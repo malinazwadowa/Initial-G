@@ -48,7 +48,7 @@ public class ObjectPooler : SingletonMonoBehaviour<ObjectPooler>
 
         if (poolDictionary[objectName].inactiveObjects.Count == 0)
         {
-            objToSpawn = Instantiate(gameObject);
+            objToSpawn = Instantiate(gameObject, ObjectHolder.GetTransform());
             objToSpawn.name = objectName;
             objToSpawn.SetActive(true);
 
@@ -121,7 +121,7 @@ public class ObjectPooler : SingletonMonoBehaviour<ObjectPooler>
     {
         for (int i = 0; i < pool.size; i++)
         {
-            GameObject gameObject = Instantiate(pool.objectPrefab);
+            GameObject gameObject = Instantiate(pool.objectPrefab, ObjectHolder.GetTransform());
             gameObject.name = gameObject.name.EndsWith("(Clone)") ? gameObject.name.Replace("(Clone)", "") : gameObject.name;
             gameObject.SetActive(false);
             pool.objectLists.inactiveObjects.Add(gameObject);

@@ -32,7 +32,7 @@ public class GameStatsController : MonoBehaviour, ISaveable
 
     public ObjectData SaveMyData()
     {
-        StoreSessionStats();
+        WipeSessionStats();
 
         GameStatsSaveData gameStatsSaveData = new GameStatsSaveData
         {
@@ -72,8 +72,9 @@ public class GameStatsController : MonoBehaviour, ISaveable
         }
     }
 
-    public void StoreSessionStats()
+    public void WipeSessionStats()
     {
+        /*
         //foreach(EnemyType enemyType in SessionStats.enemyKilledCounts.Keys)
         //{
         //    OverallStats.enemyKilledCounts.TryGetValue(enemyType, out int currentCount);
@@ -98,7 +99,7 @@ public class GameStatsController : MonoBehaviour, ISaveable
         //{
         //    OverallStats.collectibleCounts.TryGetValue(collectibleType, out int currentCount);
         //    OverallStats.collectibleCounts[collectibleType] = currentCount + SessionStats.collectibleCounts[collectibleType];
-        //}
+        //} */
 
         SessionStats = new GameStats();
     }
