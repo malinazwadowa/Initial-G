@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    private Transform playersTransfrom;
+    private Transform playersTransform;
+
     void Start()
     {
-        playersTransfrom =  PlayerManager.Instance.GetPlayersFeetTransform();
+        playersTransform =  PlayerManager.Instance.GetPlayersCenterTransform();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3(playersTransfrom.position.x, playersTransfrom.position.y, -10);
+        transform.position = new Vector3(playersTransform.position.x, playersTransform.position.y, -10);
     }
 }

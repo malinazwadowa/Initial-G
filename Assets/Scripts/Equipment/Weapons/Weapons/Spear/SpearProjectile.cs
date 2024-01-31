@@ -22,7 +22,7 @@ public class SpearProjectile : MonoBehaviour
 
     void Update()
     {
-        MoveProjectile();
+        Move();
 
         if (!Utilities.IsObjectInView(0.2f, transform.position))
         {
@@ -30,7 +30,7 @@ public class SpearProjectile : MonoBehaviour
         }
     }
 
-    private void MoveProjectile()
+    private void Move()
     {
         Vector3 newPosition = transform.position + movementDirection * speed * Time.deltaTime;
         transform.position = newPosition;
@@ -45,9 +45,9 @@ public class SpearProjectile : MonoBehaviour
 
             Vector3 direction = collision.transform.position - transform.position;
 
-            target.GetDamaged(damage, weaponType);
+            target.Damage(damage, weaponType);
             
-            target.GetKnockbacked(knockbackPower, direction.normalized);
+            target.Knockback(knockbackPower, direction.normalized);
             
             if (piercing == 0)
             {

@@ -43,18 +43,13 @@ public class PlayerManager : SingletonMonoBehaviour<PlayerManager>
         return player.InputController;
     }
 
-    public Transform GetPlayersFeetTransform()
-    {
-        return player.transform;
-    }
-
     public Transform GetPlayersCenterTransform()
     {
-        Transform weaponTransform = player.transform.Find("Center");
+        Transform centerTransform = player.transform.Find("Center");
 
-        if (weaponTransform != null)
+        if (centerTransform != null)
         {
-            return weaponTransform;
+            return centerTransform;
         }
         else
         {

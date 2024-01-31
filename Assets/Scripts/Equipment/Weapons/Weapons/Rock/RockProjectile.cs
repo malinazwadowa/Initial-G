@@ -54,8 +54,8 @@ public class RockProjectile : MonoBehaviour
         {
             piercing -= 1;
 
-            target.GetDamaged(damage, weaponType);
-            target.GetKnockbacked(knockbackPower, direction.normalized);
+            target.Damage(damage, weaponType);
+            target.Knockback(knockbackPower, direction.normalized);
             
             if (piercing == 0)
             {

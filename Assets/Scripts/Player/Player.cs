@@ -4,7 +4,6 @@ using UnityEngine;
 public class Player : MonoBehaviour, IItemWielder, IDamagable
 {
     [SerializeField] public SO_PlayerParameters playerData;
-
     private Transform center;
     public bool IsAlive {get; private set;}
 
@@ -17,7 +16,6 @@ public class Player : MonoBehaviour, IItemWielder, IDamagable
     private PlayerMovementController movementController;
     private PlayerAnimationController animationController;
     private LootCollisionHandler lootCollisionHandler;
-
     private CharacterStatsController characterStatsController;
 
     [HideInInspector] public ExperienceController ExperienceController { get; private set; }
@@ -26,32 +24,7 @@ public class Player : MonoBehaviour, IItemWielder, IDamagable
 
     private void Awake()
     {
-        InputActions = new PlayerInputActions();
-        animator = GetComponent<Animator>();
-        spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
-        rigidBody = GetComponent<Rigidbody2D>();
-
-        IsAlive = true;
-        healthController = GetComponent<HealthController>();
-        ItemController = GetComponent<ItemController>();
-        lootCollisionHandler = GetComponentInChildren<LootCollisionHandler>();
-        movementController = GetComponent<PlayerMovementController>();
-        animationController = GetComponent<PlayerAnimationController>();
-        InputController = GetComponent<PlayerInputController>();
-        ExperienceController = GetComponent<ExperienceController>();
-
-        characterStatsController = GetComponent<CharacterStatsController>();
-
-        characterStatsController.Initialize();
-        ExperienceController.Initialize(FindAnyObjectByType<ExpBarUI>());
-        healthController.Initialize(playerData.maxHealth);
-
-        lootCollisionHandler.Initialize(playerData.lootingRadius, characterStatsController.CharacterStats);
-        movementController.Initialize(playerData, rigidBody, characterStatsController.CharacterStats);
-        animationController.Initialize(animator, movementController, spriteRenderers);
-        InputController.Initialize(movementController, InputActions);
-
-        ItemController.Initialize(this, characterStatsController);
+        Initialize();
     }
 
     private void Start()
@@ -62,11 +35,6 @@ public class Player : MonoBehaviour, IItemWielder, IDamagable
     private void Update()
     {
         animationController.SetAnimationVelocity(InputActions.GameplayActions.Movement.ReadValue<Vector2>());
-    }
-
-    private void FixedUpdate()
-    {
-
     }
 
     public Vector3 GetCenterPosition()
@@ -93,7 +61,7 @@ public class Player : MonoBehaviour, IItemWielder, IDamagable
         }*/
     }
 
-    public void GetDamaged(float amount, string damageSource)
+    public void Damage(float amount, string damageSource)
     {
         healthController.SubstractCurrentHealth(amount);
         animationController.ChangeColorOnDamage();
@@ -101,11 +69,11 @@ public class Player : MonoBehaviour, IItemWielder, IDamagable
 
         if(healthController.GetCurrentHealth() <= 0)
         {
-            GetKilled();
+            Kill();
         }
     }
 
-    public void GetKilled()
+    public void Kill()
     {
         if (!IsAlive) { return; }
         //AudioManager.Instance.PlaySound(AudioClipID.Something);
@@ -113,8 +81,36 @@ public class Player : MonoBehaviour, IItemWielder, IDamagable
         EventManager.OnPlayerDeath?.Invoke();
     }
 
-    public void GetKnockbacked(float power, Vector3 knockbackDirection)
+    public void Knockback(float power, Vector3 knockbackDirection)
     {
         //throw new System.NotImplementedException();
+    }
+
+    public void Initialize()
+    {
+        InputActions = new PlayerInputActions();
+        animator = GetComponent<Animator>();
+        spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
+        rigidBody = GetComponent<Rigidbody2D>();
+
+        IsAlive = true;
+
+        healthController = GetComponent<HealthController>();
+        ItemController = GetComponent<ItemController>();
+        lootCollisionHandler = GetComponentInChildren<LootCollisionHandler>();
+        movementController = GetComponent<PlayerMovementController>();
+        animationController = GetComponent<PlayerAnimationController>();
+        InputController = GetComponent<PlayerInputController>();
+        ExperienceController = GetComponent<ExperienceController>();
+        characterStatsController = GetComponent<CharacterStatsController>();
+
+        characterStatsController.Initialize();
+        ExperienceController.Initialize(FindAnyObjectByType<ExpBarUI>());
+        healthController.Initialize(playerData.maxHealth);
+        lootCollisionHandler.Initialize(playerData.lootingRadius, characterStatsController.CharacterStats);
+        movementController.Initialize(playerData, rigidBody, characterStatsController.CharacterStats);
+        animationController.Initialize(animator, movementController, spriteRenderers);
+        InputController.Initialize(movementController, InputActions);
+        ItemController.Initialize(this, characterStatsController);
     }
 }

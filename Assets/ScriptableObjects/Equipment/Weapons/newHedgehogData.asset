@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlockCondition:
     name: 
-    conditionType: 4
+    conditionType: 2
     weaponType: Rock
-    accessoryType: Amulet
+    accessoryType: Boot
     enemyType: 0
     collectibleType: 0
-    amount: 830
+    amount: 100
   icon: {fileID: 797102184, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
   description: Spins projectiles around the player.
   amountOfRanks: 3

@@ -21,7 +21,7 @@ public class ProfileController : MonoBehaviour, ISaveable
     {
         ProfilesData profilesData = new ProfilesData
         {
-            IsCoreData = true,
+            IsProfileIndependent = true,
             currentProfileName = this.currentProfileName,
             profileNameToID = this.profileNameToID
         };

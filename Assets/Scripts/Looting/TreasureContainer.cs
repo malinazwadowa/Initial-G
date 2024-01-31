@@ -15,22 +15,22 @@ public class TreasureContainer : MonoBehaviour, IDamagable
         healthController.Initialize(containerData.health);
     }
 
-    public void GetDamaged(float amount, string damageSource)
+    public void Damage(float amount, string damageSource)
     {
         healthController.SubstractCurrentHealth(amount);
         if (healthController.GetCurrentHealth() <= 0)
         {
-            GetKilled();
+            Kill();
         }
     }
 
-    public void GetKilled()
+    public void Kill()
     {
         DropLoot(containerData.lootTable);
         ObjectPooler.Instance.DespawnObject(gameObject);
     }
 
-    public void GetKnockbacked(float power, Vector3 knockbackDirection)
+    public void Knockback(float power, Vector3 knockbackDirection)
     {
         
     }

@@ -11,7 +11,7 @@ public class SettingsControllerUI : MonoBehaviour
     [SerializeField] private GameObject regularButtons;
 
     private VolumeValues storedVolumeValues;
-    private bool initalValuesSet;
+    private bool initialValuesSet;
 
     private struct VolumeValues
     {
@@ -22,12 +22,12 @@ public class SettingsControllerUI : MonoBehaviour
 
     private void OnEnable()
     {
-        initalValuesSet = false;    
+        initialValuesSet = false;    
         
         SnapshotVolumeValues();
-        SetSilderValues();
+        SetSliderValues();
 
-        initalValuesSet = true;
+        initialValuesSet = true;
     }
 
     public void CancelChanges()
@@ -40,6 +40,7 @@ public class SettingsControllerUI : MonoBehaviour
     {
         SnapshotVolumeValues();
         DisableSaveButtons();
+        SaveSystem.Save();
     }
 
     public void SetMasterVolume(float value)
@@ -59,7 +60,7 @@ public class SettingsControllerUI : MonoBehaviour
 
     public void EnableSaveButtons()
     {
-        if (!initalValuesSet) { return; }
+        if (!initialValuesSet) { return; }
         saveButtons.SetActive(true);
         regularButtons.SetActive(false);
     }
@@ -82,7 +83,7 @@ public class SettingsControllerUI : MonoBehaviour
         storedVolumeValues = currentVolumeValues;
     }
 
-    private void SetSilderValues()
+    private void SetSliderValues()
     {
         masterVolumeSlider.value = AudioManager.Instance.GetCurrentVolume(MixerGroup.Master);
         soundsVolumeSlider.value = AudioManager.Instance.GetCurrentVolume(MixerGroup.Sounds);

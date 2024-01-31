@@ -24,7 +24,7 @@ public class SaveableEntity : MonoBehaviour
         {
             ObjectData saveData = saveable.SaveMyData();
 
-            if((saveData.IsCoreData && saveOnlyCore) || (!saveData.IsCoreData && !saveOnlyCore))
+            if((saveData.IsProfileIndependent && saveOnlyCore) || (!saveData.IsProfileIndependent && !saveOnlyCore))
             {
                 data[saveable.GetType().ToString()] = saveData;
             }
@@ -41,7 +41,7 @@ public class SaveableEntity : MonoBehaviour
 
             if (dataDictionary.TryGetValue(typeName, out ObjectData value))
             {
-                if ((!loadOnlyCore && !value.IsCoreData) || (loadOnlyCore && value.IsCoreData))
+                if ((!loadOnlyCore && !value.IsProfileIndependent) || (loadOnlyCore && value.IsProfileIndependent))
                 {
                     saveable.LoadMyData(value);
                 }
@@ -55,7 +55,7 @@ public class SaveableEntity : MonoBehaviour
         {
             ObjectData saveData = saveable.SaveMyData();
 
-            bool isCoreData = saveData.IsCoreData;
+            bool isCoreData = saveData.IsProfileIndependent;
 
             if (!isCoreData)
             {

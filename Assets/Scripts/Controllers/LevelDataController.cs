@@ -55,7 +55,7 @@ public class LevelDataController : MonoBehaviour, ISaveable
             {
                 UnlockGameLevel(startingLevelType);
             }
-            else if (GameManager.Instance.gameStatsController.OverallStats.beatenLevels.Contains(level.unlockedBy))
+            else if (GameManager.Instance.gameStatsController.OverallStats.completedLevels.Contains(level.unlockedBy))
             {
                 UnlockGameLevel(level.type);
             }

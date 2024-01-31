@@ -36,7 +36,7 @@ public class LevelManager : SingletonMonoBehaviour<LevelManager>
         {
             timeOver = true;
             EventManager.OnLevelCompleted?.Invoke();
-            GameManager.Instance.gameStatsController.RegisterBeatenLevel(gameLevelData.type);
+            GameManager.Instance.gameStatsController.RegisterCompletedLevel(gameLevelData.type);
         }
     }
 

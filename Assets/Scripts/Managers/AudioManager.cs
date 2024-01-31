@@ -29,7 +29,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>, ISaveable
     {
         AudioSaveData saveData = new AudioSaveData
         {
-            IsCoreData = true,
+            IsProfileIndependent = true,
             masterVolume = GetCurrentVolume(MixerGroup.Master),
             soundsVolume = GetCurrentVolume(MixerGroup.Sounds),
             musicVolume = GetCurrentVolume(MixerGroup.Music),

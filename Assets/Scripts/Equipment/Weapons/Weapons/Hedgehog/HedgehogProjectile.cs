@@ -67,8 +67,8 @@ public class HedgehogProjectile : MonoBehaviour
         {
             Vector3 direction = collision.transform.position - weaponsTransform.position;
 
-            target.GetKnockbacked(knockbackPower, direction.normalized);
-            target.GetDamaged(damage, weaponType);
+            target.Knockback(knockbackPower, direction.normalized);
+            target.Damage(damage, weaponType);
         }
     }
 }
