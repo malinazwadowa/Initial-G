@@ -85,6 +85,11 @@ public class Player : MonoBehaviour, IItemWielder, IDamagable
     {
         //throw new System.NotImplementedException();
     }
+    
+    public CharacterStatsController GetCharacterStatsController()
+    {
+        return characterStatsController;
+    }
 
     public void Initialize()
     {
@@ -111,6 +116,7 @@ public class Player : MonoBehaviour, IItemWielder, IDamagable
         movementController.Initialize(playerData, rigidBody, characterStatsController.CharacterStats);
         animationController.Initialize(animator, movementController, spriteRenderers);
         InputController.Initialize(movementController, InputActions);
-        ItemController.Initialize(this, characterStatsController);
+        ItemController.Initialize(this);
     }
+
 }

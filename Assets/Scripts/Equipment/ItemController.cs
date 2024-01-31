@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ItemController : MonoBehaviour
 {
-    private IItemWielder wielder;
+    private IItemWielder itemWielder;
     private CharacterStatsController characterStatsController;
     private CharacterStats characterStats;
 
@@ -13,10 +13,11 @@ public class ItemController : MonoBehaviour
     [HideInInspector] public AccessoryController AccessoryController { get; private set; }
     [HideInInspector] public List<Item> EquippedItems { get; private set; } = new List<Item>();
 
-    public void Initialize(IItemWielder itemWielder, CharacterStatsController characterStatsController)
+    public void Initialize(IItemWielder itemWielder)
     {
-        this.wielder = itemWielder;
-        this.characterStatsController = characterStatsController;
+        this.itemWielder = itemWielder;
+
+        characterStatsController = this.itemWielder.GetCharacterStatsController();
         characterStats = characterStatsController.GetStats();
 
         InitializeControllers();
@@ -28,7 +29,7 @@ public class ItemController : MonoBehaviour
         WeaponController = gameObject.AddComponent<WeaponController>();
         AccessoryController = gameObject.AddComponent<AccessoryController>();
 
-        WeaponController.Initialize(wielder, characterStats);
+        WeaponController.Initialize(itemWielder, characterStats);
         AccessoryController.Initialize(characterStatsController);
     }
 
