@@ -33,7 +33,7 @@ MonoBehaviour:
     duration: 3
     amount: 1
     damage: 10
-    knockbackPower: 6
+    knockbackPower: 3
   - name: Rank 2
     projectilePrefab: {fileID: 2540002873092309467, guid: 8696e6bee6de5dc4392d29679ff4d199,
       type: 3}
@@ -43,7 +43,7 @@ MonoBehaviour:
     duration: 3
     amount: 7
     damage: 10
-    knockbackPower: 6
+    knockbackPower: 3
   - name: Rank 3
     projectilePrefab: {fileID: 2540002873092309467, guid: 8696e6bee6de5dc4392d29679ff4d199,
       type: 3}
@@ -53,7 +53,7 @@ MonoBehaviour:
     duration: 4
     amount: 3
     damage: 10
-    knockbackPower: 6
+    knockbackPower: 3
   - name: Rank 4
     projectilePrefab: {fileID: 2540002873092309467, guid: 8696e6bee6de5dc4392d29679ff4d199,
       type: 3}
@@ -63,4 +63,4 @@ MonoBehaviour:
     duration: 5
     amount: 5
     damage: 15
-    knockbackPower: 6
+    knockbackPower: 3

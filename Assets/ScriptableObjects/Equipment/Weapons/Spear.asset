@@ -34,7 +34,7 @@ MonoBehaviour:
     amount: 1
     damage: 10
     piercing: 1
-    knockbackPower: 6
+    knockbackPower: 3
   - name: Rank 2
     projectilePrefab: {fileID: 8291530308845601912, guid: 15fbe4c8a851b404b8579560d12d659e,
       type: 3}
@@ -43,7 +43,7 @@ MonoBehaviour:
     amount: 3
     damage: 10
     piercing: 2
-    knockbackPower: 6
+    knockbackPower: 3
   - name: Rank 3
     projectilePrefab: {fileID: 8291530308845601912, guid: 15fbe4c8a851b404b8579560d12d659e,
       type: 3}
@@ -52,7 +52,7 @@ MonoBehaviour:
     amount: 5
     damage: 10
     piercing: 3
-    knockbackPower: 6
+    knockbackPower: 3
   - name: Rank 4
     projectilePrefab: {fileID: 8291530308845601912, guid: 15fbe4c8a851b404b8579560d12d659e,
       type: 3}
@@ -61,7 +61,7 @@ MonoBehaviour:
     amount: 5
     damage: 10
     piercing: 3
-    knockbackPower: 6
+    knockbackPower: 3
   - name: Rank 5
     projectilePrefab: {fileID: 8291530308845601912, guid: 15fbe4c8a851b404b8579560d12d659e,
       type: 3}
@@ -70,4 +70,4 @@ MonoBehaviour:
     amount: 5
     damage: 10
     piercing: 3
-    knockbackPower: 6
+    knockbackPower: 3

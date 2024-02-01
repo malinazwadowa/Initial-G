@@ -132,6 +132,7 @@ public class GearUpgradeColumnUI : MonoBehaviour
         StatModifier.DamageModifier => "Damage Done",
         StatModifier.CooldownModifier => "Cooldown reduction",
         StatModifier.LootingRadius => "Looting Radius",
+        StatModifier.RegenerationModifier => "Health regeneration",
         _ => "Unknown"
     };
 
