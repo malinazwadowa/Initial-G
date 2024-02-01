@@ -88,6 +88,7 @@ public class ProfileController : MonoBehaviour, ISaveable
             {
                 currentProfileName = newProfileName;
             }
+            SaveSystem.Save();
         }
         else
         {

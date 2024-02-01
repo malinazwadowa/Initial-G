@@ -7,6 +7,7 @@ public class LevelSelectionUI : MonoBehaviour
 {
     public GameObject buttonPrefab;
     public Transform levelButtonList;
+    public MenuUI myMenu;
 
     public void LoadGameLevel(GameLevel gameLevel)
     {
@@ -18,6 +19,7 @@ public class LevelSelectionUI : MonoBehaviour
     public void PopulateLevelsList()
     {
         Utilities.RemoveChildren(levelButtonList);
+        bool buttonSelected = false;
         Dictionary<GameLevel, bool> levelUnlockStatus = GameManager.Instance.levelDataController.GetCurrentLevelUnlockStatus();
 
         foreach (GameLevel level in levelUnlockStatus.Keys)
@@ -27,6 +29,12 @@ public class LevelSelectionUI : MonoBehaviour
 
             Button button = buttonObject.GetComponentInChildren<Button>();
             button.interactable = levelUnlockStatus[level];
+
+            if (button.interactable && buttonSelected == false)
+            {
+                buttonSelected = true;
+                myMenu.SetFirstSelected(button);
+            }
 
             if (button.interactable)
             {

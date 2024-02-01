@@ -19,12 +19,14 @@ public class NewProfileNameInputPromptUI : MonoBehaviour
         errorText.gameObject.SetActive(false);
         inputField.text = "";
         this.profilesMenu = menu;
+        inputField.Select();
     }
 
     public void OpenForNew(MenuUI menu)
     {
         Open(menu);
         acceptButton.onClick.RemoveAllListeners();
+        myMenu.OnAcceptEvent.RemoveAllListeners();
 
         acceptButton.onClick.AddListener(CreateNew);
         myMenu.OnAcceptEvent.AddListener(CreateNew);
@@ -34,8 +36,9 @@ public class NewProfileNameInputPromptUI : MonoBehaviour
     {
         Open(menu);
         acceptButton.onClick.RemoveAllListeners();
+        myMenu.OnAcceptEvent.RemoveAllListeners();
 
-        acceptButton.onClick.AddListener(() => Rename(nameToChange));
+       acceptButton.onClick.AddListener(() => Rename(nameToChange));
         myMenu.OnAcceptEvent.AddListener(() => Rename(nameToChange));
     }
 
@@ -84,10 +87,12 @@ public class NewProfileNameInputPromptUI : MonoBehaviour
     {
         if (string.IsNullOrEmpty(userInput))
         {
+            inputField.Select();
             return (false, "Enter a profile name.");
         }
         else if (GameManager.Instance.profileController.profileNameToID.ContainsKey(userInput))
         {
+            inputField.Select();
             return (false, "A profile with this name already exists.");
         }
         else

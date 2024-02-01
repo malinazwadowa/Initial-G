@@ -22,7 +22,7 @@ MonoBehaviour:
     amount: 100
   icon: {fileID: 797102184, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
   description: Spins projectiles around the player.
-  amountOfRanks: 3
+  amountOfRanks: 4
   ranks:
   - name: Rank 1
     projectilePrefab: {fileID: 2540002873092309467, guid: 8696e6bee6de5dc4392d29679ff4d199,
@@ -57,10 +57,10 @@ MonoBehaviour:
   - name: Rank 4
     projectilePrefab: {fileID: 2540002873092309467, guid: 8696e6bee6de5dc4392d29679ff4d199,
       type: 3}
-    speed: 300
+    speed: 200
     cooldown: 3
     radius: 4
-    duration: 5
-    amount: 5
+    duration: 15
+    amount: 4
     damage: 15
     knockbackPower: 3

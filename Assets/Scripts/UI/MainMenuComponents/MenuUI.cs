@@ -1,8 +1,11 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class MenuUI : MonoBehaviour
 {
+    [SerializeField] private Button firstSelected;
+
     [SerializeField] private UnityEvent OnOpenEvent;
     [SerializeField] private UnityEvent OnCloseEvent;
    
@@ -21,6 +24,11 @@ public class MenuUI : MonoBehaviour
     {
         gameObject.SetActive(true);
         OnOpenEvent?.Invoke();
+
+        if(firstSelected != null)
+        {
+            firstSelected.Select();
+        }
     }
 
     void Start()
@@ -32,7 +40,7 @@ public class MenuUI : MonoBehaviour
         else
         {
             inputActions = new PlayerInputActions();
-            inputActions.MenuActions.Enable();
+            inputActions.UI.Enable();
         }
     }
 
@@ -44,16 +52,22 @@ public class MenuUI : MonoBehaviour
     private void HandlePlayerInput()
     {
         if(inputActions == null) { return; }
-        else if (!inputActions.MenuActions.enabled){ return; }
+        else if (!inputActions.UI.enabled){ return; }
 
-        if (inputActions.MenuActions.CancelAction.WasPerformedThisFrame())
+        if (inputActions.UI.CancelAction.WasPerformedThisFrame())
         {
             OnCancelEvent?.Invoke();
         }
 
-        if (inputActions.MenuActions.AcceptAction.WasPerformedThisFrame())
+        if (inputActions.UI.AcceptAction.WasPerformedThisFrame())
         {
             OnAcceptEvent?.Invoke();
         }
+    }
+
+    public void SetFirstSelected(Button button) //might need to be gameobject for toggles and sliders 
+    {
+        firstSelected = button;
+        firstSelected.Select();
     }
 }

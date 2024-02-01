@@ -10,6 +10,8 @@ public class SettingsControllerUI : MonoBehaviour
     [SerializeField] private GameObject saveButtons;
     [SerializeField] private GameObject regularButtons;
 
+    [SerializeField] private Button backButton;
+
     private VolumeValues storedVolumeValues;
     private bool initialValuesSet;
 
@@ -69,6 +71,7 @@ public class SettingsControllerUI : MonoBehaviour
     {
         saveButtons.SetActive(false);
         regularButtons.SetActive(true);
+        backButton.Select();
     }
 
     private void SnapshotVolumeValues()

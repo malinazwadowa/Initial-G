@@ -30,8 +30,8 @@ MonoBehaviour:
     - name: 
       enemyPrefab: {fileID: 6197773327841160796, guid: 06df89f0c420942498a4f28087e26edf,
         type: 3}
-      startAmount: 30
-      targetAmount: 40
+      startAmount: 100
+      targetAmount: 100
     - name: 
       enemyPrefab: {fileID: 6197773327841160796, guid: d5eaaad07183c654db8a41cb6a0ff4e8,
         type: 3}
@@ -42,13 +42,13 @@ MonoBehaviour:
     - name: 
       enemyPrefab: {fileID: 6197773327841160796, guid: 06df89f0c420942498a4f28087e26edf,
         type: 3}
-      startAmount: 40
-      targetAmount: 30
+      startAmount: 100
+      targetAmount: 100
     - name: 
       enemyPrefab: {fileID: 6197773327841160796, guid: d5eaaad07183c654db8a41cb6a0ff4e8,
         type: 3}
-      startAmount: 15
-      targetAmount: 30
+      startAmount: 50
+      targetAmount: 50
     - name: 
       enemyPrefab: {fileID: 6197773327841160796, guid: 60ce344a6db93ef48a8bcd83428bb7bc,
         type: 3}

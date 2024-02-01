@@ -19,6 +19,7 @@ public class ProfilesMenuControllerUI : MonoBehaviour
     public void PopulateProfilesList()
     {
         Utilities.RemoveChildren(listTransform);
+        bool toggleSelected = false;
 
         foreach (string profileName in GameManager.Instance.profileController.profileNameToID.Keys)
         {
@@ -34,6 +35,7 @@ public class ProfilesMenuControllerUI : MonoBehaviour
                 rowScript.SwitchLoadedHighlight();
                 currentlySelectedRow = rowScript;
                 newRow.transform.SetAsFirstSibling();
+                if (!toggleSelected) { Debug.Log("selecting toggle"); rowScript.toggle.Select(); toggleSelected = true; }  
             }
         }
     }
@@ -62,7 +64,7 @@ public class ProfilesMenuControllerUI : MonoBehaviour
     public void DeleteSelected()
     {
         GameManager.Instance.profileController.DeleteProfile(currentlySelectedRow.ProfileName);
-        PopulateProfilesList();
+        //PopulateProfilesList();
     }
 
     public void CreateNewProfile()

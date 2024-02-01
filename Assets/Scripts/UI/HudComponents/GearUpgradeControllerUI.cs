@@ -30,7 +30,7 @@ public class GearUpgradeControllerUI : MonoBehaviour
         this.levelUpSound = levelUpSound;
         TimeManager.PauseTime();
         inputController = PlayerManager.Instance.GetPlayerInputController();
-        inputController.SwitchActionMap(inputController.inputActions.PopUpActions);
+        inputController.SwitchActionMap(inputController.inputActions.UI);
         player = PlayerManager.Instance.GetPlayer(); //To be replaced by argument either WeaponController or EntirePlayer or at least players ID to provide for GetPlayer()
         myMenu.Open();
     }
@@ -64,6 +64,7 @@ public class GearUpgradeControllerUI : MonoBehaviour
     {
         UpdateEquipmentState();
         Utilities.RemoveChildren(content);
+        bool buttonSelected = false;
 
         List<GameObject> columns = new List<GameObject>();
         int amountOfUpgrades = 2;
@@ -74,6 +75,7 @@ public class GearUpgradeControllerUI : MonoBehaviour
             columnObject.transform.SetParent(content.transform, false);
 
             GearUpgradeColumnUI column = columnObject.GetComponent<GearUpgradeColumnUI>();
+            if (!buttonSelected) { column.button.Select(); buttonSelected = true; }
             column.myController = this;
 
             UpgradeCase upgradeCase = GetUpgradeCase();

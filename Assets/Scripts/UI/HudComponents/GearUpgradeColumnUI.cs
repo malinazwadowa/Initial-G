@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class GearUpgradeColumnUI : MonoBehaviour
 {
     [HideInInspector] public GearUpgradeControllerUI myController;
+    [HideInInspector] public Button button;
     [SerializeField] private Image itemIcon;
-    [SerializeField] private Button button;
     
     [SerializeField] private TextMeshProUGUI headerText;
     [SerializeField] private TextMeshProUGUI panelText;
@@ -25,6 +25,7 @@ public class GearUpgradeColumnUI : MonoBehaviour
     [SerializeField] private GearUpgradeRowUI durationRow;
     [SerializeField] private GearUpgradeRowUI knockbackRow;
 
+    
     public void SetUpEquipNew(Item randomItem, Player player)
     {
         itemIcon.sprite = randomItem.baseItemParameters.icon;

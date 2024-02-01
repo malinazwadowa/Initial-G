@@ -34,6 +34,6 @@ public class ResultsPanelUI : MonoBehaviour
     {
         TimeManager.PauseTime();
         inputController = PlayerManager.Instance.GetPlayerInputController();
-        inputController.SwitchActionMap(inputController.inputActions.MenuActions);
+        inputController.SwitchActionMap(inputController.inputActions.UI);
     }
 }
