@@ -25,8 +25,9 @@ public class LevelManager : SingletonMonoBehaviour<LevelManager>
         
         scoreCounterUI = FindObjectOfType<ScoreCounterUI>();
         TimeManager.ResumeTime();
-        AudioManager.Instance.Initalize(gameLevelData.myAudioClipsParameters);
-        
+        AudioManager.Instance.Initialize();
+        AudioManager.Instance.PlayMusic(gameLevelData.levelMusic.clipName);
+
     }
 
     private void Update()

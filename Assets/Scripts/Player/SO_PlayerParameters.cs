@@ -17,4 +17,7 @@ public class SO_PlayerParameters : ScriptableObject
 
     [Header("Loot")]
     public float lootingRadius;
+
+    [Header("Audio")]
+    public AudioClipNameSelector damagedSound;
 }

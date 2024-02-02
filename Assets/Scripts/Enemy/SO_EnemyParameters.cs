@@ -14,4 +14,7 @@ public class SO_EnemyParameters : ScriptableObject
     public float damage;
     public float attackCooldown;
     public float armor;
+
+    [Header("Audio")]
+    public AudioClipNameSelector damagedSound;
 }

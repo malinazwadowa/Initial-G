@@ -181,3 +181,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyParameters: {fileID: 11400000, guid: db11298a5d009d1469e9e24892520878, type: 2}
+  getDamagedClip:
+    clipType: 0
+    soundClipName: 
+    musicClipName: 
+    clipName: 

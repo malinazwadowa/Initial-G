@@ -65,7 +65,8 @@ public class Player : MonoBehaviour, IItemWielder, IDamagable
     {
         healthController.SubstractCurrentHealth(amount);
         animationController.ChangeColorOnDamage();
-        AudioManager.Instance.PlaySound(AudioClipID.PlayerHit);
+
+        AudioManager.Instance.PlaySound(playerData.damagedSound.clipName);
 
         if(healthController.GetCurrentHealth() <= 0)
         {

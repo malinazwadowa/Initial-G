@@ -17,6 +17,9 @@ MonoBehaviour:
   duration: 5
   myEnemyWaveManagerParameters: {fileID: 11400000, guid: 02823af723614a849ae1fa8ac3199321,
     type: 2}
-  myAudioClipsParameters: {fileID: 11400000, guid: d3d4d2a324de33349a579aaecf08025e,
-    type: 2}
+  levelMusic:
+    clipType: 1
+    soundClipName: SFX_S_EnemyDamaged
+    musicClipName: SFX_M_TempMusic
+    clipName: SFX_M_TempMusic
   unlockedBy: 0

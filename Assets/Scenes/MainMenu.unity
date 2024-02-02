@@ -3376,6 +3376,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8442061717345982329, guid: ba59031977221c544a142e7d0f27c6f8,
+        type: 3}
+      propertyPath: audioClipsList
+      value: 
+      objectReference: {fileID: 11400000, guid: 104e9b8b4b729d146a47287c638108d5,
+        type: 2}
     - target: {fileID: 8442061717345982330, guid: ba59031977221c544a142e7d0f27c6f8,
         type: 3}
       propertyPath: m_RootOrder
@@ -9029,10 +9035,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 269123087682479536, guid: 6ea525e01a328fa4dbee7e13d06debd3,
         type: 3}
+      propertyPath: sceneMusic.clipName
+      value: SFX_M_TempMusic
+      objectReference: {fileID: 0}
+    - target: {fileID: 269123087682479536, guid: 6ea525e01a328fa4dbee7e13d06debd3,
+        type: 3}
+      propertyPath: sceneMusic.clipType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 269123087682479536, guid: 6ea525e01a328fa4dbee7e13d06debd3,
+        type: 3}
       propertyPath: audioClipsParameters
       value: 
       objectReference: {fileID: 11400000, guid: 0fb3e4a7ac51a414eb060127c30aad7b,
         type: 2}
+    - target: {fileID: 269123087682479536, guid: 6ea525e01a328fa4dbee7e13d06debd3,
+        type: 3}
+      propertyPath: sceneMusic.musicClipName
+      value: SFX_M_TempMusic
+      objectReference: {fileID: 0}
+    - target: {fileID: 269123087682479536, guid: 6ea525e01a328fa4dbee7e13d06debd3,
+        type: 3}
+      propertyPath: sceneMusic.soundClipName
+      value: SFX_S_EnemyDamaged
+      objectReference: {fileID: 0}
     - target: {fileID: 269123087682479537, guid: 6ea525e01a328fa4dbee7e13d06debd3,
         type: 3}
       propertyPath: m_RootOrder

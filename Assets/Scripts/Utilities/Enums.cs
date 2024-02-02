@@ -70,6 +70,11 @@ public enum OccupiedSide
     Left,
     Right,
 }
+public enum AudioClipType
+{
+    Sound,
+    Music
+}
 public enum AudioClipID
 {
     Music,

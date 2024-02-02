@@ -3,12 +3,13 @@ using UnityEngine;
 public class ExperiencePickUp : Collectible
 {
     [SerializeField] private SO_ExperiencePickUpParameters pickupParameters;
+    
 
     protected override void Collect()
     {
         base.Collect();
 
-        AudioManager.Instance.PlaySound(AudioClipID.ExpPickUp);
+        AudioManager.Instance.PlaySound(pickupParameters.pickUpClip.clipName);
         player.GetComponent<ExperienceController>().AddExperience(pickupParameters.expAmount);
         ObjectPooler.Instance.DespawnObject(gameObject);
     }

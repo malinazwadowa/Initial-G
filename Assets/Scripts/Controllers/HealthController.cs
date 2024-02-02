@@ -53,12 +53,11 @@ public class HealthController : MonoBehaviour
         maxHealth += amount;
         OnHealthChanged?.Invoke();
     }
-    ////////////////////////////////////////////
+
     public void EnableRegeneration(float rate)
     {
         if (!isRegenerating)
         {
-            Debug.Log("enabling regenNNNNNNNN");
             isRegenerating = true;
             regenerationRate = rate;
             StartCoroutine(RegenerateHealth());
@@ -94,7 +93,7 @@ public class HealthController : MonoBehaviour
             OnHealthChanged?.Invoke();
         }
     }
-    ////////////////////////////////////////////
+
     public float GetCurrentHealth()
     {
         return currentHealth;

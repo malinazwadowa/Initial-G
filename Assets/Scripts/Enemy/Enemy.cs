@@ -8,6 +8,8 @@ public class Enemy : MonoBehaviour, IDamagable
     protected Player player;
     protected HealthController healthController;
     private EnemyMovementController enemyMovementController;
+    
+    public AudioClipNameSelector getDamagedClip;
 
     private void OnDisable()
     {
@@ -34,7 +36,7 @@ public class Enemy : MonoBehaviour, IDamagable
   
     public void Damage(float amount, string damageSource)
     {
-        AudioManager.Instance.PlaySound(AudioClipID.EnemyHit);
+        AudioManager.Instance.PlaySound(enemyParameters.damagedSound.clipName);
 
         GameManager.Instance.gameStatsController.RegisterWeaponDamage(damageSource, Mathf.Min(amount, healthController.GetCurrentHealth()));
 

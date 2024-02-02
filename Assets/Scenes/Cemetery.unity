@@ -130,6 +130,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8442061717345982329, guid: ba59031977221c544a142e7d0f27c6f8,
+        type: 3}
+      propertyPath: audioClipsList
+      value: 
+      objectReference: {fileID: 11400000, guid: 104e9b8b4b729d146a47287c638108d5,
+        type: 2}
     - target: {fileID: 8442061717345982330, guid: ba59031977221c544a142e7d0f27c6f8,
         type: 3}
       propertyPath: m_RootOrder
@@ -2423,6 +2429,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1599605587514791510, guid: 24a0e66fd740e824083353613fb3ff56,
+        type: 3}
+      propertyPath: gameWonSound.clipName
+      value: SFX_S_GameOverWon
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599605587514791510, guid: 24a0e66fd740e824083353613fb3ff56,
+        type: 3}
+      propertyPath: gameLostSound.clipName
+      value: SFX_S_GameOverLost
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599605587514791510, guid: 24a0e66fd740e824083353613fb3ff56,
+        type: 3}
+      propertyPath: gameWonSound.soundClipName
+      value: SFX_S_GameOverWon
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599605587514791510, guid: 24a0e66fd740e824083353613fb3ff56,
+        type: 3}
+      propertyPath: gameLostSound.soundClipName
+      value: SFX_S_GameOverLost
+      objectReference: {fileID: 0}
     - target: {fileID: 1599605588156067889, guid: 24a0e66fd740e824083353613fb3ff56,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -2602,6 +2628,46 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5436099533229585073, guid: 24a0e66fd740e824083353613fb3ff56,
+        type: 3}
+      propertyPath: onClickSound.clipName
+      value: SFX_S_ButtonClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 5436099533229585073, guid: 24a0e66fd740e824083353613fb3ff56,
+        type: 3}
+      propertyPath: onSelectSound.clipName
+      value: SFX_S_ButtonSelect
+      objectReference: {fileID: 0}
+    - target: {fileID: 5436099533229585073, guid: 24a0e66fd740e824083353613fb3ff56,
+        type: 3}
+      propertyPath: onClickSound.soundClipName
+      value: SFX_S_ButtonClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 5436099533229585073, guid: 24a0e66fd740e824083353613fb3ff56,
+        type: 3}
+      propertyPath: onSelectSound.soundClipName
+      value: SFX_S_ButtonSelect
+      objectReference: {fileID: 0}
+    - target: {fileID: 5436099533875512172, guid: 24a0e66fd740e824083353613fb3ff56,
+        type: 3}
+      propertyPath: onClickSound.clipName
+      value: SFX_S_ButtonClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 5436099533875512172, guid: 24a0e66fd740e824083353613fb3ff56,
+        type: 3}
+      propertyPath: onSelectSound.clipName
+      value: SFX_S_ButtonSelect
+      objectReference: {fileID: 0}
+    - target: {fileID: 5436099533875512172, guid: 24a0e66fd740e824083353613fb3ff56,
+        type: 3}
+      propertyPath: onClickSound.soundClipName
+      value: SFX_S_ButtonClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 5436099533875512172, guid: 24a0e66fd740e824083353613fb3ff56,
+        type: 3}
+      propertyPath: onSelectSound.soundClipName
+      value: SFX_S_ButtonSelect
       objectReference: {fileID: 0}
     - target: {fileID: 5804712846219857170, guid: 24a0e66fd740e824083353613fb3ff56,
         type: 3}
@@ -6421,6 +6487,146 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3422032093919928394, guid: 51cf1b6144cf12c4a8d6d9a20273ff95,
+        type: 3}
+      propertyPath: onClickSound.clipName
+      value: SFX_S_ButtonClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 3422032093919928394, guid: 51cf1b6144cf12c4a8d6d9a20273ff95,
+        type: 3}
+      propertyPath: onSelectSound.clipName
+      value: SFX_S_ButtonSelect
+      objectReference: {fileID: 0}
+    - target: {fileID: 3422032093919928394, guid: 51cf1b6144cf12c4a8d6d9a20273ff95,
+        type: 3}
+      propertyPath: onClickSound.soundClipName
+      value: SFX_S_ButtonClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 3422032093919928394, guid: 51cf1b6144cf12c4a8d6d9a20273ff95,
+        type: 3}
+      propertyPath: onSelectSound.soundClipName
+      value: SFX_S_ButtonSelect
+      objectReference: {fileID: 0}
+    - target: {fileID: 3422032094030284745, guid: 51cf1b6144cf12c4a8d6d9a20273ff95,
+        type: 3}
+      propertyPath: onClickSound.clipName
+      value: SFX_S_ButtonClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 3422032094030284745, guid: 51cf1b6144cf12c4a8d6d9a20273ff95,
+        type: 3}
+      propertyPath: onSelectSound.clipName
+      value: SFX_S_ButtonSelect
+      objectReference: {fileID: 0}
+    - target: {fileID: 3422032094030284745, guid: 51cf1b6144cf12c4a8d6d9a20273ff95,
+        type: 3}
+      propertyPath: onClickSound.soundClipName
+      value: SFX_S_ButtonClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 3422032094030284745, guid: 51cf1b6144cf12c4a8d6d9a20273ff95,
+        type: 3}
+      propertyPath: onSelectSound.soundClipName
+      value: SFX_S_ButtonSelect
+      objectReference: {fileID: 0}
+    - target: {fileID: 3422032094294865091, guid: 51cf1b6144cf12c4a8d6d9a20273ff95,
+        type: 3}
+      propertyPath: onClickSound.clipName
+      value: SFX_S_ButtonClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 3422032094294865091, guid: 51cf1b6144cf12c4a8d6d9a20273ff95,
+        type: 3}
+      propertyPath: onSelectSound.clipName
+      value: SFX_S_ButtonSelect
+      objectReference: {fileID: 0}
+    - target: {fileID: 3422032094294865091, guid: 51cf1b6144cf12c4a8d6d9a20273ff95,
+        type: 3}
+      propertyPath: onClickSound.soundClipName
+      value: SFX_S_ButtonClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 3422032094294865091, guid: 51cf1b6144cf12c4a8d6d9a20273ff95,
+        type: 3}
+      propertyPath: onSelectSound.soundClipName
+      value: SFX_S_ButtonSelect
+      objectReference: {fileID: 0}
+    - target: {fileID: 3422032094315278798, guid: 51cf1b6144cf12c4a8d6d9a20273ff95,
+        type: 3}
+      propertyPath: onClickSound.clipName
+      value: SFX_S_ButtonClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 3422032094315278798, guid: 51cf1b6144cf12c4a8d6d9a20273ff95,
+        type: 3}
+      propertyPath: onSelectSound.clipName
+      value: SFX_S_ButtonSelect
+      objectReference: {fileID: 0}
+    - target: {fileID: 3422032094315278798, guid: 51cf1b6144cf12c4a8d6d9a20273ff95,
+        type: 3}
+      propertyPath: onClickSound.soundClipName
+      value: SFX_S_ButtonClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 3422032094315278798, guid: 51cf1b6144cf12c4a8d6d9a20273ff95,
+        type: 3}
+      propertyPath: onSelectSound.soundClipName
+      value: SFX_S_ButtonSelect
+      objectReference: {fileID: 0}
+    - target: {fileID: 3422032095267860847, guid: 51cf1b6144cf12c4a8d6d9a20273ff95,
+        type: 3}
+      propertyPath: onClickSound.clipName
+      value: SFX_S_ButtonClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 3422032095267860847, guid: 51cf1b6144cf12c4a8d6d9a20273ff95,
+        type: 3}
+      propertyPath: onSelectSound.clipName
+      value: SFX_S_ButtonSelect
+      objectReference: {fileID: 0}
+    - target: {fileID: 3422032095267860847, guid: 51cf1b6144cf12c4a8d6d9a20273ff95,
+        type: 3}
+      propertyPath: onClickSound.soundClipName
+      value: SFX_S_ButtonClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 3422032095267860847, guid: 51cf1b6144cf12c4a8d6d9a20273ff95,
+        type: 3}
+      propertyPath: onSelectSound.soundClipName
+      value: SFX_S_ButtonSelect
+      objectReference: {fileID: 0}
+    - target: {fileID: 3422032095488733945, guid: 51cf1b6144cf12c4a8d6d9a20273ff95,
+        type: 3}
+      propertyPath: onClickSound.clipName
+      value: SFX_S_ButtonClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 3422032095488733945, guid: 51cf1b6144cf12c4a8d6d9a20273ff95,
+        type: 3}
+      propertyPath: onSelectSound.clipName
+      value: SFX_S_ButtonSelect
+      objectReference: {fileID: 0}
+    - target: {fileID: 3422032095488733945, guid: 51cf1b6144cf12c4a8d6d9a20273ff95,
+        type: 3}
+      propertyPath: onClickSound.soundClipName
+      value: SFX_S_ButtonClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 3422032095488733945, guid: 51cf1b6144cf12c4a8d6d9a20273ff95,
+        type: 3}
+      propertyPath: onSelectSound.soundClipName
+      value: SFX_S_ButtonSelect
+      objectReference: {fileID: 0}
+    - target: {fileID: 3422032095880875588, guid: 51cf1b6144cf12c4a8d6d9a20273ff95,
+        type: 3}
+      propertyPath: onClickSound.clipName
+      value: SFX_S_ButtonClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 3422032095880875588, guid: 51cf1b6144cf12c4a8d6d9a20273ff95,
+        type: 3}
+      propertyPath: onSelectSound.clipName
+      value: SFX_S_ButtonSelect
+      objectReference: {fileID: 0}
+    - target: {fileID: 3422032095880875588, guid: 51cf1b6144cf12c4a8d6d9a20273ff95,
+        type: 3}
+      propertyPath: onClickSound.soundClipName
+      value: SFX_S_ButtonClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 3422032095880875588, guid: 51cf1b6144cf12c4a8d6d9a20273ff95,
+        type: 3}
+      propertyPath: onSelectSound.soundClipName
+      value: SFX_S_ButtonSelect
       objectReference: {fileID: 0}
     - target: {fileID: 3534510163442882086, guid: 51cf1b6144cf12c4a8d6d9a20273ff95,
         type: 3}

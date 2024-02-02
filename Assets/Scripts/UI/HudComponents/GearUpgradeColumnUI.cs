@@ -115,7 +115,7 @@ public class GearUpgradeColumnUI : MonoBehaviour
     private void OnClickHealPlayer(Player player)
     {
         player.GetComponent<HealthController>().AddCurrentHealth(25);
-        AudioManager.Instance.PlaySound(AudioClipID.HealthPickup);
+        //AudioManager.Instance.PlaySound(AudioClipID.HealthPickup);
         myController.Close();
     }
 

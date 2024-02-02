@@ -12,6 +12,9 @@ public class ResultsControllerUI : MonoBehaviour
     public Transform itemsTable;
     public TextMeshProUGUI bannerText;
 
+    public AudioClipNameSelector gameLostSound;
+    public AudioClipNameSelector gameWonSound;
+
     private Color red = new Color(199 / 255f, 10 / 255f, 29 / 255f);
     private Color green = new Color(1f / 255f, 104f / 255f, 11f / 255f);
 
@@ -27,7 +30,7 @@ public class ResultsControllerUI : MonoBehaviour
             bannerText.color = red;
             bannerText.text = "You Died...";
             AudioManager.Instance.StopAllClips();
-            AudioManager.Instance.PlaySound(AudioClipID.GameOver);
+            AudioManager.Instance.PlaySound(gameLostSound.clipName);
 
         }
         else
@@ -35,7 +38,7 @@ public class ResultsControllerUI : MonoBehaviour
             bannerText.color = green;
             bannerText.text = "You Won!";
             AudioManager.Instance.StopAllClips();
-            AudioManager.Instance.PlaySound(AudioClipID.GameWon);
+            AudioManager.Instance.PlaySound(gameWonSound.clipName);
         }
 
         UpdateGeneralData();

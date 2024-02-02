@@ -49,6 +49,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: P_Button
       objectReference: {fileID: 0}
+    - target: {fileID: 6719959397698536750, guid: f3bdd84c4569a3f478e8a8310ae84e4e,
+        type: 3}
+      propertyPath: onClickSound.clipName
+      value: SFX_S_ButtonClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 6719959397698536750, guid: f3bdd84c4569a3f478e8a8310ae84e4e,
+        type: 3}
+      propertyPath: onSelectSound.clipName
+      value: SFX_S_ButtonSelect
+      objectReference: {fileID: 0}
+    - target: {fileID: 6719959397698536750, guid: f3bdd84c4569a3f478e8a8310ae84e4e,
+        type: 3}
+      propertyPath: onClickSound.soundClipName
+      value: SFX_S_ButtonClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 6719959397698536750, guid: f3bdd84c4569a3f478e8a8310ae84e4e,
+        type: 3}
+      propertyPath: onSelectSound.soundClipName
+      value: SFX_S_ButtonSelect
+      objectReference: {fileID: 0}
     - target: {fileID: 6788973337835119449, guid: f3bdd84c4569a3f478e8a8310ae84e4e,
         type: 3}
       propertyPath: m_Pivot.x

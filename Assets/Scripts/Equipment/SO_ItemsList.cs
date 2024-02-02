@@ -25,6 +25,7 @@ public class SO_ItemsList : ScriptableObject
 
         ItemTypesDatabase.SetItemsData(typeOfItems, accessoryTypes, weaponTypes);
     }
+
     private void CleanUpLists()
     {
         RemoveItemsExceptType(allAccessoryPrefabs, typeof(Accessory));

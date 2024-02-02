@@ -8,11 +8,22 @@ public static class ItemTypesDatabase
     public static List<string> AccessoryTypes { get; private set; }
     public static List<string> WeaponTypes { get; private set; }
 
+    public static Dictionary<string, AudioClip> ClipsByName { get; private set; }
+    public static List<string> SoundClipNames { get; private set; }
+    public static List<string> MusicClipNames { get; private set; }
+
 
     public static void SetItemsData(Dictionary<string, GameObject> typeOfItems, List<string> accessoryTypes, List<string> weaponTypes)
     {
         ItemsByType = typeOfItems;
         AccessoryTypes = accessoryTypes;
         WeaponTypes = weaponTypes;
+    }
+
+    public static void SetClipsData( List<string> soundClipNames, List<string> musicClipNames)
+    {
+        //ClipsByName = clipsByName;Dictionary<string, AudioClip> clipsByName,
+        SoundClipNames = soundClipNames;
+        MusicClipNames = musicClipNames;
     }
 }

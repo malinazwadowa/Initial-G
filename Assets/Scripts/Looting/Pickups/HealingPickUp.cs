@@ -9,8 +9,8 @@ public class HealingPickUp : Collectible
     protected override void Collect()
     {
         base.Collect();
-
-        AudioManager.Instance.PlaySound(AudioClipID.HealthPickup);
+        Debug.Log($"gralbym teraz np clipname:{pickupParameters.pickUpClip.clipName}");
+        AudioManager.Instance.PlaySound(pickupParameters.pickUpClip.clipName);
         player.GetComponent<HealthController>().AddCurrentHealth(pickupParameters.restoreAmount);
         ObjectPooler.Instance.DespawnObject(gameObject);
     }
