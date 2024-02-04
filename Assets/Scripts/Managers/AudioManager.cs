@@ -11,15 +11,10 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>, ISaveable
     [SerializeField] private GameObject soundPrefab;
     [SerializeField] private AudioMixer myMixer;
 
-    private SO_AudioClipsParameters audioClips;
-
     [Expandable]
     public SO_AudioClipsList audioClipsList;
-    //private Dictionary<string, AudioClip> clipsByName;
-
 
     private bool soundsPaused;
-    //private bool settingsUpdated;
     private List<AudioSource> activeSoundSources;
 
     private AudioMixerGroup soundsGroup;
@@ -81,7 +76,6 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>, ISaveable
     public void Initialize()
     {
         StopAllCoroutines();
-        //SetAudioClipsData(clipsData);
 
         activeSoundSources = new List<AudioSource>();
 
@@ -90,13 +84,6 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>, ISaveable
         masterGroup = myMixer.FindMatchingGroups("Master")[0];
         
         soundsPaused = false;
-
-        //PlayMusic(AudioClipID.Music);
-    }
-
-    public void SetAudioClipsData(SO_AudioClipsParameters data)
-    {
-        audioClips = data;
     }
 
     public void SetVolume(MixerGroup groupName, float value)

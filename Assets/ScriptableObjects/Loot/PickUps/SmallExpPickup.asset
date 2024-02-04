@@ -13,3 +13,8 @@ MonoBehaviour:
   m_Name: SmallExpPickup
   m_EditorClassIdentifier: 
   expAmount: 25
+  pickUpClip:
+    clipType: 0
+    soundClipName: SFX_S_ExpPickup
+    musicClipName: SFX_M_TempMusic
+    clipName: SFX_S_ExpPickup

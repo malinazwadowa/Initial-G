@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7285693248263376286}
   - component: {fileID: 1286394521707876361}
   - component: {fileID: 4688920899970309814}
-  - component: {fileID: 6719959397698536750}
+  - component: {fileID: 1094695377318864658}
   m_Layer: 5
   m_Name: P_UI_Button
   m_TagString: Untagged
@@ -123,7 +123,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &6719959397698536750
+--- !u!114 &1094695377318864658
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -137,14 +137,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onSelectSound:
     clipType: 0
-    soundClipName: SFX_S_EnemyDamaged
-    musicClipName: 
-    clipName: SFX_S_EnemyDamaged
+    clipName: SFX_S_ButtonSelect
   onClickSound:
     clipType: 0
-    soundClipName: SFX_S_EnemyDamaged
-    musicClipName: 
-    clipName: SFX_S_EnemyDamaged
+    clipName: SFX_S_ButtonClick
 --- !u!1 &7976147976871691732
 GameObject:
   m_ObjectHideFlags: 0

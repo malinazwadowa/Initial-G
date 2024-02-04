@@ -1,74 +1,20 @@
 using NaughtyAttributes;
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 [Serializable]
-public class AudioClipNameSelector : ISerializationCallbackReceiver
+public class AudioClipNameSelector
 {
-    private List<string> MusicClipNames => ItemTypesDatabase.MusicClipNames;
-    private List<string> SoundClipNames => ItemTypesDatabase.SoundClipNames;
+    private List<string> MusicClipNames => ObjectTypesDatabase.MusicClipNames;
+    private List<string> SoundClipNames => ObjectTypesDatabase.SoundClipNames;
 
     public AudioClipType clipType;
-    private bool clipIsSound;
-    private bool clipIsMusic;
 
-    [AllowNesting]
-    [ShowIf(nameof(clipIsSound))]
-    [Dropdown(nameof(SoundClipNames))]
-    public string soundClipName;
+    [Dropdown("GetClipNames")]
+    public string clipName;
 
-    [AllowNesting]
-    [ShowIf(nameof(clipIsMusic))]
-    [Dropdown(nameof(MusicClipNames))]
-    public string musicClipName;
-
-    [HideInInspector] public string clipName;
-
-    //public void Validate()
-    //{
-    //    bool isSound = clipType == AudioClipType.Sound;
-    //    bool isMusic = clipType == AudioClipType.Music;
-
-    //    if (isSound)
-    //    {
-    //        clipName = soundClipName;
-    //    }
-    //    else if (isMusic)
-    //    {
-    //        clipName = musicClipName;
-    //    }
-    //}
-
-    public void Validate()
+    private List<string> GetClipNames()
     {
-        clipIsSound = false;
-        clipIsMusic = false;
-
-        switch (clipType)
-        {
-            case AudioClipType.Sound:
-                clipIsSound = true;
-                break;
-            case AudioClipType.Music:
-                clipIsMusic = true;
-                break;
-        }
-
-
-        if (clipIsSound) { clipName = soundClipName; }
-        if (clipIsMusic) { clipName = musicClipName; }
-        //Debug.Log($"{clipName}");
-
-    }
-
-    public void OnBeforeSerialize()
-    {
-        Validate();
-    }
-
-    public void OnAfterDeserialize()
-    {
-        
+        return clipType == AudioClipType.Music ? MusicClipNames : SoundClipNames;
     }
 }

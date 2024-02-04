@@ -15,6 +15,4 @@ MonoBehaviour:
   restoreAmount: 25
   pickUpClip:
     clipType: 0
-    soundClipName: SFX_S_HealingPickup
-    musicClipName: stealth
     clipName: SFX_S_HealingPickup

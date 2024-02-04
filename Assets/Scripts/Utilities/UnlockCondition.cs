@@ -6,8 +6,8 @@ using UnityEngine;
 [Serializable]
 public class UnlockCondition
 {
-    private List<string> WeaponTypes => ItemTypesDatabase.WeaponTypes;
-    private List<string> AccessoryTypes => ItemTypesDatabase.AccessoryTypes;
+    private List<string> WeaponTypes => ObjectTypesDatabase.WeaponTypes;
+    private List<string> AccessoryTypes => ObjectTypesDatabase.AccessoryTypes;
 
     [HideInInspector] public string name;
     public ConditionType conditionType;

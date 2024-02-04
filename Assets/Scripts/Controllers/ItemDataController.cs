@@ -28,6 +28,7 @@ public class ItemDataController : MonoBehaviour
         SetDataFromSO();
         CheckItemUnlocks();
         SortUnlockedItems();
+        //allItemsList.Initialize(); - required for non editor 
     }
 
     public void CheckForNewUnlocks()

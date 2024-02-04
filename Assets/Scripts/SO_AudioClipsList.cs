@@ -13,11 +13,16 @@ public class SO_AudioClipsList : ScriptableObject
     [HideInInspector] public List<string> soundClipNames = new List<string>();
     [HideInInspector] public List<string> musicClipNames = new List<string>();
 
-    private void OnValidate()
+    public void Initialize()
     {
         //List name validation for 
         SetClipNames();
-        ItemTypesDatabase.SetClipsData(soundClipNames, musicClipNames);
+        ObjectTypesDatabase.SetClipsData(soundClipNames, musicClipNames);
+    }
+
+    private void OnValidate()
+    {
+        Initialize();
     }
 
     private void SetClipNames()

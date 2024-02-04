@@ -17,13 +17,18 @@ public class SO_ItemsList : ScriptableObject
     [HideInInspector] public List<string> accessoryTypes = new List<string>();
     [HideInInspector] public List<string> weaponTypes = new List<string>();
 
-    private void OnValidate()
+    public void Initialize()
     {
         CleanUpLists();
         SetAllItems();
         SetTypeOfItems();
 
-        ItemTypesDatabase.SetItemsData(typeOfItems, accessoryTypes, weaponTypes);
+        ObjectTypesDatabase.SetItemsData(typeOfItems, accessoryTypes, weaponTypes);
+    }
+
+    private void OnValidate()
+    {
+        Initialize();
     }
 
     private void CleanUpLists()

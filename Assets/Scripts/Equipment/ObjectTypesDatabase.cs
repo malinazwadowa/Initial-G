@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class ItemTypesDatabase
+public static class ObjectTypesDatabase
 {
     public static Dictionary<string, GameObject> ItemsByType { get; private set; }
     public static List<string> AccessoryTypes { get; private set; }
@@ -20,9 +20,8 @@ public static class ItemTypesDatabase
         WeaponTypes = weaponTypes;
     }
 
-    public static void SetClipsData( List<string> soundClipNames, List<string> musicClipNames)
+    public static void SetClipsData(List<string> soundClipNames, List<string> musicClipNames)
     {
-        //ClipsByName = clipsByName;Dictionary<string, AudioClip> clipsByName,
         SoundClipNames = soundClipNames;
         MusicClipNames = musicClipNames;
     }
