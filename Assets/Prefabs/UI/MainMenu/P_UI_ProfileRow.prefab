@@ -276,6 +276,7 @@ GameObject:
   - component: {fileID: 2828445139665066259}
   - component: {fileID: 2828445139665066732}
   - component: {fileID: 2828445139665066258}
+  - component: {fileID: 4724928658100058117}
   m_Layer: 5
   m_Name: Toggle
   m_TagString: Untagged
@@ -402,6 +403,24 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   m_IsOn: 0
+--- !u!114 &4724928658100058117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2828445139665066735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25c9b981fde27804893db9d58e758529, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onSelectSound:
+    clipType: 0
+    clipName: SFX_S_SelectableSelect
+  onClickSound:
+    clipType: 0
+    clipName: SFX_S_SelectableClick
 --- !u!1 &3327258137175062429
 GameObject:
   m_ObjectHideFlags: 0

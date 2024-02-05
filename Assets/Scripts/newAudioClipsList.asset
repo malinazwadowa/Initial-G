@@ -20,8 +20,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5d5cff2bd67ad93428823c019e221694, type: 3}
   - {fileID: 8300000, guid: b384ba52e06be264bad5b926498fb79f, type: 3}
   - {fileID: 8300000, guid: 6c17a177d5002c64baedf43835be66ae, type: 3}
-  - {fileID: 8300000, guid: 95d20805e29206e469b82ebd5ef8ec7a, type: 3}
-  - {fileID: 8300000, guid: 9ab1af29821d90d428e4e60a601af0a4, type: 3}
+  - {fileID: 8300000, guid: 572d4b94746afdf40bd6c50bf9052a57, type: 3}
+  - {fileID: 8300000, guid: 29923bba44dfc984cac71f58f8180c89, type: 3}
   musicClips:
   - {fileID: 8300000, guid: 0464292cdad7fa04cb08e64a59189391, type: 3}
   soundClipNames:
@@ -32,7 +32,7 @@ MonoBehaviour:
   - SFX_S_GameOverWon
   - SFX_S_HealingPickup
   - SFX_S_LevelUp
-  - SFX_S_ButtonClick
-  - SFX_S_ButtonSelect
+  - SFX_S_SelectableClick
+  - SFX_S_SelectableSelect
   musicClipNames:
   - SFX_M_TempMusic

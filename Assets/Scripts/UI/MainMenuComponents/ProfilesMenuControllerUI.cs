@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class ProfilesMenuControllerUI : MonoBehaviour
@@ -15,6 +16,8 @@ public class ProfilesMenuControllerUI : MonoBehaviour
     public GameObject newProfilePrompt;
 
     public RectTransform mainSection;
+
+    public ScrollRect scrollRect;
 
     public void PopulateProfilesList()
     {
@@ -35,7 +38,7 @@ public class ProfilesMenuControllerUI : MonoBehaviour
                 rowScript.SwitchLoadedHighlight();
                 currentlySelectedRow = rowScript;
                 newRow.transform.SetAsFirstSibling();
-                if (!toggleSelected) { Debug.Log("selecting toggle"); rowScript.toggle.Select(); toggleSelected = true; }  
+                if (!toggleSelected) { rowScript.toggle.Select(); toggleSelected = true; }  
             }
         }
     }
