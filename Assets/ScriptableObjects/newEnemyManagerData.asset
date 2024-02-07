@@ -23,8 +23,13 @@ MonoBehaviour:
     - name: 
       enemyPrefab: {fileID: 6197773327841160796, guid: 60ce344a6db93ef48a8bcd83428bb7bc,
         type: 3}
-      startAmount: 0
-      targetAmount: 0
+      startAmount: 1
+      targetAmount: 2
+    - name: 
+      enemyPrefab: {fileID: 6197773327841160796, guid: d5eaaad07183c654db8a41cb6a0ff4e8,
+        type: 3}
+      startAmount: 1
+      targetAmount: 2
   - name: Wave 2
     enemyNumbers:
     - name: 

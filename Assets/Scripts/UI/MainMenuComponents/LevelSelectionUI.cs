@@ -20,7 +20,7 @@ public class LevelSelectionUI : MonoBehaviour
     {
         Utilities.RemoveChildren(levelButtonList);
         bool buttonSelected = false;
-        Dictionary<GameLevel, bool> levelUnlockStatus = GameManager.Instance.levelDataController.GetCurrentLevelUnlockStatus();
+        Dictionary<GameLevel, bool> levelUnlockStatus = GameManager.Instance.levelDataController.GetLevelUnlockStatuses();
 
         foreach (GameLevel level in levelUnlockStatus.Keys)
         {

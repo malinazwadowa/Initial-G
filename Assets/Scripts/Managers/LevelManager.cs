@@ -27,7 +27,6 @@ public class LevelManager : SingletonMonoBehaviour<LevelManager>
         TimeManager.ResumeTime();
         AudioManager.Instance.Initialize();
         AudioManager.Instance.PlayMusic(gameLevelData.levelMusic.clipName);
-
     }
 
     private void Update()

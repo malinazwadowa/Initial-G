@@ -22,11 +22,13 @@ public class UnlockCondition
     private bool unlockedWithLevelCompletion;
 
     [AllowNesting]
-    [ShowIf(EConditionOperator.Or, "unlockedWithWeaponKills", "unlockedWithMaxRankOfWeapon")][Dropdown("WeaponTypes")] 
+    [ShowIf(EConditionOperator.Or, "unlockedWithWeaponKills", "unlockedWithMaxRankOfWeapon")]
+    [Dropdown("WeaponTypes")] 
     public string weaponType;
 
     [AllowNesting]
-    [ShowIf("unlockedWithMaxRankOfAccessory")][Dropdown("AccessoryTypes")]
+    [ShowIf("unlockedWithMaxRankOfAccessory")]
+    [Dropdown("AccessoryTypes")]
     public string accessoryType;
 
     [AllowNesting]
@@ -41,6 +43,10 @@ public class UnlockCondition
     [ShowIf(EConditionOperator.Or, "unlockedWithWeaponKills", "unlockedWithEnemyKilled", "unlockedWithCollectedItems")]
     public int amount;
 
+    [AllowNesting]
+    [ShowIf(nameof(unlockedWithLevelCompletion))]
+    public GameLevel levelToComplete;
+
     public void Validate()
     {
         unlockedByDefault = false;
@@ -49,6 +55,7 @@ public class UnlockCondition
         unlockedWithMaxRankOfAccessory = false;
         unlockedWithMaxRankOfWeapon = false;
         unlockedWithCollectedItems = false;
+        unlockedWithLevelCompletion = false;
 
         switch (conditionType)
         {
@@ -74,6 +81,10 @@ public class UnlockCondition
             
             case ConditionType.UnlockedWithCollectedItems:
                 unlockedWithCollectedItems = true;
+                break;
+            
+            case ConditionType.UnlockedWithLevelCompletion:
+                unlockedWithLevelCompletion = true;
                 break;
 
             default:

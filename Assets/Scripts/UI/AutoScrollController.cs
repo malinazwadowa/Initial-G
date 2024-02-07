@@ -19,8 +19,6 @@ public class AutoScrollController : MonoBehaviour
                 float normalizedPosition = 1f - (float)selectedObject.transform.parent.GetSiblingIndex() / (float)(listTransform.childCount - 1);
 
                 scrollRect.verticalNormalizedPosition = normalizedPosition;
-
-                Debug.Log("Normalized position: " + normalizedPosition);
             }
         }
     }

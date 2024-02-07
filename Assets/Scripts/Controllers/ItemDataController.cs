@@ -141,13 +141,19 @@ public class ItemDataController : MonoBehaviour
                 case ConditionType.UnlockedWithCollectedItems:
                     if (GameManager.Instance.gameStatsController.OverallStats.collectibleCounts.TryGetValue(condition.collectibleType, out int amount) && amount >= condition.amount)
                     {
-                        //unlockedItems.Add(item);
+                        UnlockItem(item);
+                    }
+                    break;
+
+                case ConditionType.UnlockedWithLevelCompletion:
+                    if (GameManager.Instance.gameStatsController.OverallStats.completedLevels.Contains(condition.levelToComplete))
+                    {
                         UnlockItem(item);
                     }
                     break;
 
                 default:
-                    Debug.Log("Unhandled condition");
+                    Debug.LogWarning("Unhandled item unlock condition!");
                     break;
                     //case ConditionType.UnlockedWithMaxRankOfWeapon:
             }

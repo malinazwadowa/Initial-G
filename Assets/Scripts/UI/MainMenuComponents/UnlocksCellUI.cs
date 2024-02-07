@@ -105,6 +105,18 @@ public class UnlocksCellUI : MonoBehaviour
                 }
                 break;
 
+            case ConditionType.UnlockedWithLevelCompletion:
+
+                bool unlockStatus = GameManager.Instance.gameStatsController.OverallStats.completedLevels.Contains(condition.levelToComplete);
+
+                if (!unlockStatus)
+                {
+                    panelText.text = new string($"Unlocked by completing level: {condition.levelToComplete}.");
+
+                    SetCellToLocked();
+                }
+                break;
+
             default:
                 // Default case if the conditionType doesn't match any of the specified cases
                 break;

@@ -5,18 +5,16 @@ using UnityEngine;
 
 public class LevelDataController : MonoBehaviour, ISaveable
 {
+    [Expandable] public List<SO_GameLevel> allLevels;
+    private Dictionary<GameLevel, bool> levelUnlockStatusByType = new Dictionary<GameLevel, bool>();
+
     public GameLevel startingLevelType;
-    [Expandable]
-    public List<SO_GameLevel> allLevels;
-
-
-    private Dictionary<GameLevel, bool> currentLevelUnlockStatus = new Dictionary<GameLevel, bool>();
 
     public ObjectData SaveMyData()
     {
         ObjectData saveData = new LevelUnlockData
         {
-            levelUnlockStatus = currentLevelUnlockStatus,
+            levelUnlockStatus = levelUnlockStatusByType,
         };
 
         return saveData;
@@ -26,14 +24,14 @@ public class LevelDataController : MonoBehaviour, ISaveable
     {
         if (savedData is LevelUnlockData levelUnlockData)
         {
-            currentLevelUnlockStatus = levelUnlockData.levelUnlockStatus;
+            levelUnlockStatusByType = levelUnlockData.levelUnlockStatus;
             UpdateLevelUnlockDictionary();
         }
     }
 
     public void WipeMyData()
     {
-        currentLevelUnlockStatus.Clear();
+        levelUnlockStatusByType.Clear();
     }
 
     [Serializable]
@@ -46,9 +44,9 @@ public class LevelDataController : MonoBehaviour, ISaveable
     {
         foreach (SO_GameLevel level in allLevels)
         {
-            if (!currentLevelUnlockStatus.ContainsKey(level.type))
+            if (!levelUnlockStatusByType.ContainsKey(level.type))
             {
-                currentLevelUnlockStatus.Add(level.type, false);
+                levelUnlockStatusByType.Add(level.type, false);
             }
 
             if (level.type == startingLevelType)
@@ -60,22 +58,27 @@ public class LevelDataController : MonoBehaviour, ISaveable
                 UnlockGameLevel(level.type);
             }
         }
-        return currentLevelUnlockStatus;
+        return levelUnlockStatusByType;
+    }
+
+    public bool GetLevelUnlockStatus(GameLevel level)
+    {
+        return levelUnlockStatusByType.ContainsKey(level) ? levelUnlockStatusByType[level] : false;
     }
 
     public void UnlockGameLevel(GameLevel levelName)
     {
-        currentLevelUnlockStatus[levelName] = true;
+        levelUnlockStatusByType[levelName] = true;
     }
 
-    public Dictionary<GameLevel, bool> GetCurrentLevelUnlockStatus()
+    public Dictionary<GameLevel, bool> GetLevelUnlockStatuses()
     {
-        if(currentLevelUnlockStatus.Count == 0)
+        if(levelUnlockStatusByType.Count == 0)
         {
             UpdateLevelUnlockDictionary();
         }
 
-        return currentLevelUnlockStatus;
+        return levelUnlockStatusByType;
     }
 
     public SceneName GetLevelScene(GameLevel levelName)

@@ -14,12 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   myScene: 0
-  duration: 5
+  duration: 0.05
   myEnemyWaveManagerParameters: {fileID: 11400000, guid: 02823af723614a849ae1fa8ac3199321,
     type: 2}
   levelMusic:
     clipType: 1
-    soundClipName: SFX_S_EnemyDamaged
-    musicClipName: SFX_M_TempMusic
     clipName: SFX_M_TempMusic
   unlockedBy: 0

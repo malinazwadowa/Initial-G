@@ -183,4 +183,4 @@ MonoBehaviour:
   enemyParameters: {fileID: 11400000, guid: db11298a5d009d1469e9e24892520878, type: 2}
   getDamagedClip:
     clipType: 0
-    clipName: 
+    clipName: SFX_S_EnemyDamaged

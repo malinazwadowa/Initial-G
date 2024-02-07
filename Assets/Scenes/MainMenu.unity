@@ -868,6 +868,106 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1599108286093212849, guid: 1d757b7ca5a1fd64390518bd3033d3e3,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599108286093212849, guid: 1d757b7ca5a1fd64390518bd3033d3e3,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599108286093212849, guid: 1d757b7ca5a1fd64390518bd3033d3e3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599108286093212849, guid: 1d757b7ca5a1fd64390518bd3033d3e3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599108286194206337, guid: 1d757b7ca5a1fd64390518bd3033d3e3,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599108286194206337, guid: 1d757b7ca5a1fd64390518bd3033d3e3,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599108286194206337, guid: 1d757b7ca5a1fd64390518bd3033d3e3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599108286194206337, guid: 1d757b7ca5a1fd64390518bd3033d3e3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599108287422686146, guid: 1d757b7ca5a1fd64390518bd3033d3e3,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599108287422686146, guid: 1d757b7ca5a1fd64390518bd3033d3e3,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599108287422686146, guid: 1d757b7ca5a1fd64390518bd3033d3e3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599108287422686146, guid: 1d757b7ca5a1fd64390518bd3033d3e3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599108287862742821, guid: 1d757b7ca5a1fd64390518bd3033d3e3,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599108287862742821, guid: 1d757b7ca5a1fd64390518bd3033d3e3,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599108287862742821, guid: 1d757b7ca5a1fd64390518bd3033d3e3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599108287862742821, guid: 1d757b7ca5a1fd64390518bd3033d3e3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599108288096500637, guid: 1d757b7ca5a1fd64390518bd3033d3e3,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599108288096500637, guid: 1d757b7ca5a1fd64390518bd3033d3e3,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599108288096500637, guid: 1d757b7ca5a1fd64390518bd3033d3e3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599108288096500637, guid: 1d757b7ca5a1fd64390518bd3033d3e3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5189954110549285819, guid: 1d757b7ca5a1fd64390518bd3033d3e3,
         type: 3}
       propertyPath: m_Name
