@@ -13,3 +13,6 @@ MonoBehaviour:
   m_Name: LargeExpPickup
   m_EditorClassIdentifier: 
   expAmount: 100
+  pickUpClip:
+    clipType: 0
+    clipName: SFX_S_ExpPickup

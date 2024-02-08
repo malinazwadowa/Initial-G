@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   myScene: 0
-  duration: 0.05
+  duration: 1
   myEnemyWaveManagerParameters: {fileID: 11400000, guid: 02823af723614a849ae1fa8ac3199321,
     type: 2}
   levelMusic:

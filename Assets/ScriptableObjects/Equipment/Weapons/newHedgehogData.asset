@@ -20,6 +20,7 @@ MonoBehaviour:
     enemyType: 0
     collectibleType: 0
     amount: 100
+    levelToComplete: 0
   icon: {fileID: 797102184, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
   description: Spins projectiles around the player.
   amountOfRanks: 4

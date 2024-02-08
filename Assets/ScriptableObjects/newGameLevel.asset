@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 1
   myScene: 0
-  duration: 0.1
+  duration: 2
   myEnemyWaveManagerParameters: {fileID: 11400000, guid: 02823af723614a849ae1fa8ac3199321,
     type: 2}
-  myAudioClipsParameters: {fileID: 11400000, guid: d3d4d2a324de33349a579aaecf08025e,
-    type: 2}
+  levelMusic:
+    clipType: 1
+    clipName: SFX_M_TempMusic
   unlockedBy: 0

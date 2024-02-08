@@ -1,8 +1,8 @@
-using UnityEngine;
+﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "newRockParameters", menuName = "ScriptableObjects/Weapons/Rock Parameters")]
+[CreateAssetMenu(fileName = "newSwordParameters", menuName = "ScriptableObjects/Weapons/Sword Parameters")]
 
-public class SO_RockParameters : SO_WeaponParameters
+public class SO_SwordParameters : SO_WeaponParameters
 {
     protected override void OnValidate()
     {
@@ -15,23 +15,20 @@ public class SO_RockParameters : SO_WeaponParameters
     }
 
     [Header("Rank independent settings")]
-    public float spawnDelayForAdditionalRocks;
-    public float spawnOffsetRangeForAdditionalRocks;
+    public float speedModifier;
 
     [Header("Settings for each rank")]
-    public RockRank[] ranks;
+    public SwordRank[] ranks;
 }
 
 [System.Serializable]
-public class RockRank 
+public class SwordRank
 {
     [HideInInspector] public string name;
 
     public GameObject projectilePrefab;
-    public float speed;
+    public float radius;
     public float cooldown;
-    public int amount;
     public float damage;
-    public int piercing;
     public float knockbackPower;
 }
