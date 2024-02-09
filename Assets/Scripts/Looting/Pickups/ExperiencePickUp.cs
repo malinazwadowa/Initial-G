@@ -1,7 +1,9 @@
+using NaughtyAttributes;
 using UnityEngine;
 
 public class ExperiencePickUp : Collectible
 {
+    [Expandable]
     [SerializeField] private SO_ExperiencePickUpParameters pickupParameters;
     
 

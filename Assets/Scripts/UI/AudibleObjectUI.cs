@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class SelectableObjectSoundControllerUI : MonoBehaviour, ISubmitHandler, IMoveHandler, IPointerClickHandler
+public class AudibleObjectUI : MonoBehaviour, ISubmitHandler, IMoveHandler, IPointerClickHandler
 {
     [SerializeField] private AudioClipNameSelector onSelectSound;
     [SerializeField] private AudioClipNameSelector onClickSound;
