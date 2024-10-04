@@ -23,7 +23,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 572d4b94746afdf40bd6c50bf9052a57, type: 3}
   - {fileID: 8300000, guid: 29923bba44dfc984cac71f58f8180c89, type: 3}
   musicClips:
-  - {fileID: 8300000, guid: 0464292cdad7fa04cb08e64a59189391, type: 3}
+  - {fileID: 8300000, guid: e786cad67bfae534e9795f58de86555d, type: 3}
   soundClipNames:
   - SFX_S_EnemyDamaged
   - SFX_S_ExpPickup
@@ -35,4 +35,4 @@ MonoBehaviour:
   - SFX_S_SelectableClick
   - SFX_S_SelectableSelect
   musicClipNames:
-  - SFX_M_TempMusic
+  - SFX_M_TempMusic2

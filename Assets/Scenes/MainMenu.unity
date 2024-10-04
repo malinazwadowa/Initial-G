@@ -638,7 +638,7 @@ PrefabInstance:
     - target: {fileID: 269123087682479536, guid: 6ea525e01a328fa4dbee7e13d06debd3,
         type: 3}
       propertyPath: sceneMusic.clipName
-      value: SFX_M_TempMusic
+      value: SFX_M_TempMusic2
       objectReference: {fileID: 0}
     - target: {fileID: 269123087682479536, guid: 6ea525e01a328fa4dbee7e13d06debd3,
         type: 3}
@@ -967,6 +967,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5189954110408729847, guid: 1d757b7ca5a1fd64390518bd3033d3e3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -62.99994
       objectReference: {fileID: 0}
     - target: {fileID: 5189954110549285819, guid: 1d757b7ca5a1fd64390518bd3033d3e3,
         type: 3}

@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class LevelDataController : MonoBehaviour, ISaveable
 {
+    public GameLevel startingLevelType;
     [Expandable] public List<SO_GameLevel> allLevels;
     private Dictionary<GameLevel, bool> levelUnlockStatusByType = new Dictionary<GameLevel, bool>();
 
-    public GameLevel startingLevelType;
 
     public ObjectData SaveMyData()
     {

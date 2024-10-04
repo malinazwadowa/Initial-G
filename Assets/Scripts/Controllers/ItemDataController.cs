@@ -1,9 +1,14 @@
 using NaughtyAttributes;
 using System.Collections.Generic;
 using UnityEngine;
-//unlock able data controller
+
 public class ItemDataController : MonoBehaviour
 {
+    /*
+     * RIGHT NOW CHANGING SO IN PREFAB WILL CHANGE ITS BEHAVIOUR FOR ENTIRE GAME, IT MIGHT NEED CHANGE
+     */
+
+    [Header("Prefabs of items with config that are made available in the game")]
     [Expandable][SerializeField] private SO_ItemsList allItemsList;
     
 

@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class ObjectPooler : SingletonMonoBehaviour<ObjectPooler>
 {
+    //Not needed ATM, might be used.
+    [Header("Optional")]
     public SO_ObjectPoolerParameters poolerSettings;
     private SO_ObjectPoolerParameters poolerSettingsCopy;
 
