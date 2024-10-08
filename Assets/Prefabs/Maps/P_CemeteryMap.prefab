@@ -150666,7 +150666,7 @@ GameObject:
   m_Component:
   - component: {fileID: 593633517868469277}
   m_Layer: 0
-  m_Name: P_CementaryMap
+  m_Name: P_CemeteryMap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
