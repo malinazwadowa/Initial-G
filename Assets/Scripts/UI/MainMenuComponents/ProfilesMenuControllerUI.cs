@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class ProfilesMenuControllerUI : MonoBehaviour
@@ -16,24 +17,28 @@ public class ProfilesMenuControllerUI : MonoBehaviour
 
     public RectTransform mainSection;
 
-    public void SetUp()
+    public ScrollRect scrollRect;
+
+    public void PopulateProfilesList()
     {
-        mainSection.gameObject.SetActive(true);
         Utilities.RemoveChildren(listTransform);
-        foreach (string profilename in GameManager.Instance.profileController.profileNameToID.Keys)
+        bool toggleSelected = false;
+
+        foreach (string profileName in GameManager.Instance.profileController.profileNameToID.Keys)
         {
             GameObject newRow = Instantiate(rowPrefab);
             newRow.GetComponent<RectTransform>().SetParent(listTransform, false);
             ProfileRowUI rowScript = newRow.GetComponent<ProfileRowUI>();
-            rowScript.SetUp(profilename, this);
+            rowScript.SetUp(profileName, this);
             rowScript.toggle.group = toggleGroup;
-            
 
-            if(profilename == GameManager.Instance.profileController.GetCurrentProfileName())
+            if (profileName == GameManager.Instance.profileController.GetCurrentProfileName())
             {
                 rowScript.toggle.isOn = true;
                 rowScript.SwitchLoadedHighlight();
                 currentlySelectedRow = rowScript;
+                newRow.transform.SetAsFirstSibling();
+                if (!toggleSelected) { rowScript.toggle.Select(); toggleSelected = true; }  
             }
         }
     }
@@ -42,7 +47,7 @@ public class ProfilesMenuControllerUI : MonoBehaviour
     {
         currentlySelectedRow = rowScript;
 
-        if(currentlySelectedRow.ProfileName == GameManager.Instance.profileController.GetCurrentProfileName())
+        if (currentlySelectedRow.ProfileName == GameManager.Instance.profileController.GetCurrentProfileName())
         {
             loadButton.interactable = false;
             deleteButton.interactable = false;
@@ -57,24 +62,21 @@ public class ProfilesMenuControllerUI : MonoBehaviour
     public void LoadSelected()
     {
         GameManager.Instance.profileController.SwitchProfile(currentlySelectedRow.ProfileName);
-        myMenu.Close();
     }
 
     public void DeleteSelected()
     {
         GameManager.Instance.profileController.DeleteProfile(currentlySelectedRow.ProfileName);
-        SetUp();
+        //PopulateProfilesList();
     }
 
     public void CreateNewProfile()
     {
-        mainSection.gameObject.SetActive(false);
-        newProfilePrompt.gameObject.GetComponent<NewNameInputPromptUI>().OpenForNew(myMenu);
+        newProfilePrompt.gameObject.GetComponent<NewProfileNameInputPromptUI>().OpenForNew(myMenu);
     }
 
     public void RenameCurrentlySelected()
     {
-        mainSection.gameObject.SetActive(false);
-        newProfilePrompt.gameObject.GetComponent<NewNameInputPromptUI>().OpenForRename(myMenu, currentlySelectedRow.ProfileName);
+        newProfilePrompt.gameObject.GetComponent<NewProfileNameInputPromptUI>().OpenForRename(myMenu, currentlySelectedRow.ProfileName);
     }
 }

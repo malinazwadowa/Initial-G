@@ -1,6 +1,8 @@
+using NaughtyAttributes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -10,10 +12,10 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>, ISaveable
     [SerializeField] private GameObject soundPrefab;
     [SerializeField] private AudioMixer myMixer;
 
-    private SO_AudioClipsParameters audioClips;
-    
+    [Expandable]
+    public SO_AudioClipsList audioClipsList;
+
     private bool soundsPaused;
-    //private bool settingsUpdated;
     private List<AudioSource> activeSoundSources;
 
     private AudioMixerGroup soundsGroup;
@@ -23,13 +25,13 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>, ISaveable
     //Prob gonna control cooldown of specific sounds independently, 
     //Current exp sound is spot on with 0.05f CD, dmg sound is eh - updated but still a bit eh
     private float cooldown = 0.05f;
-    private Dictionary<AudioClipID, float> CooldownsDictionary = new Dictionary<AudioClipID, float>();
+    private Dictionary<string, float> CooldownsDictionary = new Dictionary<string, float>();
 
     public ObjectData SaveMyData()
     {
         AudioSaveData saveData = new AudioSaveData
         {
-            IsCoreData = true,
+            IsProfileIndependent = true,
             masterVolume = GetCurrentVolume(MixerGroup.Master),
             soundsVolume = GetCurrentVolume(MixerGroup.Sounds),
             musicVolume = GetCurrentVolume(MixerGroup.Music),
@@ -72,10 +74,9 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>, ISaveable
         DontDestroyOnLoad(this);
     }
 
-    public void Initalize(SO_AudioClipsParameters clipsData)
+    public void Initialize()
     {
         StopAllCoroutines();
-        SetAudioClipsData(clipsData);
 
         activeSoundSources = new List<AudioSource>();
 
@@ -84,13 +85,6 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>, ISaveable
         masterGroup = myMixer.FindMatchingGroups("Master")[0];
         
         soundsPaused = false;
-
-        PlayMusic(AudioClipID.Music);
-    }
-
-    public void SetAudioClipsData(SO_AudioClipsParameters data)
-    {
-        audioClips = data;
     }
 
     public void SetVolume(MixerGroup groupName, float value)
@@ -106,14 +100,14 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>, ISaveable
         return Mathf.Pow(10, volume / 20);
     }
 
-    public AudioSource PlaySound(AudioClipID sound, bool looping = false)
+    public AudioSource PlaySound(string clipName, bool looping = false)
     {
-        if (!CheckIfCooldownHasPassed(sound)) { return null; }
+        if (!CheckIfCooldownHasPassed(clipName)) { return null; }
 
         GameObject newSoundObject = ObjectPooler.Instance.SpawnObject(soundPrefab, Vector3.zero);
         AudioSource audioSource = newSoundObject.GetComponent<AudioSource>();
 
-        audioSource.clip = audioClips.GetAudioClip(sound);
+        audioSource.clip = audioClipsList.clipsByName[clipName];
         audioSource.outputAudioMixerGroup = soundsGroup;
         audioSource.Play();
 
@@ -131,28 +125,28 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>, ISaveable
 
         return audioSource;
     }
-    
-    public void PlayMusic(AudioClipID clipID)
+
+    public void PlayMusic(string clipName)
     {
         GameObject newSoundObject = ObjectPooler.Instance.SpawnObject(soundPrefab, Vector3.zero);
         AudioSource audioSource = newSoundObject.GetComponent<AudioSource>();
-        audioSource.clip = audioClips.GetAudioClip(clipID);
+        audioSource.clip = audioClipsList.clipsByName[clipName];
         audioSource.loop = true;
         audioSource.outputAudioMixerGroup = musicGroup;
         audioSource.Play();
     }
 
-    private bool CheckIfCooldownHasPassed(AudioClipID clipID)
+    private bool CheckIfCooldownHasPassed(string clipName)
     {
         float currentTime = Time.unscaledTime;
 
-        if (CooldownsDictionary.ContainsKey(clipID))
+        if (CooldownsDictionary.ContainsKey(clipName))
         {
-            float lastPlayTime = CooldownsDictionary[clipID];
+            float lastPlayTime = CooldownsDictionary[clipName];
 
             if (currentTime - lastPlayTime >= cooldown)
             {
-                CooldownsDictionary[clipID] = currentTime;
+                CooldownsDictionary[clipName] = currentTime;
                 return true;
             }
             else
@@ -162,7 +156,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>, ISaveable
         }
         else
         {
-            CooldownsDictionary.Add(clipID, currentTime);
+            CooldownsDictionary.Add(clipName, currentTime);
             return true;
         }
     }

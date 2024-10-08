@@ -28,4 +28,9 @@ public class Clock : Accessory
         base.RankUp();
         ApplyEffect();
     }
+
+    public override (StatModifier statModifier, float value) GetParameters(int rank)
+    {
+        return (modifierType, value);
+    }
 }

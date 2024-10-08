@@ -12,7 +12,7 @@ public class Boot : Accessory
         base.Initialize(characterStatsController);
 
         parameters = (SO_BootParameters)baseItemParameters;
-        value = parameters.value;
+        value = parameters.value / 100;
         numberOfRanks = parameters.numberOfRanks - 1;
         ApplyEffect();
     }
@@ -27,5 +27,10 @@ public class Boot : Accessory
     {
         base.RankUp();
         ApplyEffect();
+    }
+
+    public override (StatModifier statModifier, float value) GetParameters(int rank)
+    {
+        return (modifierType, value);
     }
 }

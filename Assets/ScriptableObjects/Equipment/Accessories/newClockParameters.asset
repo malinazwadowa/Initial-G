@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlockCondition:
     name: 
-    conditionType: 2
-    weaponType: 0
-    accessoryType: 0
+    conditionType: 3
+    weaponType: Rock
+    accessoryType: Clock
     enemyType: 0
     collectibleType: 0
     amount: 100
@@ -24,4 +24,4 @@ MonoBehaviour:
   description: Reduces cooldown duration.
   amountOfRanks: 2
   numberOfRanks: 2
-  value: 30
+  value: 20

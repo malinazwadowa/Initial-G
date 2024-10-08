@@ -7,7 +7,7 @@ public class ItemsUnlockUI : MonoBehaviour
     public Transform grid;
     private List<UnlocksCellUI> cellControllers;
 
-    public void PresentData()
+    public void PopulateUnlocksGrid()
     {
         cellControllers = new List<UnlocksCellUI>();
         List<Item> allItems = GameManager.Instance.itemDataController.allItems;
@@ -27,7 +27,6 @@ public class ItemsUnlockUI : MonoBehaviour
 
         foreach (UnlocksCellUI cellController in cellControllers)
         {
-            //Debug.Log($"sprawdzam dla cell controllera czy jest na seen items nie jest {GameManager.Instance.gameStatsController.OverallStats.seenItems.Contains(cellController.myItemType)} i czy jest unlocked {cellController.isMyItemUnlocked}");
             if (!GameManager.Instance.gameStatsController.OverallStats.seenItems.Contains(cellController.myItemType) && cellController.isMyItemUnlocked)
             {
                 cellController.HighlightAsNew();

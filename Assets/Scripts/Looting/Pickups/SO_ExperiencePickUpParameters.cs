@@ -4,4 +4,5 @@ using UnityEngine;
 public class SO_ExperiencePickUpParameters : ScriptableObject
 {
     public int expAmount;
+    public AudioClipNameSelector pickUpClip;
 }

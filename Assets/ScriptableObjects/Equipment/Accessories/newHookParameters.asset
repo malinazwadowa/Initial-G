@@ -24,4 +24,4 @@ MonoBehaviour:
   description: Increases pickup range.
   amountOfRanks: 4
   numberOfRanks: 4
-  value: 0.3
+  value: 50

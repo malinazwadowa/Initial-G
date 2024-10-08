@@ -8,17 +8,24 @@ public class EnemyWaveManager : SingletonMonoBehaviour<EnemyWaveManager>
     public SO_EnemyWaveManagerParameters enemyManagerData;
     private EnemyWave currentWaveData;
 
-    private int currentWave = 0;
-    
+    private int currentWaveId = 0;
+
+    public float spawnOffset = 2.5f;
+
     private float timer;
     private float lerpFactor;
     private float waveDuration;
-    private float ratio = 0.6f; //0-1 ratio for lerp, % of wave time at which peak count of enemies is being kept active
+    private readonly float ratio = 0.6f; //0-1 ratio for lerp, % of wave time at which peak count of enemies is being kept active
+
+    private bool shouldSpawn = true;
 
     void Start()
     {
-        waveDuration = (enemyManagerData.levelDurationInMinutes / enemyManagerData.enemyWaves.Length) * 60;
-        currentWaveData = enemyManagerData.enemyWaves[currentWave];
+        enemyManagerData = GameManager.Instance.levelDataController.GetCurrentLevelData().myEnemyWaveManagerParameters;
+
+        waveDuration = (LevelManager.Instance.LevelDuration / enemyManagerData.enemyWaves.Length) * 60;
+
+        currentWaveData = enemyManagerData.enemyWaves[currentWaveId];
 
         foreach (KeyValuePair<GameObject, int> entry in GetAmountOfEachEnemyType())
         {
@@ -30,19 +37,24 @@ public class EnemyWaveManager : SingletonMonoBehaviour<EnemyWaveManager>
     {
         timer += Time.deltaTime;
 
-        if (currentWaveData != null)
+        if (currentWaveData != null && shouldSpawn)
         {
             ManageWave();
         }
-        
-        if (timer >= waveDuration && currentWave < enemyManagerData.enemyWaves.Length - 1)
+
+        if (timer >= waveDuration && currentWaveId < enemyManagerData.enemyWaves.Length - 1)
         {
-            currentWave++;
-            currentWaveData = enemyManagerData.enemyWaves[currentWave];
+            currentWaveId++;
+            currentWaveData = enemyManagerData.enemyWaves[currentWaveId];
             timer = 0;
         }
 
         lerpFactor = timer / (waveDuration * ratio);
+
+        if (!shouldSpawn)
+        {
+
+        }
     }
 
     public void ManageWave()
@@ -53,13 +65,13 @@ public class EnemyWaveManager : SingletonMonoBehaviour<EnemyWaveManager>
 
             if (ObjectPooler.Instance.CountOfActiveObjectsOfType(currentWaveData.enemyNumbers[i].enemyPrefab) < amountToKeepActive)
             {
-                GameObject newEnemy = ObjectPooler.Instance.SpawnObject(currentWaveData.enemyNumbers[i].enemyPrefab, Utilities.GetRandomPositionOutsideOfCameraView(enemyManagerData.spawnDistanceOffset), transform.rotation);
+                GameObject newEnemy = ObjectPooler.Instance.SpawnObject(currentWaveData.enemyNumbers[i].enemyPrefab, Utilities.GetRandomPositionOutsideOfCameraView(spawnOffset), transform.rotation);
                 newEnemy.GetComponent<Enemy>().Initialize();
             }
         }
     }
 
-    public Dictionary<GameObject,int> GetAmountOfEachEnemyType()
+    public Dictionary<GameObject, int> GetAmountOfEachEnemyType()
     {
         Dictionary<GameObject, int> enemiesToSpawn = new Dictionary<GameObject, int>();
 
@@ -86,7 +98,12 @@ public class EnemyWaveManager : SingletonMonoBehaviour<EnemyWaveManager>
         }
         return enemiesToSpawn;
     }
-    
+
+    public void ShouldSpawn(bool status)
+    {
+        shouldSpawn = status;
+    }
+
     public void SpawnOnCall(GameObject enemyType, Vector2 position)
     {
         GameObject newEnemy = ObjectPooler.Instance.SpawnObject(enemyType, position, transform.rotation);

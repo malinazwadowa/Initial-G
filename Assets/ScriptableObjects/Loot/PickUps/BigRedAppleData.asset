@@ -13,3 +13,6 @@ MonoBehaviour:
   m_Name: BigRedAppleData
   m_EditorClassIdentifier: 
   restoreAmount: 50
+  pickUpClip:
+    clipType: 0
+    clipName: SFX_S_HealingPickup

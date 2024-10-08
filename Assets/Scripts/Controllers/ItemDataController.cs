@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class ItemDataController : MonoBehaviour
 {
+    /*
+     * RIGHT NOW CHANGING SO IN PREFAB WILL CHANGE ITS BEHAVIOUR FOR ENTIRE GAME, IT MIGHT NEED CHANGE
+     */
+
+    [Header("Prefabs of items with config that are made available in the game")]
     [Expandable][SerializeField] private SO_ItemsList allItemsList;
+    
 
     [HideInInspector] public List<GameObject> allItemPrefabs = new List<GameObject>() ;
     [HideInInspector] public List<Item> allItems = new List<Item>();
@@ -22,11 +28,12 @@ public class ItemDataController : MonoBehaviour
         SetDataFromSO();
     }
 
-    public void Initalize()
+    public void Initialize()
     { 
         SetDataFromSO();
         CheckItemUnlocks();
         SortUnlockedItems();
+        //allItemsList.Initialize(); - required for non editor 
     }
 
     public void CheckForNewUnlocks()
@@ -139,13 +146,19 @@ public class ItemDataController : MonoBehaviour
                 case ConditionType.UnlockedWithCollectedItems:
                     if (GameManager.Instance.gameStatsController.OverallStats.collectibleCounts.TryGetValue(condition.collectibleType, out int amount) && amount >= condition.amount)
                     {
-                        //unlockedItems.Add(item);
+                        UnlockItem(item);
+                    }
+                    break;
+
+                case ConditionType.UnlockedWithLevelCompletion:
+                    if (GameManager.Instance.gameStatsController.OverallStats.completedLevels.Contains(condition.levelToComplete))
+                    {
                         UnlockItem(item);
                     }
                     break;
 
                 default:
-                    Debug.Log("Unhandled condition");
+                    Debug.LogWarning("Unhandled item unlock condition!");
                     break;
                     //case ConditionType.UnlockedWithMaxRankOfWeapon:
             }
@@ -154,7 +167,6 @@ public class ItemDataController : MonoBehaviour
 
     private void UnlockItem(Item item)
     {
-
         unlockedItems.Add(item);
     }
 }

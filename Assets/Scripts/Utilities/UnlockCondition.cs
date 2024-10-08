@@ -6,8 +6,8 @@ using UnityEngine;
 [Serializable]
 public class UnlockCondition
 {
-    private List<string> WeaponTypes => ItemTypesDatabase.WeaponTypes;
-    private List<string> AccessoryTypes => ItemTypesDatabase.AccessoryTypes;
+    private List<string> WeaponTypes => ObjectTypesDatabase.WeaponTypes;
+    private List<string> AccessoryTypes => ObjectTypesDatabase.AccessoryTypes;
 
     [HideInInspector] public string name;
     public ConditionType conditionType;
@@ -18,13 +18,17 @@ public class UnlockCondition
     private bool unlockedWithMaxRankOfWeapon;
     private bool unlockedWithMaxRankOfAccessory;
     private bool unlockedWithCollectedItems;
+    
+    private bool unlockedWithLevelCompletion;
 
     [AllowNesting]
-    [ShowIf(EConditionOperator.Or, "unlockedWithWeaponKills", "unlockedWithMaxRankOfWeapon")][Dropdown("WeaponTypes")] 
+    [ShowIf(EConditionOperator.Or, "unlockedWithWeaponKills", "unlockedWithMaxRankOfWeapon")]
+    [Dropdown("WeaponTypes")] 
     public string weaponType;
 
     [AllowNesting]
-    [ShowIf("unlockedWithMaxRankOfAccessory")][Dropdown("AccessoryTypes")]
+    [ShowIf("unlockedWithMaxRankOfAccessory")]
+    [Dropdown("AccessoryTypes")]
     public string accessoryType;
 
     [AllowNesting]
@@ -39,6 +43,10 @@ public class UnlockCondition
     [ShowIf(EConditionOperator.Or, "unlockedWithWeaponKills", "unlockedWithEnemyKilled", "unlockedWithCollectedItems")]
     public int amount;
 
+    [AllowNesting]
+    [ShowIf(nameof(unlockedWithLevelCompletion))]
+    public GameLevel levelToComplete;
+
     public void Validate()
     {
         unlockedByDefault = false;
@@ -47,6 +55,7 @@ public class UnlockCondition
         unlockedWithMaxRankOfAccessory = false;
         unlockedWithMaxRankOfWeapon = false;
         unlockedWithCollectedItems = false;
+        unlockedWithLevelCompletion = false;
 
         switch (conditionType)
         {
@@ -73,55 +82,14 @@ public class UnlockCondition
             case ConditionType.UnlockedWithCollectedItems:
                 unlockedWithCollectedItems = true;
                 break;
+            
+            case ConditionType.UnlockedWithLevelCompletion:
+                unlockedWithLevelCompletion = true;
+                break;
 
             default:
                 unlockedByDefault = true;
                 break;
         }
-        /*
-        if (conditionType == ConditionType.UnlockedWithWeaponKills)
-        {
-            unlockedWithWeaponKills = true;
-            unlockedByDefault = false;
-            unlockedWithEnemyKilled = false;
-            unlockedWithMaxRankOfAccessory = false;
-            unlockedWithMaxRankOfWeapon = false;
-        }
-        else if (conditionType == ConditionType.UnlockedWithEnemyKilled)
-        {
-            unlockedWithEnemyKilled = true;
-            unlockedByDefault = false;
-            unlockedWithWeaponKills = false;
-            unlockedWithMaxRankOfAccessory = false;
-            unlockedWithMaxRankOfWeapon = false;
-        }
-        else if (conditionType == ConditionType.UnlockedWithMaxRankOfAccessory)
-        {
-            unlockedWithMaxRankOfAccessory = true;
-            unlockedByDefault = false;
-            unlockedWithWeaponKills = false;
-            unlockedWithEnemyKilled = false;
-            unlockedWithMaxRankOfWeapon = false;
-        }
-        else if (conditionType == ConditionType.UnlockedByDefault)
-        {
-            unlockedByDefault = true;
-            unlockedWithMaxRankOfAccessory = false;
-            unlockedWithWeaponKills = false;
-            unlockedWithEnemyKilled = false;
-            unlockedWithMaxRankOfWeapon = false;
-        }
-        else if (conditionType == ConditionType.UnlockedWithMaxRankOfWeapon)
-        {
-            unlockedWithMaxRankOfWeapon = true;
-            unlockedWithMaxRankOfAccessory = false;
-            unlockedWithWeaponKills = false;
-            unlockedWithEnemyKilled = false;
-            unlockedByDefault = false;
-        }
-        else
-        {
-            unlockedByDefault = true;
-        } */
     } 
 }

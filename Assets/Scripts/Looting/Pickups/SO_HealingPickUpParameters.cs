@@ -4,4 +4,5 @@ using UnityEngine;
 public class SO_HealingPickUpParameters : ScriptableObject
 {
     public float restoreAmount;
+    public AudioClipNameSelector pickUpClip;
 }

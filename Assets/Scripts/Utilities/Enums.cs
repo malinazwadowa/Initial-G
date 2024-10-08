@@ -23,7 +23,8 @@ public enum ConditionType
     UnlockedWithEnemyKilled,
     UnlockedWithMaxRankOfWeapon,
     UnlockedWithMaxRankOfAccessory,
-    UnlockedWithCollectedItems
+    UnlockedWithCollectedItems,
+    UnlockedWithLevelCompletion
 }
 public enum WeaponType
 {
@@ -48,7 +49,8 @@ public enum StatModifier
     WeaponSpeedModifier,
     DamageModifier,
     CooldownModifier,
-    LootingRadius
+    LootingRadius,
+    RegenerationModifier
 }
 public enum SectorOfChunk
 {
@@ -68,6 +70,11 @@ public enum OccupiedSide
     Left,
     Right,
 }
+public enum AudioClipType
+{
+    Sound,
+    Music
+}
 public enum AudioClipID
 {
     Music,
@@ -77,7 +84,8 @@ public enum AudioClipID
     HealthPickup,
     LevelUp,
     PlayerDeath,
-    GameOver
+    GameOver,
+    GameWon
 
 }
 public enum MixerGroup
@@ -88,14 +96,15 @@ public enum MixerGroup
 }
 public enum SceneName
 {
-    Cementary,
+    Cemetery,
     Forest,
-    Loading,
     MainMenu
 }
 public enum GameLevel
 {
-    Cementary,
+    Cemetery,
     Forest,
-    dupa
+    Test,
+    Test2,
+    Test3
 }

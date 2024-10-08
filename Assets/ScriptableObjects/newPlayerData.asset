@@ -19,3 +19,6 @@ MonoBehaviour:
   baseCooldownModifier: 1
   baseWeaponSpeed: 1
   lootingRadius: 2
+  damagedSound:
+    clipType: 0
+    clipName: SFX_S_PlayerDamaged

@@ -23,10 +23,6 @@ public class PlayerInputController : MonoBehaviour
     {
         HandleRunning();
         HandlePause();
-        if (inputActions.MenuActions.Dupa.WasPerformedThisFrame())
-        {
-            Debug.Log("Dupa");
-        }
     }
 
     private void FixedUpdate()
@@ -87,12 +83,12 @@ public class PlayerInputController : MonoBehaviour
             EventManager.OnPauseRequest?.Invoke();
         }
     }
-
+    /*
     private void HandleAttackInput()
     {
         if (inputActions.GameplayActions.Attack.WasPerformedThisFrame())
         {
             onAttackInputPressed?.Invoke();
         }
-    }
+    } */
 }

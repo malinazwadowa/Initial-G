@@ -16,7 +16,7 @@ public class HedgehogProjectile : MonoBehaviour
     private float knockbackPower;
     private float duration;
 
-    public void Initalize(string weaponType, Transform weaponsTransform, float damage, float speed, float knockbackPower, float radius, float duration)
+    public void Initialize(string weaponType, Transform weaponsTransform, float damage, float speed, float knockbackPower, float radius, float duration)
     {
         this.weaponType = weaponType;
         this.damage = damage;
@@ -67,8 +67,8 @@ public class HedgehogProjectile : MonoBehaviour
         {
             Vector3 direction = collision.transform.position - weaponsTransform.position;
 
-            target.GetKnockbacked(knockbackPower, direction.normalized);
-            target.GetDamaged(damage, weaponType);
+            target.Knockback(knockbackPower, direction.normalized);
+            target.Damage(damage, weaponType);
         }
     }
 }

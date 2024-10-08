@@ -9,6 +9,8 @@ public class ExperienceController : MonoBehaviour
     private float maxExpForCurrentLevel;
     private ExpBarUI expBar;
 
+    [SerializeField] private AudioClipNameSelector levelUpSound;
+
     public void Initialize(ExpBarUI expBar)
     {
         this.expBar = expBar;
@@ -34,8 +36,8 @@ public class ExperienceController : MonoBehaviour
         CurrentLevel++;
         maxExpForCurrentLevel = (float)(maxExpForCurrentLevel * 1.05) + 75;
         UpdateExpBar();
-        AudioSource levelUpSound = AudioManager.Instance.PlaySound(AudioClipID.LevelUp);
-        EventManager.OnPlayerLevelUp?.Invoke(levelUpSound);//Will require ID of sort as argument later for multiple players.
+        AudioSource levelUpSoundSource = AudioManager.Instance.PlaySound(levelUpSound.clipName);
+        EventManager.OnPlayerLevelUp?.Invoke(levelUpSoundSource);//Will require ID of sort as argument later for multiple players.
     }
 
     private void UpdateExpBar()

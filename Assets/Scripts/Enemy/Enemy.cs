@@ -8,6 +8,8 @@ public class Enemy : MonoBehaviour, IDamagable
     protected Player player;
     protected HealthController healthController;
     private EnemyMovementController enemyMovementController;
+    
+    public AudioClipNameSelector getDamagedClip;
 
     private void OnDisable()
     {
@@ -32,9 +34,9 @@ public class Enemy : MonoBehaviour, IDamagable
         }
     }
   
-    public void GetDamaged(float amount, string damageSource)
+    public void Damage(float amount, string damageSource)
     {
-        AudioManager.Instance.PlaySound(AudioClipID.EnemyHit);
+        AudioManager.Instance.PlaySound(enemyParameters.damagedSound.clipName);
 
         GameManager.Instance.gameStatsController.RegisterWeaponDamage(damageSource, Mathf.Min(amount, healthController.GetCurrentHealth()));
 
@@ -46,11 +48,11 @@ public class Enemy : MonoBehaviour, IDamagable
         {
             GameManager.Instance.gameStatsController.RegisterWeaponKill(damageSource);
             GameManager.Instance.gameStatsController.RegisterEnemyKill(enemyParameters.type);
-            GetKilled();
+            Kill();
         }
     }
 
-    public void GetKilled()
+    public void Kill()
     {
         LootManager.Instance.DropLoot(enemyParameters.tier, transform.position);
         
@@ -59,7 +61,7 @@ public class Enemy : MonoBehaviour, IDamagable
         ObjectPooler.Instance.DespawnObject(gameObject);
     }
 
-    public void GetKnockbacked(float power, Vector3 knockbackDirection)
+    public void Knockback(float power, Vector3 knockbackDirection)
     {
         if (gameObject.activeSelf)
         {

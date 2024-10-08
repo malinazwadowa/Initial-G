@@ -19,3 +19,6 @@ MonoBehaviour:
   damage: 5
   attackCooldown: 1
   armor: 0
+  damagedSound:
+    clipType: 0
+    clipName: SFX_S_EnemyDamaged

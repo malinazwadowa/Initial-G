@@ -10,13 +10,37 @@ public class ResultsControllerUI : MonoBehaviour
     public TextMeshProUGUI levelText;
     public GameObject itemRow;
     public Transform itemsTable;
-    
+    public TextMeshProUGUI bannerText;
+
+    public AudioClipNameSelector gameLostSound;
+    public AudioClipNameSelector gameWonSound;
+
+    private Color red = new Color(199 / 255f, 10 / 255f, 29 / 255f);
+    private Color green = new Color(1f / 255f, 104f / 255f, 11f / 255f);
+
     //should be replaced in case of multiple players
     private Player player;
     
     public void PresentResults()
     {
         player = PlayerManager.Instance.GetPlayer();
+
+        if (!player.IsAlive)
+        {
+            bannerText.color = red;
+            bannerText.text = "You Died...";
+            AudioManager.Instance.StopAllClips();
+            AudioManager.Instance.PlaySound(gameLostSound.clipName);
+
+        }
+        else
+        {
+            bannerText.color = green;
+            bannerText.text = "You Won!";
+            AudioManager.Instance.StopAllClips();
+            AudioManager.Instance.PlaySound(gameWonSound.clipName);
+        }
+
         UpdateGeneralData();
         GetWeaponResults();
     }
@@ -24,7 +48,7 @@ public class ResultsControllerUI : MonoBehaviour
     {
         scoreText.text = new string($"Score: {LevelManager.Instance.Score}");
         levelText.text = new string($"Level gained: {player.ExperienceController.CurrentLevel}");
-        timeText.text = TextUtilities.FormatTime(LevelManager.Instance.SessionTime);
+        timeText.text = new string ("Time survived: ") + TextUtilities.FormatTime(LevelManager.Instance.SessionTime);
     }
 
     private void GetWeaponResults()
@@ -38,9 +62,9 @@ public class ResultsControllerUI : MonoBehaviour
             RowComponentsUI rowComponents = myRow.GetComponent<RowComponentsUI>();
 
             rowComponents.itemImage.sprite = item.baseItemParameters.icon;
-            rowComponents.rankText.text = (item.currentRank + 1).ToString();
+            rowComponents.rankText.text = (item.CurrentRank + 1).ToString();
 
-            int j = item.currentRank;
+            int j = item.CurrentRank;
             for (int i = 0; i < item.baseItemParameters.amountOfRanks; i++)
             {
                 GameObject rankGameObject = new GameObject("RankImage");

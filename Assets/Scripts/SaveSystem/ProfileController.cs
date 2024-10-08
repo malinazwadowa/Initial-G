@@ -6,16 +6,13 @@ using UnityEngine;
 public class ProfileController : MonoBehaviour, ISaveable
 {
     private string currentProfileName = null;
-    public List<string> profileNames = new List<string>();
     public Dictionary<string, string> profileNameToID = new Dictionary<string, string>();
 
     public void LoadMyData(ObjectData savedData)
     {
-        Debug.Log("profile data loading ! ");
         if (savedData is ProfilesData profilesData)
         {
             currentProfileName = profilesData.currentProfileName;
-            profileNames = profilesData.profileNames;
             profileNameToID = profilesData.profileNameToID;
         }
     }
@@ -24,11 +21,10 @@ public class ProfileController : MonoBehaviour, ISaveable
     {
         ProfilesData profilesData = new ProfilesData
         {
-            IsCoreData = true,
+            IsProfileIndependent = true,
             currentProfileName = this.currentProfileName,
-            profileNames = this.profileNames,
             profileNameToID = this.profileNameToID
-    };
+        };
         return profilesData;
     }
 
@@ -39,26 +35,23 @@ public class ProfileController : MonoBehaviour, ISaveable
         public List<string> profileNames;
         public Dictionary<string, string> profileNameToID;
     }
-    private void Update()
-    {
-        
-    }
+
     public string GetCurrentProfileName()
     {
         return currentProfileName;
     }
+
     public string GetCurrentProfileId()
     {
         currentProfileName = currentProfileName.NullIfEmpty();
 
         if (currentProfileName == null)
         {
-            Debug.Log("ustawiam na default");
             string name = new("default");
             currentProfileName = name;
             AddProfile(name);
         }
-        Debug.Log($"ZWRACAM CURRENT PROFILE ID {profileNameToID[currentProfileName]}");
+
         return profileNameToID[currentProfileName];
     }
 
@@ -75,7 +68,6 @@ public class ProfileController : MonoBehaviour, ISaveable
         SaveSystem.DeleteProfileData(profileId);
     }
 
-
     public void SwitchProfile(string profileName)
     {
         currentProfileName = profileName;
@@ -84,7 +76,6 @@ public class ProfileController : MonoBehaviour, ISaveable
 
     public void RenameProfile(string profileName, string newProfileName)
     {
-        
         if (profileNameToID.TryGetValue(profileName, out string profileId))
         {
             profileNameToID.Remove(profileName);
@@ -97,13 +88,12 @@ public class ProfileController : MonoBehaviour, ISaveable
             {
                 currentProfileName = newProfileName;
             }
+            SaveSystem.Save();
         }
         else
         {
             Debug.Log("Unable to find profile to rename.");
         }
-
-        
     }
 
     public void WipeMyData()

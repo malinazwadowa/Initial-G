@@ -10,12 +10,10 @@ public class UnlocksCellUI : MonoBehaviour
     [SerializeField] private RawImage panelHighlight;
     [SerializeField] private RawImage itemBackground;
 
-
     [SerializeField] private GameObject slider;
     [SerializeField] private Image sliderFill;
     [SerializeField] private Image sliderBackground;
 
-    [SerializeField] private Color unlockedColor;
     [SerializeField] private Color lockedColor;
     [SerializeField] private Color weaponColor;
     [SerializeField] private Color accessoryColor;
@@ -107,6 +105,18 @@ public class UnlocksCellUI : MonoBehaviour
                 }
                 break;
 
+            case ConditionType.UnlockedWithLevelCompletion:
+
+                bool unlockStatus = GameManager.Instance.gameStatsController.OverallStats.completedLevels.Contains(condition.levelToComplete);
+
+                if (!unlockStatus)
+                {
+                    panelText.text = new string($"Unlocked by completing level: {condition.levelToComplete}.");
+
+                    SetCellToLocked();
+                }
+                break;
+
             default:
                 // Default case if the conditionType doesn't match any of the specified cases
                 break;
@@ -130,7 +140,6 @@ public class UnlocksCellUI : MonoBehaviour
 
     public void HighlightAsNew()
     {
-        //panelHighlight.gameObject.SetActive(true);
         panelHighlight.enabled = true;
     }
 }

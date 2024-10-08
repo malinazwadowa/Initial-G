@@ -12,64 +12,57 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da905ded085f9e0469aac16c87272a2e, type: 3}
   m_Name: newEnemyManagerData
   m_EditorClassIdentifier: 
-  spawnDistanceOffset: 2.5
-  levelDurationInMinutes: 5
   enemyWaves:
   - name: Wave 1
     enemyNumbers:
     - name: 
       enemyPrefab: {fileID: 6197773327841160796, guid: 06df89f0c420942498a4f28087e26edf,
         type: 3}
-      startAmount: 300
-      targetAmount: 300
+      startAmount: 10
+      targetAmount: 30
     - name: 
-      enemyPrefab: {fileID: 6197773327841160796, guid: 60ce344a6db93ef48a8bcd83428bb7bc,
+      enemyPrefab: {fileID: 6197773327841160796, guid: d5eaaad07183c654db8a41cb6a0ff4e8,
         type: 3}
-      startAmount: 0
-      targetAmount: 0
+      startAmount: 5
+      targetAmount: 5
   - name: Wave 2
     enemyNumbers:
     - name: 
       enemyPrefab: {fileID: 6197773327841160796, guid: 06df89f0c420942498a4f28087e26edf,
         type: 3}
-      startAmount: 300
-      targetAmount: 1000
+      startAmount: 30
+      targetAmount: 20
     - name: 
       enemyPrefab: {fileID: 6197773327841160796, guid: d5eaaad07183c654db8a41cb6a0ff4e8,
         type: 3}
-      startAmount: 3
+      startAmount: 5
       targetAmount: 15
   - name: Wave 3
     enemyNumbers:
     - name: 
       enemyPrefab: {fileID: 6197773327841160796, guid: 06df89f0c420942498a4f28087e26edf,
         type: 3}
-      startAmount: 300
-      targetAmount: 300
+      startAmount: 20
+      targetAmount: 10
     - name: 
       enemyPrefab: {fileID: 6197773327841160796, guid: d5eaaad07183c654db8a41cb6a0ff4e8,
         type: 3}
       startAmount: 15
-      targetAmount: 30
+      targetAmount: 20
     - name: 
       enemyPrefab: {fileID: 6197773327841160796, guid: 60ce344a6db93ef48a8bcd83428bb7bc,
         type: 3}
-      startAmount: 1
-      targetAmount: 3
+      startAmount: 2
+      targetAmount: 8
   - name: Wave 4
     enemyNumbers:
     - name: 
-      enemyPrefab: {fileID: 6197773327841160796, guid: 06df89f0c420942498a4f28087e26edf,
-        type: 3}
-      startAmount: 20
-      targetAmount: 0
-    - name: 
       enemyPrefab: {fileID: 6197773327841160796, guid: d5eaaad07183c654db8a41cb6a0ff4e8,
         type: 3}
-      startAmount: 30
-      targetAmount: 45
+      startAmount: 20
+      targetAmount: 20
     - name: 
       enemyPrefab: {fileID: 6197773327841160796, guid: 60ce344a6db93ef48a8bcd83428bb7bc,
         type: 3}
-      startAmount: 3
-      targetAmount: 8
+      startAmount: 8
+      targetAmount: 30

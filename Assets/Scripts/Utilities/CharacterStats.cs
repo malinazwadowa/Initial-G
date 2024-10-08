@@ -8,8 +8,9 @@ public class CharacterStats
     public float cooldownModifier;
     public float durationModifier;
     public float lootingRadiusModifier;
+    public float healthRegenerationModifier;
 
-    public CharacterStats(float moveSpeedModifier, float weaponSpeedModifier, float damageModifier, float cooldownModifier, float durationModifier, float lootingRadiusModifier)
+    public CharacterStats(float moveSpeedModifier, float weaponSpeedModifier, float damageModifier, float cooldownModifier, float durationModifier, float lootingRadiusModifier, float healthRegenerationModifier)
     {
         this.moveSpeedModifier = moveSpeedModifier;
         this.weaponSpeedModifier = weaponSpeedModifier;
@@ -17,10 +18,11 @@ public class CharacterStats
         this.cooldownModifier = cooldownModifier;
         this.durationModifier = durationModifier;
         this.lootingRadiusModifier = lootingRadiusModifier;
+        this.healthRegenerationModifier = healthRegenerationModifier;
     }
 
-    public CharacterStats() : this(1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f)
+    public CharacterStats() : this(1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f)
     {
-        Debug.Log("Initalizing character stats with default values");
+        Debug.Log("Initializing character stats with default values");
     }
 }

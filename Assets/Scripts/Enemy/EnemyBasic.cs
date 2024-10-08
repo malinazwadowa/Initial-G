@@ -44,7 +44,7 @@ public class EnemyBasic : Enemy
     {
         if (!canAttack) { return; }
 
-        target.GetDamaged(enemyParameters.damage);
+        target.Damage(enemyParameters.damage);
         canAttack = false;
     }
 }

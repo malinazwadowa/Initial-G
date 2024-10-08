@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad011e99cff649e48a04f624130db43c, type: 3}
+  m_Name: newAudioClipsList
+  m_EditorClassIdentifier: 
+  soundClips:
+  - {fileID: 8300000, guid: c598ddc88360eee49ac6bbff2bc38e68, type: 3}
+  - {fileID: 8300000, guid: 97f44e7737977534385000b99ac23b74, type: 3}
+  - {fileID: 8300000, guid: 37e884d5367007f468d6aae165305f08, type: 3}
+  - {fileID: 8300000, guid: c0d7adbea0eecd94f8d34240cfd14b19, type: 3}
+  - {fileID: 8300000, guid: 5d5cff2bd67ad93428823c019e221694, type: 3}
+  - {fileID: 8300000, guid: b384ba52e06be264bad5b926498fb79f, type: 3}
+  - {fileID: 8300000, guid: 6c17a177d5002c64baedf43835be66ae, type: 3}
+  - {fileID: 8300000, guid: 572d4b94746afdf40bd6c50bf9052a57, type: 3}
+  - {fileID: 8300000, guid: 29923bba44dfc984cac71f58f8180c89, type: 3}
+  musicClips:
+  - {fileID: 8300000, guid: e786cad67bfae534e9795f58de86555d, type: 3}
+  soundClipNames:
+  - SFX_S_EnemyDamaged
+  - SFX_S_ExpPickup
+  - SFX_S_PlayerDamaged
+  - SFX_S_GameOverLost
+  - SFX_S_GameOverWon
+  - SFX_S_HealingPickup
+  - SFX_S_LevelUp
+  - SFX_S_SelectableClick
+  - SFX_S_SelectableSelect
+  musicClipNames:
+  - SFX_M_TempMusic2

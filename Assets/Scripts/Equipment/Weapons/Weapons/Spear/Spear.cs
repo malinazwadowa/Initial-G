@@ -1,5 +1,6 @@
 using NaughtyAttributes;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Spear :  Weapon
@@ -12,9 +13,8 @@ public class Spear :  Weapon
     public override void Initialize(IItemWielder weaponWielder, CharacterStats characterStats)
     {
         base.Initialize(weaponWielder, characterStats);
-        Debug.Log(" I am being initalized SZPIR");
         baseParameters = (SO_SpearParameters)baseItemParameters;
-        currentRankParameters = baseParameters.ranks[currentRank];
+        currentRankParameters = baseParameters.ranks[CurrentRank];
     }
 
     public override void WeaponTick()
@@ -36,12 +36,13 @@ public class Spear :  Weapon
         if(currentRankParameters.amount > 0)
         {
             GameObject newSpear = ObjectPooler.Instance.SpawnObject(currentRankParameters.projectilePrefab, position);
-            newSpear.GetComponent<SpearProjectile>().Init(
+            newSpear.GetComponent<SpearProjectile>().Initialize(
                 this.GetType().Name,
                 direction,
                 currentRankParameters.damage * characterStats.damageModifier,
                 currentRankParameters.speed * characterStats.weaponSpeedModifier,
-                currentRankParameters.knockbackPower
+                currentRankParameters.knockbackPower,
+                currentRankParameters.piercing
                 );
         }
         
@@ -76,31 +77,40 @@ public class Spear :  Weapon
         yield return new WaitForSeconds(delay);
 
         GameObject nextSpear = ObjectPooler.Instance.SpawnObject(currentRankParameters.projectilePrefab, position);
-        nextSpear.GetComponent<SpearProjectile>().Init(
+        nextSpear.GetComponent<SpearProjectile>().Initialize(
             this.GetType().Name,
             direction,
             currentRankParameters.damage * characterStats.damageModifier,
             currentRankParameters.speed * characterStats.weaponSpeedModifier,
-            currentRankParameters.knockbackPower
+            currentRankParameters.knockbackPower,
+            currentRankParameters.piercing
             );
     }
 
     public override void RankUp()
     {
-        /*
-        Debug.Log("current rank to: " + currentRank);
-        Debug.Log("baserank params: " + baseParameters.ranks.Length);
-        if (currentRank < baseParameters.maxRank)
-        {
-            base.RankUp();
-            Debug.Log("Ranking up Spear.");
-            currentRankParameters = baseParameters.ranks[currentRank];
-        }
-        else
-        {
-            Debug.Log("Maximum Spear rank reached.");
-        } */
         base.RankUp();
+        currentRankParameters = baseParameters.ranks[CurrentRank];
+    }
+    public override Dictionary<string, float> GetParameters(int rank)
+    {
+        Dictionary<string, float> parameters = new Dictionary<string, float>();
+
+        if (rank >= baseParameters.ranks.Length || rank < 0)
+        {
+            Debug.LogError("Invalid rank specified for GetParameters.");
+            return parameters;
+        }
+
+        SpearRank rankParameters = baseParameters.ranks[rank];
+        parameters.Add("speed", rankParameters.speed);
+        parameters.Add("cooldown", rankParameters.cooldown);
+        parameters.Add("amount", rankParameters.amount);
+        parameters.Add("damage", rankParameters.damage);
+        parameters.Add("knockbackPower", rankParameters.knockbackPower);
+        parameters.Add("piercing", rankParameters.piercing);
+
+        return parameters;
     }
 }
 

@@ -3,9 +3,11 @@ using UnityEngine;
 
 public class SceneAudioHandler : MonoBehaviour
 {
-    [Expandable][SerializeField] private SO_AudioClipsParameters audioClipsParameters;
+    [SerializeField] private AudioClipNameSelector sceneMusic;
+
     private void Start()
     {
-        AudioManager.Instance.Initalize(audioClipsParameters);
+        AudioManager.Instance.Initialize();
+        AudioManager.Instance.PlayMusic(sceneMusic.clipName);
     }
 }

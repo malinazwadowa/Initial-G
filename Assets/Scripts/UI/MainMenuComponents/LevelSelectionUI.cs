@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -6,62 +5,47 @@ using UnityEngine.UI;
 
 public class LevelSelectionUI : MonoBehaviour
 {
-    public GameObject levelButtons;
-    public MainMenuUI mainMenu;
-
-    private List<LevelInfo> levelInfos;
-    private List<Button> buttons;
-
-    public class LevelInfo
-    {
-        public GameLevel gameLevel;
-        public bool isUnlocked;
-    }
+    public GameObject buttonPrefab;
+    public Transform levelButtonList;
+    public MenuUI myMenu;
 
     public void LoadGameLevel(GameLevel gameLevel)
     {
-        GameManager.Instance.ChangeScene((SceneName)gameLevel);
+        GameManager.Instance.SetCurrentGameLevel(gameLevel);
+        SO_GameLevel levelData = GameManager.Instance.levelDataController.GetCurrentLevelData();
+        GameManager.Instance.ChangeScene(levelData.myScene);
     }
-
-    public void SetUpButtonLogic()
+    
+    public void PopulateLevelsList()
     {
-        levelInfos = new List<LevelInfo>();
-        buttons = new List<Button>();
+        Utilities.RemoveChildren(levelButtonList);
+        bool buttonSelected = false;
+        Dictionary<GameLevel, bool> levelUnlockStatus = GameManager.Instance.levelDataController.GetLevelUnlockStatuses();
 
-        foreach (Button button in levelButtons.GetComponentsInChildren<Button>())
+        foreach (GameLevel level in levelUnlockStatus.Keys)
         {
-            buttons.Add(button);
-        }
+            GameObject buttonObject = Instantiate(buttonPrefab);
+            buttonObject.transform.SetParent(levelButtonList, false);
 
-        Dictionary<GameLevel, bool> levelUnlockStatus = GameManager.Instance.LevelUnlockController.GetCurrentLevelUnlockStatus();
+            Button button = buttonObject.GetComponentInChildren<Button>();
+            button.interactable = levelUnlockStatus[level];
 
-        foreach (GameLevel level in Enum.GetValues(typeof(GameLevel)))
-        {
-            Debug.Log(level.ToString());
-            levelInfos.Add(new LevelInfo { gameLevel = level, isUnlocked = levelUnlockStatus[level] });
-        }
-
-        for (int i = 0; i < levelInfos.Count; i++)
-        {
-            int index = i;
-            buttons[i].onClick.RemoveAllListeners();
-            buttons[i].interactable = levelInfos[i].isUnlocked;
-
-            if (buttons[i].interactable)
+            if (button.interactable && buttonSelected == false)
             {
-                buttons[i].GetComponentInChildren<TextMeshProUGUI>().text = levelInfos[i].gameLevel.ToString();
+                buttonSelected = true;
+                myMenu.SetFirstSelected(button);
+            }
 
-                buttons[i].onClick.AddListener(() =>
-                {
-                    Debug.Log("Button Clicked: " + levelInfos[index].gameLevel.ToString());
-                    LoadGameLevel(levelInfos[index].gameLevel);
-                });
+            if (button.interactable)
+            {
+                buttonObject.GetComponentInChildren<TextMeshProUGUI>().text = level.ToString();
+                button.onClick.AddListener(() => LoadGameLevel(level));
             }
             else
             {
-                buttons[i].GetComponentInChildren<TextMeshProUGUI>().text = "Locked";
-            }
-        }
+                buttonObject.GetComponentInChildren<TextMeshProUGUI>().text = "Locked";
+            } 
 
+        }
     }
 }

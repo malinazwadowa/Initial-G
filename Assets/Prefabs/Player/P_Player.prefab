@@ -339,6 +339,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0483ff5a4b8bede468a288b7538bfa22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelUpSound:
+    clipType: 0
+    soundClipName: SFX_S_GameOverWon
+    musicClipName: SFX_M_TempMusic
+    clipName: SFX_S_GameOverWon
 --- !u!114 &781783925190867560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -351,7 +356,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56ff22c85d42840499998f3136f09930, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  equippedItems: []
 --- !u!1 &7571825181744549085
 GameObject:
   m_ObjectHideFlags: 0

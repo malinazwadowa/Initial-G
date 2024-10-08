@@ -24,4 +24,4 @@ MonoBehaviour:
   description: Increases overall damage done.
   amountOfRanks: 2
   numberOfRanks: 2
-  value: 0.9
+  value: 20

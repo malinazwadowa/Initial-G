@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class ObjectPooler : SingletonMonoBehaviour<ObjectPooler>
 {
+    //Not needed ATM, might be used.
+    [Header("Optional")]
     public SO_ObjectPoolerParameters poolerSettings;
     private SO_ObjectPoolerParameters poolerSettingsCopy;
 
@@ -48,7 +50,7 @@ public class ObjectPooler : SingletonMonoBehaviour<ObjectPooler>
 
         if (poolDictionary[objectName].inactiveObjects.Count == 0)
         {
-            objToSpawn = Instantiate(gameObject);
+            objToSpawn = Instantiate(gameObject, ObjectHolder.GetTransform());
             objToSpawn.name = objectName;
             objToSpawn.SetActive(true);
 
@@ -81,7 +83,7 @@ public class ObjectPooler : SingletonMonoBehaviour<ObjectPooler>
     {
         if (!poolDictionary.ContainsKey(objectToDeSpawn.name))
         {
-            Debug.Log($"Pool for {objectToDeSpawn} does't exist, cannot despawn the object.");
+            Debug.Log($"Pool for {objectToDeSpawn} doesn't exist, cannot despawn the object.");
             return;
         }
 
@@ -121,7 +123,7 @@ public class ObjectPooler : SingletonMonoBehaviour<ObjectPooler>
     {
         for (int i = 0; i < pool.size; i++)
         {
-            GameObject gameObject = Instantiate(pool.objectPrefab);
+            GameObject gameObject = Instantiate(pool.objectPrefab, ObjectHolder.GetTransform());
             gameObject.name = gameObject.name.EndsWith("(Clone)") ? gameObject.name.Replace("(Clone)", "") : gameObject.name;
             gameObject.SetActive(false);
             pool.objectLists.inactiveObjects.Add(gameObject);
