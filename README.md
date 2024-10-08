@@ -3,14 +3,14 @@
 Initial G is my first project developed using Unity and C# after completing several courses and tutorials. This project is a hands-on exploration of game development, where I am applying what I have learned about programming, design principles, and the overall development workflow. While there is still room for improvement, it is a meaningful step toward expanding my skills and experience in game development.
 
 <h3>Core Gameplay Summary</h3>
-For those unfamiliar with Vampire Survivors, Initial G is a basic survival roguelike game where players must survive through endless waves of enemies. 
+Initial G is a clone of Vampire Survivors. For those unfamiliar with that title, it is a rather simple survival roguelike game where players must survive through endless waves of enemies. 
 Defeating enemies grants experience points, and leveling up offers access to new items or upgrades for currently equipped gear.
 
 <h3>How to run</h3>
 The game is currently available to run through the Unity editor. A stable version is located on the Main branch. To run the game, open the project in Unity and start the app in MainMenu scene.</br>
 Supports keyboard and gamepad.
 <h5>Controls</h5>
-- Navigation: WASD/Analog</br>
+- Navigation: WASD/L Analog Stick</br>
 - Run: Shift/L2</br>
 - Confirm: Enter/Button South</br>
 - Deny: Esc/Button East</br>
@@ -19,7 +19,7 @@ Supports keyboard and gamepad.
 <p>While working on Initial G, I wanted to keep things flexible and follow some common practices from the game development industry. Even though I was the only one developing the game, I treated it like a collaborative project, focusing on features that would make life easier for level and game designers. I tried to ensure that future expansions and additions could be accommodated by maintaining a flexible architecture, allowing for new features and enhancements without major overhauls.</p>
 
 <h2>Key Feautres</h2>
-In this section, I highlight some of the more interesting features of the project. These elements showcase the technical aspects and design choices that enhance both functionality and performance.
+In this section I will highlight, in my opinion, some of the more interesting features of the project. These elements showcase the technical aspects and design choices that enhance both functionality and performance.
 
 <h4>Configurable Game Elements</h4>
 <p>Some of the features that offer designers a range of options to tweak gameplay and introduce variation:  </p>
