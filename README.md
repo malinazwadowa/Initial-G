@@ -23,12 +23,13 @@ In this section, I highlight some of the more interesting features of the projec
 
 <h4>Configurable Game Elements</h4>
 <p>Some of the features that offer designers a range of options to tweak gameplay and introduce variation:  </p>
-- Customizable items and unlock conditions</br>
-![image](https://github.com/user-attachments/assets/aab1b9b7-b9e5-441a-88e9-a8e6c83c7e1e)
+
+- Customizable items and unlock conditions </br></br>
+![image](https://github.com/user-attachments/assets/aab1b9b7-b9e5-441a-88e9-a8e6c83c7e1e)</br>
 ![image](https://github.com/user-attachments/assets/2c8cd47c-80c8-4c11-a1a7-e5b1404f76b3)</br>
-- Customizable level settings including enemy waves management </br>
+- Customizable level settings including enemy waves management </br></br>
 ![image](https://github.com/user-attachments/assets/ee1ac157-4d42-4587-9fcb-53551f69b443)</br>
-- Customizable loot control </br>
+- Customizable loot control </br></br>
 ![image](https://github.com/user-attachments/assets/bedbcc6d-5bd5-41dc-99c9-0626369101d7)
 ![image](https://github.com/user-attachments/assets/a5943281-d9cd-4057-ad96-136e1bec998a)
 
