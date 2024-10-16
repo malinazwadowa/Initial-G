@@ -27,6 +27,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>, ISaveable
     private float cooldown = 0.05f;
     private Dictionary<string, float> CooldownsDictionary = new Dictionary<string, float>();
 
+    #region SaveSystemImplementation
     public ObjectData SaveMyData()
     {
         AudioSaveData saveData = new AudioSaveData
@@ -60,6 +61,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>, ISaveable
         public float soundsVolume;
         public float musicVolume;
     }
+    #endregion
 
     private void UpdateSettingsFromSaveFile(AudioSaveData loadedData)
     {
@@ -72,6 +74,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>, ISaveable
     {
         base.Awake();
         DontDestroyOnLoad(this);
+        audioClipsList.Initialize();
     }
 
     public void Initialize()

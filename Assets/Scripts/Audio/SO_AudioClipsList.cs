@@ -15,7 +15,6 @@ public class SO_AudioClipsList : ScriptableObject
 
     public void Initialize()
     {
-        //List name validation for 
         SetClipNames();
         ObjectTypesDatabase.SetClipsData(soundClipNames, musicClipNames);
     }
