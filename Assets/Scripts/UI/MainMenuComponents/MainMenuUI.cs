@@ -1,14 +1,13 @@
-using System;
 using UnityEngine;
 
 public class MainMenuUI : MonoBehaviour
 {
-    [SerializeField] MenuUI mainMenu;
-    [SerializeField] MenuUI levelSelectionMenu;
-    [SerializeField] MenuUI settingsMenu;
-
-    private void Start()
+    public void ExitApplication()
     {
-        mainMenu.Open();    
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
     }
 }

@@ -20,8 +20,9 @@ MonoBehaviour:
     enemyType: 0
     collectibleType: 0
     amount: 10
+    levelToComplete: 0
   icon: {fileID: 21300000, guid: 8ab02ef8905cc50438bfb3bd0df644d4, type: 3}
   description: Increases health regeneration.
   amountOfRanks: 5
   numberOfRanks: 5
-  value: 100
+  value: 30

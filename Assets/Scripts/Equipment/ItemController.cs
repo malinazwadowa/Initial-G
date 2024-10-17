@@ -21,7 +21,7 @@ public class ItemController : MonoBehaviour
         characterStats = characterStatsController.GetStats();
 
         InitializeControllers();
-        EquipItem(typeof(Sword));
+        EquipItem(typeof(Rock));
     }
 
     private void InitializeControllers()
