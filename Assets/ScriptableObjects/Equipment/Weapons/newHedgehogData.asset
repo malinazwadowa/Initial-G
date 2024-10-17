@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlockCondition:
     name: 
-    conditionType: 2
+    conditionType: 0
     weaponType: Rock
     accessoryType: Boot
     enemyType: 0

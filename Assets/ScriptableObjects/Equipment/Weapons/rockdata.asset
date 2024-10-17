@@ -32,7 +32,7 @@ MonoBehaviour:
       type: 3}
     speed: 8
     cooldown: 1
-    amount: 3
+    amount: 1
     damage: 10
     piercing: 1
     knockbackPower: 3
@@ -41,7 +41,7 @@ MonoBehaviour:
       type: 3}
     speed: 10
     cooldown: 1
-    amount: 3
+    amount: 2
     damage: 10
     piercing: 2
     knockbackPower: 3
@@ -51,7 +51,7 @@ MonoBehaviour:
     speed: 8
     cooldown: 1
     amount: 3
-    damage: 10
+    damage: 15
     piercing: 2
     knockbackPower: 3
   - name: Rank 4
@@ -59,7 +59,7 @@ MonoBehaviour:
       type: 3}
     speed: 8
     cooldown: 1
-    amount: 3
-    damage: 10
+    amount: 4
+    damage: 15
     piercing: 3
     knockbackPower: 3

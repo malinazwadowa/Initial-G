@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlockCondition:
     name: 
-    conditionType: 0
+    conditionType: 2
     weaponType: Rock
     accessoryType: Clock
     enemyType: 0
-    collectibleType: 0
-    amount: 0
+    collectibleType: 1
+    amount: 75
     levelToComplete: 0
   icon: {fileID: -2108517000, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
   description: Throws projectiles in the movement's direction.
