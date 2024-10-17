@@ -19,5 +19,5 @@ MonoBehaviour:
     type: 2}
   levelMusic:
     clipType: 1
-    clipName: SFX_M_TempMusic
+    clipName: SFX_M_TempMusic2
   unlockedBy: 0
