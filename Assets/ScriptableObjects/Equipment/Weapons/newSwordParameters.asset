@@ -32,19 +32,19 @@ MonoBehaviour:
     radius: 5
     cooldown: 3
     damage: 10
-    knockbackPower: 4
+    knockbackPower: 3
   - name: Rank 2
     projectilePrefab: {fileID: 3557041129494067160, guid: c90751e629186f14eb4ed7acc2245f0c,
       type: 3}
-    radius: 10
-    cooldown: 3
+    radius: 6
+    cooldown: 2.5
     damage: 15
-    knockbackPower: 4
+    knockbackPower: 3
   - name: Rank 3
     projectilePrefab: {fileID: 3557041129494067160, guid: c90751e629186f14eb4ed7acc2245f0c,
       type: 3}
-    radius: 9
-    cooldown: 3
+    radius: 8
+    cooldown: 2.5
     damage: 15
     knockbackPower: 4
   - name: Rank 4

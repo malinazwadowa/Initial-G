@@ -23,7 +23,7 @@ MonoBehaviour:
     levelToComplete: 0
   icon: {fileID: 797102184, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
   description: Spins projectiles around the player.
-  amountOfRanks: 4
+  amountOfRanks: 5
   ranks:
   - name: Rank 1
     projectilePrefab: {fileID: 2540002873092309467, guid: 8696e6bee6de5dc4392d29679ff4d199,
@@ -38,30 +38,40 @@ MonoBehaviour:
   - name: Rank 2
     projectilePrefab: {fileID: 2540002873092309467, guid: 8696e6bee6de5dc4392d29679ff4d199,
       type: 3}
-    speed: 250
+    speed: 200
     cooldown: 3
-    radius: 3
+    radius: 2
     duration: 3
-    amount: 7
+    amount: 2
     damage: 10
     knockbackPower: 3
   - name: Rank 3
     projectilePrefab: {fileID: 2540002873092309467, guid: 8696e6bee6de5dc4392d29679ff4d199,
       type: 3}
-    speed: 300
+    speed: 250
     cooldown: 3
-    radius: 4
+    radius: 3
     duration: 4
-    amount: 3
+    amount: 2
     damage: 10
     knockbackPower: 3
   - name: Rank 4
     projectilePrefab: {fileID: 2540002873092309467, guid: 8696e6bee6de5dc4392d29679ff4d199,
       type: 3}
-    speed: 200
+    speed: 250
     cooldown: 3
     radius: 4
-    duration: 15
-    amount: 4
+    duration: 4
+    amount: 3
+    damage: 15
+    knockbackPower: 3
+  - name: Rank 5
+    projectilePrefab: {fileID: 2540002873092309467, guid: 8696e6bee6de5dc4392d29679ff4d199,
+      type: 3}
+    speed: 250
+    cooldown: 3
+    radius: 4
+    duration: 4
+    amount: 5
     damage: 15
     knockbackPower: 3
