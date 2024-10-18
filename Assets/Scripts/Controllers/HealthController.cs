@@ -89,7 +89,7 @@ public class HealthController : MonoBehaviour
             {
                 currentHealth += regenerationRate * characterStats.healthRegenerationModifier;
             }
-            Debug.Log("regening");
+
             OnHealthChanged?.Invoke();
         }
     }

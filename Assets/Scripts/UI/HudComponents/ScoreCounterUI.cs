@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class ScoreCounterUI : MonoBehaviour
 {
-    private TextMeshProUGUI text;
+    [SerializeField]
+    private TextMeshProUGUI scoreText;
 
     private void OnEnable()
     {
@@ -17,16 +18,16 @@ public class ScoreCounterUI : MonoBehaviour
 
     void Start()
     {
-        text = GetComponentInChildren<TextMeshProUGUI>();
-        text.text = $"Score: {LevelManager.Instance.Score}";
+        scoreText.text = $"{LevelManager.Instance.Score}";
     }
 
     public void UpdateScore()
     {
-        text.text = $"Score: {LevelManager.Instance.Score}";
+        scoreText.text = $"Score: {LevelManager.Instance.Score}";
     }
+
     public void SetScore(int value)
     {
-        text.text = $"Score: {value}";
+        scoreText.text = $"{value}";
     }
 }
