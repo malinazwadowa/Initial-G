@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56ad317cc9d18f74185d9574e53fa37a, type: 3}
+  m_Name: newCrystalParameters
+  m_EditorClassIdentifier: 
+  unlockCondition:
+    name: 
+    conditionType: 0
+    weaponType: 
+    accessoryType: 
+    enemyType: 0
+    collectibleType: 0
+    amount: 0
+    levelToComplete: 0
+  icon: {fileID: 7560240637562155887, guid: 0ece8860f6ff7b949bcc603e99fefe92, type: 3}
+  description: UE
+  amountOfRanks: 2
+  ranks:
+  - name: Rank 1
+    projectilePrefab: {fileID: 5596917958295279817, guid: d8749c55190730d458a1a10efa583560,
+      type: 3}
+    speed: 10
+    cooldown: 1
+    radius: 1
+    duration: 2
+    amount: 1
+    damage: 10
+    knockbackPower: 3
+  - name: Rank 2
+    projectilePrefab: {fileID: 5596917958295279817, guid: d8749c55190730d458a1a10efa583560,
+      type: 3}
+    speed: 15
+    cooldown: 1
+    radius: 1
+    duration: 3
+    amount: 1
+    damage: 10
+    knockbackPower: 3
