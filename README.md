@@ -7,8 +7,8 @@ Initial G is a clone of Vampire Survivors. For those unfamiliar with that title,
 Defeating enemies grants experience points, and leveling up offers access to new items or upgrades for currently equipped gear.
 
 <h3>How to run</h3>
-The stable game build is available in the Releases section. Unpack, run the .exe file.</br>
-Alternatively, you can run it through the Unity editor. The recommended starting scene for the full experience is the MainMenu scene.</br>
+The stable game build is available in the <b>Releases</b> section. Unpack, run the .exe file.</br>
+Alternatively, you can run it through the Unity editor. (2021.3.19f1) The recommended starting scene for the full experience is the MainMenu scene.</br>
 Supports keyboard and gamepad.
 <h5>Controls</h5>
 - Navigation: WASD/L Analog Stick</br>
