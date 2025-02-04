@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CrystalProjectile : MonoBehaviour
@@ -10,57 +8,100 @@ public class CrystalProjectile : MonoBehaviour
     private float damage;
     private float speed;
     private float knockbackPower;
-    private float duration;
+    private float radius;
+
+    private float pulseFactor;
+
+    [SerializeField]
+    private float scalingBottomLimit = -0.5f;
+    [SerializeField]
+    private float pulseStart = 0.2f;
+    [SerializeField]
+    private float pulseEnd = 0.55f;
 
 
-    private float timer;
+    private float cycleProgress;
+    private float averagePulseFactor;
+    private float rotationSpeed = 50f;
 
-    public void Initialize(string weaponType, float damage, float speed, float knockbackPower, float duration)
+    public void Initialize(string weaponType, float damage, float speed, float knockbackPower, float radius)
     {
         this.weaponType = weaponType;
 
         this.damage = damage;
         this.speed = speed;
         this.knockbackPower = knockbackPower;
-        this.duration = duration;
-        timer = 0;
+        this.radius = radius;
+
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private void OnEnable()
     {
-
+        //transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
+        cycleProgress = 0;
     }
 
-    // Update is called once per frame
+    private void OnDisable()
+    {
+        transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
+    }
+
     void Update()
     {
-        timer += Time.deltaTime;
-        if (timer >= duration)
-        {
-            ObjectPooler.Instance.DespawnObject(gameObject);
-            transform.localScale = Vector3.one;
-        }
-
         Expand();
+        Rotate();
+        Pulse();
     }
 
+    private void Pulse()
+    {
+        float lifeTime = cycleProgress / radius;
+        float pulseWindow = pulseEnd - pulseStart;
+
+        averagePulseFactor = (1 - pulseWindow) + pulseWindow * ((1f + scalingBottomLimit) * 0.5f);
+
+        if (lifeTime < pulseStart || lifeTime > pulseEnd)
+        {
+            pulseFactor = 1f;
+        }
+        else
+        {
+            float pulseProgress = (lifeTime - pulseStart) / pulseWindow;
+
+            float t = pulseProgress < 0.5f ? pulseProgress * 2f : (1f - pulseProgress) * 2f;
+            pulseFactor = Mathf.Lerp(1f, scalingBottomLimit, t);
+        }
+    }
+
+    private void Rotate()
+    {
+        transform.Rotate(0, 0, Time.deltaTime * rotationSpeed);
+    }
 
     private void Expand()
     {
-        this.gameObject.transform.localScale += Vector3.one * speed * Time.deltaTime;
+        if (cycleProgress < radius)
+        {
+            this.gameObject.transform.localScale += speed * pulseFactor * Time.deltaTime * Vector3.one;
+            cycleProgress += speed * averagePulseFactor * Time.deltaTime;
+
+            Debug.Log($"fake:{cycleProgress} nie fejk: {gameObject.transform.localScale.x} averagpulsefactot: {averagePulseFactor}");
+        }
+        else
+        {
+            ObjectPooler.Instance.DespawnObject(gameObject);
+        }
     }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         IDamagable target = collision.gameObject.GetComponent<IDamagable>();
         if (target != null)
         {
-
             target.Damage(damage, weaponType);
             Vector3 targetPos = collision.transform.position;
             target.Knockback(knockbackPower, targetPos - transform.position);
-            
         }
     }
 }

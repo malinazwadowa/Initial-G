@@ -18,7 +18,6 @@ public class Crystal : Weapon
         currentRankParameters = baseParameters.ranks[CurrentRank];
     }
 
-
     public override void WeaponTick()
     {
         base.WeaponTick();
@@ -39,26 +38,16 @@ public class Crystal : Weapon
             currentRankParameters.damage * characterStats.damageModifier,
             currentRankParameters.speed * characterStats.weaponSpeedModifier,
             currentRankParameters.knockbackPower,
-            currentRankParameters.duration * characterStats.durationModifier
+            currentRankParameters.radius
             );
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public override void RankUp()
     {
         base.RankUp();
         currentRankParameters = baseParameters.ranks[CurrentRank];
     }
+
     public override Dictionary<string, float> GetParameters(int rank)
     {
         Dictionary<string, float> parameters = new Dictionary<string, float>();
